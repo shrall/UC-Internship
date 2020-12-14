@@ -13,11 +13,11 @@ class CreateProgressTable extends Migration
      */
     public function up()
     {
-        Schema::create('progress', function (Blueprint $table) {
+        Schema::create('uci_progress', function (Blueprint $table) {
             $table->id();
             $table->string('description');
-            $table->timestamp('start');
-            $table->timestamp('end');
+            $table->dateTime('time_start');
+            $table->dateTime('time_end');
             $table->enum('is_approved', ['0','1'])
             ->default('0')
             ->comment('0 = Pending, 1 = Accepted');

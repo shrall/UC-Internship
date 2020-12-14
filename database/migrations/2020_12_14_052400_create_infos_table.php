@@ -13,7 +13,7 @@ class CreateInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('infos', function (Blueprint $table) {
+        Schema::create('uci_infos', function (Blueprint $table) {
             $table->id();
             $table->float('time_remaining');
             $table->float('gpa');

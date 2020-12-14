@@ -13,7 +13,7 @@ class CreatePeriodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('periods', function (Blueprint $table) {
+        Schema::create('uci_periods', function (Blueprint $table) {
             $table->id();
             $table->enum('term', ['0','1'])
             ->default('0')

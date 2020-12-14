@@ -13,7 +13,7 @@ class CreateProjectAttachmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_attachments', function (Blueprint $table) {
+        Schema::create('uci_project_attachments', function (Blueprint $table) {
             $table->id();
             $table->text('name');
             $table->timestamps();

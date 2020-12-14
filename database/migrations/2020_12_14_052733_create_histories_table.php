@@ -13,7 +13,7 @@ class CreateHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('histories', function (Blueprint $table) {
+        Schema::create('uci_histories', function (Blueprint $table) {
             $table->id();
             $table->float('duration_before');
             $table->float('duration_after');

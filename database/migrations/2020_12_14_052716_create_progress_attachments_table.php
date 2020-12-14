@@ -13,7 +13,7 @@ class CreateProgressAttachmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('progress_attachments', function (Blueprint $table) {
+        Schema::create('uci_progress_attachments', function (Blueprint $table) {
             $table->id();
             $table->text('name');
             $table->timestamps();

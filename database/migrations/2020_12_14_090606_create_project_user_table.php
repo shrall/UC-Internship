@@ -13,13 +13,13 @@ class CreateProjectUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_user', function (Blueprint $table) {
+        Schema::create('uci_project_user', function (Blueprint $table) {
             $table->id();
             $table->enum('status', ['0','1','2'])
             ->default('0')
             ->comment('0 = Pending, 1 = Accepted, 2 = Declined');
-            $table->foreignId('project_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('uci_project_id')->constrained();
+            $table->foreignId('uci_user_id')->constrained();
             $table->timestamps();
         });
     }

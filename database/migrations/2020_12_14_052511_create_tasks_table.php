@@ -13,7 +13,7 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('uci_tasks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('description');

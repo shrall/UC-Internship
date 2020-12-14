@@ -13,7 +13,7 @@ class CreateScholarshipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('scholarships', function (Blueprint $table) {
+        Schema::create('uci_scholarships', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('grade', 1);
