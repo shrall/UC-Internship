@@ -15,7 +15,7 @@ class AddForeignKeyToStudents extends Migration
     {
         Schema::table('students', function (Blueprint $table) {
             $table->unsignedBigInteger('department_id')->index()->after('line_account');
-            $table->foreign('department_id')->references('id')->on('uci_infos');
+            $table->foreign('department_id')->references('id')->on('departments');
         });
     }
 
