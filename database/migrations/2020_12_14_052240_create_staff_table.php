@@ -23,6 +23,7 @@ class CreateStaffTable extends Migration
             $table->string('gender', 1);
             $table->string('phone');
             $table->string('line_account');
+            $table->timestamps();
         });
     }
 

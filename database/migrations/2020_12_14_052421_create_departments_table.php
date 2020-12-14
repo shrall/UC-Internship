@@ -17,6 +17,7 @@ class CreateDepartmentsTable extends Migration
             $table->id();
             $table->string('initial');
             $table->string('name');
+            $table->timestamps();
         });
     }
 

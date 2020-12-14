@@ -18,6 +18,7 @@ class CreateInfosTable extends Migration
             $table->float('time_remaining');
             $table->float('gpa');
             $table->text('cv');
+            $table->timestamps();
         });
     }
 

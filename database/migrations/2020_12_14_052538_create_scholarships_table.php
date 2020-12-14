@@ -21,6 +21,7 @@ class CreateScholarshipsTable extends Migration
             $table->float('minimum_gpa');
             $table->float('hps')
             ->comment('Hour Per Semester');
+            $table->timestamps();
         });
     }
 

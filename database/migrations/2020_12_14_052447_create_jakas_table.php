@@ -16,6 +16,7 @@ class CreateJakasTable extends Migration
         Schema::create('jakas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->timestamps();
         });
     }
 
