@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Period extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'term', 'start', 'end'
+    ];
+
+    public function project() {
+        return $this->hasMany(Project::class, 'period_id', 'id');
+    }
 }
