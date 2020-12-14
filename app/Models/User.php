@@ -22,6 +22,9 @@ class User extends Authenticatable
         'password', 'is_login', 'detailable_id', 'detailable_type', 'info_id'
     ];
 
+    public function detailable(){
+        return $this->morphTo();
+    }
 
     public function student() {
         return $this->hasMany(History::class, 'student_id', 'id');
