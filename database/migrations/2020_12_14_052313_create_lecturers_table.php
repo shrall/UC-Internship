@@ -20,7 +20,7 @@ class CreateLecturersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('description');
-            $table->text('photo');
+            $table->text('photo')->nullable();
             $table->string('gender', 1);
             $table->string('phone');
             $table->string('line_account');
