@@ -16,6 +16,6 @@ class Role extends Model
     ];
 
     public function user() {
-        return $this->belongsToMany(User::class)->withPivot('status')->withTimestamps();
+        return $this->belongsToMany(User::class, 'uci_role_user', 'uci_role_id', 'uci_user_id')->withTimestamps();
     }
 }

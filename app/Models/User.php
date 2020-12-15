@@ -38,7 +38,7 @@ class User extends Authenticatable
         return $this->belongsTo(Info::class, 'info_id', 'id');
     }
     public function user() {
-        return $this->belongsToMany(Role::class)->withPivot('status')->withTimestamps();
+        return $this->belongsToMany(Role::class, 'uci_role_user', 'uci_user_id', 'uci_role_id')->withTimestamps();
     }
     public function applies() {
         return $this->belongsToMany(Project::class, 'uci_project_user', 'uci_user_id', 'uci_project_id')->withPivot('status')->withTimestamps();
