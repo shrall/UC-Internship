@@ -9,6 +9,8 @@ class ProjectAttachment extends Model
 {
     use HasFactory;
 
+    protected $table = 'uci_project_attachments';
+
     protected $fillable = [
         'name', 'project_id'
     ];

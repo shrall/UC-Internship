@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'uci_users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -37,6 +39,9 @@ class User extends Authenticatable
     }
     public function user() {
         return $this->belongsToMany(Role::class)->withPivot('status')->withTimestamps();
+    }
+    public function applies() {
+        return $this->belongsToMany(Project::class, 'uci_project_user', 'uci_user_id', 'uci_project_id')->withPivot('status')->withTimestamps();
     }
 
     /**

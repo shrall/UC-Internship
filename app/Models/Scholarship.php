@@ -9,6 +9,8 @@ class Scholarship extends Model
 {
     use HasFactory;
 
+    protected $table = 'uci_scholarships';
+
     protected $fillable = [
         'name', 'grade', 'duration', 'minimum_gpa', 'hps'
     ];

@@ -9,6 +9,8 @@ class Info extends Model
 {
     use HasFactory;
 
+    protected $table = 'uci_infos';
+
     protected $fillable = [
         'time_remaining', 'gpa', 'cv', 'scholarship_id'
     ];

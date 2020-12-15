@@ -9,7 +9,17 @@ class ProjectUser extends Pivot
 {
     use HasFactory;
 
+    protected $table = 'uci_project_user';
+
     public function task(){
-        return $this->hasMany(Task::class, 'task_id', 'id');
+        return $this->hasMany(Task::class, 'pu_id', 'id');
+    }
+
+    public function project() {
+        return $this->belongsTo(Project::class, 'uci_project_id', 'id');
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'uci_user_id', 'id');
     }
 }

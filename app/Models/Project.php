@@ -25,4 +25,7 @@ class Project extends Model
     public function supervisor(){
         return $this->belongsTo(User::class, 'supervisor_id', 'id');
     }
+    public function works() {
+        return $this->belongsToMany(User::class, 'uci_project_user', 'uci_project_id', 'uci_user_id')->withPivot('status')->withTimestamps();
+    }
 }

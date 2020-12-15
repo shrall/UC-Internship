@@ -9,6 +9,8 @@ class Progress extends Model
 {
     use HasFactory;
 
+    protected $table = 'uci_progress';
+
     protected $fillable = [
         'description', 'time_start', 'time_end', 'is_approved', 'comment', 'task_id'
     ];

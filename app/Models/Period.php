@@ -9,6 +9,8 @@ class Period extends Model
 {
     use HasFactory;
 
+    protected $table = 'uci_periods';
+
     protected $fillable = [
         'term', 'start', 'end'
     ];

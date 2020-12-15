@@ -9,6 +9,8 @@ class ProgressAttachment extends Model
 {
     use HasFactory;
 
+    protected $table = 'uci_progress_attachments';
+
     protected $fillable = [
         'name', 'progress_id'
     ];

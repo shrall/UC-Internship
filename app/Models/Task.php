@@ -9,6 +9,8 @@ class Task extends Model
 {
     use HasFactory;
 
+    protected $table = 'uci_tasks';
+
     protected $fillable = [
         'name', 'description', 'deadline', 'duration', 'is_approved', 'pu_id'
     ];
@@ -16,10 +18,8 @@ class Task extends Model
     public function progress() {
         return $this->hasMany(Progress::class, 'task_id', 'id');
     }
-    public function users() {
-        return $this->belongsToMany(User::class)->using(ProjectUser::class);
-    }
-    public function projects() {
-        return $this->belongsToMany(Project::class)->using(ProjectUser::class);
+
+    public function projectuser() {
+        return $this->belongsTo(ProjectUser::class, 'pu_id', 'id');
     }
 }
