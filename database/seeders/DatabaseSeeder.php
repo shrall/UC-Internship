@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,5 +15,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        Model::unguard();
+
+        $this->call([
+            DepartmentSeeder::class,
+            TitleSeeder::class,
+            JakaSeeder::class,
+            ScholarshipSeeder::class,
+            InfoSeeder::class,
+            UserSeeder::class,
+            RoleSeeder::class,
+            RoleUserSeeder::class,
+            StudentSeeder::class,
+            StaffSeeder::class,
+            LecturerSeeder::class,
+        ]);
+
+        Model::reguard();
     }
 }
