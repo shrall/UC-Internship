@@ -16,6 +16,8 @@ class AddForeignKeyToUciProjects extends Migration
         Schema::table('uci_projects', function (Blueprint $table) {
             $table->unsignedBigInteger('period_id')->index()->after('category');
             $table->foreign('period_id')->references('id')->on('uci_periods');
+            $table->unsignedBigInteger('supervisor_id')->index()->after('period_id');
+            $table->foreign('supervisor_id')->references('id')->on('uci_users');
         });
     }
 
