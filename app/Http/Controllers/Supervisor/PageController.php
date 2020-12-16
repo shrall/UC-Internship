@@ -7,5 +7,9 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    //
+    public function dashboard()
+    {
+        $pages = 'dash';
+        return view('supervisor.dashboard', compact('pages'));
+    }
 }

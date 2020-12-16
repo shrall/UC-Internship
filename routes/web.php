@@ -69,7 +69,7 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+Route::group(['middleware' => ['admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/', [AdminPageController::class, 'dashboard'])->name('dashboard');
     Route::resource('department', AdminDepartmentController::class);
     Route::resource('history', AdminHistoryController::class);
@@ -87,7 +87,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('user', AdminUserController::class);
 });
 
-Route::group(['prefix' => 'Supervisor', 'as' => 'Supervisor.'], function () {
+Route::group(['middleware' => ['supervisor'], 'prefix' => 'Supervisor', 'as' => 'Supervisor.'], function () {
     Route::get('/', [SupervisorPageController::class, 'dashboard'])->name('dashboard');
     Route::resource('department', SupervisorDepartmentController::class);
     Route::resource('history', SupervisorHistoryController::class);
@@ -105,7 +105,7 @@ Route::group(['prefix' => 'Supervisor', 'as' => 'Supervisor.'], function () {
     Route::resource('user', SupervisorUserController::class);
 });
 
-Route::group(['prefix' => 'student', 'as' => 'student.'], function () {
+Route::group(['middleware' => ['student'], 'prefix' => 'student', 'as' => 'student.'], function () {
     Route::get('/', [StudentPageController::class, 'dashboard'])->name('dashboard');
     Route::resource('department', StudentDepartmentController::class);
     Route::resource('history', StudentHistoryController::class);
