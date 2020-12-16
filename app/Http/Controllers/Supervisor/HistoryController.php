@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
-use App\Models\ProgressAttachment;
+use App\Models\History;
 use Illuminate\Http\Request;
 
-class ProgressAttachmentController extends Controller
+class HistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class ProgressAttachmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProgressAttachment  $progressAttachment
+     * @param  \App\Models\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function show(ProgressAttachment $progressAttachment)
+    public function show(History $history)
     {
         //
     }
@@ -53,10 +53,10 @@ class ProgressAttachmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProgressAttachment  $progressAttachment
+     * @param  \App\Models\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProgressAttachment $progressAttachment)
+    public function edit(History $history)
     {
         //
     }
@@ -65,10 +65,10 @@ class ProgressAttachmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProgressAttachment  $progressAttachment
+     * @param  \App\Models\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProgressAttachment $progressAttachment)
+    public function update(Request $request, History $history)
     {
         //
     }
@@ -76,10 +76,10 @@ class ProgressAttachmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProgressAttachment  $progressAttachment
+     * @param  \App\Models\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProgressAttachment $progressAttachment)
+    public function destroy(History $history)
     {
         //
     }

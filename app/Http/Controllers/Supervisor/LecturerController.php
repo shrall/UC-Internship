@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
-use App\Models\Title;
+use App\Models\Lecturer;
 use Illuminate\Http\Request;
 
-class TitleController extends Controller
+class LecturerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class TitleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Title  $title
+     * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Http\Response
      */
-    public function show(Title $title)
+    public function show(Lecturer $lecturer)
     {
         //
     }
@@ -53,10 +53,10 @@ class TitleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Title  $title
+     * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Title $title)
+    public function edit(Lecturer $lecturer)
     {
         //
     }
@@ -65,10 +65,10 @@ class TitleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Title  $title
+     * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Title $title)
+    public function update(Request $request, Lecturer $lecturer)
     {
         //
     }
@@ -76,10 +76,10 @@ class TitleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Title  $title
+     * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Title $title)
+    public function destroy(Lecturer $lecturer)
     {
         //
     }

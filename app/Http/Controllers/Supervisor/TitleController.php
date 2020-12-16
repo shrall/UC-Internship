@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
-use App\Models\Student;
+use App\Models\Title;
 use Illuminate\Http\Request;
 
-class StudentController extends Controller
+class TitleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show(Title $title)
     {
         //
     }
@@ -53,10 +53,10 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Title $title)
     {
         //
     }
@@ -65,10 +65,10 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, Title $title)
     {
         //
     }
@@ -76,10 +76,10 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Student  $student
+     * @param  \App\Models\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(Title $title)
     {
         //
     }

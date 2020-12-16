@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
-use App\Models\ProjectAttachment;
+use App\Models\Info;
 use Illuminate\Http\Request;
 
-class ProjectAttachmentController extends Controller
+class InfoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class ProjectAttachmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProjectAttachment  $projectAttachment
+     * @param  \App\Models\Info  $info
      * @return \Illuminate\Http\Response
      */
-    public function show(ProjectAttachment $projectAttachment)
+    public function show(Info $info)
     {
         //
     }
@@ -53,10 +53,10 @@ class ProjectAttachmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProjectAttachment  $projectAttachment
+     * @param  \App\Models\Info  $info
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProjectAttachment $projectAttachment)
+    public function edit(Info $info)
     {
         //
     }
@@ -65,10 +65,10 @@ class ProjectAttachmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProjectAttachment  $projectAttachment
+     * @param  \App\Models\Info  $info
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProjectAttachment $projectAttachment)
+    public function update(Request $request, Info $info)
     {
         //
     }
@@ -76,10 +76,10 @@ class ProjectAttachmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProjectAttachment  $projectAttachment
+     * @param  \App\Models\Info  $info
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProjectAttachment $projectAttachment)
+    public function destroy(Info $info)
     {
         //
     }

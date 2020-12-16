@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
-use App\Models\Period;
+use App\Models\ProjectAttachment;
 use Illuminate\Http\Request;
 
-class PeriodController extends Controller
+class ProjectAttachmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class PeriodController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Period  $period
+     * @param  \App\Models\ProjectAttachment  $projectAttachment
      * @return \Illuminate\Http\Response
      */
-    public function show(Period $period)
+    public function show(ProjectAttachment $projectAttachment)
     {
         //
     }
@@ -53,10 +53,10 @@ class PeriodController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Period  $period
+     * @param  \App\Models\ProjectAttachment  $projectAttachment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Period $period)
+    public function edit(ProjectAttachment $projectAttachment)
     {
         //
     }
@@ -65,10 +65,10 @@ class PeriodController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Period  $period
+     * @param  \App\Models\ProjectAttachment  $projectAttachment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Period $period)
+    public function update(Request $request, ProjectAttachment $projectAttachment)
     {
         //
     }
@@ -76,10 +76,10 @@ class PeriodController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Period  $period
+     * @param  \App\Models\ProjectAttachment  $projectAttachment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Period $period)
+    public function destroy(ProjectAttachment $projectAttachment)
     {
         //
     }

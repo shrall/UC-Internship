@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
-use App\Models\Jaka;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
-class JakaController extends Controller
+class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class JakaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Jaka  $jaka
+     * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function show(Jaka $jaka)
+    public function show(Department $department)
     {
         //
     }
@@ -53,10 +53,10 @@ class JakaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Jaka  $jaka
+     * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function edit(Jaka $jaka)
+    public function edit(Department $department)
     {
         //
     }
@@ -65,10 +65,10 @@ class JakaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Jaka  $jaka
+     * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Jaka $jaka)
+    public function update(Request $request, Department $department)
     {
         //
     }
@@ -76,10 +76,10 @@ class JakaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Jaka  $jaka
+     * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jaka $jaka)
+    public function destroy(Department $department)
     {
         //
     }

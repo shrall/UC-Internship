@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Staff;
+namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
-use App\Models\Info;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
-class InfoController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class InfoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Info  $info
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Info $info)
+    public function show(Project $project)
     {
         //
     }
@@ -53,10 +53,10 @@ class InfoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Info  $info
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Info $info)
+    public function edit(Project $project)
     {
         //
     }
@@ -65,10 +65,10 @@ class InfoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Info  $info
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Info $info)
+    public function update(Request $request, Project $project)
     {
         //
     }
@@ -76,10 +76,10 @@ class InfoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Info  $info
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Info $info)
+    public function destroy(Project $project)
     {
         //
     }
