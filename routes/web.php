@@ -27,7 +27,7 @@ use App\Http\Controllers\Supervisor\PeriodController as SupervisorPeriodControll
 use App\Http\Controllers\Supervisor\ProgressController as SupervisorProgressController;
 use App\Http\Controllers\Supervisor\ProjectController as SupervisorProjectController;
 use App\Http\Controllers\Supervisor\ScholarshipController as SupervisorScholarshipController;
-use App\Http\Controllers\Supervisor\SupervisorController as SupervisorStaffController;
+use App\Http\Controllers\Supervisor\StaffController as SupervisorStaffController;
 use App\Http\Controllers\Supervisor\StudentController as SupervisorStudentController;
 use App\Http\Controllers\Supervisor\TaskController as SupervisorTaskController;
 use App\Http\Controllers\Supervisor\TitleController as SupervisorTitleController;
