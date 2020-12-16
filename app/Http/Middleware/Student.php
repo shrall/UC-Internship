@@ -17,12 +17,12 @@ class Student
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
-            if(Auth::user()->isStudent()){
+        if (Auth::check()) {
+            if (Auth::user()->isStudent()) {
                 return $next($request);
-            } else if(Auth::user()->isSupervisor()){
+            } else if (Auth::user()->isSupervisor()) {
                 return redirect()->route('staff.dashboard')->with('error', 'Please login as a student to access that page.');
-            } else if(Auth::user()->isAdmin()){
+            } else if (Auth::user()->isAdmin()) {
                 return redirect()->route('admin.dashboard')->with('error', 'Please login as a student to access that page.');
             }
         }

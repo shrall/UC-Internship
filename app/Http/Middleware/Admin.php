@@ -17,12 +17,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
-            if(Auth::user()->isAdmin()){
+        if (Auth::check()) {
+            if (Auth::user()->isAdmin()) {
                 return $next($request);
-            } else if(Auth::user()->isSupervisor()){
+            } else if (Auth::user()->isSupervisor()) {
                 return redirect()->route('staff.dashboard')->with('error', 'Please login as an admin to access that page.');
-            } else if(Auth::user()->isStudent()){
+            } else if (Auth::user()->isStudent()) {
                 return redirect()->route('student.dashboard')->with('error', 'Please login as an admin to access that page.');
             }
         }

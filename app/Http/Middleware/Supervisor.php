@@ -17,12 +17,12 @@ class Supervisor
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
-            if(Auth::user()->isSupervisor()){
+        if (Auth::check()) {
+            if (Auth::user()->isSupervisor()) {
                 return $next($request);
-            } else if(Auth::user()->isAdmin()){
+            } else if (Auth::user()->isAdmin()) {
                 return redirect()->route('admin.dashboard')->with('error', 'Please login as a supervisor to access that page.');
-            } else if(Auth::user()->isStudent()){
+            } else if (Auth::user()->isStudent()) {
                 return redirect()->route('student.dashboard')->with('error', 'Please login as a supervisor to access that page.');
             }
         }
