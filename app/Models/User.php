@@ -21,8 +21,30 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password', 'is_login', 'detailable_id', 'detailable_type', 'info_id'
+        'password', 'is_login',
+        'role_id', 'detailable_id', 'detailable_type', 'info_id'
     ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+
 
     public function detailable(){
         return $this->morphTo();
@@ -43,22 +65,25 @@ class User extends Authenticatable
         return $this->belongsToMany(Project::class, 'uci_project_user', 'uci_user_id', 'uci_project_id')->withPivot('status')->withTimestamps();
     }
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function isAdmin()
+    {
+        if ($this->role->name == 'Admin' && $this->is_login == 1) {
+            return true;
+        }
+        return false;
+    }
+    public function isSupervisor()
+    {
+        if ($this->role->name == 'Supervisor' && $this->is_login == 1) {
+            return true;
+        }
+        return false;
+    }
+    public function isStudent()
+    {
+        if ($this->role->name == 'Student' && $this->is_login == 1) {
+            return true;
+        }
+        return false;
+    }
 }
