@@ -16,22 +16,22 @@ use App\Http\Controllers\Admin\TaskController as AdminTaskController;
 use App\Http\Controllers\Admin\TitleController as AdminTitleController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
-//Staff
-use App\Http\Controllers\Staff\DepartmentController as StaffDepartmentController;
-use App\Http\Controllers\Staff\HistoryController as StaffHistoryController;
-use App\Http\Controllers\Staff\InfoController as StaffInfoController;
-use App\Http\Controllers\Staff\JakaController as StaffJakaController;
-use App\Http\Controllers\Staff\LecturerController as StaffLecturerController;
-use App\Http\Controllers\Staff\PageController as StaffPageController;
-use App\Http\Controllers\Staff\PeriodController as StaffPeriodController;
-use App\Http\Controllers\Staff\ProgressController as StaffProgressController;
-use App\Http\Controllers\Staff\ProjectController as StaffProjectController;
-use App\Http\Controllers\Staff\ScholarshipController as StaffScholarshipController;
-use App\Http\Controllers\Staff\StaffController as StaffStaffController;
-use App\Http\Controllers\Staff\StudentController as StaffStudentController;
-use App\Http\Controllers\Staff\TaskController as StaffTaskController;
-use App\Http\Controllers\Staff\TitleController as StaffTitleController;
-use App\Http\Controllers\Staff\UserController as StaffUserController;
+//Supervisor
+use App\Http\Controllers\Supervisor\DepartmentController as SupervisorDepartmentController;
+use App\Http\Controllers\Supervisor\HistoryController as SupervisorHistoryController;
+use App\Http\Controllers\Supervisor\InfoController as SupervisorInfoController;
+use App\Http\Controllers\Supervisor\JakaController as SupervisorJakaController;
+use App\Http\Controllers\Supervisor\LecturerController as SupervisorLecturerController;
+use App\Http\Controllers\Supervisor\PageController as SupervisorPageController;
+use App\Http\Controllers\Supervisor\PeriodController as SupervisorPeriodController;
+use App\Http\Controllers\Supervisor\ProgressController as SupervisorProgressController;
+use App\Http\Controllers\Supervisor\ProjectController as SupervisorProjectController;
+use App\Http\Controllers\Supervisor\ScholarshipController as SupervisorScholarshipController;
+use App\Http\Controllers\Supervisor\SupervisorController as SupervisorStaffController;
+use App\Http\Controllers\Supervisor\StudentController as SupervisorStudentController;
+use App\Http\Controllers\Supervisor\TaskController as SupervisorTaskController;
+use App\Http\Controllers\Supervisor\TitleController as SupervisorTitleController;
+use App\Http\Controllers\Supervisor\UserController as SupervisorUserController;
 
 //Student
 use App\Http\Controllers\Student\DepartmentController as StudentDepartmentController;
@@ -65,7 +65,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 
@@ -87,22 +87,22 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::resource('user', AdminUserController::class);
 });
 
-Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
-    Route::get('/', [StaffPageController::class, 'dashboard'])->name('dashboard');
-    Route::resource('department', StaffDepartmentController::class);
-    Route::resource('history', StaffHistoryController::class);
-    Route::resource('info', StaffInfoController::class);
-    Route::resource('jaka', StaffJakaController::class);
-    Route::resource('lecturer', StaffLecturerController::class);
-    Route::resource('project', StaffProjectController::class);
-    Route::resource('progress', StaffProgressController::class);
-    Route::resource('scholarship', StaffScholarshipController::class);
-    Route::resource('task', StaffTaskController::class);
-    Route::resource('title', StaffTitleController::class);
-    Route::resource('period', StaffPeriodController::class);
-    Route::resource('staff', StaffStaffController::class);
-    Route::resource('student', StaffStudentController::class);
-    Route::resource('user', StaffUserController::class);
+Route::group(['prefix' => 'Supervisor', 'as' => 'Supervisor.'], function () {
+    Route::get('/', [SupervisorPageController::class, 'dashboard'])->name('dashboard');
+    Route::resource('department', SupervisorDepartmentController::class);
+    Route::resource('history', SupervisorHistoryController::class);
+    Route::resource('info', SupervisorInfoController::class);
+    Route::resource('jaka', SupervisorJakaController::class);
+    Route::resource('lecturer', SupervisorLecturerController::class);
+    Route::resource('project', SupervisorProjectController::class);
+    Route::resource('progress', SupervisorProgressController::class);
+    Route::resource('scholarship', SupervisorScholarshipController::class);
+    Route::resource('task', SupervisorTaskController::class);
+    Route::resource('title', SupervisorTitleController::class);
+    Route::resource('period', SupervisorPeriodController::class);
+    Route::resource('staff', SupervisorStaffController::class);
+    Route::resource('student', SupervisorStudentController::class);
+    Route::resource('user', SupervisorUserController::class);
 });
 
 Route::group(['prefix' => 'student', 'as' => 'student.'], function () {
