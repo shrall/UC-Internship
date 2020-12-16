@@ -27,7 +27,9 @@ class User extends Authenticatable
     public function detailable(){
         return $this->morphTo();
     }
-
+    public function role() {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
     public function student() {
         return $this->hasMany(History::class, 'student_id', 'id');
     }
@@ -36,9 +38,6 @@ class User extends Authenticatable
     }
     public function info(){
         return $this->belongsTo(Info::class, 'info_id', 'id');
-    }
-    public function user() {
-        return $this->belongsToMany(Role::class, 'uci_role_user', 'uci_user_id', 'uci_role_id')->withTimestamps();
     }
     public function applies() {
         return $this->belongsToMany(Project::class, 'uci_project_user', 'uci_user_id', 'uci_project_id')->withPivot('status')->withTimestamps();

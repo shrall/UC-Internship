@@ -14,6 +14,8 @@ class AddForeignKeyToUciUsers extends Migration
     public function up()
     {
         Schema::table('uci_users', function (Blueprint $table) {
+            $table->unsignedBigInteger('role_id')->index()->after('is_login');
+            $table->foreign('role_id')->references('id')->on('uci_roles');
             $table->unsignedBigInteger('info_id')->index()->after('detailable_type')->nullable();
             $table->foreign('info_id')->references('id')->on('uci_infos');
         });
