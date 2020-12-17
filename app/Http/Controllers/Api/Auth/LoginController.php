@@ -36,7 +36,7 @@ class LoginController extends Controller
         if ($check->is_login == '0') {
             if (Auth::attempt($student)) {
                 $this->is_login(Auth::id());
-                $response = $http->post('http://uci.test/oauth/token', [
+                $response = $http->post('http://192.168.1.6/UC-internship/public/oauth/token', [
                     'form_params' => [
                         'grant_type' => 'password',
                         'client_id' => $this->client->id,
@@ -50,12 +50,12 @@ class LoginController extends Controller
             } else {
                 return response([
                     'message' => 'Login Failed'
-                ]);
+                ], 401);
             }
         } else {
             return response([
                 'message' => 'Account is already logged in.'
-            ]);
+            ], 403);
         }
     }
 
@@ -77,7 +77,7 @@ class LoginController extends Controller
 
         $http = new GuzzleHttpClient;
 
-        $response = $http->post('http://uci.test/oauth/token', [
+        $response = $http->post('http://192.168.1.6/UC-internship/public/oauth/token', [
             'form_params' => [
                 'grant_type' => 'refresh_token',
                 'client_id' => $this->client->id,
