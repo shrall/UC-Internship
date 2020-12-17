@@ -50,12 +50,12 @@ class LoginController extends Controller
             } else {
                 return response([
                     'message' => 'Login Failed'
-                ]);
+                ], 401);
             }
         } else {
             return response([
                 'message' => 'Account is already logged in.'
-            ]);
+            ], 403);
         }
     }
 
