@@ -25,7 +25,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $projects = Project::all();
+        return ProjectResource::collection($projects);
     }
 
     /**

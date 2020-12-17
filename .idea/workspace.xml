@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a073beb-e23f-415d-a75c-b5868c2d8661" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/ProjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/ProjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +177,7 @@
       <updated>1608124888128</updated>
       <workItem from="1608124889233" duration="2990000" />
       <workItem from="1608128261904" duration="1962000" />
-      <workItem from="1608179914990" duration="749000" />
+      <workItem from="1608179914990" duration="2927000" />
     </task>
     <servers />
   </component>
@@ -185,5 +189,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1608125343881" />
+    <state x="480" y="129" width="576" height="566" key="find.popup" timestamp="1608181413225">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="480" y="129" width="576" height="566" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1608181413225" />
   </component>
 </project>
