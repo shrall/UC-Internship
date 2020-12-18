@@ -24,6 +24,18 @@ class LoginController extends Controller
 
         $http = new GuzzleHttpClient;
 
+        $admin = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'role_id' => 1,
+            'is_login' => '0',
+        ];
+        $supervisor = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'role_id' => 2,
+            'is_login' => '0',
+        ];
         $student = [
             'email' => $request->email,
             'password' => $request->password,
@@ -46,7 +58,45 @@ class LoginController extends Controller
                         'scope' => '*',
                     ]
                 ]);
-                return json_decode((string) $response->getBody(), true);
+                $var = json_decode((string) $response->getBody(), true);
+                $var = collect($var);
+                $var->put("user", $check);
+                $var = json_decode((string) $var, true);
+                return $var;
+            }else if (Auth::attempt($supervisor)) {
+                $this->is_login(Auth::id());
+                $response = $http->post('http://uci.test/oauth/token', [
+                    'form_params' => [
+                        'grant_type' => 'password',
+                        'client_id' => $this->client->id,
+                        'client_secret' => $this->client->secret,
+                        'username' => $request->email,
+                        'password' => $request->password,
+                        'scope' => '*',
+                    ]
+                ]);
+                $var = json_decode((string) $response->getBody(), true);
+                $var = collect($var);
+                $var->put("user", $check);
+                $var = json_decode((string) $var, true);
+                return $var;
+            }else if (Auth::attempt($admin)) {
+                $this->is_login(Auth::id());
+                $response = $http->post('http://uci.test/oauth/token', [
+                    'form_params' => [
+                        'grant_type' => 'password',
+                        'client_id' => $this->client->id,
+                        'client_secret' => $this->client->secret,
+                        'username' => $request->email,
+                        'password' => $request->password,
+                        'scope' => '*',
+                    ]
+                ]);
+                $var = json_decode((string) $response->getBody(), true);
+                $var = collect($var);
+                $var->put("user", $check);
+                $var = json_decode((string) $var, true);
+                return $var;
             } else {
                 return response([
                     'message' => 'Login Failed'
