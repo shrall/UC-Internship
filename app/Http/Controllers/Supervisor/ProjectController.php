@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+     
     }
 
     /**
@@ -25,8 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $projects = Project::all();
-        return ProjectResource::collection($projects);
+
     }
 
     /**
