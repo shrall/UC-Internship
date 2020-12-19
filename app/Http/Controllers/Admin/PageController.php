@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lecturer;
+use App\Models\Project;
 use App\Models\Staff;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,7 @@ class PageController extends Controller
         } else if(Auth::user()->detailable_type == "App\Lecturer"){
             $info = Lecturer::find(Auth::user()->detailable_id);
         }
-        return view('admin.dashboard', compact('pages', 'info'));
+        $projects = Project::all();
+        return view('admin.dashboard', compact('pages', 'info', 'projects'));
     }
 }

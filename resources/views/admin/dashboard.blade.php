@@ -6,4 +6,5 @@
         <p class="mb-0">{{ date('jS, M Y') }}</p>
     </div>
 </div>
+@include('admin.table.project')
 @endsection
