@@ -83,4 +83,8 @@ class ProjectController extends Controller
     {
         //
     }
+    public function offer()
+    {
+        //
+    }
 }
