@@ -87,7 +87,7 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin', 'as' => 'admin.'],
     Route::resource('user', AdminUserController::class);
 });
 
-Route::group(['middleware' => ['supervisor'], 'prefix' => 'Supervisor', 'as' => 'Supervisor.'], function () {
+Route::group(['middleware' => ['supervisor'], 'prefix' => 'supervisor', 'as' => 'supervisor.'], function () {
     Route::get('/', [SupervisorPageController::class, 'dashboard'])->name('dashboard');
     Route::resource('department', SupervisorDepartmentController::class);
     Route::resource('history', SupervisorHistoryController::class);
@@ -121,6 +121,9 @@ Route::group(['middleware' => ['student'], 'prefix' => 'student', 'as' => 'stude
     Route::resource('staff', StudentStaffController::class);
     Route::resource('student', StudentStudentController::class);
     Route::resource('user', StudentUserController::class);
+    Route::get('/offer', [StudentProjectController::class, 'offer'])->name('project.offer');
+    Route::get('/exportc', [StudentUserController::class, 'check'])->name('export.check');
+    Route::get('/export', [StudentUserController::class, 'export'])->name('export');
 });
 
 Auth::routes();

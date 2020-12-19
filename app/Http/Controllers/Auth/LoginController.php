@@ -41,7 +41,12 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
         $admin = [
             'email' => $request->email,
             'password' => $request->password,
@@ -74,7 +79,7 @@ class LoginController extends Controller
             return redirect()->route('student.dashboard');
         }
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('Error', 'E-Mail or Password is invalid');
     }
 
     public function logout(Request $request)
@@ -92,7 +97,7 @@ class LoginController extends Controller
     {
         $user = User::findOrFail($id);
         return $user->update([
-           'is_login' => '1',
+            'is_login' => '1',
         ]);
     }
 }

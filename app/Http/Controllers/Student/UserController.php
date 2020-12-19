@@ -82,4 +82,12 @@ class UserController extends Controller
     {
         //
     }
+    public function check()
+    {
+        //
+    }
+
+    public function export(){
+        //
+    }
 }
