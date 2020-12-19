@@ -90,6 +90,9 @@
                 class="loader-element animate__animated animate__jackInTheBox" src="{{ asset('assets/img/brand/light.svg') }}"
                 height="60" alt="Volt logo"></div>
         @yield('content')
+        @auth
+        @include('inc.footer')
+        @endauth
     </main>
     @auth
         @include('inc.modal.logout')
@@ -165,12 +168,7 @@
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.js"></script>
     <script>
         $(document).ready(function () {
-            var thetable = $('#table').DataTable();
-
-            // $('#searchDataTables').on('keyup', function () {
-            //     thetable.search(this.value).draw();
-            // });
-
+            var thetable = $('.table').DataTable();
         });
 
     </script>
