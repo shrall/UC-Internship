@@ -45,7 +45,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item @if ($pages == 'projects') active @endif">
+                <li class="nav-item @if ($pages == 'project') active @endif">
                     <a href="{{ route('admin.project.index') }}"
                         class="nav-link d-flex align-items-center justify-content-between">
                         <span>
@@ -147,7 +147,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item @if ($pages == 'projects') active @endif">
+                <li class="nav-item @if ($pages == 'project') active @endif">
                     <a href="{{ route('supervisor.project.index') }}"
                         class="nav-link d-flex align-items-center justify-content-between">
                         <span>
@@ -242,7 +242,7 @@
                     </span>
                     <div class="multi-level collapse" role="list" id="submenu-dashboard" aria-expanded="false">
                         <ul class="flex-column nav">
-                            <li class="nav-item @if ($pages == 'projects') active @endif">
+                            <li class="nav-item @if ($pages == 'project') active @endif">
                                 <a href="{{ route('student.project.index') }}"
                                     class="nav-link d-flex align-items-center justify-content-between">
                                     <span>
