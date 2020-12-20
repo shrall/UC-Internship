@@ -14,7 +14,7 @@ class AddForeignKeyToUciTasks extends Migration
     public function up()
     {
         Schema::table('uci_tasks', function (Blueprint $table) {
-            $table->unsignedBigInteger('pu_id')->index()->after('is_approved');
+            $table->unsignedBigInteger('pu_id')->index()->after('status');
             $table->foreign('pu_id')->references('id')->on('uci_project_user');
         });
     }

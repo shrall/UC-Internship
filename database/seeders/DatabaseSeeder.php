@@ -29,6 +29,13 @@ class DatabaseSeeder extends Seeder
             StudentSeeder::class,
             StaffSeeder::class,
             LecturerSeeder::class,
+            ProjectSeeder::class,
+            ProjectUserSeeder::class,
+            TaskSeeder::class,
+            ProgressSeeder::class,
+            HistorySeeder::class,
+            ProjectAttachmentSeeder::class,
+            ProgressAttachmentSeeder::class
         ]);
 
         Model::reguard();
