@@ -15,15 +15,23 @@ class JakaSeeder extends Seeder
     public function run()
     {
         $jaka = new Jaka();
-        $jaka->name = 'MarshallJaka';
+        $jaka->name = 'Lecturer';
         $jaka->save();
 
         $jaka = new Jaka();
-        $jaka->name = 'TinaraJaka';
+        $jaka->name = 'Asisten Ahli';
         $jaka->save();
 
         $jaka = new Jaka();
-        $jaka->name = 'MichelleJaka';
+        $jaka->name = 'Lektor 150';
+        $jaka->save();
+
+        $jaka = new Jaka();
+        $jaka->name = 'Lektor 300';
+        $jaka->save();
+
+        $jaka = new Jaka();
+        $jaka->name = 'Professor';
         $jaka->save();
     }
 }
