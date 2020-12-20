@@ -19,9 +19,13 @@
                 <div class="user-avatar lg-avatar mr-4"><img src="../assets/img/team/profile-picture-3.jpg"
                         class="card-img-top rounded-circle border-white" alt="Bonnie Green"></div>
                 <div class="d-block">
-                    <h2 class="h6">Hi, {{ $info->name }}</h2><a href="../pages/examples/sign-in.html"
-                        class="btn btn-secondary text-dark btn-xs"><span class="mr-2"><span
-                                class="fas fa-sign-out-alt"></span></span>Sign Out</a>
+                    <h2 class="h6">Hi, {{ $info->name }}</h2>
+                    <a href="{{ route('logout') }}" class="btn btn-secondary text-dark btn-xs"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <span class="mr-2">
+                            <span class="fas fa-sign-out-alt"></span>
+                        </span>{{ __('Logout') }}
+                    </a>
                 </div>
             </div>
             <div class="collapse-close d-md-none"><a href="#sidebarMenu" class="fas fa-times" data-toggle="collapse"
