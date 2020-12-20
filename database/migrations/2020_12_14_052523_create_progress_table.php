@@ -21,7 +21,7 @@ class CreateProgressTable extends Migration
             $table->enum('is_approved', ['0','1'])
             ->default('0')
             ->comment('0 = Pending, 1 = Accepted');
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
