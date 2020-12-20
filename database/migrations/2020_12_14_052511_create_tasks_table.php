@@ -19,7 +19,7 @@ class CreateTasksTable extends Migration
             $table->string('description');
             $table->date('deadline');
             $table->float('duration');
-            $table->enum('is_approved', ['0','1'])
+            $table->enum('status', ['0','1'])
             ->default('0')
             ->comment('0 = Ongoing, 1 = Completed');
             $table->timestamps();
