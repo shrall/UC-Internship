@@ -16,7 +16,7 @@ class ProgressSeeder extends Seeder
     public function run()
     {
         $progress = new Progress();
-        $progress->description = 'Membuat website marketing NLPC.';
+        $progress->description = 'Membuat website marketing NPLC.';
         $progress->time_start = Carbon::now()->format('Y-m-d H:i:s');;
         $progress->time_end = Carbon::now()->format('Y-m-d H:i:s');;
         $progress->is_approved = '1';
