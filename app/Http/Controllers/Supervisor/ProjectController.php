@@ -4,11 +4,19 @@ namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProjectResource;
+use App\Models\Lecturer;
+use App\Models\Period;
 use App\Models\Project;
+use App\Models\ProjectAttachment;
+use App\Models\Staff;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class ProjectController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +24,14 @@ class ProjectController extends Controller
      */
     public function index()
     {
-     
+        if (Auth::user()->detailable_type == "App\Staff") {
+            $info = Staff::find(Auth::user()->detailable_id);
+        } else if (Auth::user()->detailable_type == "App\Lecturer") {
+            $info = Lecturer::find(Auth::user()->detailable_id);
+        }
+        $pages = 'project';
+        $projects = Project::where('supervisor_id', Auth::id())->get();
+        return view('supervisor.project.index', compact('pages', 'info', 'projects'));
     }
 
     /**
@@ -26,7 +41,21 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->detailable_type == "App\Staff") {
+            $info = Staff::find(Auth::user()->detailable_id);
+        } else if (Auth::user()->detailable_type == "App\Lecturer") {
+            $info = Lecturer::find(Auth::user()->detailable_id);
+        }
+        $pages = 'project';
+        $periods = Period::all();
+        $currentdate = Carbon::now();
+        foreach ($periods as $period) {
+            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                $currentperiod = $period;
+            };
+        }
 
+        return view('supervisor.project.create', compact('pages', 'info', 'currentperiod'));
     }
 
     /**
@@ -37,7 +66,30 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $project = Project::create([
+            'name' => $request['name'],
+            'description' => $request['description'],
+            'deadline' => $request['deadline'],
+            'status' => '0',
+            'category' => $request['category'],
+            'period_id' => $request['period'],
+            'supervisor_id' => Auth::id()
+        ]);
+
+        if ($request['attachments'] != null) {
+            $i = 0;
+            foreach ($request->file('attachments') as $file) {
+                $attachment = new ProjectAttachment;
+                $file_name = time() . $i . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('attachments\project'), $file_name);
+                $attachment->name = public_path('attachments\project') . $file_name;
+                $attachment->project_id = $project['id'];
+                $attachment->save();
+                $i++;
+            }
+        }
+
+        return redirect()->route('supervisor.project.index');
     }
 
     /**
@@ -82,6 +134,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        if ($project->status == '0') {
+            $project->delete();
+            return redirect()->back();
+        } else {
+        }
     }
 }
