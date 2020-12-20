@@ -8,7 +8,7 @@
         <div class="card-body">
             <?php $x=0 ?>
             @foreach($tasks as $task)
-                <div class="row align-items-center @if ($x==0)border-bottom border-light pb-4 mb-4 @endif">
+                <div class="row align-items-center @if (count($tasks)>1) @if ($x==0)border-bottom border-light pb-4 mb-4 @endif @endif">
                     <div class="col-auto">
                         <a href="{{ route('student.task.show', $task->id) }}">
                             <div class="calendar d-flex">

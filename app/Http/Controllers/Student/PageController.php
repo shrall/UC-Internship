@@ -16,7 +16,7 @@ class PageController extends Controller
         $info = Student::find(Auth::user()->detailable_id);
         $tasks = Task::whereHas('projectuser', function (Builder $query) {
             $query->where('uci_user_id', Auth::id());
-        })->where('is_approved', '0')->take(2)->get();
+        })->where('status', '0')->take(2)->get();
 
         // dd($tasks);
 
