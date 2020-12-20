@@ -15,7 +15,7 @@ class AddForeignKeyToUciProjectAttachments extends Migration
     {
         Schema::table('uci_project_attachments', function (Blueprint $table) {
             $table->unsignedBigInteger('project_id')->index()->after('name');
-            $table->foreign('project_id')->references('id')->on('uci_projects');
+            $table->foreign('project_id')->references('id')->on('uci_projects')->onDelete('cascade');
         });
     }
 
