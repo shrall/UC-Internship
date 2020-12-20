@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call([
+            PeriodSeeder::class,
             DepartmentSeeder::class,
             TitleSeeder::class,
             JakaSeeder::class,
