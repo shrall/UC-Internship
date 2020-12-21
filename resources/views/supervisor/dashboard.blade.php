@@ -6,4 +6,6 @@
         <p class="mb-0">{{ date('jS, M Y') }}</p>
     </div>
 </div>
+@include('supervisor.table.project')
+@include('supervisor.table.progress')
 @endsection
