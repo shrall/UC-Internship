@@ -9,17 +9,17 @@
                     </div>
                     <div class="d-sm-none">
                         <h2 class="h5">Time Remaining</h2>
-                        <h3 class="mb-1">129h 30m</h3>
+                        <h3 class="mb-1">{{Auth::user()->info->time_remaining}}</h3>
                     </div>
                 </div>
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
                         <h2 class="h5">Time Remaining</h2>
-                        <h3 class="mb-1">129h 30m</h3>
+                        <h3 class="mb-1">{{Auth::user()->info->time_remaining}} hours</h3>
                     </div>
                     <div class="small mt-2">
                         <span class="fas fa-calendar-day text-danger"></span>
-                        <span class="text-danger font-weight-bold">19th December 2020</span>
+                        <span class="text-danger font-weight-bold">{{ date("jS F Y", strtotime($currentperiod->end)) }}</span>
                     </div>
                 </div>
             </div>

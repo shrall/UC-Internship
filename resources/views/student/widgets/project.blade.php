@@ -11,19 +11,19 @@
                     </a>
                     <div class="d-sm-none">
                         <h2 class="h5">Ongoing</h2>
-                        <h3 class="mb-1">2 Projects</h3>
+                        <h3 class="mb-1">{{ count($pus) }} @if (count($pus)>1)Projects @else Project @endif</h3>
                     </div>
                 </div>
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
                         <a href="{{ route('student.project.index') }}">
                             <h2 class="h5">Ongoing</h2>
-                            <h3 class="mb-1">2 Projects</h3>
+                            <h3 class="mb-1">{{ count($pus) }} @if (count($pus)>1)Projects @else Project @endif</h3>
                         </a>
                     </div>
                     <div class="small mt-2">
                         <span class="fas fa-check text-success"></span>
-                        <span class="text-success font-weight-bold">3/5 Tasks Completed</span>
+                        <span class="text-success font-weight-bold">{{count($tasks->where('status', '1'))}}/{{count($tasks)}} Tasks Completed</span>
                     </div>
                 </div>
             </div>

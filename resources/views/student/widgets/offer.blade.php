@@ -12,7 +12,7 @@
                     <div class="d-sm-none">
                         <a href="{{ route('student.project.offer') }}">
                             <h2 class="h5">Available Projects</h2>
-                            <h3 class="mb-1">13 Projects</h3>
+                            <h3 class="mb-1">{{count($projects)}} Projects</h3>
                         </a>
                     </div>
                 </div>
@@ -20,12 +20,12 @@
                     <div class="d-none d-sm-block">
                         <a href="{{ route('student.project.offer') }}">
                             <h2 class="h5">Available Projects</h2>
-                            <h3 class="mb-1">13 Projects</h3>
+                            <h3 class="mb-1">{{count($projects)}} Projects</h3>
                         </a>
                     </div>
                     <div class="small mt-2">
                         <span class="fas fa-thumbs-up text-info"></span>
-                        <span class="text-info font-weight-bold">13 Projects Available</span>
+                        <span class="text-info font-weight-bold">{{count($projects)}} Projects Available</span>
                     </div>
                 </div>
             </div>
