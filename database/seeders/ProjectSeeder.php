@@ -39,7 +39,7 @@ class ProjectSeeder extends Seeder
         $project->name = 'Rektor Cup 2020';
         $project->description = 'Lomba untuk setiap prodi di Universitas Ciputra.';
         $project->deadline = Carbon::parse('2020-12-10');
-        $project->status = '2';
+        $project->status = '1';
         $project->category = '0';
         $project->period_id = 1;
         $project->supervisor_id = 3;
