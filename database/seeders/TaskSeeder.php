@@ -20,7 +20,7 @@ class TaskSeeder extends Seeder
         $task->description = 'Membuatkan desain poster, instagram post, dan starter kit.';
         $task->deadline = Carbon::parse('2020-08-23');
         $task->duration = 23;
-        $task->status = '0';
+        $task->status = '1';
         $task->pu_id = 1;
         $task->save();
 
@@ -30,7 +30,7 @@ class TaskSeeder extends Seeder
         $task->deadline = Carbon::parse('2021-03-20');
         $task->duration = 10;
         $task->status = '0';
-        $task->pu_id = 2;
+        $task->pu_id = 3;
         $task->save();
 
         $task = new Task();
@@ -38,7 +38,8 @@ class TaskSeeder extends Seeder
         $task->description = 'Membuatkan desain poster, instagram post, twibbon, dan story templates.';
         $task->deadline = Carbon::parse('2020-11-19');
         $task->duration = 30;
-        $task->pu_id = 3;
+        $task->status = '0';
+        $task->pu_id = 4;
         $task->save();
 
 

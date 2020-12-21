@@ -36,10 +36,10 @@ class ProgressSeeder extends Seeder
         $progress = new Progress();
         $progress->description = 'Membuat design poster Rektor Cup.';
         $progress->time_start = Carbon::now()->format('Y-m-d H:i:s');;
-        $progress->time_end =Carbon::now()->format('Y-m-d H:i:s');;
+        $progress->time_end = Carbon::now()->format('Y-m-d H:i:s');;
         $progress->is_approved = '1';
         $progress->comment = 'Very nice.';
-        $progress->task_id =3;
+        $progress->task_id = 3;
         $progress->save();
 
         $progress = new Progress();

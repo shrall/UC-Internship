@@ -17,7 +17,7 @@ class ProjectUserSeeder extends Seeder
         $projectuser = new ProjectUser();
         $projectuser->status = '1';
         $projectuser->uci_project_id = 1;
-        $projectuser->uci_user_id = 10;
+        $projectuser->uci_user_id = 5;
         $projectuser->save();
 
         $projectuser = new ProjectUser();
@@ -27,7 +27,7 @@ class ProjectUserSeeder extends Seeder
         $projectuser->save();
 
         $projectuser = new ProjectUser();
-        $projectuser->status = '0';
+        $projectuser->status = '1';
         $projectuser->uci_project_id = 2;
         $projectuser->uci_user_id = 5;
         $projectuser->save();
@@ -35,7 +35,7 @@ class ProjectUserSeeder extends Seeder
         $projectuser = new ProjectUser();
         $projectuser->status = '1';
         $projectuser->uci_project_id = 3;
-        $projectuser->uci_user_id = 10;
+        $projectuser->uci_user_id = 5;
         $projectuser->save();
 
     }

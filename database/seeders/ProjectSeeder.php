@@ -19,7 +19,7 @@ class ProjectSeeder extends Seeder
         $project->name = '8th NPLC';
         $project->description = 'National Programming and Logic Competition, lomba yang diadakan tiap tahun oleh jurusan IMT.';
         $project->deadline = Carbon::parse('2020-12-25');
-        $project->status = '1';
+        $project->status = '2';
         $project->category = '0';
         $project->period_id = 1;
         $project->supervisor_id = 7;
