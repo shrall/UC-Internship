@@ -21,7 +21,7 @@ class Admin
             if (Auth::user()->isAdmin()) {
                 return $next($request);
             } else if (Auth::user()->isSupervisor()) {
-                return redirect()->route('staff.dashboard')->with('error', 'Please login as an admin to access that page.');
+                return redirect()->route('supervisor.dashboard')->with('error', 'Please login as an admin to access that page.');
             } else if (Auth::user()->isStudent()) {
                 return redirect()->route('student.dashboard')->with('error', 'Please login as an admin to access that page.');
             }

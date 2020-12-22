@@ -21,7 +21,7 @@ class Student
             if (Auth::user()->isStudent()) {
                 return $next($request);
             } else if (Auth::user()->isSupervisor()) {
-                return redirect()->route('staff.dashboard')->with('error', 'Please login as a student to access that page.');
+                return redirect()->route('supervisor.dashboard')->with('error', 'Please login as a student to access that page.');
             } else if (Auth::user()->isAdmin()) {
                 return redirect()->route('admin.dashboard')->with('error', 'Please login as a student to access that page.');
             }
