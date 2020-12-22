@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProjectResource;
 use App\Models\Project;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -16,7 +18,11 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        
+        $pages = "project";
+
+        $info = Student::find(Auth::user()->detailable_id);
+
+        // manggil semua project yang dipunya oleh student yang login
     }
 
     /**
@@ -37,7 +43,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //create projectuser
     }
 
     /**
@@ -48,7 +54,13 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        //!NOTE kalau user yang login bukan anggota dari project tsb, redirect()->back()
+        $pages = "project";
+
+        $info = Student::find(Auth::user()->detailable_id);
+
+        //disini manggil semua student yang merupakan anggota dari project yang di liat
+        // disini manggil semua task dari project yang diliat
     }
 
     /**
@@ -86,6 +98,10 @@ class ProjectController extends Controller
     }
     public function offer()
     {
-        //
+        $pages = "project";
+
+        $info = Student::find(Auth::user()->detailable_id);
+
+        //disini manggil semua project yang statusnya available
     }
 }

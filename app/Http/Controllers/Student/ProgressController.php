@@ -36,7 +36,8 @@ class ProgressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //create progress :v
+        //uplod attachment
     }
 
     /**
@@ -70,7 +71,7 @@ class ProgressController extends Controller
      */
     public function update(Request $request, Progress $progress)
     {
-        //
+        //update progress
     }
 
     /**

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -46,7 +48,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
+        $pages = " ";
+
+        $info = Student::find(Auth::user()->detailable_id);
+
+        //ngambil semua projectuser yang user idnya punyanya yang login
+        //ngambil semua task yang dipunya sama orang yang login
     }
 
     /**
@@ -57,7 +65,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
+        $pages = " ";
+
+        $info = Student::find(Auth::user()->detailable_id);
     }
 
     /**
@@ -69,7 +80,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
+        $pages = " ";
+
+        $info = Student::find(Auth::user()->detailable_id);
+
+        //update user & student-> karena kalo ngrubah nama, nama di user&student kerubah
+        //uplod foto&cv
     }
 
     /**
