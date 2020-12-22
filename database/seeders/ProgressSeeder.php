@@ -19,7 +19,7 @@ class ProgressSeeder extends Seeder
         $progress->description = 'Membuat website marketing NPLC.';
         $progress->time_start = Carbon::now()->format('Y-m-d H:i:s');;
         $progress->time_end = Carbon::now()->format('Y-m-d H:i:s');;
-        $progress->is_approved = '1';
+        $progress->status = '1';
         $progress->comment = 'Sudah oke, tapi warnanya sedikit mencolok. Mungkin dibuatkan lebih kusam lagi.';
         $progress->task_id = 1;
         $progress->save();
@@ -28,7 +28,7 @@ class ProgressSeeder extends Seeder
         $progress->description = 'Membuat design poster RCN.';
         $progress->time_start = Carbon::now()->format('Y-m-d H:i:s');;
         $progress->time_end = Carbon::now()->format('Y-m-d H:i:s');;
-        $progress->is_approved = '0';
+        $progress->status = '0';
         $progress->comment = '';
         $progress->task_id = 2;
         $progress->save();
@@ -37,7 +37,7 @@ class ProgressSeeder extends Seeder
         $progress->description = 'Membuat design poster Rektor Cup.';
         $progress->time_start = Carbon::now()->format('Y-m-d H:i:s');;
         $progress->time_end = Carbon::now()->format('Y-m-d H:i:s');;
-        $progress->is_approved = '1';
+        $progress->status = '1';
         $progress->comment = 'Very nice.';
         $progress->task_id = 3;
         $progress->save();
@@ -46,7 +46,7 @@ class ProgressSeeder extends Seeder
         $progress->description = 'Membuat design oprec post untuk instagram Rektor Cup.';
         $progress->time_start = Carbon::now()->format('Y-m-d H:i:s');;
         $progress->time_end = Carbon::now()->format('Y-m-d H:i:s');;
-        $progress->is_approved = '1';
+        $progress->status = '1';
         $progress->comment = 'Masih ada typo. Seharusnya "divisi", bukan "dvisi".';
         $progress->task_id = 3;
         $progress->save();

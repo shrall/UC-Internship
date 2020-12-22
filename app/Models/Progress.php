@@ -12,7 +12,7 @@ class Progress extends Model
     protected $table = 'uci_progress';
 
     protected $fillable = [
-        'description', 'time_start', 'time_end', 'is_approved', 'comment', 'task_id'
+        'description', 'time_start', 'time_end', 'status', 'comment', 'task_id'
     ];
 
     public function attachment() {

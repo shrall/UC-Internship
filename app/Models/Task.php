@@ -12,7 +12,7 @@ class Task extends Model
     protected $table = 'uci_tasks';
 
     protected $fillable = [
-        'name', 'description', 'deadline', 'duration', 'is_approved', 'pu_id'
+        'name', 'description', 'deadline', 'duration', 'status', 'pu_id'
     ];
 
     public function progress() {

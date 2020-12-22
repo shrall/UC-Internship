@@ -32,7 +32,7 @@ class PageController extends Controller
                     $query->where('supervisor_id', Auth::id());
                 });
             });
-        })->where('is_approved', '0')->get();
+        })->where('status', '0')->get();
 
         return view('supervisor.dashboard', compact('pages', 'info', 'pus', 'progresses'));
     }
