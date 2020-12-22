@@ -101,10 +101,10 @@ class UserController extends Controller
     }
     public function check()
     {
-        //
+        //disini bisa return view ke export.blade cuma buat ngecek doang
     }
 
     public function export(){
-        //
+        //ini baru exportnya :v
     }
 }

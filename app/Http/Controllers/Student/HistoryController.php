@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\History;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {
@@ -15,7 +17,11 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        //
+        $pages = " ";
+
+        $info = Student::find(Auth::user()->detailable_id);
+
+        // ngambil history punyanya student yang login
     }
 
     /**
