@@ -18,7 +18,7 @@ class LecturerSeeder extends Seeder
         $lecturer->nip = '0706011910009';
         $lecturer->nidn = '0706011910009';
         $lecturer->name = 'Marshall Ovierdo Kurniawan';
-        $lecturer->email = 'marshall@student.com';
+        $lecturer->email = 'marshall@lecturer.com';
         $lecturer->description = 'Aku anak gembala.';
         $lecturer->gender = 'M';
         $lecturer->phone = '081233129966';
@@ -32,7 +32,7 @@ class LecturerSeeder extends Seeder
         $lecturer->nip = '0706011910028';
         $lecturer->nidn = '0706011910028';
         $lecturer->name = 'Tinara Nathania Wiryonoputro';
-        $lecturer->email = 'tinara@student.com';
+        $lecturer->email = 'tinara@lecturer.com';
         $lecturer->description = 'Anaknya Yusuf.';
         $lecturer->gender = 'F';
         $lecturer->phone = '08123456789';
@@ -46,7 +46,7 @@ class LecturerSeeder extends Seeder
         $lecturer->nip = '0706011910003';
         $lecturer->nidn = '0706011910003';
         $lecturer->name = 'Michelle Alexandra Dinata';
-        $lecturer->email = 'michelle@student.com';
+        $lecturer->email = 'michelle@lecturer.com';
         $lecturer->description = 'Anaknya siapa ini?';
         $lecturer->gender = 'F';
         $lecturer->phone = '08123456789';
