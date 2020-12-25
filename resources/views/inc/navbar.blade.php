@@ -15,20 +15,12 @@
                             <img class="user-avatar md-avatar rounded-circle" alt="Image placeholder"
                                 src="{{asset('assets/img/team/profile-picture-3.jpg')}}">
                             <div class="media-body ml-2 text-dark align-items-center d-none d-lg-block">
-                                    <span class="mb-0 font-small font-weight-bold">{{$info->name}}</span>
+                                    <span class="mb-0 font-small font-weight-bold">{{Auth::user()->detailable->name}}</span>
                             </div>
                         </div>
                     </a>
                     <div class="dropdown-menu dashboard-dropdown dropdown-menu-right mt-2">
-                        @if(Auth::user()->detailable_type == "App\Staff")
-                        <a class="dropdown-item font-weight-bold" href="{{route('admin.staff.show', Auth::id())}}">
-                        @endif
-                        @if(Auth::user()->detailable_type == "App\Student")
-                        <a class="dropdown-item font-weight-bold" href="{{route('admin.student.show', Auth::id())}}">
-                        @endif
-                        @if(Auth::user()->detailable_type == "App\Lecturer")
-                        <a class="dropdown-item font-weight-bold" href="{{route('admin.lecturer.show', Auth::id())}}">
-                        @endif
+                        <a class="dropdown-item font-weight-bold" href="{{route('admin.user.show', Auth::id())}}">
                             <span class="far fa-user-circle"></span>My Profile
                         </a>
                         <div role="separator" class="dropdown-divider"></div>

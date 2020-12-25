@@ -19,7 +19,7 @@
                 <div class="user-avatar lg-avatar mr-4"><img src="../assets/img/team/profile-picture-3.jpg"
                         class="card-img-top rounded-circle border-white" alt="Bonnie Green"></div>
                 <div class="d-block">
-                    <h2 class="h6">Hi, {{ $info->name }}</h2>
+                    <h2 class="h6">Hi, {{ Auth::user()->detailable->name }}</h2>
                     <a href="{{ route('logout') }}" class="btn btn-secondary text-dark btn-xs"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <span class="mr-2">
