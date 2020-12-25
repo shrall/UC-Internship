@@ -16,7 +16,7 @@ class Project extends Model
         'name', 'description', 'deadline', 'status', 'category', 'period_id', 'supervisor_id'
     ];
 
-    public function attachment() {
+    public function attachments() {
         return $this->hasMany(ProjectAttachment::class, 'project_id', 'id');
     }
     public function period(){
@@ -24,6 +24,9 @@ class Project extends Model
     }
     public function supervisor(){
         return $this->belongsTo(User::class, 'supervisor_id', 'id');
+    }
+    public function projectusers() {
+        return $this->hasMany(ProjectUser::class, 'uci_project_id', 'id');
     }
     public function works() {
         return $this->belongsToMany(User::class, 'uci_project_user', 'uci_project_id', 'uci_user_id')->withPivot('status')->withTimestamps();

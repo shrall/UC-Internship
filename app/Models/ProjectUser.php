@@ -11,7 +11,7 @@ class ProjectUser extends Pivot
 
     protected $table = 'uci_project_user';
 
-    public function task(){
+    public function tasks(){
         return $this->hasMany(Task::class, 'pu_id', 'id');
     }
 

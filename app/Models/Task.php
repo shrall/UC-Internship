@@ -15,7 +15,7 @@ class Task extends Model
         'name', 'description', 'deadline', 'duration', 'status', 'pu_id'
     ];
 
-    public function progress() {
+    public function progresses() {
         return $this->hasMany(Progress::class, 'task_id', 'id');
     }
 

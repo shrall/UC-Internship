@@ -13,10 +13,10 @@ class Title extends Model
         'name'
     ];
 
-    public function lecturer() {
+    public function lecturers() {
         return $this->hasMany(Lecturer::class, 'title_id', 'id');
     }
-    public function staff() {
+    public function staffs() {
         return $this->hasMany(Staff::class, 'title_id', 'id');
     }
 }
