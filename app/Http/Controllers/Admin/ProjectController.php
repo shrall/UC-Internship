@@ -50,7 +50,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        $pages = 'project';
+        return view('admin.project.detail', compact('pages', 'project'));
     }
 
     /**
