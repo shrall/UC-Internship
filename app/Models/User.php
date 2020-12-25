@@ -59,6 +59,9 @@ class User extends Authenticatable
     public function supervisors() {
         return $this->hasMany(History::class, 'supervisor_id', 'id');
     }
+    public function projectusers() {
+        return $this->hasMany(ProjectUser::class, 'uci_user_id', 'id');
+    }
     public function info(){
         return $this->belongsTo(Info::class, 'info_id', 'id');
     }
