@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('marshalladminstaff');
         $user->role_id = 1;
         $user->detailable_id = 1;
-        $user->detailable_type = 'App\Staff';
+        $user->detailable_type = 'App\Models\Staff';
         $user->save();
 
         $user = new User();
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('marshalladminlecturer');
         $user->role_id = 1;
         $user->detailable_id = 1;
-        $user->detailable_type = 'App\Lecturer';
+        $user->detailable_type = 'App\Models\Lecturer';
         $user->save();
 
         $user = new User();
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('marshallstaff');
         $user->role_id = 2;
         $user->detailable_id = 1;
-        $user->detailable_type = 'App\Staff';
+        $user->detailable_type = 'App\Models\Staff';
         $user->save();
 
         $user = new User();
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('marshalllecturer');
         $user->role_id = 2;
         $user->detailable_id = 1;
-        $user->detailable_type = 'App\Lecturer';
+        $user->detailable_type = 'App\Models\Lecturer';
         $user->save();
 
         $user = new User();
@@ -57,7 +57,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('marshallstudent');
         $user->role_id = 3;
         $user->detailable_id = 1;
-        $user->detailable_type = 'App\Student';
+        $user->detailable_type = 'App\Models\Student';
         $user->info_id = 1;
         $user->save();
 
@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('tinaraadminstaff');
         $user->role_id = 1;
         $user->detailable_id = 2;
-        $user->detailable_type = 'App\Staff';
+        $user->detailable_type = 'App\Models\Staff';
         $user->save();
 
         $user = new User();
@@ -76,7 +76,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('tinaraadminlecturer');
         $user->role_id = 1;
         $user->detailable_id = 2;
-        $user->detailable_type = 'App\Lecturer';
+        $user->detailable_type = 'App\Models\Lecturer';
         $user->save();
 
         $user = new User();
@@ -85,7 +85,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('tinarastaff');
         $user->role_id = 2;
         $user->detailable_id = 2;
-        $user->detailable_type = 'App\Staff';
+        $user->detailable_type = 'App\Models\Staff';
         $user->save();
 
         $user = new User();
@@ -94,7 +94,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('tinaralecturer');
         $user->role_id = 2;
         $user->detailable_id = 2;
-        $user->detailable_type = 'App\Lecturer';
+        $user->detailable_type = 'App\Models\Lecturer';
         $user->save();
 
         $user = new User();
@@ -113,7 +113,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('michelleadminstaff');
         $user->role_id = 1;
         $user->detailable_id = 3;
-        $user->detailable_type = 'App\Staff';
+        $user->detailable_type = 'App\Models\Staff';
         $user->save();
 
         $user = new User();
@@ -122,7 +122,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('michelleadminlecturer');
         $user->role_id = 1;
         $user->detailable_id = 3;
-        $user->detailable_type = 'App\Lecturer';
+        $user->detailable_type = 'App\Models\Lecturer';
         $user->save();
 
         $user = new User();
@@ -131,7 +131,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('michellestaff');
         $user->role_id = 2;
         $user->detailable_id = 3;
-        $user->detailable_type = 'App\Staff';
+        $user->detailable_type = 'App\Models\Staff';
         $user->save();
 
         $user = new User();
@@ -140,7 +140,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('michellelecturer');
         $user->role_id = 2;
         $user->detailable_id = 3;
-        $user->detailable_type = 'App\Lecturer';
+        $user->detailable_type = 'App\Models\Lecturer';
         $user->save();
 
         $user = new User();
@@ -149,7 +149,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('michellestudent');
         $user->role_id = 3;
         $user->detailable_id = 3;
-        $user->detailable_type = 'App\Student';
+        $user->detailable_type = 'App\Models\Student';
         $user->info_id = 3;
         $user->save();
     }
