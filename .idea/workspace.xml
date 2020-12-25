@@ -3,33 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4a073beb-e23f-415d-a75c-b5868c2d8661" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/PageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/ProjectController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/TaskController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/project/card/offer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/card/offer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/project/card/supervisor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/card/supervisor.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/project/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/project/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/project/modal/apply.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/modal/apply.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/project/modal/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/modal/student.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/project/offer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/offer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/project/table/applied.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/table/applied.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/project/table/project.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/table/project.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/project/table/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/table/student.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/project/table/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/table/task.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/student/card/cv.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/card/cv.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/student/card/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/card/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/student/card/info.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/card/info.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/student/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/student/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/student/export.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/export.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/student/table/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/table/task.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/task/card/pic.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/card/pic.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/task/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/task/modal/progress/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/modal/progress/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/task/modal/progress/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/modal/progress/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/task/table/progress.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/table/progress.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,6 +191,7 @@
       <workItem from="1608793079963" duration="5626000" />
       <workItem from="1608825781680" duration="9623000" />
       <workItem from="1608835706733" duration="959000" />
+      <workItem from="1608910634284" duration="1656000" />
     </task>
     <servers />
   </component>

@@ -18,7 +18,7 @@ class PageController extends Controller
     {
         $pages = 'dash';
 
-        $info = Student::find(Auth::user()->detailable_id);
+//        $info = Student::find(Auth::user()->detailable_id);
 
         $tasks = Task::whereHas('projectuser', function (Builder $query) {
             $query->where('uci_user_id', Auth::id())
@@ -44,6 +44,6 @@ class PageController extends Controller
             };
         }
 
-        return view('student.dashboard', compact('pages', 'info', 'tasks', 'projects', 'pus', 'currentperiod'));
+        return view('student.dashboard', compact('pages', 'tasks', 'projects', 'pus', 'currentperiod'));
     }
 }

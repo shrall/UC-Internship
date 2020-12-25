@@ -1,11 +1,11 @@
 {{-- ini table di index buat nunjukin project yang di punya student --}}
-<div class="row">
+<div class="row mb-3">
     <div class="col-12 mb-4">
         <div class="card border-light shadow-sm">
             <div class="card-header border-0 pb-2">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h2 class="h4"><i class="fas fa-clipboard-list"></i> Projects This Semester</h2>
+                        <h2 class="h4"><i class="fas fa-clipboard-list"></i> Projects List</h2>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                                     <span class="fas fa-clock text-warning"></span>
                                     <span
                                         class="font-weight-bold text-warning">
-                                    On Progress</span>
+                                    Ongoing</span>
                                 @endif
 
                                 @if($pu->project->status == "2")

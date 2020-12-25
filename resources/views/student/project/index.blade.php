@@ -20,16 +20,6 @@
             </nav>
         </div>
     </div>
-    <div class="row mb-3">
-        <h2 class="h4 mb-3">
-            <span class="fa fa-clipboard-list"></span> Project List
-        </h2>
         @include('student.project.table.project')
-    </div>
-    <div class="row mb-3">
-        <h2 class="h4 mb-3">
-            <span class="fa fa-share-square"></span> Applied Projects
-        </h2>
         @include('student.project.table.applied')
-    </div>
 @endsection

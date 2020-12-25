@@ -6,7 +6,9 @@
             <div class="card-header border-0 pb-2">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h2 class="h4"><i class="fas fa-clipboard-list"></i> Projects This Semester</h2>
+                        <h2 class="h4">
+                            <span class="fa fa-share-square"></span> Applied Projects
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -24,6 +26,7 @@
                     </thead>
                     <tbody>
                     @foreach ($pus as $pu)
+                        @if($pu->status == '0')
                         <tr>
                             <td><a href="{{ route('student.project.show', $pu->project->id) }}"
                                    class="text-primary font-weight-bold">{{ $pu->project->id }}</a></td>
@@ -52,35 +55,29 @@
                             <td>{{ $pu->project->deadline }}</td>
 
                             <td>
-                                @if($pu->project->status == "0")
+                                @if($pu->status == "0")
                                     <span class="fas fa-clock text-info"></span>
                                     <span
                                         class="font-weight-bold text-info">
-                                    Available</span>
+                                    Pending</span>
                                 @endif
 
-                                @if($pu->project->status == "1")
+                                @if($pu->status == "1")
                                     <span class="fas fa-clock text-warning"></span>
                                     <span
                                         class="font-weight-bold text-warning">
-                                    On Progress</span>
+                                    Accepted</span>
                                 @endif
 
-                                @if($pu->project->status == "2")
+                                @if($pu->status == "2")
                                     <span class="fas fa-check text-success"></span>
                                     <span
                                         class="font-weight-bold text-success">
-                                    Completed</span>
-                                @endif
-
-                                @if($pu->project->status == "3")
-                                    <span class="fas fa-ban text-danger"></span>
-                                    <span
-                                        class="font-weight-bold text-danger">
-                                    Suspended</span>
+                                    Declined</span>
                                 @endif
                             </td>
                         </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>

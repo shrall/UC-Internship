@@ -51,9 +51,7 @@ class UserController extends Controller
         //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
         $pages = "student";
 
-        $info = Student::find(Auth::user()->detailable_id);
-
-        return view('student.student.detail', compact('pages', 'info'));
+        return view('student.student.detail', compact('pages'));
 
         //ngambil semua projectuser yang user idnya punyanya yang login
         //ngambil semua task yang dipunya sama orang yang login
@@ -70,7 +68,6 @@ class UserController extends Controller
         //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
         $pages = " ";
 
-        $info = Student::find(Auth::user()->detailable_id);
     }
 
     /**
@@ -84,8 +81,6 @@ class UserController extends Controller
     {
         //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
         $pages = " ";
-
-        $info = Student::find(Auth::user()->detailable_id);
 
         //update user & student-> karena kalo ngrubah nama, nama di user&student kerubah
         //uplod foto&cv

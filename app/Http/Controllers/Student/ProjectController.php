@@ -21,12 +21,10 @@ class ProjectController extends Controller
     {
         $pages = "project";
 
-        $info = Student::find(Auth::user()->detailable_id);
-
         $pus  = ProjectUser::where('uci_user_id',Auth::id())->get();
 //        dd($pus);
 
-        return view('student.project.index', compact('pages', 'info', 'pus'));
+        return view('student.project.index', compact('pages', 'pus'));
 
 
         // manggil semua project yang dipunya oleh student yang login
@@ -64,12 +62,10 @@ class ProjectController extends Controller
         //!NOTE kalau user yang login bukan anggota dari project tsb, redirect()->back()
         $pages = "project";
 
-        $info = Student::find(Auth::user()->detailable_id);
-
         $pus  = ProjectUser::where('uci_user_id',Auth::id())->get();
 
 
-        return view('student.project.detail', compact('pages', 'info','pus'));
+        return view('student.project.detail', compact('pages','pus'));
 
 
         //disini manggil semua student yang merupakan anggota dari project yang di liat
@@ -113,11 +109,9 @@ class ProjectController extends Controller
     {
         $pages = "project";
 
-        $info = Student::find(Auth::user()->detailable_id);
-
         $pus  = ProjectUser::where('uci_user_id',Auth::id())->get();
 
-        return view('student.project.offer', compact('pages', 'info', 'pus'));
+        return view('student.project.offer', compact('pages', 'pus'));
 
 
         //disini manggil semua project yang statusnya available
