@@ -13,15 +13,27 @@
                         aria-expanded="false">
                         <div class="media d-flex align-items-center">
                             <img class="user-avatar md-avatar rounded-circle" alt="Image placeholder"
-                                src="{{asset('assets/img/team/profile-picture-3.jpg')}}">
+                                src="{{ asset('assets/img/team/profile-picture-3.jpg') }}">
                             <div class="media-body ml-2 text-dark align-items-center d-none d-lg-block">
-                                    <span class="mb-0 font-small font-weight-bold">{{Auth::user()->detailable->name}}</span>
+                                <span
+                                    class="mb-0 font-small font-weight-bold">{{ Auth::user()->detailable->name }}</span>
                             </div>
                         </div>
                     </a>
                     <div class="dropdown-menu dashboard-dropdown dropdown-menu-right mt-2">
-                        <a class="dropdown-item font-weight-bold" href="{{route('admin.user.show', Auth::id())}}">
-                            <span class="far fa-user-circle"></span>My Profile
+                        @if(Auth::user()->isAdmin())
+                            <a class="dropdown-item font-weight-bold"
+                                href="{{ route('admin.user.show', Auth::id()) }}">
+                        @endif
+                        @if(Auth::user()->isSupervisor())
+                            <a class="dropdown-item font-weight-bold"
+                                href="{{ route('supervisor.user.show', Auth::id()) }}">
+                        @endif
+                        @if(Auth::user()->isStudent())
+                            <a class="dropdown-item font-weight-bold"
+                                href="{{ route('student.user.show', Auth::id()) }}">
+                        @endif
+                        <span class="far fa-user-circle"></span>My Profile
                         </a>
                         <div role="separator" class="dropdown-divider"></div>
                         <a class="dropdown-item font-weight-bold" href="#" data-toggle="modal"
