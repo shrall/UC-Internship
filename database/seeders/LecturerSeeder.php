@@ -24,7 +24,7 @@ class LecturerSeeder extends Seeder
         $lecturer->phone = '081233129966';
         $lecturer->line_account = 'shrall';
         $lecturer->department_id = 33;
-        $lecturer->title_id = 99;
+        $lecturer->title_id = 12;
         $lecturer->jaka_id = 1;
         $lecturer->save();
 
@@ -38,7 +38,7 @@ class LecturerSeeder extends Seeder
         $lecturer->phone = '08123456789';
         $lecturer->line_account = 'tinaranw123';
         $lecturer->department_id = 33;
-        $lecturer->title_id = 99;
+        $lecturer->title_id = 12;
         $lecturer->jaka_id = 2;
         $lecturer->save();
 
@@ -52,7 +52,7 @@ class LecturerSeeder extends Seeder
         $lecturer->phone = '08123456789';
         $lecturer->line_account = 'michellealexandra';
         $lecturer->department_id = 33;
-        $lecturer->title_id = 99;
+        $lecturer->title_id = 12;
         $lecturer->jaka_id = 3;
         $lecturer->save();
     }
