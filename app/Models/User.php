@@ -53,10 +53,10 @@ class User extends Authenticatable
     public function role() {
         return $this->belongsTo(Role::class, 'role_id', 'id');
     }
-    public function student() {
+    public function students() {
         return $this->hasMany(History::class, 'student_id', 'id');
     }
-    public function supervisor() {
+    public function supervisors() {
         return $this->hasMany(History::class, 'supervisor_id', 'id');
     }
     public function info(){

@@ -15,7 +15,7 @@ class Scholarship extends Model
         'name', 'grade', 'duration', 'minimum_gpa', 'hps'
     ];
 
-    public function info() {
+    public function infos() {
         return $this->hasMany(Info::class, 'scholarship_id', 'id');
     }
 }

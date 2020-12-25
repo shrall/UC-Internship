@@ -15,7 +15,7 @@ class Period extends Model
         'term', 'start', 'end'
     ];
 
-    public function project() {
+    public function projects() {
         return $this->hasMany(Project::class, 'period_id', 'id');
     }
 }

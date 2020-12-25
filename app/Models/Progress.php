@@ -15,7 +15,7 @@ class Progress extends Model
         'description', 'time_start', 'time_end', 'status', 'comment', 'task_id'
     ];
 
-    public function attachment() {
+    public function attachments() {
         return $this->hasMany(ProgressAttachment::class, 'progress_id', 'id');
     }
     public function task(){
