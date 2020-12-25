@@ -103,7 +103,7 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('tinarastudent');
         $user->role_id = 3;
         $user->detailable_id = 2;
-        $user->detailable_type = 'App\Student';
+        $user->detailable_type = 'App\Models\Student';
         $user->info_id = 2;
         $user->save();
 
