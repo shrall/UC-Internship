@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProjectResource;
 use App\Models\Project;
+use App\Models\ProjectUser;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,12 @@ class ProjectController extends Controller
         $pages = "project";
 
         $info = Student::find(Auth::user()->detailable_id);
+
+        $pus  = ProjectUser::where('uci_user_id',Auth::id())->get();
+//        dd($pus);
+
+        return view('student.project.index', compact('pages', 'info', 'pus'));
+
 
         // manggil semua project yang dipunya oleh student yang login
     }
@@ -58,6 +65,12 @@ class ProjectController extends Controller
         $pages = "project";
 
         $info = Student::find(Auth::user()->detailable_id);
+
+        $pus  = ProjectUser::where('uci_user_id',Auth::id())->get();
+
+
+        return view('student.project.detail', compact('pages', 'info','pus'));
+
 
         //disini manggil semua student yang merupakan anggota dari project yang di liat
         // disini manggil semua task dari project yang diliat
@@ -101,6 +114,11 @@ class ProjectController extends Controller
         $pages = "project";
 
         $info = Student::find(Auth::user()->detailable_id);
+
+        $pus  = ProjectUser::where('uci_user_id',Auth::id())->get();
+
+        return view('student.project.offer', compact('pages', 'info', 'pus'));
+
 
         //disini manggil semua project yang statusnya available
     }

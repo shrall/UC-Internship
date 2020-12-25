@@ -24,7 +24,7 @@
                         <a class="dropdown-item font-weight-bold" href="{{route('admin.staff.show', Auth::id())}}">
                         @endif
                         @if(Auth::user()->detailable_type == "App\Student")
-                        <a class="dropdown-item font-weight-bold" href="{{route('admin.student.show', Auth::id())}}">
+                        <a class="dropdown-item font-weight-bold" href="{{route('student.user.show', Auth::id())}}">
                         @endif
                         @if(Auth::user()->detailable_type == "App\Lecturer")
                         <a class="dropdown-item font-weight-bold" href="{{route('admin.lecturer.show', Auth::id())}}">

@@ -49,9 +49,11 @@ class UserController extends Controller
     public function show($id)
     {
         //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
-        $pages = " ";
+        $pages = "student";
 
         $info = Student::find(Auth::user()->detailable_id);
+
+        return view('student.student.detail', compact('pages', 'info'));
 
         //ngambil semua projectuser yang user idnya punyanya yang login
         //ngambil semua task yang dipunya sama orang yang login
