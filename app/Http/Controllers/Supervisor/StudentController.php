@@ -15,7 +15,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $pages = 'student';
+        $users = Student::all();
+        return view('supervisor.user.student.index', compact('pages', 'users'));
     }
 
     /**

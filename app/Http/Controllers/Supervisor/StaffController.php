@@ -15,7 +15,10 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+
+        $pages = 'staff';
+        $users = Staff::all();
+        return view('supervisor.user.staff.index', compact('pages', 'users'));
     }
 
     /**

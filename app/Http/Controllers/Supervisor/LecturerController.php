@@ -15,7 +15,9 @@ class LecturerController extends Controller
      */
     public function index()
     {
-        //
+        $pages = 'lecturer';
+        $users = Lecturer::all();
+        return view('supervisor.user.lecturer.index', compact('pages', 'users'));
     }
 
     /**

@@ -20,13 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66963f10-7777-4148-95a1-ed32df670041" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/supervisor/task/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/supervisor/task/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/task/card/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/task/card/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/task/card/pic.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/task/card/pic.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/task/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/task/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/LecturerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/LecturerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/StaffController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/StaffController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/project/table/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/project/table/student.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/table/project.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/table/project.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/lecturer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/lecturer/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/lecturer/table/lecturer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/lecturer/table/lecturer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/staff/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/staff/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/staff/table/staff.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/staff/table/staff.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/student/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/student/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/student/table/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/student/table/student.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,10 +228,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608977216092">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608995217999">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1608977216092" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1608995217999" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1608977028820">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

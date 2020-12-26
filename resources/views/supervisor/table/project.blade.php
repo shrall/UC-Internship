@@ -4,7 +4,7 @@
             <div class="card-header border-0 pb-2">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h2 class="h4"><i class="fas fa-clipboard-list mr-2"></i>Incoming Project Requests</h2>
+                        <h2 class="h4"><i class="fas fa-clipboard-list mr-2"></i>Recent Projects</h2>
                     </div>
                 </div>
             </div>
