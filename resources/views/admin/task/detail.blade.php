@@ -14,10 +14,12 @@
                     <a href="{{ route('admin.project.index') }}">Project List</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
-                    <a href="{{ route('admin.project.show', $task->projectuser->uci_project_id) }}">{{ $task->projectuser->uci_project_id }}</a>
+                    <a
+                        href="{{ route('admin.project.show', $task->projectuser->uci_project_id) }}">{{ $task->projectuser->uci_project_id }}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    <a href="{{ route('admin.task.show', $task->id) }}">{{ $task->name }}</a>
+                    <a
+                        href="{{ route('admin.task.show', $task->id) }}">{{ $task->name }}</a>
                 </li>
             </ol>
         </nav>

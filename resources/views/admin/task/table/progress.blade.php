@@ -20,37 +20,38 @@
                     </thead>
                     <tbody>
                         @foreach($task->progresses as $progress)
-                        <!-- Item -->
-                        @include('admin.task.modal.progress')
-                        <tr>
-                            <td>
-                                <a data-toggle="modal" data-target="#modal-progress-{{$progress->id}}">{{$progress->description}}</a>
-                            </td>
-                            <td>
-                                {{ date('d-m-Y, H:i', strtotime($progress->time_start)) }}
-                            </td>
-                            <td>
-                                {{ date('d-m-Y, H:i', strtotime($progress->time_end)) }}
-                            </td>
-                            @if ($progress->status == 0)
-                            <td class="text-warning">
-                                <span class="fas fa-clock"></span>
-                                <span class="font-weight-bold">Pending</span>
-                            </td>
-                            @endif
-                            @if ($progress->status == 1)
-                            <td class="text-success">
-                                <span class="fas fa-check"></span>
-                                <span class="font-weight-bold">Approved</span>
-                            </td>
-                            @endif
-                            @if ($progress->status == 2)
-                            <td class="text-danger">
-                                <span class="fas fa-times"></span>
-                                <span class="font-weight-bold">Declined</span>
-                            </td>
-                            @endif
-                        </tr>
+                            <!-- Item -->
+                            @include('admin.task.modal.progress')
+                            <tr>
+                                <td>
+                                    <a data-toggle="modal"
+                                        data-target="#modal-progress-{{ $progress->id }}">{{ $progress->description }}</a>
+                                </td>
+                                <td>
+                                    {{ date('d-m-Y, H:i', strtotime($progress->time_start)) }}
+                                </td>
+                                <td>
+                                    {{ date('d-m-Y, H:i', strtotime($progress->time_end)) }}
+                                </td>
+                                @if($progress->status == 0)
+                                    <td class="text-warning">
+                                        <span class="fas fa-clock"></span>
+                                        <span class="font-weight-bold">Pending</span>
+                                    </td>
+                                @endif
+                                @if($progress->status == 1)
+                                    <td class="text-success">
+                                        <span class="fas fa-check"></span>
+                                        <span class="font-weight-bold">Approved</span>
+                                    </td>
+                                @endif
+                                @if($progress->status == 2)
+                                    <td class="text-danger">
+                                        <span class="fas fa-times"></span>
+                                        <span class="font-weight-bold">Declined</span>
+                                    </td>
+                                @endif
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

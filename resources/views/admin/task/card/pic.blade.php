@@ -8,15 +8,18 @@
             </div>
             <div class="row align-items-center pb-4 mb-4">
                 <div class="col-auto">
-                    <a href="{{ route('admin.student.show', $task->projectuser->uci_user_id) }}">
-                        <h3 class="h5">{{$task->projectuser->user->detailable->name}}</h3>
+                    <a
+                        href="{{ route('admin.student.show', $task->projectuser->uci_user_id) }}">
+                        <h3 class="h5">{{ $task->projectuser->user->detailable->name }}</h3>
                     </a>
-                    <span class="text-700">{{$task->projectuser->user->detailable->department->name}} ({{$task->projectuser->user->detailable->department->initial}})</span>
+                    <span class="text-700">{{ $task->projectuser->user->detailable->department->name }}
+                        ({{ $task->projectuser->user->detailable->department->initial }})</span>
                     <div class="small font-weight-bold mt-1">
-                        <span class="fa fa-envelope"></span> E-Mail : {{$task->projectuser->user->email}}
+                        <span class="fa fa-envelope"></span> E-Mail : {{ $task->projectuser->user->email }}
                     </div>
                     <span class="small font-weight-bold">
-                        <span class="fab fa-whatsapp"></span> WA : {{$task->projectuser->user->detailable->phone}}
+                        <span class="fab fa-whatsapp"></span> WA :
+                        {{ $task->projectuser->user->detailable->phone }}
                     </span>
                 </div>
             </div>
