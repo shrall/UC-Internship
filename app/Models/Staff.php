@@ -13,7 +13,7 @@ class Staff extends Model
         'nip', 'name', 'email', 'description', 'photo', 'gender', 'phone', 'line_account', 'department_id', 'title_id'
     ];
 
-    public function user(){
+    public function users(){
         return $this->morphMany('App\Models\User', 'detailable');
     }
 
