@@ -9,13 +9,12 @@
                         <span class="fas fa-home"></span>
                     </a>
                 </li>
-                <li class="breadcrumb-item active">Projects</li>
-                <li class="breadcrumb-item active">
+                <li class="breadcrumb-item">Projects</li>
+                <li class="breadcrumb-item">
                     <a href="{{ route('admin.project.index') }}">Project List</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    <a
-                        href="{{ route('admin.project.show', $project->id) }}">{{ $project->id }}</a>
+                    <a href="{{ route('admin.project.show', $project->id) }}">{{ $project->id }}</a>
                 </li>
             </ol>
         </nav>

@@ -19,36 +19,37 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($project->works as $user)
-                        <!-- Item -->
-                        <tr>
-                            <td><a href="{{ route('admin.user.show', $user->id) }}"
-                                    class="text-primary font-weight-bold">{{ $user->detailable->nim }}</a></td>
-                            <td class="font-weight-bold proj-name">
-                                <a
-                                    href="{{ route('admin.user.show', $user->id) }}">
-                                    {{ $user->detailable->name }}</a>
-                            </td>
-                            <td>{{ $user->detailable->department->initial }}</td>
-                            @if($user->pivot->status == 0)
-                                <td class="text-warning">
-                                    <span class="fas fa-clock"></span>
-                                    <span class="font-weight-bold">Pending</span>
+                        @foreach($project->works as $user)
+                            <!-- Item -->
+                            <tr>
+                                <td>
+                                    <a href="{{ route('admin.user.show', $user->id) }}"
+                                        class="text-primary font-weight-bold">{{ $user->detailable->nim }}</a>
                                 </td>
-                            @endif
-                            @if($user->pivot->status == 1)
-                                <td class="text-success">
-                                    <span class="fas fa-check"></span>
-                                    <span class="font-weight-bold">Accepted</span>
+                                <td class="font-weight-bold proj-name">
+                                    <a href="{{ route('admin.user.show', $user->id) }}">
+                                        {{ $user->detailable->name }}</a>
                                 </td>
-                            @endif
-                            @if($user->pivot->status == 2)
-                                <td class="text-danger">
-                                    <span class="fas fa-times"></span>
-                                    <span class="font-weight-bold">Declined</span>
-                                </td>
-                            @endif
-                        </tr>
+                                <td>{{ $user->detailable->department->initial }}</td>
+                                @if($user->pivot->status == 0)
+                                    <td class="text-warning">
+                                        <span class="fas fa-clock"></span>
+                                        <span class="font-weight-bold">Pending</span>
+                                    </td>
+                                @endif
+                                @if($user->pivot->status == 1)
+                                    <td class="text-success">
+                                        <span class="fas fa-check"></span>
+                                        <span class="font-weight-bold">Accepted</span>
+                                    </td>
+                                @endif
+                                @if($user->pivot->status == 2)
+                                    <td class="text-danger">
+                                        <span class="fas fa-times"></span>
+                                        <span class="font-weight-bold">Declined</span>
+                                    </td>
+                                @endif
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
