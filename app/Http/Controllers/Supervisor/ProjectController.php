@@ -80,7 +80,7 @@ class ProjectController extends Controller
             $i = 0;
             foreach ($request->file('attachments') as $file) {
                 $attachment = new ProjectAttachment;
-                $file_name = time() . $i . '.' . $file->getClientOriginalExtension();
+                $file_name = time() . $i . '-' . $file->getClientOriginalName();
                 $file->move(public_path('attachments\project'), $file_name);
                 $attachment->name = public_path('attachments\project') . $file_name;
                 $attachment->project_id = $project['id'];
