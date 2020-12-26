@@ -1,5 +1,5 @@
 {{-- ini modal confirmation buat apply ke project  --}}
-<div class="modal fade" id="modal-apply-1" tabindex="-1" role="dialog" aria-labelledby="modal-apply-1"
+<div class="modal fade" id="modal-apply-{{$project->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-apply-{{$project->id}}"
      aria-hidden="true" style="color:#fff">
     <div class="modal-dialog modal-info modal-dialog-centered" role="document">
         <div class="modal-content bg-gradient-secondary">
@@ -16,10 +16,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form action="{{route('student.progress.edit', 1)}}" method="POST">
+                <form action="{{route('student.project.store', $project->id)}}" method="POST">
                     @csrf
                     <input name="_method" type="hidden" value="">
-                    <a href="{{ route('student.application') }}" type="button" class="btn btn-sm btn-primary mr-3 mb-3 text-white" >Confirm</a>
+                    <button type="submit" class="btn btn-sm btn-primary mr-3 mb-3 text-white" >Confirm</button>
                 </form>
             </div>
         </div>

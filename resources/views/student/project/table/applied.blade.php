@@ -25,58 +25,58 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($pus as $pu)
+                    @foreach (Auth::User()->projectusers as $pu)
                         @if($pu->status == '0')
-                        <tr>
-                            <td><a href="{{ route('student.project.show', $pu->project->id) }}"
-                                   class="text-primary font-weight-bold">{{ $pu->project->id }}</a></td>
-                            <td class="font-weight-bold proj-name">
-                                <a href="{{ route('student.project.show', $pu->project->id) }}">{{ $pu->project->name }}</a>
-                            </td>
-                            <td>
+                            <tr>
+                                <td><a href="{{ route('student.project.show', $pu->project->id) }}"
+                                       class="text-primary font-weight-bold">{{ $pu->project->id }}</a></td>
+                                <td class="font-weight-bold proj-name">
+                                    <a href="{{ route('student.project.show', $pu->project->id) }}">{{ $pu->project->name }}</a>
+                                </td>
+                                <td>
 
-                                @if($pu->project->category == "0")
-                                    <span class="fas fa-calendar-week"></span>
-                                    <span> Event</span>
-                                @endif
+                                    @if($pu->project->category == "0")
+                                        <span class="fas fa-calendar-week"></span>
+                                        <span> Event</span>
+                                    @endif
 
-                                @if($pu->project->category == "1")
-                                    <span class="fas fa-school"></span>
-                                    <span> Education</span>
-                                @endif
+                                    @if($pu->project->category == "1")
+                                        <span class="fas fa-school"></span>
+                                        <span> Education</span>
+                                    @endif
 
-                                @if($pu->project->category == "2")
-                                    <span class="fas fa-question-circle"></span>
-                                    <span> Other</span>
-                                @endif
+                                    @if($pu->project->category == "2")
+                                        <span class="fas fa-question-circle"></span>
+                                        <span> Other</span>
+                                    @endif
 
-                            </td>
-                            <td>{{ $pu->project->supervisor->name }}</td>
-                            <td>{{ $pu->project->deadline }}</td>
+                                </td>
+                                <td>{{ $pu->project->supervisor->name }}</td>
+                                <td>{{ $pu->project->deadline }}</td>
 
-                            <td>
-                                @if($pu->status == "0")
-                                    <span class="fas fa-clock text-info"></span>
-                                    <span
-                                        class="font-weight-bold text-info">
+                                <td>
+                                    @if($pu->status == "0")
+                                        <span class="fas fa-clock text-info"></span>
+                                        <span
+                                            class="font-weight-bold text-info">
                                     Pending</span>
-                                @endif
+                                    @endif
 
-                                @if($pu->status == "1")
-                                    <span class="fas fa-clock text-warning"></span>
-                                    <span
-                                        class="font-weight-bold text-warning">
+                                    @if($pu->status == "1")
+                                        <span class="fas fa-clock text-warning"></span>
+                                        <span
+                                            class="font-weight-bold text-warning">
                                     Accepted</span>
-                                @endif
+                                    @endif
 
-                                @if($pu->status == "2")
-                                    <span class="fas fa-check text-success"></span>
-                                    <span
-                                        class="font-weight-bold text-success">
+                                    @if($pu->status == "2")
+                                        <span class="fas fa-check text-success"></span>
+                                        <span
+                                            class="font-weight-bold text-success">
                                     Declined</span>
-                                @endif
-                            </td>
-                        </tr>
+                                    @endif
+                                </td>
+                            </tr>
                         @endif
                     @endforeach
                     </tbody>

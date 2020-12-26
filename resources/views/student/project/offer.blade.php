@@ -14,10 +14,14 @@
                 <div class="input-group">
                 <span class="input-group-text" id="basic-addon3">
                     <span class="fas fa-search"></span></span>
-                    <input type="text" class="form-control" id="searchoffer" placeholder="Search" onkeyup="searchOffer()">
+                    <input type="text" class="form-control" id="searchoffer" placeholder="Search"
+                           onkeyup="searchOffer()">
                 </div>
             </div>
         </div>
     </div>
-    @include('student.project.card.offer')
+    {{--    ambil smua project yang belum di apply oleh student--}}
+    @foreach($projects as $project)
+        @include('student.project.card.offer')
+    @endforeach
 @endsection

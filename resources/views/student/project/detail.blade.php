@@ -22,17 +22,59 @@
         <div class="col-12 col-lg-6">
             <div class="card border-light shadow-sm text-center pt-3 pb-4 mb-4 mb-lg-0">
                 <div class="card-body">
-                    <h2 class="display-3 mb-2">Valentine's Day</h2>
-                    <div class="medium font-weight-bold mt-1">Project ID : 201901002</div>
-                    <div class="medium mt-1">Membuat poster dan post Instagram untuk UC Valentine's Day</div>
-                    <div class="medium font-weight-bold mt-1 text-primary">Category : <span
-                            class="fa fa-calendar-week"></span> Event
+                    @foreach(Auth::User()->projectusers as $pu)
+                    <h2 class="display-3 mb-2">{{ $pu->project->name }}</h2>
+                    <div class="medium font-weight-bold mt-1">{{ $pu->project->id }}</div>
+                    <div class="medium mt-1"> {{ $pu->project->description }}</div>
+                    <div class="medium font-weight-bold mt-1 text-primary">Category :
+                        @if($pu->project->category == "0")
+                            <span class="fas fa-calendar-week"></span>
+                            <span> Event</span>
+                        @endif
+
+                        @if($pu->project->category == "1")
+                            <span class="fas fa-school"></span>
+                            <span> Education</span>
+                        @endif
+
+                        @if($pu->project->category == "2")
+                            <span class="fas fa-question-circle"></span>
+                            <span> Other</span>
+                        @endif
                     </div>
                     <div class="medium font-weight-bold mt-1 text-warning"><span class="fa fa-hourglass-half"></span>
-                        Deadline : 13 February 2021
+                        {{ $pu->project->deadline }}
                     </div>
-                    <div class="medium font-weight-bold mt-1 text-info"><span class="fa fa-thumbs-up"></span> Available
+                    <div class="medium mt-1">
+                        @if($pu->project->status == "0")
+                            <span class="fas fa-clock text-info"></span>
+                            <span
+                                class="font-weight-bold text-info">
+                                    Available</span>
+                        @endif
+
+                        @if($pu->project->status == "1")
+                            <span class="fas fa-clock text-warning"></span>
+                            <span
+                                class="font-weight-bold text-warning">
+                                    Ongoing</span>
+                        @endif
+
+                        @if($pu->project->status == "2")
+                            <span class="fas fa-check text-success"></span>
+                            <span
+                                class="font-weight-bold text-success">
+                                    Completed</span>
+                        @endif
+
+                        @if($pu->project->status == "3")
+                            <span class="fas fa-ban text-danger"></span>
+                            <span
+                                class="font-weight-bold text-danger">
+                                    Suspended</span>
+                        @endif
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>

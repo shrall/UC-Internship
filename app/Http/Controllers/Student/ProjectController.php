@@ -7,6 +7,7 @@ use App\Http\Resources\Api\ProjectResource;
 use App\Models\Project;
 use App\Models\ProjectUser;
 use App\Models\Student;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,10 +22,10 @@ class ProjectController extends Controller
     {
         $pages = "project";
 
-        $pus  = ProjectUser::where('uci_user_id',Auth::id())->get();
+//        $pus  = ProjectUser::where('uci_user_id',Auth::id())->get();
 //        dd($pus);
 
-        return view('student.project.index', compact('pages', 'pus'));
+        return view('student.project.index', compact('pages'));
 
 
         // manggil semua project yang dipunya oleh student yang login
@@ -109,9 +110,14 @@ class ProjectController extends Controller
     {
         $pages = "project";
 
-        $pus  = ProjectUser::where('uci_user_id',Auth::id())->get();
+        //kita cek smua project yg status nya available, kita cek project yang belum dimiliki user tsb
 
-        return view('student.project.offer', compact('pages', 'pus'));
+        $projects = Project::where('status', '0')
+            ->whereDoesntHave('projectusers', function (Builder $query) {
+                $query->where('uci_user_id', Auth::id());
+            })->get();
+
+        return view('student.project.offer', compact('pages', 'projects'));
 
 
         //disini manggil semua project yang statusnya available

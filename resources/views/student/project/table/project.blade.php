@@ -23,7 +23,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($pus as $pu)
+                    @foreach (Auth::User()->projectusers as $pu)
                         <tr>
                             <td><a href="{{ route('student.project.show', $pu->project->id) }}"
                                    class="text-primary font-weight-bold">{{ $pu->project->id }}</a></td>
@@ -48,7 +48,7 @@
                                     <span> Other</span>
                             @endif
 
-                            <td>{{ $pu->project->supervisor->name }}</td>
+                            <td>{{ $pu->project->supervisor->detailable->name }}</td>
                             <td>{{ $pu->project->deadline }}</td>
                             <td> {{ date("Y", strtotime($pu->project->period->start)) }}
                                 -{{ date("Y", strtotime( $pu->project->period->end)) }}
