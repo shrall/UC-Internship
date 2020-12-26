@@ -4,7 +4,6 @@
 {{-- kalau udah ongoing ngelist student yang udah accepted di dalemnya tanpa kolom application status --}}
 
 {{-- kalo bukan user yang login yang punya projectnya, hide semua actionnya  --}}
-
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card border-light shadow-sm">
