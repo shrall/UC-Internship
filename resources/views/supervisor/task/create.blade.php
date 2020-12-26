@@ -10,8 +10,8 @@
                         <li class="breadcrumb-item active">Projects</li>
                         <li class="breadcrumb-item active"><a
                                 href="{{ route('supervisor.project.index') }}">Project List</a></li>
-                        <li class="breadcrumb-item active"><a
-                                href="{{ route('supervisor.project.show', $project->id) }}">201901001</a></li>
+{{--                        <li class="breadcrumb-item active"><a--}}
+{{--                                href="{{ route('supervisor.project.show', $project->id) }}">201901001</a></li>--}}
                         <li class="breadcrumb-item active" aria-current="page"><a
                                 href="{{ route('supervisor.task.show', $task->id) }}">Design Assets</a></li>
                         <li class="breadcrumb-item active" aria-current="page"><a
