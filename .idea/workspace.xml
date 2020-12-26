@@ -20,18 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66963f10-7777-4148-95a1-ed32df670041" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/supervisor/project/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/ProjectController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/project/card/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/project/card/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/project/card/supervisor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/project/card/supervisor.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/project/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/project/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/project/modal/accept.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/project/modal/accept.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/project/modal/decline.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/project/modal/decline.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/project/table/project.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/project/table/project.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/supervisor/project/table/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/project/table/student.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/project/table/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/project/table/task.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +199,7 @@
       <workItem from="1608473754927" duration="6333000" />
       <workItem from="1608728571653" duration="5958000" />
       <workItem from="1608817818811" duration="2171000" />
-      <workItem from="1608970086009" duration="3698000" />
+      <workItem from="1608970086009" duration="4993000" />
     </task>
     <servers />
   </component>
