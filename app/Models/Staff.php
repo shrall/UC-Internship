@@ -14,7 +14,7 @@ class Staff extends Model
     ];
 
     public function user(){
-        return $this->morphOne('App\Models\User', 'detailable');
+        return $this->morphMany('App\Models\User', 'detailable');
     }
 
     public function department()
