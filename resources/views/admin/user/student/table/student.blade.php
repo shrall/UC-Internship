@@ -21,8 +21,9 @@
                                 <td><a href="{{ route('admin.student.show', $student->id) }}"
                                         class="d-flex align-items-center">
                                         <img @if ($student->detailable->photo != null)
-                                        src="/profile_picture/student/{{$student->detailable->photo}}" @else
-                                        src="{{ asset('assets/img/team/profile-picture-1.jpg') }}" @endif
+                                        src="/profile_picture/student/{{ $student->detailable->photo }}" @else
+                                        src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
+                                        @endif
                                         class="user-avatar rounded-circle mr-3" alt="Avatar">
                                         <div class="d-block">
                                             <span class="font-weight-bold">{{ $student->detailable->name }}</span>

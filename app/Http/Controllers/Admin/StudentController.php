@@ -128,9 +128,12 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(User $student)
     {
-        //
+        $pages = 'student';
+        $departments = Department::all();
+        $scholarships = Scholarship::all();
+        return view('admin.user.student.edit', compact('pages', 'student', 'departments', 'scholarships'));
     }
 
     /**

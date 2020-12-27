@@ -87,11 +87,12 @@
             @include('inc.navbar')
         @endauth
         <div class="preloader bg-soft flex-column justify-content-center align-items-center"><img
-                class="loader-element animate__animated animate__jackInTheBox" src="{{ asset('assets/img/brand/light.svg') }}"
-                height="60" alt="Volt logo"></div>
+                class="loader-element animate__animated animate__jackInTheBox"
+                src="{{ asset('assets/img/brand/light.svg') }}" height="60" alt="Volt logo">
+        </div>
         @yield('content')
         @auth
-        @include('inc.footer')
+            @include('inc.footer')
         @endauth
     </main>
     @auth
@@ -175,6 +176,29 @@
 
     <!-- Volt JS -->
     <script src="{{ asset('assets/js/volt.js') }}"></script>
+    <script>
+        $('#photo').change(function () {
+            var filename = $('#photo').val();
+            if (filename.substring(3, 11) == 'fakepath') {
+                filename = filename.substring(12);
+            }
+            if (filename == '') {
+                $('#pp-name').html('Choose Image');
+            } else {
+                $('#pp-name').html(filename);
+            }
+        });
+    </script>
+    <script>
+        $('#attachments').change(function () {
+            var filecount = document.getElementById('attachments').files.length;
+            if (filecount == 0) {
+                $('#pp-name').html('Choose File');
+            } else {
+                $('#pp-name').html(filecount+' file(s) selected');
+            }
+        });
+    </script>
 </body>
 
 </html>
