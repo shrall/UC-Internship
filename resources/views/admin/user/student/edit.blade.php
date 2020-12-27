@@ -70,8 +70,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="line_account"><span class="fab fa-line mr-2"></span>Line ID</label>
-                        <input class="form-control" id="line_account" name="line_account" type="text" placeholder="Line ID" value="{{$student->detailable->line_account}}"
-                            required>
+                        <input class="form-control" id="line_account" name="line_account" type="text" placeholder="Line ID" value="{{$student->detailable->line_account}}"required>
                     </div>
                 </div>
                 <div class="row">
@@ -89,7 +88,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="department"><span class="fa fa-building"></span> Department</label>
+                        <label for="department"><span class="fa fa-building mr-2"></span>Department</label>
                         <select class="form-select w-100 mb-0" id="department" name="department">
                             @foreach ($departments->sortBy('name') as $department)
                                 <option value="{{$department->id}}" @if ($student->detailable->department_id == $department->id)selected @endif>{{$department->name}} ({{$department->initial}})
@@ -98,13 +97,13 @@
                         </select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="title"><span class="fa fa-user-edit"></span> Title</label>
-                        <input class="form-control" id="title" name="title" type="text" placeholder="Title" value="Student" disabled required>
+                        <label for="time_remaining"><span class="fa fa-clock mr-2"></span>Time Remaining</label>
+                        <input class="form-control" id="time_remaining" name="time_remaining" type="number" placeholder="Time remaining" step="0.01" value="{{$student->info->time_remaining}}" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="scholarship"><span class="fa fa-book"></span> Scholarship</label>
+                        <label for="scholarship"><span class="fa fa-book mr-2"></span>Scholarship</label>
                         <select class="form-select w-100 mb-0" id="scholarship" name="scholarship">
                             @foreach ($scholarships->sortBy('name') as $scholarship)
                                 <option value="{{$scholarship->id}}" @if ($student->info->scholarship_id == $scholarship->id) selected @endif>{{$scholarship->name}} ({{$scholarship->grade}})
@@ -125,7 +124,7 @@
                                 <span class="icon icon-md">
                                     <span class="fas fa-paperclip mr-3"></span>
                                 </span>
-                                <input type="file" id="photo" name="photo" value="{{$student->detailable->photo}}">
+                                <input type="file" id="photo" name="photo">
                                 <div class="d-md-block text-left">
                                     @if ($student->detailable->photo == null)
                                     <div class="font-weight-normal text-dark mb-1" id="pp-name">Choose Image</div>

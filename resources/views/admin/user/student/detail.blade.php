@@ -23,6 +23,15 @@
         </h2>
     </div>
 </div>
+@if(session('Success'))
+<div class="row">
+    <div class="col-12">
+        <div class="alert alert-success" role="alert">
+            {{ session('Success') }}
+        </div>
+    </div>
+</div>
+@endif
 <div class="row mb-3">
     @include('admin.user.student.card.detail')
     @include('admin.user.student.card.info')
