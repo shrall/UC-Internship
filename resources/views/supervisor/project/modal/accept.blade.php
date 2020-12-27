@@ -12,11 +12,11 @@
                     <span class="modal-icon display-1-lg">
                         <span class="fas fa-check"></span>
                     </span>
-                    <h2 class="h4 modal-title my-3" style="color: #fff;">Are you sure you want to accept<br> Marshall's application?</h2>
+                    <h2 class="h4 modal-title my-3" style="color: #fff;">Are you sure you want to accept<br> {{$user->detailable->name}}'s application?</h2>
                 </div>
             </div>
             <div class="modal-footer">
-                <form method="POST">
+                <form action="{{ route('supervisor.project.update', $project->id) }}" method="POST">
                     @csrf
                     <input name="_method" type="hidden" value="DELETE">
                     <button type="button" class="btn btn-white btn-sm mr-3 mb-3">Accept</button>

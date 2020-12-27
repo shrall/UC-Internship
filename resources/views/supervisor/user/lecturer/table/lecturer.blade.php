@@ -12,18 +12,18 @@
         <tbody>
         @foreach($users as $user)
             <tr>
-                <td><span class="font-weight-normal">{{$user->nip}}</span></td>
-                <td><a href="{{ route('supervisor.staff.show', $user->id) }}" class="d-flex align-items-center">
+                <td><span class="font-weight-normal">{{$user->detailable->nip}}</span></td>
+                <td><a href="{{ route('supervisor.staff.show', $user->detailable->id) }}" class="d-flex align-items-center">
                         <img src="{{ asset('assets/img/team/profile-picture-3.jpg') }}"
                              class="user-avatar rounded-circle mr-3" alt="Avatar">
                         <div class="d-block">
-                            <span class="font-weight-bold">{{$user->name}}</span>
-                            <div class="small text-gray">{{$user->email}}</div>
+                            <span class="font-weight-bold">{{$user->detailable->name}}</span>
+                            <div class="small text-gray">{{$user->detailable->email}}</div>
                         </div>
                     </a>
                 </td>
-                <td><span class="font-weight-normal">{{$user->department->name}}</span></td>
-                <td><span class="font-weight-normal">{{$user->title->name}}</span></td>
+                <td><span class="font-weight-normal">{{$user->detailable->department->name}}</span></td>
+                <td><span class="font-weight-normal">{{$user->detailable->title->name}}</span></td>
             </tr>
         @endforeach
         </tbody>

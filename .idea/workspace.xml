@@ -24,13 +24,16 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/LecturerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/LecturerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/StaffController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/StaffController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/project/modal/accept.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/project/modal/accept.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/project/modal/decline.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/project/modal/decline.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/supervisor/project/table/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/project/table/student.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/table/project.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/table/project.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/lecturer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/lecturer/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/task/create.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/task/edit.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/lecturer/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/lecturer/detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/lecturer/table/lecturer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/lecturer/table/lecturer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/staff/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/staff/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/staff/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/staff/detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/staff/table/staff.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/staff/table/staff.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/student/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/student/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/student/table/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/student/table/student.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,7 +180,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../uastemplate" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -209,6 +212,7 @@
       <workItem from="1608728571653" duration="5958000" />
       <workItem from="1608817818811" duration="2171000" />
       <workItem from="1608970086009" duration="5822000" />
+      <workItem from="1609087481352" duration="4467000" />
     </task>
     <servers />
   </component>
@@ -228,17 +232,17 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1608995217999">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1609092022222">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1608995217999" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1609092022222" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1608977028820">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1608977028820" />
-    <state x="480" y="129" width="576" height="566" key="find.popup" timestamp="1608971160565">
+    <state x="480" y="129" width="618" height="566" key="find.popup" timestamp="1609092187826">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="480" y="129" width="576" height="566" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1608971160565" />
+    <state x="480" y="129" width="618" height="566" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1609092187826" />
   </component>
 </project>

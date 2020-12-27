@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lecturer;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LecturerController extends Controller
@@ -16,7 +17,7 @@ class LecturerController extends Controller
     public function index()
     {
         $pages = 'lecturer';
-        $users = Lecturer::all();
+        $users = User::where('detailable_type', 'App\Models\Lecturer')->get();
         return view('supervisor.user.lecturer.index', compact('pages', 'users'));
     }
 

@@ -16,6 +16,7 @@
                         <th class="border-0">Name</th>
                         <th class="border-0">Department</th>
                         <th class="border-0">Status</th>
+                        <th class="border-0">Application Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -47,6 +48,21 @@
                                     <span class="font-weight-bold">Declined</span>
                                 </td>
                             @endif
+                            <td class="align-middle">
+                                @include('supervisor.project.modal.accept')
+                                @include('supervisor.project.modal.decline')
+                                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+                                    <div>
+                                        <a class="btn btn-success text-white mr-2 dropdown-toggle" data-toggle="modal" data-target="#modal-accept-{{$project->id}}">
+                                            <span class="fa fa-check"></span>
+                                        </a>
+                                        <a class="btn btn-danger text-white mr-2 dropdown-toggle" data-toggle="modal" data-target="#modal-decline-{{$project->id}}">
+                                            <span class="fa fa-times"></span>
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

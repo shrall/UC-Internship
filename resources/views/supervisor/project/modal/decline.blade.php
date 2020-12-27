@@ -13,7 +13,7 @@
                     <span class="modal-icon display-1-lg">
                         <span class="fas fa-times"></span>
                     </span>
-                    <h2 class="h4 modal-title my-3"  style="color:#fff">Are you sure you want to decline<br> Marshall's application?</h2>
+                    <h2 class="h4 modal-title my-3"  style="color:#fff">Are you sure you want to decline<br> {{$user->detailable->name}}'s application?</h2>
                 </div>
             </div>
             <div class="modal-footer">

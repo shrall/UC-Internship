@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Student;
+use App\Models\ProjectUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -16,7 +18,7 @@ class StudentController extends Controller
     public function index()
     {
         $pages = 'student';
-        $users = Student::all();
+        $users = User::where('detailable_type', 'App\Models\Student')->get();
         return view('supervisor.user.student.index', compact('pages', 'users'));
     }
 
@@ -38,7 +40,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -85,4 +87,5 @@ class StudentController extends Controller
     {
         //
     }
+
 }
