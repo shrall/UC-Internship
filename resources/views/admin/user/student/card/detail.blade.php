@@ -28,13 +28,8 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="email"><span class="fa fa-venus-mars mr-2"></span>Gender</label>
-                    @if($student->detailable->gender == 'M')
-                        <h2 class="h5 mb-4">Male</h2>
-                    @endif
-                    @if($student->detailable->gender == 'F')
-                        <h2 class="h5 mb-4">Female</h2>
-                    @endif
+                    <label for="email"><span class="fab fa-line mr-2"></span>Line ID</label>
+                        <h2 class="h5 mb-4">{{$student->detailable->line_account}}</h2>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="email"><span class="fa fa-book mr-2"></span>Scholarship</label>
