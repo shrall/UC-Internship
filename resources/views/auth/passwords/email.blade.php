@@ -17,19 +17,21 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if($errors->any())
+                        @foreach($errors->all() as $error)
+                            <div class="alert alert-danger">
+                                {{ $error }}
+                            </div>
+                        @endforeach
+                    @endif
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
                         <div class="mb-4">
                             <label for="email">Your Email</label>
                             <div class="input-group">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                <input id="email" type="email" class="form-control"
                                     name="email" value="{{ old('email') }}" required
                                     autocomplete="email" autofocus>
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
                         <button type="submit" class="btn btn-block btn-primary">Recover password</button>
