@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -43,10 +45,16 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
+        $messages = [
+            'email.exists' => 'E-Mail is not registered.',
+            'password' => 'Wrong Password.',
+            'password.min' => 'Password needs to be at least 8 characters.'
+        ];
+        Validator::make($request->all(), [
+            'email' => 'required|exists:uci_users,email',
+            'password' => 'required|min:8',
+        ], $messages)->validate();
+
         $admin = [
             'email' => $request->email,
             'password' => $request->password,
@@ -66,20 +74,24 @@ class LoginController extends Controller
             'is_login' => '0',
         ];
 
-        if (Auth::attempt($admin)) {
-            $this->isLogin(Auth::id());
-            return redirect()->route('admin.dashboard');
-        }
-        if (Auth::attempt($supervisor)) {
-            $this->isLogin(Auth::id());
-            return redirect()->route('supervisor.dashboard');
-        }
-        if (Auth::attempt($student)) {
-            $this->isLogin(Auth::id());
-            return redirect()->route('student.dashboard');
-        }
+        $check = DB::table('uci_users')->where('email', $request->email)->first();
 
-        return redirect()->route('login')->with('Error', 'E-Mail or Password is invalid');
+        if ($check->is_login == '0') {
+            if (Auth::attempt($admin, $request->remember)) {
+                $this->isLogin(Auth::id());
+                return redirect()->route('admin.dashboard');
+            } else if (Auth::attempt($supervisor, $request->remember)) {
+                $this->isLogin(Auth::id());
+                return redirect()->route('supervisor.dashboard');
+            } else if (Auth::attempt($student, $request->remember)) {
+                $this->isLogin(Auth::id());
+                return redirect()->route('student.dashboard');
+            } else{
+                return redirect()->route('login')->with('Error', 'Invalid E-Mail and Password combination.');
+            }
+        } else {
+            return redirect()->route('login')->with('Error', 'User is already logged in.');
+        };
     }
 
     public function logout(Request $request)
@@ -87,6 +99,7 @@ class LoginController extends Controller
         $user = User::findOrFail(Auth::id());
         $user->update([
             'is_login' => '0',
+            'remember_token' => null
         ]);
 
         $request->session()->invalidate();
