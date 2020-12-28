@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
+use App\Models\Lecturer;
+use App\Models\Project;
+use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -48,9 +52,22 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         //view my profile
+        $projects = Project::where('supervisor_id', Auth::id())->get();
+        $ongoingprojects = $projects->count();
+        if (Auth::user()->detailable_type == "App\Models\Staff") {
+            $pages = 'staff';
+            $staff = $user;
+            $info = Staff::find(Auth::user()->detailable_id);
+            return view('supervisor.user.staff.detail', compact('pages', 'info', 'staff', 'ongoingprojects', 'projects'));
+        } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
+            $pages = 'lecturer';
+            $lecturer = $user;
+            $info = Lecturer::find(Auth::user()->detailable_id);
+            return view('supervisor.user.lecturer.detail', compact('pages', 'info', 'lecturer','ongoingprojects', 'projects'));
+        }
 
     }
 

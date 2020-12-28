@@ -25,9 +25,9 @@
                     </a>
                 </td>
                 <td><span class="font-weight-normal">{{$user->detailable->department->name}}</span></td>
-                <td><span class="font-weight-normal">139 Hours</span></td>
-                <td><span class="font-weight-normal">Beasiswa Sosial Ekonomi (A)</span></td>
-                <td><span class="font-weight-normal">4.00</span></td>
+                <td><span class="font-weight-normal">{{$user->info->time_remaining}}</span></td>
+                <td><span class="font-weight-normal">{{$user->info->scholarship->name}}</span></td>
+                <td><span class="font-weight-normal">{{$user->info->scholarship->name}}</span></td>
             </tr>
         @endforeach
         </tbody>

@@ -13,7 +13,7 @@
         @foreach($users as $user)
             <tr>
                 <td><span class="font-weight-normal">{{$user->detailable->nip}}</span></td>
-                <td><a href="{{ route('supervisor.staff.show', $user->detailable->id) }}" class="d-flex align-items-center">
+                <td><a href="{{ route('supervisor.lecturer.show', $user->id) }}" class="d-flex align-items-center">
                         <img src="{{ asset('assets/img/team/profile-picture-3.jpg') }}"
                              class="user-avatar rounded-circle mr-3" alt="Avatar">
                         <div class="d-block">

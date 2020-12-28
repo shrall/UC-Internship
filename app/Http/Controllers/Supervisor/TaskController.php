@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
+use App\Models\Period;
 use App\Models\Project;
 use App\Models\Task;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,8 +31,15 @@ class TaskController extends Controller
     {
         $pages = 'tasks';
         $projects = Project::where('supervisor_id', Auth::id())->get();
+        $periods = Period::all();
+        $currentdate = Carbon::now();
+        foreach ($periods as $period) {
+            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                $currentperiod = $period;
+            };
+        }
 
-        return view('supervisor.task.create', compact('pages', 'projects'));
+        return view('supervisor.task.create', compact('pages', 'projects', 'currentperiod'));
     }
 
     /**
@@ -64,7 +73,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+
     }
 
     /**

@@ -38,8 +38,10 @@
         <div class="col-6">
             <div class="d-flex justify-content-end flex-wrap flex-md-nowrap align-items-center pb-2">
                 <div>
+                    @include('supervisor.project.modal.task.create')
+                    @include('supervisor.project.modal.task.edit')
                     <a class="btn btn-secondary text-dark mr-2 dropdown-toggle "
-                       href="{{ route('supervisor.task.create') }}">
+                       data-toggle="modal" data-target="#modal-add-task-{{$project->id}}">
                         <span class="fas fa-plus mr-2"></span>New
                     </a>
                 </div>

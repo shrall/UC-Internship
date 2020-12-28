@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StaffController extends Controller
 {
@@ -18,7 +20,7 @@ class StaffController extends Controller
     {
 
         $pages = 'staff';
-        $users = User::where('detailable_type', 'App\Models\Staff')->get();
+        $users = User::where('detailable_type', 'App\Models\Staff')->where('role_id', '2')->get();
         return view('supervisor.user.staff.index', compact('pages', 'users'));
     }
 
@@ -49,9 +51,11 @@ class StaffController extends Controller
      * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function show(Staff $staff)
+    public function show(User $staff)
     {
-        //
+        $projects = Project::where('supervisor_id', $staff)->get();
+        $pages = 'staff';
+        return view('supervisor.user.staff.detail', compact('pages', 'staff', 'projects'));
     }
 
     /**

@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lecturer;
+use App\Models\Project;
+use App\Models\ProjectUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LecturerController extends Controller
 {
@@ -17,7 +20,7 @@ class LecturerController extends Controller
     public function index()
     {
         $pages = 'lecturer';
-        $users = User::where('detailable_type', 'App\Models\Lecturer')->get();
+        $users = User::where('detailable_type', 'App\Models\Lecturer')->where('role_id', '2')->get();
         return view('supervisor.user.lecturer.index', compact('pages', 'users'));
     }
 
@@ -45,12 +48,14 @@ class LecturerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Lecturer  $lecturer
+     * @param  \App\Models\Lecturer $lecturer
      * @return \Illuminate\Http\Response
      */
-    public function show(Lecturer $lecturer)
+    public function show(User $lecturer)
     {
-        //
+        $projects = Project::where('supervisor_id', $lecturer)->get();
+        $pages = 'lecturer';
+        return view('supervisor.user.lecturer.detail', compact('pages', 'lecturer', 'projects'));
     }
 
     /**
