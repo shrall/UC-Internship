@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Staff;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -15,7 +16,10 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+
+        $pages = 'staff';
+        $users = User::where('detailable_type', 'App\Models\Staff')->get();
+        return view('supervisor.user.staff.index', compact('pages', 'users'));
     }
 
     /**

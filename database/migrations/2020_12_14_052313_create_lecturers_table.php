@@ -19,7 +19,7 @@ class CreateLecturersTable extends Migration
             $table->string('nidn')->unique();
             $table->string('name');
             $table->string('email');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->text('photo')->nullable();
             $table->string('gender', 1);
             $table->string('phone');

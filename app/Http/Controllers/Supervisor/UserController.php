@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -35,7 +36,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::findOrFail($request->uci_user_id);
+        $works = $user->works()->syncWithoutDetaching($request->uci_project_id, ['status' => '1']);
+        return empty($works) ? redirect()->back()->with('Fail', "Failed to accept student")
+            : redirect()->back()->with('Success', 'Student Accepted');
     }
 
     /**
@@ -46,7 +50,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        //view my profile
+
     }
 
     /**
@@ -81,5 +86,27 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function accept($id, Request $request) {
+        $user = User::findOrFail($id);
+        $project = $user->works->where('id', '=', $request->uci_project_id)->first();
+        $project->pivot->update([
+            'is_approved' => '1',
+        ]);
+
+        return empty($project) ? redirect()->back()->with('Fail', "Failed to update status")
+            : redirect()->back()->with('Success', 'Success student: #('.$user->name.') approved');
+    }
+
+    public function decline($id, Request $request) {
+        $user = User::findOrFail($id);
+        $project = $user->works->where('id', '=', $request->uci_project_id)->first();
+        $project->pivot->update([
+            'is_approved' => '2',
+        ]);
+
+        return empty($project) ? redirect()->back()->with('Fail', "Failed to update status")
+            : redirect()->back()->with('Success', 'Success student: #('.$user->name.') approved');
     }
 }

@@ -8,7 +8,9 @@ use App\Models\Lecturer;
 use App\Models\Period;
 use App\Models\Project;
 use App\Models\ProjectAttachment;
+use App\Models\ProjectUser;
 use App\Models\Staff;
+use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,14 +26,15 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->detailable_type == "App\Staff") {
+        if (Auth::user()->detailable_type == "App\Models\Staff") {
             $info = Staff::find(Auth::user()->detailable_id);
-        } else if (Auth::user()->detailable_type == "App\Lecturer") {
+        } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
             $info = Lecturer::find(Auth::user()->detailable_id);
         }
         $pages = 'project';
         $projects = Project::where('supervisor_id', Auth::id())->get();
-        return view('supervisor.project.index', compact('pages', 'info', 'projects'));
+        $pus = ProjectUser::all();
+        return view('supervisor.project.index', compact('pages', 'info','pus', 'projects'));
     }
 
     /**
@@ -41,9 +44,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->detailable_type == "App\Staff") {
+        if (Auth::user()->detailable_type == "App\Models\Staff") {
             $info = Staff::find(Auth::user()->detailable_id);
-        } else if (Auth::user()->detailable_type == "App\Lecturer") {
+        } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
             $info = Lecturer::find(Auth::user()->detailable_id);
         }
         $pages = 'project';
@@ -80,7 +83,7 @@ class ProjectController extends Controller
             $i = 0;
             foreach ($request->file('attachments') as $file) {
                 $attachment = new ProjectAttachment;
-                $file_name = time() . $i . '.' . $file->getClientOriginalExtension();
+                $file_name = time() . $i . '-' . $file->getClientOriginalName();
                 $file->move(public_path('attachments\project'), $file_name);
                 $attachment->name = public_path('attachments\project') . $file_name;
                 $attachment->project_id = $project['id'];
@@ -100,7 +103,21 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        if (Auth::user()->detailable_type == "App\Models\Staff") {
+            $info = Staff::find(Auth::user()->detailable_id);
+        } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
+            $info = Lecturer::find(Auth::user()->detailable_id);
+        }
+        $projects = Project::all();
+        $pages = 'project';
+        $periods = Period::all();
+        $currentdate = Carbon::now();
+        foreach ($periods as $period) {
+            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                $currentperiod = $period;
+            };
+        }
+        return view('supervisor.project.detail', compact('project', 'projects','pages','info', 'currentperiod'));
     }
 
     /**
@@ -111,7 +128,20 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        if (Auth::user()->detailable_type == "App\Models\Staff") {
+            $info = Staff::find(Auth::user()->detailable_id);
+        } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
+            $info = Lecturer::find(Auth::user()->detailable_id);
+        }
+        $pages = 'project';
+        $periods = Period::all();
+        $currentdate = Carbon::now();
+        foreach ($periods as $period) {
+            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                $currentperiod = $period;
+            };
+        }
+        return view('supervisor.project.edit', compact('project','pages','info', 'currentperiod'));
     }
 
     /**
@@ -123,7 +153,8 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $project->update($request->all());
+        return redirect()->route('supervisor.project.index');
     }
 
     /**

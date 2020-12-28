@@ -16,9 +16,9 @@ class PageController extends Controller
     {
         $pages = 'dash';
 
-        if (Auth::user()->detailable_type == "App\Staff") {
+        if (Auth::user()->detailable_type == "App\Models\Staff") {
             $info = Staff::find(Auth::user()->detailable_id);
-        } else if (Auth::user()->detailable_type == "App\Lecturer") {
+        } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
             $info = Lecturer::find(Auth::user()->detailable_id);
         }
 

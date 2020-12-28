@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Http\Request;
 
 class ForgotPasswordController extends Controller
 {
@@ -19,4 +20,12 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
+
+    protected function validateEmail(Request $request)
+    {
+        $messages = [
+            'email.exists' => 'E-Mail is not registered.',
+        ];
+        $request->validate(['email' => 'required|exists:uci_users,email'], $messages);
+    }
 }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -25,7 +27,10 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        $pages = 'tasks';
+        $projects = Project::where('supervisor_id', Auth::id())->get();
+
+        return view('supervisor.task.create', compact('pages', 'projects'));
     }
 
     /**
@@ -47,7 +52,8 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        $pages = 'project';
+        return view('supervisor.task.detail', compact('pages', 'task'));
     }
 
     /**
