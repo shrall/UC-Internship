@@ -52,7 +52,8 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        $pages = 'project';
+        return view('supervisor.task.detail', compact('pages', 'task'));
     }
 
     /**

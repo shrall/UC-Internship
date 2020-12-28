@@ -71,7 +71,7 @@
     <div class="row">
         <div class="col-12">
             <h2 class="h4"><span class="fa fa-clipboard-list"></span> Project List</h2>
-            @include('staff.project.inc.table.project')
+            @include('staff.project.table.project')
         </div>
     </div>
 @endsection
