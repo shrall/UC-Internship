@@ -13,8 +13,8 @@ class Lecturer extends Model
         'nip', 'nidn', 'name', 'email', 'description', 'photo', 'gender', 'phone', 'line_account', 'department_id', 'title_id', 'jaka_id'
     ];
 
-    public function user(){
-        return $this->morphOne('App\Models\User', 'detailable');
+    public function users(){
+        return $this->morphMany('App\Models\User', 'detailable');
     }
 
     public function department()

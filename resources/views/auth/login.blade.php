@@ -19,6 +19,13 @@
                             {{ session('Error') }}
                         </div>
                     @endif
+                    @if($errors->any())
+                        @foreach($errors->all() as $error)
+                            <div class="alert alert-danger">
+                                {{ $error }}
+                            </div>
+                        @endforeach
+                    @endif
                     <form method="POST" action="{{ route('login') }}" class="mt-4">
                         @csrf
                         <!-- Form -->
@@ -28,8 +35,9 @@
                                 <span class="input-group-text" id="basic-addon1">
                                     <span class="fas fa-envelope"></span>
                                 </span>
-                                <input type="email" class="form-control" name="email" placeholder="email@ciputra.ac.id"
-                                    id="email" autofocus required>
+                                <input id="email" type="email" class="form-control" name="email"
+                                    value="{{ old('email') }}" required autocomplete="email" autofocus
+                                    placeholder="email@ciputra.ac.id">
                             </div>
                         </div>
                         <!-- End of Form -->
@@ -41,9 +49,17 @@
                                     <span class="input-group-text" id="basic-addon2">
                                         <span class="fas fa-unlock-alt"></span>
                                     </span>
-                                    <input type="password" name="password" class="form-control" placeholder="Password"
-                                        id="password" required>
+                                    <input id="password" type="password" class="form-control" name="password" required
+                                        autocomplete="current-password" placeholder="Your Password">
                                 </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-top mb-4">
+                                <div class="form-check"><input class="form-check-input" type="checkbox" name="remember"
+                                        id="remember"
+                                        {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="form-check-label mb-0" for="remember">Remember me</label></div>
+                                <div><a href="{{ route('password.request') }}"
+                                        class="small text-right">Lost password?</a></div>
                             </div>
                             <!-- End of Form -->
                         </div>
