@@ -10,15 +10,25 @@
         </tr>
         </thead>
         <tbody>
-        <!-- Item -->
-        @include('student.project.modal.student')
-        <tr>
-            <td>
-                <a data-toggle="modal" data-target="#modal-friend-1"
-                   class="text-primary font-weight-bold">0706011910009</a></td>
-            <td class="font-weight-bold proj-name"><a data-toggle="modal" data-target="#modal-friend-1"> Marshall Ovierdo Kurniawan</a></td>
-            <td>IMT</td>
-        </tr>
+        @foreach($project->works as $user)
+{{--            @if($applies->status == '1')--}}
+                <!-- Item -->
+                @include('student.project.modal.student')
+                <tr>
+                    @if($user->pivot->status == 1)
+                    <td>
+                        <a data-toggle="modal" data-target="#modal-student-{{ $user->id }}"
+                           class="text-primary font-weight-bold">{{ $user->detailable->nim }}</a>
+                    </td>
+                    <td class="font-weight-bold proj-name">
+                        <a data-toggle="modal" data-target="#modal-student-{{ $user->id }}">
+                            {{ $user->detailable->name }}</a>
+                    </td>
+                    <td>{{ $user->detailable->department->initial }}</td>
+                    @endif
+                </tr>
+{{--            @endif--}}
+        @endforeach
         </tbody>
     </table>
 </div>

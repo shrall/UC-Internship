@@ -53,9 +53,7 @@ class TaskController extends Controller
         //!NOTE disini kalo task yang diliat bukan punyanya user yang login, redirect()->back()
         $pages = "project";
 
-        $pus  = ProjectUser::where('uci_user_id',Auth::id())->get();
-
-        return view('student.task.detail', compact('pages'));
+        return view('student.task.detail', compact('pages','task'));
 
         // panggil semua progress dari task tsb
     }

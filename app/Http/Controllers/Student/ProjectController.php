@@ -63,10 +63,7 @@ class ProjectController extends Controller
         //!NOTE kalau user yang login bukan anggota dari project tsb, redirect()->back()
         $pages = "project";
 
-        $pus  = ProjectUser::where('uci_user_id',Auth::id())->get();
-
-
-        return view('student.project.detail', compact('pages','pus'));
+        return view('student.project.detail', compact('pages','project'));
 
 
         //disini manggil semua student yang merupakan anggota dari project yang di liat

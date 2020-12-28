@@ -4,13 +4,28 @@
     <list default="true" id="4a073beb-e23f-415d-a75c-b5868c2d8661" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/ProjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/card/supervisor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/card/supervisor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/card/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/card/detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/project/card/offer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/card/offer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/card/supervisor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/card/supervisor.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/project/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/project/modal/apply.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/modal/apply.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/project/offer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/offer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/project/table/applied.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/table/applied.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/project/table/project.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/table/project.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/modal/offer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/modal/offer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/modal/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/modal/student.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/project/table/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/table/student.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/table/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/table/task.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/student/card/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/card/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/student/card/info.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/card/info.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/student/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/student/table/project.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/table/project.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/student/table/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/table/task.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/card/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/card/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/card/pic.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/card/pic.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/modal/progress/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/modal/progress/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/modal/progress/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/modal/progress/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/modal/progress/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/modal/progress/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/table/progress.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/table/progress.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +207,8 @@
       <workItem from="1608825781680" duration="9623000" />
       <workItem from="1608835706733" duration="959000" />
       <workItem from="1608910634284" duration="6171000" />
-      <workItem from="1608998884226" duration="2503000" />
+      <workItem from="1608998884226" duration="11886000" />
+      <workItem from="1609055422827" duration="14992000" />
     </task>
     <servers />
   </component>
@@ -209,6 +225,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1608125343881" />
+    <state x="604" y="352" key="NewPhpFileDialog" timestamp="1609009024834">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="604" y="352" key="NewPhpFileDialog/0.0.1536.864@0.0.1536.864" timestamp="1609009024834" />
     <state x="480" y="129" width="576" height="566" key="find.popup" timestamp="1608181413225">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

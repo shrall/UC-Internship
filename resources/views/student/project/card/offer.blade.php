@@ -5,7 +5,10 @@
     <div class="card-body d-sm-flex align-items-center flex-wrap flex-lg-nowrap py-0">
         <div class="col-11 col-lg-8 px-0 mb-4 mb-md-0">
             <div class="mb-2">
-                <h3>{{ $project->name }}</h3>
+
+{{--                item--}}
+                @include('student.project.modal.offer')
+                <h3><a href="#" data-toggle="modal" data-target="#modal-project-{{ $project->id }}">{{ $project->name }}</h3>
                 <div class="d-block d-sm-flex mb-2">
                     <div>
                         <h4 class="h6 font-weight-normal text-warning mb-3 mb-sm-0">
