@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Staff;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -15,7 +16,9 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        $pages = 'staff';
+        $staffs = User::where('detailable_type', 'App\Models\Staff')->whereNotIn('role_id', [1])->get();
+        return view('admin.user.staff.index', compact('pages', 'staffs'));
     }
 
     /**
@@ -45,9 +48,14 @@ class StaffController extends Controller
      * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function show(Staff $staff)
+    public function show(User $staff)
     {
-        //
+        $pages = 'student';
+        if ($staff->role_id != 2 && $staff->detailable_type != "App\Models\Staff") {
+            return redirect()->back();
+        } else {
+            return view('admin.user.staff.detail', compact('pages', 'staff'));
+        }
     }
 
     /**
