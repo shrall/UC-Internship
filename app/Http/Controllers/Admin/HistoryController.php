@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\History;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HistoryController extends Controller
@@ -42,12 +43,18 @@ class HistoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\History  $history
+     * @param  \App\Models\User  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(History $history)
+    public function show(User $history)
     {
-        //
+        $pages = 'student';
+        $student = $history;
+        if ($student->role_id != 3) {
+            return redirect()->back();
+        } else {
+            return view('admin.history.detail', compact('pages', 'student'));
+        }
     }
 
     /**
