@@ -9,17 +9,26 @@
                 <div class="profile-cover rounded-top"
                      data-background="{{ asset('assets/img/profile-cover.jpg') }}"
                      style="height: 146.5px"></div>
-                <div class="card-body pb-3"><img
-                        src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
-                        class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait"
+                <div class="card-body pb-3">
+                    <img
+                        @if ($user->detailable->photo != null)
+                        src="/profile_picture/student/{{$user->detailable->photo}}" @else
+                        src="{{ asset('assets/img/team/profile-picture-1.jpg') }}" @endif
+                        class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Profile Picture"
                         style="height: 8rem; width: 8rem; min-height: 8rem; min-width: 8rem">
-                    <h4 class="h3">Marshall Ovierdo Kurniawan</h4>
-                    <h5 class="font-weight-normal">Student</h5>
-                    <p class="text-gray mb-3">Informatics (IMT)</p>
-                    <a class="btn btn-sm btn-primary" href="{{ route('student.user.edit', 1) }}">
+                    <h4 class="h3">{{ $user->detailable->name }}</h4>
+                    @if ($user->detailable->gender == 'M')
+                        <h5 class="font-weight-normal">Student - Male</h5>
+                    @endif
+                    @if ($user->detailable->gender == 'F')
+                        <h5 class="font-weight-normal">Student - Female</h5>
+                    @endif
+                    <p class="text-gray mb-4">{{ $user->detailable->department->name }}
+                        ({{ $user->detailable->department->initial }}) - Class of {{$user->detailable->batch}}</p>
+                    <a class="btn btn-sm btn-primary mb-3" href="{{ route('student.user.edit', Auth::id()) }}">
                         <span class="fa fa-edit"></span> Edit Profile
                     </a>
-                    <a class="btn btn-sm btn-secondary" href="{{route('admin.history.index')}}">
+                    <a class="btn btn-sm btn-secondary mb-3" href="{{route('admin.history.index')}}">
                         <span class="fa fa-history"></span> Time History
                     </a>
                 </div>

@@ -7,45 +7,45 @@
                 <div class="col-md-6 mb-3">
                     <div>
                         <label for="full_name">Full Name</label>
-                        <h2 class="h5 mb-4">{{ $student->detailable->name }}</h2>
+                        <h2 class="h5 mb-4">{{ $user->detailable->name }}</h2>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <div>
                         <label for="nim">NIM</label>
-                        <h2 class="h5 mb-4">{{ $student->detailable->nim }}</h2>
+                        <h2 class="h5 mb-4">{{ $user->detailable->nim }}</h2>
                     </div>
                 </div>
             </div>
             <div class="row align-items-center">
                 <div class="col-md-6 mb-3">
                     <label for="email"><span class="fa fa-envelope"></span> E-Mail</label>
-                    <h2 class="h5 mb-4">{{ $student->email }}</h2>
+                    <h2 class="h5 mb-4">{{ $user->detailable->email }}</h2>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="email"><span class="fab fa-whatsapp"></span> Phone Number</label>
-                    <h2 class="h5 mb-4">{{ $student->detailable->phone }}</h2>
+                    <h2 class="h5 mb-4">{{ $user->detailable->phone }}</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="email"><span class="fa fa-line"></span> Line ID</label>
-                    <h2 class="h5 mb-4">{{$student->detailable->line_account}}</h2>
+                    <label for="email"><span class="fab fa-line"></span> Line</label>
+                    <h2 class="h5 mb-4">{{ $user->detailable->line_account }}</h2>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="email"><span class="fa fa-book"></span> Scholarship</label>
-                    <h2 class="h5 mb-4">{{ $student->info->scholarship->name }}
-                        ({{ $student->info->scholarship->grade }})</h2>
+                    <h2 class="h5 mb-4">{{ $user->info->scholarship->name }}
+                        ({{ $user->info->scholarship->grade }})</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="email"><span class="fa fa-clock"></span> Time Remaining</label>
-                    <h2 class="h5 mb-4">{{ $student->info->time_remaining }} Hours</h2>
+                    <h2 class="h5 mb-4">{{ $user->info->time_remaining }} Hours</h2>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="email"><span class="fa fa-graduation-cap"></span> GPA</label>
-                    <h2 class="h5 mb-4"> {{ number_format((float)$student->info->gpa, 2, '.', '') }}</h2>
+                    <h2 class="h5 mb-4"> {{ number_format((float)$user->info->gpa, 2, '.', '') }}</h2>
                 </div>
             </div>
         </form>

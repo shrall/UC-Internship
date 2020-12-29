@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
+use App\Models\Scholarship;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,12 +49,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
         //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
         $pages = "student";
 
-        return view('student.student.detail', compact('pages'));
+//        dd($student);
+
+        if ($user->id != Auth::id()) {
+            return redirect()->back();
+        } else {
+              return view('student.student.detail', compact('pages','user'));
+        }
 
         //ngambil semua projectuser yang user idnya punyanya yang login
         //ngambil semua task yang dipunya sama orang yang login
@@ -63,10 +72,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
-        $pages = " ";
+        $pages = 'student';
+//        if ($user->id != Auth::id()) {
+//            return redirect()->back();
+//        } else {
+//        }
+        return view('student.student.edit', compact('pages', 'user'));
 
     }
 
@@ -84,6 +98,10 @@ class UserController extends Controller
 
         //update user & student-> karena kalo ngrubah nama, nama di user&student kerubah
         //uplod foto&cv
+
+        $id->update($request->all());
+        return redirect()->route('student.user.show');
+
     }
 
     /**
