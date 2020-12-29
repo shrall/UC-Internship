@@ -15,7 +15,9 @@ class ScholarshipController extends Controller
      */
     public function index()
     {
-        //
+        $pages = 'scholarship';
+        $scholarships = Scholarship::all();
+        return view('admin.scholarship.index', compact('pages', 'scholarships'));
     }
 
     /**
@@ -81,6 +83,10 @@ class ScholarshipController extends Controller
      */
     public function destroy(Scholarship $scholarship)
     {
-        //
+        if (count($scholarship->infos) == 0) {
+            $scholarship->delete();
+            return redirect()->back();
+        } else {
+        }
     }
 }
