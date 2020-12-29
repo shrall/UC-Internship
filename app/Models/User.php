@@ -68,9 +68,9 @@ class User extends Authenticatable
     public function applies() {
         return $this->belongsToMany(Project::class, 'uci_project_user', 'uci_user_id', 'uci_project_id')->withPivot('status')->withTimestamps();
     }
-    public function history()
+    public function histories()
     {
-        return $this->hasOne(History::class, 'student_id', 'id');
+        return $this->hasMany(History::class, 'student_id', 'id');
     }
 
     public function isAdmin()

@@ -23,7 +23,7 @@
                         <span class="fa fa-edit"></span> Edit Profile
                     </a>
                     <a class="btn btn-sm btn-secondary"
-                        href="{{ route('admin.history.show', $student->history->id) }}">
+                        href="{{ route('admin.history.show', $student->id) }}">
                         <span class="fa fa-history"></span> Time History
                     </a>
                 </div>
