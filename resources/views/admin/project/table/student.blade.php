@@ -23,11 +23,11 @@
                             <!-- Item -->
                             <tr>
                                 <td>
-                                    <a href="{{ route('admin.user.show', $user->id) }}"
+                                    <a href="{{ route('admin.student.show', $user->id) }}"
                                         class="text-primary font-weight-bold">{{ $user->detailable->nim }}</a>
                                 </td>
                                 <td class="font-weight-bold proj-name">
-                                    <a href="{{ route('admin.user.show', $user->id) }}">
+                                    <a href="{{ route('admin.student.show', $user->id) }}">
                                         {{ $user->detailable->name }}</a>
                                 </td>
                                 <td>{{ $user->detailable->department->initial }}</td>
