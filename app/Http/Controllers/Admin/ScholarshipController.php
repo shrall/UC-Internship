@@ -27,7 +27,8 @@ class ScholarshipController extends Controller
      */
     public function create()
     {
-        //
+        $pages = 'scholarship';
+        return view('admin.scholarship.create', compact('pages'));
     }
 
     /**
@@ -38,7 +39,23 @@ class ScholarshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'grade' => 'required|string|max:1',
+            'duration' => 'required|numeric|max:1',
+            'minimum_gpa' => 'required|numeric|between:0.00,4.00',
+            'hps' => 'required|numeric',
+        ]);
+
+        Scholarship::create([
+            'name' => $data['name'],
+            'grade' => $data['grade'],
+            'duration' => $data['duration'],
+            'minimum_gpa' => $data['minimum_gpa'],
+            'hps' => $data['hps']
+        ]);
+
+        return redirect()->route('admin.scholarship.index');
     }
 
     /**
@@ -49,7 +66,8 @@ class ScholarshipController extends Controller
      */
     public function show(Scholarship $scholarship)
     {
-        //
+        $pages = 'scholarship';
+        return view('admin.scholarship.detail', compact('pages', 'scholarship'));
     }
 
     /**
@@ -60,7 +78,8 @@ class ScholarshipController extends Controller
      */
     public function edit(Scholarship $scholarship)
     {
-        //
+        $pages = 'scholarship';
+        return view('admin.scholarship.edit', compact('pages', 'scholarship'));
     }
 
     /**
@@ -72,7 +91,23 @@ class ScholarshipController extends Controller
      */
     public function update(Request $request, Scholarship $scholarship)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'grade' => 'required|string|max:1',
+            'duration' => 'required|numeric|max:1',
+            'minimum_gpa' => 'required|numeric|between:0.00,4.00',
+            'hps' => 'required|numeric',
+        ]);
+
+        $scholarship->update([
+            'name' => $data['name'],
+            'grade' => $data['grade'],
+            'duration' => $data['duration'],
+            'minimum_gpa' => $data['minimum_gpa'],
+            'hps' => $data['hps']
+        ]);
+
+        return redirect()->route('admin.scholarship.show', $scholarship->id);
     }
 
     /**

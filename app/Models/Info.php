@@ -15,7 +15,7 @@ class Info extends Model
         'time_remaining', 'gpa', 'cv', 'scholarship_id'
     ];
 
-    public function info() {
+    public function user() {
         return $this->hasOne(User::class, 'info_id', 'id');
     }
     public function scholarship(){
