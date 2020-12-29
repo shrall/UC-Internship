@@ -53,6 +53,9 @@ class User extends Authenticatable
     public function role() {
         return $this->belongsTo(Role::class, 'role_id', 'id');
     }
+    public function projects() {
+        return $this->hasMany(Project::class, 'supervisor_id', 'id');
+    }
     public function students() {
         return $this->hasMany(History::class, 'student_id', 'id');
     }
