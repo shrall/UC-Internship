@@ -8,15 +8,24 @@
             </div>
             <div class="pb-4 mb-4 mx-0">
                 <div class="col-auto">
-                    <a href="{{ route('admin.user.show', $project->supervisor_id) }}">
-                        <h3 class="h5">{{ $project->supervisor->detailable->name }}</h3>
-                    </a>
+                    @if ($project->supervisor->detailable_type == "App\Models\Staff")
+                        <a href="{{ route('admin.staff.show', $project->supervisor_id) }}">
+                            <h3 class="h5">{{ $project->supervisor->detailable->name }}</h3>
+                        </a>
+                    @endif
+                    @if ($project->supervisor->detailable_type == "App\Models\Lecturer")
+                        <a href="{{ route('admin.lecturer.show', $project->supervisor_id) }}">
+                            <h3 class="h5">{{ $project->supervisor->detailable->name }}</h3>
+                        </a>
+                    @endif
                     <span class="text-700">Organized by {{ $project->supervisor->detailable->department->name }}
                         ({{ $project->supervisor->detailable->department->initial }})</span>
-                    <div class="small font-weight-bold mt-1">{{ $project->supervisor->detailable->title->name }} at
+                    <div class="small font-weight-bold mt-1">{{ $project->supervisor->detailable->title->name }}
+                        at
                         {{ $project->supervisor->detailable->department->name }}</div>
                     <div class="small font-weight-bold mt-1">
-                        <span class="fa fa-envelope"></span> E-Mail : {{ $project->supervisor->detailable->email }}
+                        <span class="fa fa-envelope"></span> E-Mail :
+                        {{ $project->supervisor->detailable->email }}
                     </div>
                     <span class="small font-weight-bold">
                         <span class="fab fa-whatsapp"></span> WA : {{ $project->supervisor->detailable->phone }}

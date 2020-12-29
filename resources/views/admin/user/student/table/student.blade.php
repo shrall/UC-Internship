@@ -20,14 +20,16 @@
                                 <td><span class="font-weight-normal">{{ $student->detailable->nim }}</span></td>
                                 <td><a href="{{ route('admin.student.show', $student->id) }}"
                                         class="d-flex align-items-center">
-                                        <img @if ($student->detailable->photo != null)
-                                        src="/profile_picture/student/{{ $student->detailable->photo }}" @else
-                                        src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
+                                        @if($student->detailable->photo != null)
+                                            <img src="/profile_picture/student/{{ $student->detailable->photo }}"
+                                                class="user-avatar rounded-circle mr-3" alt="Avatar">
+                                        @else
+                                            <img src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
+                                                class="user-avatar rounded-circle mr-3" alt="Avatar">
                                         @endif
-                                        class="user-avatar rounded-circle mr-3" alt="Avatar">
                                         <div class="d-block">
                                             <span class="font-weight-bold">{{ $student->detailable->name }}</span>
-                                            <div class="small text-gray">{{ $student->email }}</div>
+                                            <div class="small text-gray">{{ $student->detailable->email }}</div>
                                         </div>
                                     </a>
                                 </td>
