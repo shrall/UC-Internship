@@ -49,7 +49,7 @@ class ProjectSeeder extends Seeder
         $project->name = 'Entrepreneurship Essentials';
         $project->description = 'Mata Kuliah untuk semester 1.';
         $project->deadline = Carbon::parse('2020-12-10');
-        $project->status = '1';
+        $project->status = '0';
         $project->category = '1';
         $project->period_id = 1;
         $project->supervisor_id = 3;
