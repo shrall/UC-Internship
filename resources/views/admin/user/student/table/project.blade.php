@@ -57,9 +57,13 @@
                                 @endif
                                 <td>{{ date('d F Y', strtotime($project->deadline)) }}
                                 </td>
-                                <td>{{ date("Y", strtotime($project->period->start)) }}-{{ date("Y", strtotime($project->period->end)) }}
-                                    / @if ($project->period->term == 0) Odd @else Even @endif</td>
-
+                                @if($project->period->term == 0)
+                                    <td>{{ date("Y", strtotime($project->period->start)) }}-{{ idate("Y", strtotime($project->period->start))+1 }}
+                                        / Odd </td>
+                                @else
+                                    <td>{{ idate("Y", strtotime($project->period->end))-1 }}-{{ date("Y", strtotime($project->period->end)) }}
+                                        / Even </td>
+                                @endif
                                 @if($project->status == 0)
                                     <td class="text-info">
                                         <span class="fas fa-thumbs-up"></span>

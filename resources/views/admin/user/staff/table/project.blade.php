@@ -32,43 +32,50 @@
                                 </td>
                                 <td class="font-weight-bold proj-name">
                                     <a href="{{ route('admin.project.show', $project->id) }}">
-                                        {{$project->name}}</a>
+                                        {{ $project->name }}</a>
                                 </td>
-                                @if ($project->category == 0)
-                                <td><span class="fas fa-calendar-week mr-2"></span>Event</td>
+                                @if($project->category == 0)
+                                    <td><span class="fas fa-calendar-week mr-2"></span>Event</td>
                                 @endif
-                                @if ($project->category == 1)
-                                <td><span class="fas fa-school mr-2"></span>Education</td>
+                                @if($project->category == 1)
+                                    <td><span class="fas fa-school mr-2"></span>Education</td>
                                 @endif
-                                @if ($project->category == 2)
-                                <td><span class="fas fa-question-circle mr-2"></span>Other</td>
+                                @if($project->category == 2)
+                                    <td><span class="fas fa-question-circle mr-2"></span>Other</td>
                                 @endif
-                                <td>{{count($project->projectusers->where('status', 1))}} Student(s)</td>
-                                <td>{{date('d F Y', strtotime($project->deadline))}}</td>
-                                <td>{{ date("Y", strtotime($project->period->start)) }}-{{ date("Y", strtotime($project->period->end)) }} / @if ($project->period->term == 0) Odd @else Even @endif</td>
-
-                                @if ($project->status == 0)
-                                <td class="text-info">
-                                    <span class="fas fa-thumbs-up"></span>
-                                    <span class="font-weight-bold">Available</span>
+                                <td>{{ count($project->projectusers->where('status', 1)) }}
+                                    Student(s)</td>
+                                <td>{{ date('d F Y', strtotime($project->deadline)) }}
                                 </td>
+                                @if($project->period->term == 0)
+                                    <td>{{ date("Y", strtotime($project->period->start)) }}-{{ idate("Y", strtotime($project->period->start))+1 }}
+                                        / Odd </td>
+                                @else
+                                    <td>{{ idate("Y", strtotime($project->period->end))-1 }}-{{ date("Y", strtotime($project->period->end)) }}
+                                        / Even </td>
                                 @endif
-                                @if ($project->status == 1)
-                                <td class="text-warning">
-                                    <span class="fas fa-clock"></span>
-                                    <span class="font-weight-bold">Ongoing</span>
-                                </td>
+                                @if($project->status == 0)
+                                    <td class="text-info">
+                                        <span class="fas fa-thumbs-up"></span>
+                                        <span class="font-weight-bold">Available</span>
+                                    </td>
                                 @endif
-                                @if ($project->status == 2)
-                                <td class="text-success">
-                                    <span class="fas fa-check"></span>
-                                    <span class="font-weight-bold">Completed</span></td>
+                                @if($project->status == 1)
+                                    <td class="text-warning">
+                                        <span class="fas fa-clock"></span>
+                                        <span class="font-weight-bold">Ongoing</span>
+                                    </td>
                                 @endif
-                                @if ($project->status == 3)
-                                <td class="text-danger">
-                                    <span class="fas fa-ban"></span>
-                                    <span class="font-weight-bold">Suspended</span>
-                                </td>
+                                @if($project->status == 2)
+                                    <td class="text-success">
+                                        <span class="fas fa-check"></span>
+                                        <span class="font-weight-bold">Completed</span></td>
+                                @endif
+                                @if($project->status == 3)
+                                    <td class="text-danger">
+                                        <span class="fas fa-ban"></span>
+                                        <span class="font-weight-bold">Suspended</span>
+                                    </td>
                                 @endif
                                 <td>
                                     <div class="btn-group">
