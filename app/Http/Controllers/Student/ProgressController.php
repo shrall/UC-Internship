@@ -108,38 +108,41 @@ class ProgressController extends Controller
     {
 
         //update progress
-        $data = $request->validate([
-            'description' => 'required|string',
-            'time_start' => 'required',
-            'time_end' => 'required',
-            'task_id' => 'required'
-        ]);
+        if ($progress->status == '0') {
+            $data = $request->validate([
+                'description' => 'required|string',
+                'time_start' => 'required',
+                'time_end' => 'required',
+                'task_id' => 'required'
+            ]);
 
-        $progress->update([
-            'description' => $data['description'],
-            'time_start' => $data['time_start'],
-            'time_end' => $data['time_end'],
-            'task_id' => $data['task_id'],
-        ]);
+            $progress->update([
+                'description' => $data['description'],
+                'time_start' => $data['time_start'],
+                'time_end' => $data['time_end'],
+                'task_id' => $data['task_id'],
+            ]);
 
-        if ($request['attachments'] != null) {
-            $i = 0;
-            foreach ($request->file('attachments') as $file) {
-                $attachment = new ProgressAttachment;
-                $file_name = time() . $i . '-' . $file->getClientOriginalName();
-                $file->move(public_path('attachments\progress'), $file_name);
-                $attachment->name = $file_name;
-                $attachment->progress_id = $progress['id'];
-                $attachment->save();
-                $i++;
-                if ($request['attachments'] == $file_name){
-                    $request['attachments']::delete($file_name);
+            if ($request['attachments'] != null) {
+                $i = 0;
+                foreach ($request->file('attachments') as $file) {
+                    $attachment = new ProgressAttachment;
+                    $file_name = time() . $i . '-' . $file->getClientOriginalName();
+                    $file->move(public_path('attachments\progress'), $file_name);
+                    $attachment->name = $file_name;
+                    $attachment->progress_id = $progress['id'];
+                    $attachment->save();
+                    $i++;
+                    if ($request['attachments'] == $file_name) {
+                        $request['attachments']::delete($file_name);
+                    }
                 }
             }
+            return redirect()->route('student.task.show', $data['task_id']);
+        }else{
+            return redirect()->route('student.task.show', $data['task_id']);
+
         }
-
-        return redirect()->route('student.task.show', $data['task_id']);
-
     }
 
     /**
@@ -150,7 +153,12 @@ class ProgressController extends Controller
      */
     public function destroy(Progress $progress)
     {
-        $progress->delete();
-        return redirect()->back();
+        if ($progress->status == '0') {
+            $progress->attachments->delete();
+            $progress->delete();
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
     }
 }

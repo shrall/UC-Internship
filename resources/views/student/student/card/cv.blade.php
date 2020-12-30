@@ -6,10 +6,11 @@
             <div class="file-field">
                 <div class="row">
                     <div class="d-flex justify-content-center">
-                        <input type="file">
                         <div class="d-md-block">
                             <div class="font-weight-normal mb-1" id="pp-name" style="color: blue">
-                                Marshall Portfolio.pdf
+                                <p class="text-info"><a href="/cv/{{$user->info->cv}}">
+                                    {{ $user->info->cv }}
+                                    </a></p>
                             </div>
                         </div>
                     </div>

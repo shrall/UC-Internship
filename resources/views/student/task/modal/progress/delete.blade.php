@@ -15,10 +15,10 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form action="{{route('admin.project.destroy', 1)}}" method="POST">
+                <form action="{{route('student.progress.destroy', $progress->id)}}" method="POST">
                     @csrf
                     <input name="_method" type="hidden" value="DELETE">
-                    <button type="button" class="btn btn-sm btn-white mr-3 mb-3">Confirm</button>
+                    <button type="submit" class="btn btn-sm btn-white mr-3 mb-3">Confirm</button>
                 </form>
             </div>
         </div>

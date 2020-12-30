@@ -7,19 +7,24 @@
 @section('content')
     <div class="row">
         <div class="col-12 col-xl-8">
-            <form action="{{ route('student.student.update', 1) }}" method="POST">
+            <form action="{{ route('student.user.update', $user->id)}}" method="POST" enctype="multipart/form-data">
                 <div class="card card-body bg-white border-light shadow-sm mb-4">
                     <h2 class="h5 mb-4">General information</h2>
                     @csrf
+
+                    <input name="_method" type="hidden" value="PATCH">
+                    <input type="hidden" name="user" value="{{$user->id}}">
+
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="phone"><span class="fab fa-whatsapp"></span> Phone Number</label>
-                            <input class="form-control" id="phone" type="number" placeholder="Phone Number"
+                            <input class="form-control" id="phone" name="phone" type="number" placeholder="Phone Number"
                                    value="{{ $user->detailable->phone }}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="Line"><span class="fab fa-line"></span> Line</label>
-                            <input class="form-control" id="line" type="text" placeholder="Enter your line address"
+                            <input class="form-control" id="line_account" name="line_account" type="text"
+                                   placeholder="Enter your line address"
                                    value="{{ $user->detailable->line_account }}" required>
                         </div>
                     </div>
@@ -60,11 +65,9 @@
                                 <span class="icon icon-md">
                                     <span class="fas fa-file-pdf mr-3"></span>
                                 </span>
-                                            <input type="file">
+                                            <input type="file" name="cv" id="cv">
                                             <div class="d-md-block text-left">
-                                                <div class="font-weight-normal text-dark mb-1" id="pp-name">Choose
-                                                    File
-                                                </div>
+                                                <div class="font-weight-normal text-dark mb-1" id="pp-name">Choose File</div>
                                                 <div class="text-gray small">PDF Max size of 800K</div>
                                             </div>
                                         </div>
@@ -78,6 +81,7 @@
                     </div>
                 </div>
             </form>
+
         </div>
         <div class="col-12 col-xl-4">
             <div class="row">
