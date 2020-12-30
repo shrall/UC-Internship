@@ -50,7 +50,7 @@ class StaffController extends Controller
      */
     public function show(User $staff)
     {
-        $pages = 'student';
+        $pages = 'staff';
         if ($staff->role_id != 2 && $staff->detailable_type != "App\Models\Staff") {
             return redirect()->back();
         } else {
