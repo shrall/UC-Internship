@@ -5,10 +5,13 @@
                 <div class="profile-cover rounded-top"
                     data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
                 <div class="card-body pb-5">
-                    <img @if ($student->detailable->photo != null)
-                    src="/profile_picture/student/{{$student->detailable->photo}}" @else
-                    src="{{ asset('assets/img/team/profile-picture-1.jpg') }}" @endif
-                    class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Profile Picture">
+                    @if($student->detailable->photo != null)
+                        <img src="/profile_picture/student/{{ $student->detailable->photo }}"
+                            class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Profile Picture">
+                    @else
+                        <img src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
+                            class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Profile Picture">
+                    @endif
                     <h4 class="h3">{{ $student->detailable->name }}</h4>
                     @if ($student->detailable->gender == 'M')
                     <h5 class="font-weight-normal">Student - Male</h5>
@@ -23,7 +26,7 @@
                         <span class="fa fa-edit"></span> Edit Profile
                     </a>
                     <a class="btn btn-sm btn-secondary"
-                        href="{{ route('admin.history.show', $student->history->id) }}">
+                        href="{{ route('admin.history.show', $student->id) }}">
                         <span class="fa fa-history"></span> Time History
                     </a>
                 </div>

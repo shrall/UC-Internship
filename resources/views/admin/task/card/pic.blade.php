@@ -6,7 +6,7 @@
                 <img class="rounded" src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
                     alt="change avatar">
             </div>
-            <div class="row align-items-center pb-4 mb-4">
+            <div class="pb-4 mb-4 mx-0">
                 <div class="col-auto">
                     <a
                         href="{{ route('admin.student.show', $task->projectuser->uci_user_id) }}">

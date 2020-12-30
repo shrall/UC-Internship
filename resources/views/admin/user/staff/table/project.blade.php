@@ -15,7 +15,7 @@
                             <th class="border-0" width="25px">#</th>
                             <th class="border-0">Project Name</th>
                             <th class="border-0">Category</th>
-                            <th class="border-0">Supervisor</th>
+                            <th class="border-0">Students</th>
                             <th class="border-0">Deadline</th>
                             <th class="border-0">Period</th>
                             <th class="border-0">Status</th>
@@ -23,7 +23,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($student->applies as $project)
+                        @foreach($staff->projects as $project)
                             <!-- Item -->
                             <tr>
                                 <td>
@@ -43,18 +43,8 @@
                                 @if($project->category == 2)
                                     <td><span class="fas fa-question-circle mr-2"></span>Other</td>
                                 @endif
-                                @if($project->supervisor->detailable_type == "App\Models\Staff")
-                                <td>
-                                    <a
-                                        href="{{ route('admin.staff.show', $project->supervisor_id) }}">{{ $project->supervisor->detailable->name }}</a>
-                                </td>
-                                @endif
-                                @if($project->supervisor->detailable_type == "App\Models\Lecturer")
-                                <td>
-                                    <a
-                                        href="{{ route('admin.lecturer.show', $project->supervisor_id) }}">{{ $project->supervisor->detailable->name }}</a>
-                                </td>
-                                @endif
+                                <td>{{ count($project->projectusers->where('status', 1)) }}
+                                    Student(s)</td>
                                 <td>{{ date('d F Y', strtotime($project->deadline)) }}
                                 </td>
                                 @if($project->period->term == 0)

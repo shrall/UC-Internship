@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lecturer;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LecturerController extends Controller
@@ -15,7 +16,9 @@ class LecturerController extends Controller
      */
     public function index()
     {
-        //
+        $pages = 'lecturer';
+        $lecturers = User::where('detailable_type', 'App\Models\Lecturer')->whereNotIn('role_id', [1])->get();
+        return view('admin.user.lecturer.index', compact('pages', 'lecturers'));
     }
 
     /**
@@ -45,9 +48,14 @@ class LecturerController extends Controller
      * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Http\Response
      */
-    public function show(Lecturer $lecturer)
+    public function show(User $lecturer)
     {
-        //
+        $pages = 'lecturer';
+        if ($lecturer->role_id != 2 && $lecturer->detailable_type != "App\Models\lecturer") {
+            return redirect()->back();
+        } else {
+            return view('admin.user.lecturer.detail', compact('pages', 'lecturer'));
+        }
     }
 
     /**
