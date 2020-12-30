@@ -19,14 +19,10 @@
                     @endif
                     <p class="text-gray mb-4">{{ $student->detailable->department->name }}
                         ({{ $student->detailable->department->initial }}) - Class of {{$student->detailable->batch}}</p>
-                    <a class="btn btn-sm btn-primary"
-                       href="{{ route('admin.student.edit', $student->id) }}">
-                        <span class="fa fa-edit"></span> Edit Profile
-                    </a>
-                    <a class="btn btn-sm btn-secondary"
-                       href="{{ route('admin.history.show', $student->history->id) }}">
-                        <span class="fa fa-history"></span> Time History
-                    </a>
+{{--                    <a class="btn btn-sm btn-secondary"--}}
+{{--                       href="{{ route('supervisor.history.show', $student->history->id) }}">--}}
+{{--                        <span class="fa fa-history"></span> Time History--}}
+{{--                    </a>--}}
                 </div>
             </div>
         </div>

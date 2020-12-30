@@ -4,13 +4,13 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="h6 modal-title">Create New Task</h2><button type="button" class="btn-close"
+                <h2 class="h6 modal-title">Edit Task</h2><button type="button" class="btn-close"
                                                                        data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('supervisor.task.store') }}" method="POST">
+                <form action="{{ route('supervisor.task.update', $task->id) }}" method="POST">
                     @csrf
-                    <label for="name">Name</label>
+                    <label for="name">{{$task->name}}</label>
                     <input class="form-control" id="name" name="name" type="text" placeholder="Task Name" required>
                     <label for="description" class="mt-4">Description</label>
                     <textarea class="form-control" id="description" name="description" placeholder="Description"
@@ -26,7 +26,7 @@
 
                     </select>
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-primary">Add New Task</button>
+                        <button type="submit" class="btn btn-primary">Edit Task</button>
                     </div>
                 </form>
             </div>

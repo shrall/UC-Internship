@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use App\Models\Student;
 use App\Models\ProjectUser;
 use App\Models\User;
@@ -49,9 +50,10 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show(User $student)
     {
-        //
+        $pages = 'student';
+        return view('supervisor.user.student.detail', compact('pages', 'student'));
     }
 
     /**

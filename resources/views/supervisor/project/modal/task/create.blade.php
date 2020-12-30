@@ -20,8 +20,8 @@
 
                     <label for="pic" class="mt-4">PIC</label>
                     <select name="pic" class="form-select w-100 mb-0">
-                        @foreach ($project->works as $student)
-                            <option value="{{$student->id}}" required>{{$student->name.' ('. $student->email .')'}}</option>
+                        @foreach ($project->projectusers as $pu)
+                            <option value="{{$pu->id}}" required>{{$pu->user->detailable->name.' ('. $pu->user->detailable->email .')'}}</option>
                         @endforeach
 
                     </select>

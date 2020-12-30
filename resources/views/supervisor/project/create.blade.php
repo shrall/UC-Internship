@@ -63,7 +63,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="duration"><span class="fa fa-clock"></span> Period</label>
                         <input type="hidden" name="period" value="{{ $currentperiod->id }}">
-                        @if($project->period->term == 0)
+                        @if($currentperiod->term == 0)
                             <input class="form-control" type="text"
                                 value="{{ date("Y", strtotime($currentperiod->start)) }}-{{ date("Y", strtotime($currentperiod->start))+1 }} / Odd"
                                 placeholder="Period" disabled>

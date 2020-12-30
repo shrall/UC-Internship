@@ -50,7 +50,16 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = Task::create([
+            'name' => $request['name'],
+            'description' => $request['description'],
+            'deadline' => $request['deadline'],
+            'duration' => '0',
+            'status' => '0',
+            'pu_id' => $request['pic'],
+        ]);
+
+        return redirect()->route('supervisor.project.show', $task->projectuser->uci_project_id);
     }
 
     /**
@@ -73,7 +82,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-
+        return view('supervisor.task.detail', compact('pages', 'task'));
     }
 
     /**
@@ -85,7 +94,8 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $task->update($request->all());
+        return redirect()->route('supervisor.project.show', $task->projectuser->uci_project_id);
     }
 
     /**
