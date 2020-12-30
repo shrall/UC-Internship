@@ -21,7 +21,8 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <form action="{{ route('supervisor.project.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('supervisor.project.store') }}" method="POST"
+            enctype="multipart/form-data">
             <div class="card card-body bg-white border-light shadow-sm mb-4">
                 <h2 class="h5 mb-4">Add New Project</h2>
                 @csrf
@@ -29,7 +30,8 @@
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="project_name"><span class="fa fa-clipboard-list"></span> Project Name</label>
-                            <input class="form-control" id="name" name="name" type="text" placeholder="Project Name" required>
+                            <input class="form-control" id="name" name="name" type="text" placeholder="Project Name"
+                                required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
@@ -55,14 +57,21 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="deadline"><span class="fa fa-hourglass-end"></span> Deadline</label>
-                        <input class="form-control" id="deadline" name="deadline" type="date" placeholder="Deadline" min="{{$currentperiod->start}}" max="{{$currentperiod->end}}" required>
+                        <input class="form-control" id="deadline" name="deadline" type="date" placeholder="Deadline"
+                            min="{{ $currentperiod->start }}" max="{{ $currentperiod->end }}" required>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="duration"><span class="fa fa-clock"></span> Period</label>
                         <input type="hidden" name="period" value="{{ $currentperiod->id }}">
-                        <input class="form-control" type="text"
-                            value="{{ date("Y", strtotime($currentperiod->start)) }}-{{ date("Y", strtotime($currentperiod->end)) }} / @if ($currentperiod->term == 0) Odd @else Even @endif"
-                            placeholder="Period" disabled>
+                        @if($project->period->term == 0)
+                            <input class="form-control" type="text"
+                                value="{{ date("Y", strtotime($currentperiod->start)) }}-{{ date("Y", strtotime($currentperiod->start))+1 }} / Odd"
+                                placeholder="Period" disabled>
+                        @else
+                            <input class="form-control" type="text"
+                                value="{{ idate("Y", strtotime($currentperiod->end))-1 }}-{{ date("Y", strtotime($currentperiod->end)) }} / Even"
+                                placeholder="Period" disabled>
+                        @endif
                     </div>
                 </div>
                 <h2 class="h5 mb-4">Upload Attachments</h2>
