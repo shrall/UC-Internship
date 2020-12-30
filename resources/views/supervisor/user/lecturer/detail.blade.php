@@ -60,7 +60,7 @@
                             <h4 class="h3">{{$lecturer->detailable->title->name}}</h4>
                             {{--                            <h5 class="font-weight-normal">Head Department</h5>--}}
                             <p class="text-gray mb-4">{{$lecturer->detailable->department->name}} ({{$lecturer->detailable->department->initial}})</p>
-                            <a class="btn btn-sm btn-primary" >
+                            <a class="btn btn-sm btn-primary" href="{{ route('supervisor.lecturer.edit', $lecturer->id) }}">
                                 <span class="fa fa-edit"></span> Edit Profile
                             </a>
                         </div>
@@ -71,7 +71,6 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <h2 class="h4"><span class="fa fa-clipboard-list"></span> Project List</h2>
             @include('supervisor.user.lecturer.table.project')
         </div>
     </div>

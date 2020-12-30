@@ -64,9 +64,10 @@ class StaffController extends Controller
      * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function edit(Staff $staff)
+    public function edit(User $staff)
     {
-        //
+        $pages = 'staff';
+        return view('supervisor.user.staff.edit', compact('pages','staff'));
     }
 
     /**
@@ -76,9 +77,10 @@ class StaffController extends Controller
      * @param  \App\Models\Staff  $staff
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Staff $staff)
+    public function update(Request $request, User $staff)
     {
-        //
+        $staff->update($request->all());
+        return redirect()->route('supervisor.user.staff.detail');
     }
 
     /**

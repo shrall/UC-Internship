@@ -64,9 +64,10 @@ class LecturerController extends Controller
      * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lecturer $lecturer)
+    public function edit(User $lecturer)
     {
-        //
+        $pages = 'lecturer';
+        return view('supervisor.user.lecturer.edit', compact('pages','lecturer'));
     }
 
     /**
@@ -76,9 +77,10 @@ class LecturerController extends Controller
      * @param  \App\Models\Lecturer  $lecturer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lecturer $lecturer)
+    public function update(Request $request, User $lecturer)
     {
-        //
+        $lecturer->update($request->all());
+        return redirect()->route('supervisor.user.staff.detail');
     }
 
     /**
