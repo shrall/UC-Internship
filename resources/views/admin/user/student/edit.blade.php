@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <div class="mt-3">
-                    <button type="submit" class="btn btn-primary">Add Student</button>
+                    <button type="submit" class="btn btn-primary">Update Student</button>
                 </div>
             </div>
         </form>
