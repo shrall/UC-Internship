@@ -19,5 +19,13 @@
         </h2>
     </div>
 </div>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-4">
+    <div>
+        <a class="btn btn-secondary text-dark mr-2 dropdown-toggle"
+            href="{{ route('admin.lecturer.create') }}">
+            <span class="fas fa-plus mr-2"></span>New
+        </a>
+    </div>
+</div>
 @include('admin.user.lecturer.table.lecturer')
 @endsection
