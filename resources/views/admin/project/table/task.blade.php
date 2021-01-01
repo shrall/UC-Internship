@@ -14,6 +14,7 @@
                         <tr>
                             <th class="border-0">Name</th>
                             <th class="border-0">PIC</th>
+                            <th class="border-0">Duration</th>
                             <th class="border-0">Status</th>
                         </tr>
                     </thead>
@@ -23,23 +24,26 @@
                                 <!-- Item -->
                                 <tr>
                                     <td>
-                                        <a href="{{ route('admin.task.show', $task->id) }}">{{ $task->name }}</a>
+                                        <a
+                                            href="{{ route('admin.task.show', $task->id) }}">{{ $task->name }}</a>
                                     </td>
                                     <td class="font-weight-bold proj-name">
-                                        <a href="{{ route('admin.student.show', $task->projectuser->uci_user_id) }}">
+                                        <a
+                                            href="{{ route('admin.student.show', $task->projectuser->uci_user_id) }}">
                                             {{ $task->projectuser->user->detailable->name }}</a>
                                     </td>
-                                    @if ($task->status == 0)
-                                    <td class="text-warning">
-                                        <span class="fas fa-clock"></span>
-                                        <span class="font-weight-bold">Ongoing</span>
-                                    </td>
+                                    <td>{{ $task->duration }} Hours</td>
+                                    @if($task->status == 0)
+                                        <td class="text-warning">
+                                            <span class="fas fa-clock"></span>
+                                            <span class="font-weight-bold">Ongoing</span>
+                                        </td>
                                     @endif
-                                    @if ($task->status == 1)
-                                    <td class="text-success">
-                                        <span class="fas fa-check"></span>
-                                        <span class="font-weight-bold">Completed</span>
-                                    </td>
+                                    @if($task->status == 1)
+                                        <td class="text-success">
+                                            <span class="fas fa-check"></span>
+                                            <span class="font-weight-bold">Completed</span>
+                                        </td>
                                     @endif
                                 </tr>
                             @endforeach
