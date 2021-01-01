@@ -42,7 +42,12 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //create projectuser
+        ProjectUser::create([
+            'status' => '0',
+            'uci_user_id' => Auth::id(),
+            'uci_project_id' => $request->project,
+        ]);
+        return redirect()->route('student.project.index');
     }
 
     /**

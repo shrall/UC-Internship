@@ -50,12 +50,11 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //!NOTE disini kalo task yang diliat bukan punyanya user yang login, redirect()->back()
+        if($task->projectuser->uci_user_id != Auth::id()){
+            return redirect()->back();
+        }
         $pages = "project";
-
         return view('student.task.detail', compact('pages','task'));
-
-        // panggil semua progress dari task tsb
     }
 
     /**
