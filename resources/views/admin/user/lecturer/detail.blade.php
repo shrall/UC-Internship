@@ -33,8 +33,8 @@
 </div>
 @endif
 <div class="row mb-3">
-    @include('admin.user.lecturer.card.detail')
     @include('admin.user.lecturer.card.info')
+    @include('admin.user.lecturer.card.detail')
 </div>
 @include('admin.user.lecturer.table.project')
 @endsection
