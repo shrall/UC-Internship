@@ -52,19 +52,12 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
         $pages = "student";
-
-//        dd($student);
-
         if ($user->id != Auth::id()) {
             return redirect()->back();
         } else {
-              return view('student.student.detail', compact('pages','user'));
+            return view('student.user.student.detail', compact('pages', 'user'));
         }
-
-        //ngambil semua projectuser yang user idnya punyanya yang login
-        //ngambil semua task yang dipunya sama orang yang login
     }
 
     /**
@@ -75,15 +68,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
         $pages = 'student';
         if ($user->id != Auth::id()) {
             return redirect()->back();
         } else {
-            return view('student.student.edit', compact('pages', 'user'));
-
+            return view('student.user.student.edit', compact('pages', 'user'));
         }
-
     }
 
     /**
@@ -95,21 +85,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
-        $pages = " ";
-
-        //update user & student-> karena kalo ngrubah nama, nama di user&student kerubah
-        //uplod foto&cv
-
-        if($request->photo != null){
-            Storage::delete($request->photo);
-        }
-        if($request->cv != null){
-            Storage::delete($request->cv);
-        }
-
-//        dd($request);
-
         $data = $request->validate([
             'phone' => 'required|numeric',
             'line_account' => 'required',
@@ -136,10 +111,7 @@ class UserController extends Controller
                 'cv' => $cv_name,
             ]);
         }
-//        dd("berhasil");
-
-        return redirect()->route('student.user.show', $user->id);
-
+        return redirect()->route('student.user.show', Auth::id());
     }
 
     /**
@@ -157,7 +129,8 @@ class UserController extends Controller
         //disini bisa return view ke export.blade cuma buat ngecek doang
     }
 
-    public function export(){
+    public function export()
+    {
         //ini baru exportnya :v
     }
 }

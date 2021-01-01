@@ -27,7 +27,7 @@ class ProgressController extends Controller
      */
     public function create()
     {
-        //krn modal ga perlu return view kesini
+        //
     }
 
     /**
@@ -38,20 +38,6 @@ class ProgressController extends Controller
      */
     public function store(Request $request)
     {
-        //create progress :v
-        //uplod attachment
-
-//        dd($request);
-
-        //disini dia cari task id (kita mencari status project melalui task id yang sudah kita dapatkan)
-        $task = Task::find($request['task_id']);
-//        dd($task);
-
-        //disini kita dari task menuju status project melalui projectuser (SELALU CEK MODEL UNTUK HUBUNGAN)
-        if ($task->projectuser->project->status == '3'){
-            return redirect()->back();
-        }
-
         $data = $request->validate([
             'description' => 'required|string',
             'time_start' => 'required',
@@ -81,7 +67,6 @@ class ProgressController extends Controller
         }
 
         return redirect()->route('student.task.show', $data['task_id']);
-
     }
 
     /**
@@ -103,7 +88,7 @@ class ProgressController extends Controller
      */
     public function edit(Progress $progress)
     {
-        //krn modal ga perlu return view kesini
+        //
     }
 
     /**
@@ -115,47 +100,7 @@ class ProgressController extends Controller
      */
     public function update(Request $request, Progress $progress)
     {
-
-        //klo status project suspend maka lgs mental
-        if ($progress->task->projectuser->project->status == '3'){
-            return redirect()->back();
-        }
-
-        //update progress
-        if ($progress->status == '0') {
-            $data = $request->validate([
-                'description' => 'required|string',
-                'time_start' => 'required',
-                'time_end' => 'required',
-                'task_id' => 'required'
-            ]);
-
-            $progress->update([
-                'description' => $data['description'],
-                'time_start' => $data['time_start'],
-                'time_end' => $data['time_end'],
-                'task_id' => $data['task_id'],
-            ]);
-
-            if ($request['attachments'] != null) {
-                $i = 0;
-                foreach ($request->file('attachments') as $file) {
-                    $attachment = new ProgressAttachment;
-                    $file_name = time() . $i . '-' . $file->getClientOriginalName();
-                    $file->move(public_path('attachments\progress'), $file_name);
-                    $attachment->name = $file_name;
-                    $attachment->progress_id = $progress['id'];
-                    $attachment->save();
-                    $i++;
-                }
-            }
-            return redirect()->route('student.task.show', $data['task_id']);
-        }else{
-
-
-            return redirect()->route('student.task.show', $progress->task_id);
-
-        }
+        //
     }
 
     /**
@@ -177,9 +122,7 @@ class ProgressController extends Controller
                 $attachment->delete();
             }
             $progress->delete();
-            return redirect()->back();
-        }else{
-            return redirect()->back();
         }
+        return redirect()->back();
     }
 }

@@ -1,11 +1,10 @@
-{{-- ini modal yang nunjukin detail dari suatu progress --}}
 <div class="modal fade" id="modal-progress-{{ $progress->id }}" tabindex="-1" role="dialog"
-     aria-labelledby="modal-progress-{{ $progress->id }}" aria-hidden="true">
+    aria-labelledby="modal-progress-{{ $progress->id }}" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="h6 modal-title">{{ $task->name }}</h2><button type="button" class="btn-close"
-                                                                         data-dismiss="modal" aria-label="Close"></button>
+                <h2 class="h6 modal-title">{{ $task->name }}</h2>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <label for="">Description</label>
@@ -23,7 +22,7 @@
                 <label for="">Attachment</label>
                 @foreach($progress->attachments as $attachment)
                     <p class="text-info"><span class="fa fa-paperclip"></span>
-                        <a href="/attachments/progress/{{$attachment->name}}">
+                        <a href="/attachments/progress/{{ $attachment->name }}">
                             {{ $attachment->name }}
                         </a>
                     </p>
@@ -49,4 +48,3 @@
         </div>
     </div>
 </div>
-

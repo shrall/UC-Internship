@@ -12,6 +12,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
 {
@@ -154,10 +156,16 @@ class StudentController extends Controller
     public function update(Request $request, User $student)
     {
         if ($request->filled('password')) {
-            $data = $request->validate([
+            Validator::make($request->all(), [
                 'name' => 'required',
-                'nim' => 'required|numeric',
-                'email' => 'required',
+                'nim' => [
+                    'required',
+                    Rule::unique('students', 'nim')->ignore($student->detailable->id),
+                ],
+                'email' => [
+                    'required',
+                    Rule::unique('uci_users', 'email')->ignore($student->id),
+                ],
                 'password' => 'string|min:8',
                 'phone' => 'required|numeric',
                 'line_account' => 'required',
@@ -168,12 +176,18 @@ class StudentController extends Controller
                 'scholarship' => 'required',
                 'gpa' => 'required|numeric|between:0.00,4.00',
                 'photo' => 'image',
-            ]);
+            ])->validate();
         } else {
-            $data = $request->validate([
+            Validator::make($request->all(), [
                 'name' => 'required',
-                'nim' => 'required|numeric',
-                'email' => 'required',
+                'nim' => [
+                    'required',
+                    Rule::unique('students', 'nim')->ignore($student->detailable->id),
+                ],
+                'email' => [
+                    'required',
+                    Rule::unique('uci_users', 'email')->ignore($student->id),
+                ],
                 'phone' => 'required|numeric',
                 'line_account' => 'required',
                 'gender' => 'required',
@@ -183,11 +197,11 @@ class StudentController extends Controller
                 'scholarship' => 'required',
                 'gpa' => 'required|numeric|between:0.00,4.00',
                 'photo' => 'image',
-            ]);
+            ])->validate();
         }
 
         if ($request->has('photo')) {
-            $file_name = time() . '-' . $data['photo']->getClientOriginalName();
+            $file_name = time() . '-' . $request->photo->getClientOriginalName();
             $request->photo->move(public_path('profile_picture\student'), $file_name);
             $student->detailable->update([
                 'photo' => $file_name,
@@ -195,21 +209,21 @@ class StudentController extends Controller
         }
 
         $student->detailable->update([
-            'nim' => $data['nim'],
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'batch' => $data['batch'],
-            'gender' => $data['gender'],
-            'phone' => $data['phone'],
-            'line_account' => $data['line_account'],
-            'department_id' => $data['department'],
+            'nim' => $request->nim,
+            'name' => $request->name,
+            'email' => $request->email,
+            'batch' => $request->batch,
+            'gender' => $request->gender,
+            'phone' => $request->phone,
+            'line_account' => $request->line_account,
+            'department_id' => $request->department,
         ]);
 
         if ($request->filled('password')) {
             $student->update([
                 'name' => $student['name'],
                 'email' => $student['email'],
-                'password' => Hash::make($data['password']),
+                'password' => Hash::make($request->password),
             ]);
         } else {
             $student->update([
@@ -218,19 +232,19 @@ class StudentController extends Controller
             ]);
         }
 
-        if ($student->info->time_remaining != $data['time_remaining']) {
+        if ($student->info->time_remaining != $request->time_remaining) {
 
             History::create([
                 'duration_before' => $student->info->time_remaining,
-                'duration_after' => $data['time_remaining'],
+                'duration_after' => $request->time_remaining,
                 'student_id' => $student->id,
                 'supervisor_id' => Auth::id(),
             ]);
 
             $student->info->update([
-                'time_remaining' => $data['time_remaining'],
-                'gpa' => $data['gpa'],
-                'scholarship_id' => $data['scholarship']
+                'time_remaining' => $request->time_remaining,
+                'gpa' => $request->gpa,
+                'scholarship_id' => $request->scholarship
             ]);
         }
 

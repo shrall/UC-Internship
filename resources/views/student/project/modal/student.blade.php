@@ -1,6 +1,6 @@
 {{-- ini yang nunjukin desc singkat dari student kalo di klik namanya di table --}}
 <div class="modal fade" id="modal-student-{{ $user->id }}" tabindex="-1" role="dialog"
-     aria-labelledby="modal-student-{{ $user->id }}" aria-hidden="true">
+    aria-labelledby="modal-student-{{ $user->id }}" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -31,7 +31,8 @@
                         <div class="col-md-6 mb-3">
                             <div>
                                 <label for="nim"><span class="fa fa-building"></span> Department</label>
-                                <h2 class="h5 mb-4">{{ $user->detailable->department->initial }}</h2>
+                                <h2 class="h5 mb-4">{{ $user->detailable->department->name }} -
+                                    ({{ $user->detailable->department->initial }})</h2>
                             </div>
                         </div>
                     </div>

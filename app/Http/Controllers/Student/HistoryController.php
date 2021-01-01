@@ -18,11 +18,7 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        $pages = " ";
-
-        $info = Student::find(Auth::user()->detailable_id);
-
-        // ngambil history punyanya student yang login
+        //
     }
 
     /**
@@ -54,12 +50,12 @@ class HistoryController extends Controller
      */
     public function show(User $history)
     {
-
-        $pages = "history";
-        if ($history->id != Auth::id()) {
+        $pages = 'student';
+        $user = $history;
+        if ($user->id != Auth::id()) {
             return redirect()->back();
         } else {
-            return view('student.history.detail', compact('pages', 'history'));
+            return view('student.history.detail', compact('pages', 'user'));
         }
     }
 

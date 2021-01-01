@@ -1,55 +1,37 @@
-<div class="col-12 col-xl-8">
-    <div class="card card-body bg-white border-light shadow-sm mb-4">
-        <h2 class="h4 mb-4">General information</h2>
-        <form>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div>
-                        <label for="full_name">Full Name</label>
-                        <h2 class="h5 mb-4">{{ $student->detailable->name }}</h2>
-                    </div>
+<div class="col-12 col-xl-4">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card border-light text-center p-0">
+                <div class="profile-cover rounded-top"
+                    data-background="{{ asset('assets/img/profile-cover.jpg') }}">
                 </div>
-                <div class="col-md-6 mb-3">
-                    <div>
-                        <label for="nim">NIM</label>
-                        <h2 class="h5 mb-4">{{ $student->detailable->nim }}</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-3">
-                    <label for="email"><span class="fa fa-envelope mr-2"></span>E-Mail</label>
-                    <h2 class="h5 mb-4">{{ $student->email }}</h2>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="email"><span class="fab fa-whatsapp mr-2"></span>Phone Number</label>
-                    <h2 class="h5 mb-4">{{ $student->detailable->phone }}</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="email"><span class="fab fa-line mr-2"></span>Line ID</label>
-                        <h2 class="h5 mb-4">{{$student->detailable->line_account}}</h2>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="email"><span class="fa fa-book mr-2"></span>Scholarship</label>
-                    <h2 class="h5 mb-4">{{ $student->info->scholarship->name }}
-                        ({{ $student->info->scholarship->grade }})</h2>
+                <div class="card-body pb-5">
+                    @if($student->detailable->photo != null)
+                        <img src="/profile_picture/student/{{ $student->detailable->photo }}"
+                            class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Profile Picture">
+                    @else
+                        <img src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
+                            class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Profile Picture">
+                    @endif
+                    <h4 class="h3">{{ $student->detailable->name }}</h4>
+                    @if ($student->detailable->gender == 'M')
+                    <h5 class="font-weight-normal">Student - Male</h5>
+                    @endif
+                    @if ($student->detailable->gender == 'F')
+                    <h5 class="font-weight-normal">Student - Female</h5>
+                    @endif
+                    <p class="text-gray mb-4">{{ $student->detailable->department->name }}
+                        ({{ $student->detailable->department->initial }}) - Class of {{$student->detailable->batch}}</p>
+                    <a class="btn btn-sm btn-primary"
+                        href="{{ route('admin.student.edit', $student->id) }}">
+                        <span class="fa fa-edit"></span> Edit Profile
+                    </a>
+                    <a class="btn btn-sm btn-secondary"
+                        href="{{ route('admin.history.show', $student->id) }}">
+                        <span class="fa fa-history"></span> Time History
+                    </a>
                 </div>
             </div>
-            <div class="row mb-4">
-                <div class="col-md-6 mb-3">
-                    <label for="email"><span class="fa fa-clock"></span> Time Remaining</label>
-                    <h2 class="h5 mb-4">{{ $student->info->time_remaining }}
-                        Hours</h2>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="email"><span class="fa fa-graduation-cap"></span> GPA</label>
-                    <h2 class="h5 mb-4">
-                        {{ number_format((float)$student->info->gpa, 2, '.', '') }}
-                    </h2>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>

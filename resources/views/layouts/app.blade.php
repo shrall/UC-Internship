@@ -190,6 +190,19 @@
         });
     </script>
     <script>
+        $('#cv').change(function () {
+            var filename = $('#cv').val();
+            if (filename.substring(3, 11) == 'fakepath') {
+                filename = filename.substring(12);
+            }
+            if (filename == '') {
+                $('#cv-name').html('Choose Image');
+            } else {
+                $('#cv-name').html(filename);
+            }
+        });
+    </script>
+    <script>
         $('#attachments').change(function () {
             var filecount = document.getElementById('attachments').files.length;
             if (filecount == 0) {

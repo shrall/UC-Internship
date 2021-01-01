@@ -1,4 +1,3 @@
-{{-- ini nunjukin history penambahan jam  --}}
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card border-light shadow-sm">
@@ -14,25 +13,25 @@
             <div class="card card-body border-light shadow-sm table-wrapper table-responsive">
                 <table class="table table-hover">
                     <thead>
-                    <tr>
-                        <th class="border-0" width="25px">#</th>
-                        <th class="border-0">Duration Before</th>
-                        <th class="border-0">Duration After</th>
-                        <th class="border-0">Timestamp</th>
-                        <th class="border-0">Staff Name</th>
-                    </tr>
+                        <tr>
+                            <th class="border-0" width="25px">#</th>
+                            <th class="border-0">Duration Before</th>
+                            <th class="border-0">Duration After</th>
+                            <th class="border-0">Timestamp</th>
+                            <th class="border-0">Staff Name</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    @foreach($history->histories as $history)
-                        <!-- Item -->
-                        <tr>
-                            <td class="font-weight-bold">{{ $loop->iteration }}</td>
-                            <td class="font-weight-bold">{{ $history->duration_before }} hours</td>
-                            <td class="font-weight-bold">{{ $history->duration_after }} hours</td>
-                            <td class="font-weight-bold">{{ $history->created_at }}</td>
-                            <td class="font-weight-bold">{{ $history->supervisor->detailable->name }}</td>
-                        </tr>
-                    @endforeach
+                        @foreach(Auth::user()->histories as $history)
+                            <!-- Item -->
+                            <tr>
+                                <td class="font-weight-bold">{{ $loop->iteration }}</td>
+                                <td class="font-weight-bold">{{ $history->duration_before }} hours</td>
+                                <td class="font-weight-bold">{{ $history->duration_after }} hours</td>
+                                <td class="font-weight-bold">{{ $history->created_at }}</td>
+                                <td class="font-weight-bold">{{ $history->supervisor->detailable->name }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

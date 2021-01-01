@@ -1,5 +1,5 @@
-<div class="row mb-3">
-    <div class="col-12">
+<div class="row">
+    <div class="col-12 mb-4">
         <div class="card border-light shadow-sm">
             <div class="card-header border-0 pb-2">
                 <div class="row align-items-center">
@@ -23,7 +23,7 @@
                     </thead>
                     <tbody>
                         @foreach(Auth::User()->applies as $project)
-                            @if($project->pivot->status == '1')
+                            @if($project->pivot->status != '0')
                                 <tr>
                                     <td><a href="{{ route('student.project.show', $project->id) }}"
                                             class="text-primary font-weight-bold">{{ $project->id }}</a></td>
@@ -31,18 +31,22 @@
                                         <a
                                             href="{{ route('student.project.show', $project->id) }}">{{ $project->name }}</a>
                                     </td>
-                                    @if($project->category == 0)
-                                        <td><span class="fas fa-calendar-week mr-2"></span>Event</td>
-                                    @endif
-                                    @if($project->category == 1)
-                                        <td><span class="fas fa-school mr-2"></span>Education</td>
-                                    @endif
-                                    @if($project->category == 2)
-                                        <td><span class="fas fa-question-circle mr-2"></span>Other</td>
-                                    @endif
+
+                                    <td>
+                                        @if($project->category == "0")
+                                            <span class="fas fa-calendar-week"></span>
+                                            <span> Event</span>
+                                        @endif
+                                        @if($project->category == "1")
+                                            <span class="fas fa-school"></span>
+                                            <span> Education</span>
+                                        @endif
+                                        @if($project->category == "2")
+                                            <span class="fas fa-question-circle"></span>
+                                            <span> Other</span>
+                                        @endif
                                     <td>{{ $project->supervisor->detailable->name }}</td>
-                                    <td>{{ date('d F Y', strtotime($project->deadline)) }}
-                                    </td>
+                                    <td>{{ $project->deadline }}</td>
                                     @if($project->period->term == 0)
                                         <td>{{ date("Y", strtotime($project->period->start)) }}-{{ idate("Y", strtotime($project->period->start))+1 }}
                                             / Odd </td>
@@ -50,23 +54,23 @@
                                         <td>{{ idate("Y", strtotime($project->period->end))-1 }}-{{ date("Y", strtotime($project->period->end)) }}
                                             / Even </td>
                                     @endif
-                                    @if($project->status == 1)
-                                        <td class="text-warning">
-                                            <span class="fas fa-clock"></span>
-                                            <span class="font-weight-bold">Ongoing</span>
-                                        </td>
-                                    @endif
-                                    @if($project->status == 2)
-                                        <td class="text-success">
-                                            <span class="fas fa-check"></span>
-                                            <span class="font-weight-bold">Completed</span></td>
-                                    @endif
-                                    @if($project->status == 3)
-                                        <td class="text-danger">
-                                            <span class="fas fa-ban"></span>
-                                            <span class="font-weight-bold">Suspended</span>
-                                        </td>
-                                    @endif
+                                    <td>
+                                        @if($project->status == "1")
+                                            <span class="fas fa-clock text-warning"></span>
+                                            <span class="font-weight-bold text-warning">
+                                                Ongoing</span>
+                                        @endif
+                                        @if($project->status == "2")
+                                            <span class="fas fa-check text-success"></span>
+                                            <span class="font-weight-bold text-success">
+                                                Completed</span>
+                                        @endif
+                                        @if($project->status == "3")
+                                            <span class="fas fa-ban text-danger"></span>
+                                            <span class="font-weight-bold text-danger">
+                                                Suspended</span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endif
                         @endforeach

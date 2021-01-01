@@ -1,4 +1,3 @@
-{{-- ini card yang nunjukin detail dari suatu task  --}}
 <div class="col-12 col-lg-6">
     <div class="card border-light shadow-sm text-center pt-3 pb-4 mb-4 mb-lg-0">
         <div class="card-body">
