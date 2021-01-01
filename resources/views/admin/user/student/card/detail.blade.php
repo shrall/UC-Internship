@@ -3,7 +3,8 @@
         <div class="col-12 mb-4">
             <div class="card border-light text-center p-0">
                 <div class="profile-cover rounded-top"
-                    data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
+                    data-background="{{ asset('assets/img/profile-cover.jpg') }}">
+                </div>
                 <div class="card-body pb-5">
                     @if($student->detailable->photo != null)
                         <img src="/profile_picture/student/{{ $student->detailable->photo }}"
