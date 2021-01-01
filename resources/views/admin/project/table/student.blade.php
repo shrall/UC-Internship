@@ -30,7 +30,8 @@
                                     <a href="{{ route('admin.student.show', $user->id) }}">
                                         {{ $user->detailable->name }}</a>
                                 </td>
-                                <td>{{ $user->detailable->department->initial }}</td>
+                                <td>{{ $user->detailable->department->name }} -
+                                    ({{ $user->detailable->department->initial }})</td>
                                 @if($user->pivot->status == 0)
                                     <td class="text-warning">
                                         <span class="fas fa-clock"></span>
