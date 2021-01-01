@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\History;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,11 +18,7 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        $pages = " ";
-
-        $info = Student::find(Auth::user()->detailable_id);
-
-        // ngambil history punyanya student yang login
+        //
     }
 
     /**
@@ -51,9 +48,15 @@ class HistoryController extends Controller
      * @param  \App\Models\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function show(History $history)
+    public function show(User $history)
     {
-        //
+        $pages = 'student';
+        $user = $history;
+        if ($user->id != Auth::id()) {
+            return redirect()->back();
+        } else {
+            return view('student.history.detail', compact('pages', 'user'));
+        }
     }
 
     /**
