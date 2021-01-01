@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <h2 class="h5 mb-4">Portfolio and CV</h2>
+                        <h2 class="h5 mb-4">CV / Portfolio</h2>
                         <div class="d-xl-flex align-items-center">
                             <div class="file-field">
                                 <div class="d-flex justify-content-xl-center ml-xl-3">
@@ -59,8 +59,13 @@
                                         </span>
                                         <input type="file" name="cv" id="cv" accept="application/pdf">
                                         <div class="d-md-block text-left">
-                                            <div class="font-weight-normal text-dark mb-1" id="cv-name">Choose File
-                                            </div>
+                                            @if($user->info->cv == null)
+                                                <div class="font-weight-normal text-dark mb-1" id="cv-name">Choose File
+                                                </div>
+                                            @else
+                                                <div class="font-weight-normal text-dark mb-1" id="cv-name">
+                                                    {{ $user->info->cv }}</div>
+                                            @endif
                                             <div class="text-gray small">PDF Only.</div>
                                         </div>
                                     </div>

@@ -34,7 +34,7 @@
                     <br>
                     @if($user->info->cv != null)
                         <a class="btn btn-sm btn-tertiary mt-1" href="/cv/{{ $user->info->cv }}">
-                            <span class="fa fa-file-pdf mr-2"></span>CV and Portfolio
+                            <span class="fa fa-file-pdf mr-2"></span>CV / Portfolio
                         </a>
                     @else
                         <a class="btn btn-sm btn-tertiary mt-1"
