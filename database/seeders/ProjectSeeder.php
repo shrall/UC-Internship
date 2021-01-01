@@ -54,5 +54,125 @@ class ProjectSeeder extends Seeder
         $project->period_id = 1;
         $project->supervisor_id = 3;
         $project->save();
+
+        $project = new Project();
+        $project->name = 'Rekap Daftar KI';
+        $project->description = 'Sortir daftar KI.';
+        $project->deadline = Carbon::parse('2020-12-12');
+        $project->status = '0';
+        $project->category = '3';
+        $project->period_id = 1;
+        $project->supervisor_id = 4;
+        $project->save();
+
+        $project = new Project();
+        $project->name = "Valentine's Day";
+        $project->description = "Membuat design poster untuk Valentine's Day.";
+        $project->deadline = Carbon::parse('2020-12-12');
+        $project->status = '0';
+        $project->category = '0';
+        $project->period_id = 1;
+        $project->supervisor_id = 4;
+        $project->save();
+
+        $project = new Project();
+        $project->name = "Father's Day";
+        $project->description = "Membuat design poster untuk Father's Day.";
+        $project->deadline = Carbon::parse('2020-12-12');
+        $project->status = '0';
+        $project->category = '0';
+        $project->period_id = 1;
+        $project->supervisor_id = 4;
+        $project->save();
+
+        $project = new Project();
+        $project->name = "Mother's Day";
+        $project->description = "Membuat design poster untuk Mother's Day.";
+        $project->deadline = Carbon::parse('2020-12-12');
+        $project->status = '0';
+        $project->category = '0';
+        $project->period_id = 1;
+        $project->supervisor_id = 4;
+        $project->save();
+
+        $project = new Project();
+        $project->name = "Christmas";
+        $project->description = "Membuat design poster untuk Christmas.";
+        $project->deadline = Carbon::parse('2020-12-12');
+        $project->status = '0';
+        $project->category = '0';
+        $project->period_id = 1;
+        $project->supervisor_id = 4;
+        $project->save();
+
+        $project = new Project();
+        $project->name = "New Year's Eve";
+        $project->description = "Membuat design poster untuk New Year's Eve.";
+        $project->deadline = Carbon::parse('2020-12-12');
+        $project->status = '0';
+        $project->category = '0';
+        $project->period_id = 1;
+        $project->supervisor_id = 4;
+        $project->save();
+
+        $project = new Project();
+        $project->name = "Lunar New Year";
+        $project->description = "Membuat design poster untuk Lunar New Year.";
+        $project->deadline = Carbon::parse('2020-12-12');
+        $project->status = '0';
+        $project->category = '0';
+        $project->period_id = 1;
+        $project->supervisor_id = 4;
+        $project->save();
+
+        $project = new Project();
+        $project->name = "Open Recruitment Student Council";
+        $project->description = "Membuat design poster untuk Open Recruitment Student Council.";
+        $project->deadline = Carbon::parse('2020-12-12');
+        $project->status = '0';
+        $project->category = '0';
+        $project->period_id = 1;
+        $project->supervisor_id = 4;
+        $project->save();
+
+        $project = new Project();
+        $project->name = "Webinar Narkoba";
+        $project->description = "Membuat design poster untuk Webinar Narkoba.";
+        $project->deadline = Carbon::parse('2020-12-12');
+        $project->status = '0';
+        $project->category = '0';
+        $project->period_id = 1;
+        $project->supervisor_id = 4;
+        $project->save();
+
+        $project = new Project();
+        $project->name = "Webinar Effective Learning";
+        $project->description = "Membuat design poster untuk Webinar Effective Learning.";
+        $project->deadline = Carbon::parse('2020-12-12');
+        $project->status = '0';
+        $project->category = '0';
+        $project->period_id = 1;
+        $project->supervisor_id = 4;
+        $project->save();
+
+        $project = new Project();
+        $project->name = "Pra-LDK";
+        $project->description = "Membuat design powerpoint untuk Pra-LDK.";
+        $project->deadline = Carbon::parse('2020-12-12');
+        $project->status = '0';
+        $project->category = '0';
+        $project->period_id = 1;
+        $project->supervisor_id = 4;
+        $project->save();
+
+        $project = new Project();
+        $project->name = "BMA O-Week";
+        $project->description = "Membuat design powerpoint untuk BMA O-Week.";
+        $project->deadline = Carbon::parse('2020-12-12');
+        $project->status = '0';
+        $project->category = '0';
+        $project->period_id = 1;
+        $project->supervisor_id = 4;
+        $project->save();
     }
 }
