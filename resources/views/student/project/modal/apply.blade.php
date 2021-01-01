@@ -16,9 +16,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form action="{{route('student.project.store', $project->id)}}" method="POST">
+                <form action="{{route('student.project.store', $project->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input name="_method" type="hidden" value="">
+                    <input type="hidden" name="project_id" value="{{$project->id}}">
                     <button type="submit" class="btn btn-sm btn-primary mr-3 mb-3 text-white" >Confirm</button>
                 </form>
             </div>

@@ -77,11 +77,12 @@ class UserController extends Controller
     {
         //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
         $pages = 'student';
-//        if ($user->id != Auth::id()) {
-//            return redirect()->back();
-//        } else {
-//        }
-        return view('student.student.edit', compact('pages', 'user'));
+        if ($user->id != Auth::id()) {
+            return redirect()->back();
+        } else {
+            return view('student.student.edit', compact('pages', 'user'));
+
+        }
 
     }
 

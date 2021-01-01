@@ -85,10 +85,10 @@
                                            data-target="#modal-progress-{{ $progress->id }}"><span
                                                 class="fas fa-eye mr-2"></span>View
                                             Details</a>
-                                        <a class="dropdown-item" data-toggle="modal"
-                                           data-target="#modal-progress-edit-{{ $progress->id }}"><span
-                                                class="fas fa-cog mr-2"></span>Edit
-                                            Project</a>
+{{--                                        <a class="dropdown-item" data-toggle="modal"--}}
+{{--                                           data-target="#modal-progress-edit-{{ $progress->id }}"><span--}}
+{{--                                                class="fas fa-cog mr-2"></span>Edit--}}
+{{--                                            Project</a>--}}
                                         <a class="dropdown-item text-danger" data-toggle="modal"
                                            data-target="#modal-delete-{{ $progress->id }}">
                                             <span class="fas fa-ban mr-2"></span>Delete

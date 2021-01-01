@@ -43,6 +43,15 @@ class ProgressController extends Controller
 
 //        dd($request);
 
+        //disini dia cari task id (kita mencari status project melalui task id yang sudah kita dapatkan)
+        $task = Task::find($request['task_id']);
+//        dd($task);
+
+        //disini kita dari task menuju status project melalui projectuser (SELALU CEK MODEL UNTUK HUBUNGAN)
+        if ($task->projectuser->project->status == '3'){
+            return redirect()->back();
+        }
+
         $data = $request->validate([
             'description' => 'required|string',
             'time_start' => 'required',
@@ -107,6 +116,11 @@ class ProgressController extends Controller
     public function update(Request $request, Progress $progress)
     {
 
+        //klo status project suspend maka lgs mental
+        if ($progress->task->projectuser->project->status == '3'){
+            return redirect()->back();
+        }
+
         //update progress
         if ($progress->status == '0') {
             $data = $request->validate([
@@ -133,14 +147,13 @@ class ProgressController extends Controller
                     $attachment->progress_id = $progress['id'];
                     $attachment->save();
                     $i++;
-                    if ($request['attachments'] == $file_name) {
-                        $request['attachments']::delete($file_name);
-                    }
                 }
             }
             return redirect()->route('student.task.show', $data['task_id']);
         }else{
-            return redirect()->route('student.task.show', $data['task_id']);
+
+
+            return redirect()->route('student.task.show', $progress->task_id);
 
         }
     }
@@ -153,8 +166,16 @@ class ProgressController extends Controller
      */
     public function destroy(Progress $progress)
     {
+
+        //klo status project suspend maka lgs mental
+        if ($progress->task->projectuser->project->status == '3'){
+            return redirect()->back();
+        }
+
         if ($progress->status == '0') {
-            $progress->attachments->delete();
+            foreach ($progress->attachments as $attachment){
+                $attachment->delete();
+            }
             $progress->delete();
             return redirect()->back();
         }else{

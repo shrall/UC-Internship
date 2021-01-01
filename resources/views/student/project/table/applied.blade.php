@@ -16,7 +16,6 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th class="border-0" width="25px">#</th>
                         <th class="border-0">Project Name</th>
                         <th class="border-0">Category</th>
                         <th class="border-0">Supervisor</th>
@@ -26,12 +25,13 @@
                     </thead>
                     <tbody>
                     @foreach (Auth::User()->projectusers as $pu)
+                        {{--                    item--}}
+                        @include('student.project.modal.applied')
                         @if($pu->status == '0')
                             <tr>
-                                <td><a href="{{ route('student.project.show', $pu->project->id) }}"
-                                       class="text-primary font-weight-bold">{{ $pu->project->id }}</a></td>
                                 <td class="font-weight-bold proj-name">
-                                    <a href="{{ route('student.project.show', $pu->project->id) }}">{{ $pu->project->name }}</a>
+                                    <a data-toggle="modal"
+                                       data-target="#modal-applied-{{ $pu->project->id }}">{{ $pu->project->name }}</a>
                                 </td>
                                 <td>
 
@@ -51,28 +51,28 @@
                                     @endif
 
                                 </td>
-                                <td>{{ $pu->project->supervisor->name }}</td>
+                                <td>{{ $pu->project->supervisor->detailable->name }}</td>
                                 <td>{{ $pu->project->deadline }}</td>
 
                                 <td>
                                     @if($pu->status == "0")
-                                        <span class="fas fa-clock text-info"></span>
+                                        <span class="fas fa-clock text-warning"></span>
                                         <span
-                                            class="font-weight-bold text-info">
+                                            class="font-weight-bold text-warning">
                                     Pending</span>
                                     @endif
 
                                     @if($pu->status == "1")
-                                        <span class="fas fa-clock text-warning"></span>
+                                        <span class="fas fa-clock text-success"></span>
                                         <span
-                                            class="font-weight-bold text-warning">
+                                            class="font-weight-bold text-success">
                                     Accepted</span>
                                     @endif
 
                                     @if($pu->status == "2")
-                                        <span class="fas fa-check text-success"></span>
+                                        <span class="fas fa-check text-danger"></span>
                                         <span
-                                            class="font-weight-bold text-success">
+                                            class="font-weight-bold text-danger">
                                     Declined</span>
                                     @endif
                                 </td>

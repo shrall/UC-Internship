@@ -28,7 +28,7 @@
                     <a class="btn btn-sm btn-primary mb-3" href="{{ route('student.user.edit', Auth::id()) }}">
                         <span class="fa fa-edit"></span> Edit Profile
                     </a>
-                    <a class="btn btn-sm btn-secondary mb-3" href="{{route('admin.history.index')}}">
+                    <a class="btn btn-sm btn-secondary mb-3" href="{{route('student.history.show', $user->id)}}">
                         <span class="fa fa-history"></span> Time History
                     </a>
                 </div>

@@ -52,9 +52,11 @@ class TaskController extends Controller
     {
         //!NOTE disini kalo task yang diliat bukan punyanya user yang login, redirect()->back()
         $pages = "project";
-
-        return view('student.task.detail', compact('pages','task'));
-
+//        if ($task->id != Auth::id()) {
+//            return redirect()->back();
+//        } else {
+            return view('student.task.detail', compact('pages', 'task'));
+//        }
         // panggil semua progress dari task tsb
     }
 

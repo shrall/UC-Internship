@@ -4,18 +4,17 @@
 <div class="row mb-3">
     <div class="col-12 mb-4">
         <div class="card border-light shadow-sm">
-{{--            <div class="card-header border-0 pb-2">--}}
-{{--                <div class="row align-items-center">--}}
-{{--                    <div class="col">--}}
-{{--                        <h2 class="h4"><i class="fas fa-clipboard-list"></i> Projects List</h2>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <div class="card-header border-0 pb-2">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h2 class="h4"><i class="fas fa-clipboard-list"></i> Projects List</h2>
+                    </div>
+                </div>
+            </div>
             <div class="card card-body border-light shadow-sm table-wrapper table-responsive">
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th class="border-0" width="25px">#</th>
                         <th class="border-0">Project Name</th>
                         <th class="border-0">Category</th>
                         <th class="border-0">Supervisor</th>
@@ -26,15 +25,12 @@
                     </thead>
                     <tbody>
                     @foreach (Auth::User()->projectusers as $pu)
+                        @if($pu->project->status == '1' || $pu->project->status == '2' || $pu->project->status == '3')
                         <tr>
-                            <td><a href="{{ route('student.project.show', $pu->project->id) }}"
-                                   class="text-primary font-weight-bold">{{ $pu->project->id }}</a></td>
                             <td class="font-weight-bold proj-name">
                                 <a href="{{ route('student.project.show', $pu->project->id) }}">{{ $pu->project->name }}</a>
                             </td>
-
                             <td>
-
                                 @if($pu->project->category == "0")
                                     <span class="fas fa-calendar-week"></span>
                                     <span> Event</span>
@@ -88,6 +84,7 @@
 
                             </td>
                         </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>

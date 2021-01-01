@@ -50,6 +50,15 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         //create projectuser
+
+        ProjectUser::create([
+            'status' => '0',
+            'uci_project_id' => $request['project_id'],
+            'uci_user_id' => Auth::id(),
+        ]);
+
+        return redirect()->route('student.project.index');
+
     }
 
     /**
@@ -63,8 +72,11 @@ class ProjectController extends Controller
         //!NOTE kalau user yang login bukan anggota dari project tsb, redirect()->back()
         $pages = "project";
 
-        return view('student.project.detail', compact('pages','project'));
-
+//        if ($task->id != Auth::id()) {
+//            return redirect()->back();
+//        } else {
+        return view('student.project.detail', compact('pages', 'project'));
+//    }
 
         //disini manggil semua student yang merupakan anggota dari project yang di liat
         // disini manggil semua task dari project yang diliat
