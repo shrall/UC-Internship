@@ -22,6 +22,31 @@
     <list default="true" id="66963f10-7777-4148-95a1-ed32df670041" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/resources/views/supervisor/task/modal/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/ProjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Student/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Student/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/project/card/supervisor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/project/card/supervisor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/card/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/card/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/card/offer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/card/offer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/card/supervisor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/card/supervisor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/modal/offer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/modal/offer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/modal/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/modal/student.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/table/student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/table/student.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/project/table/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/project/table/task.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/student/card/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/card/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/student/card/info.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/card/info.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/student/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/student/table/project.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/table/project.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/student/table/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/student/table/task.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/card/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/card/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/card/pic.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/card/pic.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/modal/progress/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/modal/progress/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/modal/progress/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/modal/progress/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/modal/progress/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/modal/progress/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task/table/progress.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task/table/progress.blade.php" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/TaskController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Supervisor/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/supervisor/task/card/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/task/card/detail.blade.php" afterDir="false" />
@@ -30,6 +55,7 @@
       <change beforePath="$PROJECT_DIR$/resources/views/supervisor/task/modal/progress.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/task/modal/progress.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/supervisor/task/table/progress.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/task/table/progress.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/supervisor/user/lecturer/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/supervisor/user/lecturer/detail.blade.php" afterDir="false" />
+>>>>>>> develop
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProjectUser;
 use App\Models\Student;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -52,7 +53,7 @@ class TaskController extends Controller
         //!NOTE disini kalo task yang diliat bukan punyanya user yang login, redirect()->back()
         $pages = "project";
 
-        $info = Student::find(Auth::user()->detailable_id);
+        return view('student.task.detail', compact('pages','task'));
 
         // panggil semua progress dari task tsb
     }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProjectResource;
 use App\Models\Project;
+use App\Models\ProjectUser;
 use App\Models\Student;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +22,11 @@ class ProjectController extends Controller
     {
         $pages = "project";
 
-        $info = Student::find(Auth::user()->detailable_id);
+//        $pus  = ProjectUser::where('uci_user_id',Auth::id())->get();
+//        dd($pus);
+
+        return view('student.project.index', compact('pages'));
+
 
         // manggil semua project yang dipunya oleh student yang login
     }
@@ -57,7 +63,8 @@ class ProjectController extends Controller
         //!NOTE kalau user yang login bukan anggota dari project tsb, redirect()->back()
         $pages = "project";
 
-        $info = Student::find(Auth::user()->detailable_id);
+        return view('student.project.detail', compact('pages','project'));
+
 
         //disini manggil semua student yang merupakan anggota dari project yang di liat
         // disini manggil semua task dari project yang diliat
@@ -100,7 +107,15 @@ class ProjectController extends Controller
     {
         $pages = "project";
 
-        $info = Student::find(Auth::user()->detailable_id);
+        //kita cek smua project yg status nya available, kita cek project yang belum dimiliki user tsb
+
+        $projects = Project::where('status', '0')
+            ->whereDoesntHave('projectusers', function (Builder $query) {
+                $query->where('uci_user_id', Auth::id());
+            })->get();
+
+        return view('student.project.offer', compact('pages', 'projects'));
+
 
         //disini manggil semua project yang statusnya available
     }
