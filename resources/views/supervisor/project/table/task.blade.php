@@ -5,6 +5,25 @@
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card border-light shadow-sm">
+            <div class="card-header border-0 pb-2">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <h2 class="h4"><i class="fas fa-tasks mr-2"></i>Task List</h2>
+                    </div>
+                    <div class="col-6">
+                        <div class="d-flex justify-content-end flex-wrap flex-md-nowrap align-items-center pb-2">
+                            <div>
+                                @include('supervisor.project.modal.task.create')
+                                {{--                    @include('supervisor.project.modal.task.edit')--}}
+                                <a class="btn btn-secondary text-dark mr-2 dropdown-toggle "
+                                   data-toggle="modal" data-target="#modal-add-task-{{$project->id}}">
+                                    <span class="fas fa-plus mr-2"></span>New
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="card card-body border-light shadow-sm table-wrapper table-responsive">
                 <table class="table table-hover">
                     <thead>
