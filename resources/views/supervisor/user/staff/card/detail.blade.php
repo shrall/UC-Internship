@@ -10,7 +10,6 @@
         <h4 class="h3">{{$staff->detailable->title->name}}</h4>
         {{--                            <h5 class="font-weight-normal">Head Department</h5>--}}
         <p class="text-gray mb-4">{{$staff->detailable->department->name}} ({{$staff->detailable->department->initial}})</p>
-
         @if(Auth::User()->id == $staff->id)
             <a class="btn btn-sm btn-primary" href="{{ route('supervisor.staff.edit', $staff->id) }}">
                 <span class="fa fa-edit"></span> Edit Profile

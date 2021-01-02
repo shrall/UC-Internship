@@ -22,15 +22,11 @@
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-12 col-lg-6">
-            @include("supervisor.project.card.detail")
-        </div>
-        <div class="col-12 col-lg-6">
-            @include("supervisor.project.card.supervisor")
-        </div>
+        @include("supervisor.project.card.detail")
+        @include("supervisor.project.card.supervisor")
     </div>
     <div class="row mb-3 pb-4 pt-4">
-               @include('supervisor.project.table.student')
+        @include('supervisor.project.table.student')
     </div>
     <div class="row mb-3">
         @include('supervisor.project.table.task')

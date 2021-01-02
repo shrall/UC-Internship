@@ -108,7 +108,6 @@ class ProjectController extends Controller
         } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
             $info = Lecturer::find(Auth::user()->detailable_id);
         }
-        $projects = Project::all();
         $pages = 'project';
         $periods = Period::all();
         $currentdate = Carbon::now();
@@ -117,7 +116,7 @@ class ProjectController extends Controller
                 $currentperiod = $period;
             };
         }
-        return view('supervisor.project.detail', compact('project', 'projects','pages','info', 'currentperiod'));
+        return view('supervisor.project.detail', compact('project','pages','info', 'currentperiod'));
     }
 
     /**

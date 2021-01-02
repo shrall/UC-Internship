@@ -17,10 +17,11 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <form method="POST">
+                <form action="{{ route('supervisor.students.decline') }}" method="POST">
                     @csrf
-                    <input name="_method" type="hidden" value="DELETE">
-                    <button type="button" class="btn btn-sm btn-white mr-3 mb-3">Decline</button>
+                    <input name="project_id" type="hidden" value="{{$project->id}}">
+                    <input name="user_id" type="hidden" value="{{$user->id}}">
+                    <button type="submit" class="btn btn-white btn-sm mr-3 mb-3">Decline</button>
                 </form>
             </div>
         </div>

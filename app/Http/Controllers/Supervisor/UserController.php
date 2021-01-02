@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lecturer;
+use App\Models\ProjectUser;
+use App\Models\Student;
 use App\Models\Project;
 use App\Models\Staff;
 use App\Models\User;
@@ -41,8 +43,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = User::findOrFail($request->uci_user_id);
-        $works = $user->works()->syncWithoutDetaching($request->uci_project_id, ['status' => '1']);
-        return empty($works) ? redirect()->back()->with('Fail', "Failed to accept student")
+        $applies = $user->applies()->syncWithoutDetaching($request->uci_project_id, ['status' => '1']);
+        return empty($applies) ? redirect()->back()->with('Fail', "Failed to accept student")
             : redirect()->back()->with('Success', 'Student Accepted');
     }
 
@@ -57,16 +59,21 @@ class UserController extends Controller
         //view my profile
         $projects = Project::where('supervisor_id', Auth::id())->get();
         $ongoingprojects = $projects->count();
-        if (Auth::user()->detailable_type == "App\Models\Staff") {
+        if ($user->detailable_type == "App\Models\Staff") {
             $pages = 'staff';
             $staff = $user;
-            $info = Staff::find(Auth::user()->detailable_id);
+            $info = Staff::find($user->detailable_id);
             return view('supervisor.user.staff.detail', compact('pages', 'info', 'staff', 'ongoingprojects', 'projects'));
-        } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
+        } else if ($user->detailable_type == "App\Models\Lecturer") {
             $pages = 'lecturer';
             $lecturer = $user;
-            $info = Lecturer::find(Auth::user()->detailable_id);
+            $info = Lecturer::find($user->detailable_id);
             return view('supervisor.user.lecturer.detail', compact('pages', 'info', 'lecturer','ongoingprojects', 'projects'));
+        } else if ($user->detailable_type == "App\Models\Student") {
+            $pages = 'student';
+            $student = $user;
+            $info = Student::find($user->detailable_id);
+            return view('supervisor.user.student.detail', compact('pages', 'info', 'student','ongoingprojects', 'projects'));
         }
 
     }
@@ -105,22 +112,24 @@ class UserController extends Controller
         //
     }
 
-    public function accept($id, Request $request) {
-        $user = User::findOrFail($id);
-        $project = $user->works->where('id', '=', $request->uci_project_id)->first();
-        $project->pivot->update([
-            'is_approved' => '1',
+    public function accept(Request $request) {
+        $user = User::find($request->user_id);
+        $project = Project::find($request->project_id);
+        $pu = ProjectUser::where('uci_project_id', $project->id)->where('uci_user_id', $user->id)->first();
+        $pu->update([
+            'status' => '1',
         ]);
 
         return empty($project) ? redirect()->back()->with('Fail', "Failed to update status")
             : redirect()->back()->with('Success', 'Success student: #('.$user->name.') approved');
     }
 
-    public function decline($id, Request $request) {
-        $user = User::findOrFail($id);
-        $project = $user->works->where('id', '=', $request->uci_project_id)->first();
-        $project->pivot->update([
-            'is_approved' => '2',
+    public function decline(Request $request) {
+        $user = User::find($request->user_id);
+        $project = Project::find($request->project_id);
+        $pu = ProjectUser::where('uci_project_id', $project->id)->where('uci_user_id', $user->id)->first();
+        $pu->update([
+            'status' => '2',
         ]);
 
         return empty($project) ? redirect()->back()->with('Fail', "Failed to update status")

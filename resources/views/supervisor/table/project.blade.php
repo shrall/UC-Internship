@@ -25,7 +25,7 @@
                             <td>
                                 <a href="{{route('supervisor.student.show', $pu->uci_user_id)}}">
                                     @if($pu->status == '0')
-                                        {{$pu->project->applies->name}}
+                                        {{$pu->user->detailable->name}}
                                     @endif
                                 </a>
                             </td>

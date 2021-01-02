@@ -103,6 +103,9 @@ Route::group(['middleware' => ['supervisor'], 'prefix' => 'supervisor', 'as' => 
     Route::resource('staff', SupervisorStaffController::class);
     Route::resource('student', SupervisorStudentController::class);
     Route::resource('user', SupervisorUserController::class);
+    //approve and decline
+    Route::post('students/accept', [SupervisorUserController::class, 'accept'])->name('students.accept');
+    Route::post('students/decline', [SupervisorUserController::class, 'decline'])->name('students.decline');
 });
 
 Route::group(['middleware' => ['student'], 'prefix' => 'student', 'as' => 'student.'], function () {
