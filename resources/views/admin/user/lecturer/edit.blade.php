@@ -34,19 +34,43 @@
     <div class="col-12">
         <form action="{{ route('admin.lecturer.update', $lecturer->id) }}" method="POST" enctype="multipart/form-data">
             <div class="card card-body bg-white border-light shadow-sm mb-4">
-                <h2 class="h5 mb-4">Edit lecturer</h2>
+                <h2 class="h5 mb-4">Edit Lecturer</h2>
                 @csrf
                 <input name="_method" type="hidden" value="PATCH">
                 <div class="row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-12 mb-3">
                         <div>
                             <label for="full_name">Full Name</label>
                             <input class="form-control" id="name" name="name" type="text" placeholder="Full Name" value="{{$lecturer->detailable->name}}" required>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="nip">NIP</label>
                         <input class="form-control" id="nip" name="nip" type="number" placeholder="NIP" value="{{$lecturer->detailable->nip}}" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="nidn">NIDN</label>
+                        <input class="form-control" id="nidn" name="nidn" type="number" placeholder="NIDN" value="{{$lecturer->detailable->nidn}}" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="jaka"><span class="fa fa-building mr-2"></span>Jaka</label>
+                        <select class="form-select w-100 mb-0" id="jaka" name="jaka">
+                            @foreach ($jakas->sortBy('name') as $jaka)
+                                <option value="{{$jaka->id}}" @if ($lecturer->detailable->jaka_id == $jaka->id)selected @endif>{{$jaka->name}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="gender"><span class="fa fa-venus-mars mr-2"></span>Gender</label>
+                        <select class="form-select w-100 mb-0" id="gender" name="gender">
+                            <option value="M" @if ($lecturer->detailable->gender == 'M')selected @endif >Male</option>
+                            <option value="F" @if ($lecturer->detailable->gender == 'F')selected @endif >Female</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">
@@ -75,19 +99,6 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="gender"><span class="fa fa-venus-mars mr-2"></span>Gender</label>
-                        <select class="form-select w-100 mb-0" id="gender" name="gender">
-                            <option value="M" @if ($lecturer->detailable->gender == 'M')selected @endif >Male</option>
-                            <option value="F" @if ($lecturer->detailable->gender == 'F')selected @endif >Female</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="batch"><span class="fa fa-portrait mr-2"></span>Batch</label>
-                        <input class="form-control" id="batch" name="batch" type="number" placeholder="Year" min="2008" max="{{ date('Y') }}" step="1" value="{{$lecturer->detailable->batch}}"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
                         <label for="department"><span class="fa fa-building mr-2"></span>Department</label>
                         <select class="form-select w-100 mb-0" id="department" name="department">
                             @foreach ($departments->sortBy('name') as $department)
@@ -97,7 +108,7 @@
                         </select>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="title"><span class="fa fa-building mr-2"></span>Title</label>
+                        <label for="title"><span class="fa fa-user-edit"></span> Title</label>
                         <select class="form-select w-100 mb-0" id="title" name="title">
                             @foreach ($titles->sortBy('name') as $title)
                                 <option value="{{$title->id}}" @if ($lecturer->detailable->title_id == $title->id)selected @endif>{{$title->name}}
@@ -128,7 +139,7 @@
                     </div>
                 </div>
                 <div class="mt-3">
-                    <button type="submit" class="btn btn-primary">Add lecturer</button>
+                    <button type="submit" class="btn btn-primary">Update Lecturer</button>
                 </div>
             </div>
         </form>

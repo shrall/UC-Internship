@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProjectResource;
 use App\Models\Project;
+use App\Models\ProjectUser;
 use App\Models\Student;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,10 +21,7 @@ class ProjectController extends Controller
     public function index()
     {
         $pages = "project";
-
-        $info = Student::find(Auth::user()->detailable_id);
-
-        // manggil semua project yang dipunya oleh student yang login
+        return view('student.project.index', compact('pages'));
     }
 
     /**
@@ -43,7 +42,12 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //create projectuser
+        ProjectUser::create([
+            'status' => '0',
+            'uci_user_id' => Auth::id(),
+            'uci_project_id' => $request->project,
+        ]);
+        return redirect()->route('student.project.index');
     }
 
     /**
@@ -54,13 +58,15 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //!NOTE kalau user yang login bukan anggota dari project tsb, redirect()->back()
-        $pages = "project";
-
-        $info = Student::find(Auth::user()->detailable_id);
-
-        //disini manggil semua student yang merupakan anggota dari project yang di liat
-        // disini manggil semua task dari project yang diliat
+        foreach($project->projectusers as $pu){
+            if($pu->uci_user_id == Auth::id()){
+                if($pu->status == '1'){
+                    $pages = "project";
+                    return view('student.project.detail', compact('pages','project'));
+                }
+            }
+        }
+        return redirect()->back();
     }
 
     /**
@@ -96,12 +102,15 @@ class ProjectController extends Controller
     {
         //
     }
+
     public function offer()
     {
         $pages = "project";
+        $projects = Project::where('status', '0')
+            ->whereDoesntHave('projectusers', function (Builder $query) {
+                $query->where('uci_user_id', Auth::id());
+            })->get();
 
-        $info = Student::find(Auth::user()->detailable_id);
-
-        //disini manggil semua project yang statusnya available
+        return view('student.project.offer', compact('pages', 'projects'));
     }
 }

@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-use App\Models\Student;
+use App\Models\Period;
+use App\Models\Task;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class UserController extends Controller
 {
@@ -46,15 +51,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
-        $pages = " ";
-
-        $info = Student::find(Auth::user()->detailable_id);
-
-        //ngambil semua projectuser yang user idnya punyanya yang login
-        //ngambil semua task yang dipunya sama orang yang login
+        $pages = "student";
+        if ($user->id != Auth::id()) {
+            return redirect()->back();
+        } else {
+            return view('student.user.student.detail', compact('pages', 'user'));
+        }
     }
 
     /**
@@ -63,12 +67,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
-        $pages = " ";
-
-        $info = Student::find(Auth::user()->detailable_id);
+        $pages = 'student';
+        if ($user->id != Auth::id()) {
+            return redirect()->back();
+        } else {
+            return view('student.user.student.edit', compact('pages', 'user'));
+        }
     }
 
     /**
@@ -78,15 +84,35 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //! NOTE disini ngecek dapet idnya user siapa, kalo bukan user yang login redirect()->back()
-        $pages = " ";
+        $data = $request->validate([
+            'phone' => 'required|numeric',
+            'line_account' => 'required',
+            'photo' => 'image',
+        ]);
 
-        $info = Student::find(Auth::user()->detailable_id);
+        $user->detailable->update([
+            'phone' => $data['phone'],
+            'line_account' => $data['line_account'],
+        ]);
 
-        //update user & student-> karena kalo ngrubah nama, nama di user&student kerubah
-        //uplod foto&cv
+        if ($request->has('photo')) {
+            $file_name = time() . '-' . $data['photo']->getClientOriginalName();
+            $request->photo->move(public_path('profile_picture\student'), $file_name);
+            $user->detailable->update([
+                'photo' => $file_name,
+            ]);
+        }
+
+        if ($request->has('cv')) {
+            $cv_name = time() . '-' . $request['cv']->getClientOriginalName();
+            $request->cv->move(public_path('cv'), $cv_name);
+            $user->info->update([
+                'cv' => $cv_name,
+            ]);
+        }
+        return redirect()->route('student.user.show', Auth::id());
     }
 
     /**
@@ -101,10 +127,40 @@ class UserController extends Controller
     }
     public function check()
     {
-        //disini bisa return view ke export.blade cuma buat ngecek doang
+        $periods = Period::all();
+        $currentdate = Carbon::now();
+        foreach ($periods as $period) {
+            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                $currentperiod = $period;
+            };
+        }
+        $totalduration = 0;
+        $tasks = Task::whereHas('projectuser', function (Builder $query) {
+            $query->where('uci_user_id', Auth::id());
+        })->get();
+        foreach ($tasks as $task) {
+            $totalduration += $task->duration;
+        }
+        return view('student.user.student.export', compact('currentperiod', 'totalduration'));
     }
 
-    public function export(){
-        //ini baru exportnya :v
+    public function export()
+    {
+        $periods = Period::all();
+        $currentdate = Carbon::now();
+        foreach ($periods as $period) {
+            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                $currentperiod = $period;
+            };
+        }
+        $totalduration = 0;
+        $tasks = Task::whereHas('projectuser', function (Builder $query) {
+            $query->where('uci_user_id', Auth::id());
+        })->get();
+        foreach ($tasks as $task) {
+            $totalduration += $task->duration;
+        }
+        $pdf = PDF::loadView('student.user.student.export', compact('currentperiod', 'totalduration'));
+        return $pdf->download('report.pdf');
     }
 }
