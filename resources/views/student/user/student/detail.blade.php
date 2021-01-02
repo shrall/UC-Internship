@@ -14,6 +14,11 @@
             </ol>
         </nav>
     </div>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group">
+            <a class="btn mb-2 mr-2 btn-secondary" href="{{route('student.export')}}"><i class="fa fa-file-export mr-2"></i>Export</a>
+        </div>
+    </div>
 </div>
 <div class="row mb-3">
     @include('student.user.student.card.info')

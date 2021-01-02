@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-use App\Models\Department;
-use App\Models\Scholarship;
-use App\Models\Student;
+use App\Models\Period;
+use App\Models\Task;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class UserController extends Controller
 {
@@ -126,11 +127,40 @@ class UserController extends Controller
     }
     public function check()
     {
-        //disini bisa return view ke export.blade cuma buat ngecek doang
+        $periods = Period::all();
+        $currentdate = Carbon::now();
+        foreach ($periods as $period) {
+            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                $currentperiod = $period;
+            };
+        }
+        $totalduration = 0;
+        $tasks = Task::whereHas('projectuser', function (Builder $query) {
+            $query->where('uci_user_id', Auth::id());
+        })->get();
+        foreach ($tasks as $task) {
+            $totalduration += $task->duration;
+        }
+        return view('student.user.student.export', compact('currentperiod', 'totalduration'));
     }
 
     public function export()
     {
-        //ini baru exportnya :v
+        $periods = Period::all();
+        $currentdate = Carbon::now();
+        foreach ($periods as $period) {
+            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                $currentperiod = $period;
+            };
+        }
+        $totalduration = 0;
+        $tasks = Task::whereHas('projectuser', function (Builder $query) {
+            $query->where('uci_user_id', Auth::id());
+        })->get();
+        foreach ($tasks as $task) {
+            $totalduration += $task->duration;
+        }
+        $pdf = PDF::loadView('student.user.student.export', compact('currentperiod', 'totalduration'));
+        return $pdf->download('report.pdf');
     }
 }
