@@ -23,7 +23,8 @@ class SupervisorResource extends JsonResource
             'gender' => $this->gender,
             'phone' => $this->phone,
             'line_account' => $this->line_account,
-            'department' => $this->department->name,
+            'department_name' => $this->department->name,
+            'department_initial' => $this->department->initial,
             'title' => $this->title->name,
         ];
     }
