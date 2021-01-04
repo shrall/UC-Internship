@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api\Student;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\ProjectResource;
-use App\Models\Project;
-use Illuminate\Database\Eloquent\Builder;
+use App\Http\Resources\Api\StudentResource;
+use App\Http\Resources\Api\SupervisorResource;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class ProjectController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::whereHas('projectusers', function (Builder $query) {
-            $query->where('uci_user_id', Auth::id())->where('status', '1');
-        })->get();
-        return ProjectResource::collection($projects);
+        //
     }
 
     /**
@@ -48,21 +44,26 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show(User $user)
     {
-        //
+
+        if ($user->detailable_type == "App\Models\Lecturer" || $user->detailable_type == "App\Models\Staff") {
+            return SupervisorResource::make($user->detailable);
+        }else{
+            return StudentResource::make($user->detailable);
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit(User $user)
     {
         //
     }
@@ -71,10 +72,10 @@ class ProjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, User $user)
     {
         //
     }
@@ -82,10 +83,10 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(User $user)
     {
         //
     }

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProjectResource;
 use App\Models\Project;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -16,7 +18,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        if (Auth::user()->detailable_type == "App\Models\Lecturer" || Auth::user()->detailable_type == "App\Models\Staff") {
+            $projects = Project::where('supervisor_id', Auth::id())->get();
+        } else {
+            $projects = Project::whereHas('projectusers', function (Builder $query) {
+                $query->where('uci_user_id', Auth::id())->where('status', '1');
+            })->get();
+        }
         return ProjectResource::collection($projects);
     }
 
@@ -49,8 +57,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $projects = Project::where('id', $project->id)->get();
-        return ProjectResource::collection($projects);
+        return ProjectResource::make($project);
     }
 
     /**
