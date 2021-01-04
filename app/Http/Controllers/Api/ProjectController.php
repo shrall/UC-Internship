@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProjectResource;
 use App\Models\Project;
+use App\Models\ProjectUser;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,12 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pu = ProjectUser::create([
+            'status' => '0',
+            'uci_user_id' => Auth::id(),
+            'uci_project_id' => $request->project,
+        ]);
+        return $pu;
     }
 
     /**
