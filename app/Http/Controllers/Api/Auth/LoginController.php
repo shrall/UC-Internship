@@ -48,7 +48,7 @@ class LoginController extends Controller
         if ($check->is_login == '0') {
             if (Auth::attempt($student)) {
                 $this->is_login(Auth::id());
-                $response = $http->post('http://192.168.1.4/UC-internship/public/oauth/token', [
+                $response = $http->post('http://uci.test/oauth/token', [
                     'form_params' => [
                         'grant_type' => 'password',
                         'client_id' => $this->client->id,
