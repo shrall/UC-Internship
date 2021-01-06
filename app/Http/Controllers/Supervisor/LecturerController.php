@@ -66,8 +66,8 @@ class LecturerController extends Controller
      */
     public function edit(User $lecturer)
     {
-        $pages = 'lecturer';
-        return view('supervisor.user.lecturer.edit', compact('pages','lecturer'));
+//        $pages = 'lecturer';
+//        return view('supervisor.user.lecturer.edit', compact('pages','lecturer'));
     }
 
     /**
@@ -79,8 +79,8 @@ class LecturerController extends Controller
      */
     public function update(Request $request, User $lecturer)
     {
-        $lecturer->update($request->all());
-        return redirect()->route('supervisor.user.staff.detail');
+//        $lecturer->update($request->all());
+//        return redirect()->route('supervisor.user.staff.detail');
     }
 
     /**

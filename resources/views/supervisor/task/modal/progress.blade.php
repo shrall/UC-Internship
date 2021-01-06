@@ -32,36 +32,41 @@
                         </a>
                     </p>
                 @endforeach
-                @if($progress->comment == null)
-                    <form action="{{ route('supervisor.progress.update', $progress->id) }}" method="POST">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <div>
-                                    <label for="project_name">Comment</label>
-                                    <input class="form-control" id="project_name" type="text" placeholder="Add New Comment" required>
-                                </div>
+                <div style="width: 100%; display: block;"></div>
+                @if($progress->status == '0')
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <div>
+                                <label for="comment_id">Comment</label>
+                                <input class="form-control" id="comment_id" type="text" placeholder="Add New Comment" required>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 @endif
-                @if($progress->comment != null)
-                    <label for="">Comments</label>
+                @if($progress->status == '1' || $progress->status == '2')
+                    <label for="">Comment</label>
+                    @if($progress->comment == null)
+                        <p>No comment.</p>
+                    @endif
                     <p>{{ $progress->comment }}</p>
                 @endif
             </div>
             @if($progress->status == 0)
-{{--                <div class="modal-footer">--}}
-{{--                    <div class="text-warning"><span class="fa fa-clock mr-2"></span>Pending</div>--}}
-{{--                </div>--}}
                 <div class="modal-footer">
                     <div>
-                        <a class="btn btn-danger text-dark mr-2 dropdown-toggle" data-toggle="modal" data-target="#modal-status-{{ $progress->id }}1">
-                            <span class="fas fa-times"></span> Decline
-                        </a>
-                        <a class="btn btn-secondary text-dark mr-2 dropdown-toggle" data-toggle="modal" data-target="#modal-status-{{ $progress->id }}">
-                            <span class="fas fa-check"></span> Approve
-                        </a>
+                        <form action="{{route('supervisor.progresses.decline')}}" method="POST">
+                            @csrf
+                            <input name="progress_id" type="hidden" value="{{$progress->id}}">
+                            <input name="task_id" type="hidden" value="{{$task->id}}">
+                            <button type="submit" class="btn btn-danger text-dark"><span class="fas fa-times"></span> Decline</button>
+                        </form>
+
+                        <form action="{{route('supervisor.progresses.approve')}}" method="POST">
+                            @csrf
+                            <input name="progress_id" type="hidden" value="{{$progress->id}}">
+                            <input name="task_id" type="hidden" value="{{$task->id}}">
+                            <button type="submit" class="btn btn-secondary text-dark"><span class="fas fa-check"></span> Approve</button>
+                        </form>
                     </div>
                 </div>
             @endif

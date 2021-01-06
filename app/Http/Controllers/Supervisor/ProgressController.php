@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Progress;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class ProgressController extends Controller
@@ -36,7 +37,7 @@ class ProgressController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -70,7 +71,7 @@ class ProgressController extends Controller
      */
     public function update(Request $request, Progress $progress)
     {
-        //
+//        $progress->update($request->all());
     }
 
     /**
@@ -82,5 +83,31 @@ class ProgressController extends Controller
     public function destroy(Progress $progress)
     {
         //
+    }
+
+    public function approve(Request $request) {
+        $progress = Progress::find($request->progress_id);
+        $comment = Progress::find($request->comment_id);
+        $progressapply = Progress::where('task_id', $progress->task_id)->where('id', $progress->id)->first();
+        $progressapply->update([
+            'status' => '1',
+            'comment' => $comment,
+        ]);
+
+        return empty($progress) ? redirect()->back()->with('Fail', "Failed to update status")
+            : redirect()->back()->with('Success', 'Success student: #('.$progress->name.') approved');
+    }
+
+    public function decline(Request $request) {
+        $progress = Progress::find($request->progress_id);
+        $comment = Progress::find($request->comment_id);
+        $progressapply = Progress::where('task_id', $progress->task_id)->where('id', $progress->id)->first();
+        $progressapply->update([
+            'status' => '2',
+            'comment' => $comment,
+        ]);
+
+        return empty($progress) ? redirect()->back()->with('Fail', "Failed to update status")
+            : redirect()->back()->with('Success', 'Success student: #('.$progress->name.') approved');
     }
 }
