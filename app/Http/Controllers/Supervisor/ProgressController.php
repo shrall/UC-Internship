@@ -87,7 +87,7 @@ class ProgressController extends Controller
 
     public function approve(Request $request) {
         $progress = Progress::find($request->progress_id);
-        $comment = Progress::find($request->comment_id);
+        $comment = $request['comment'];
         $progressapply = Progress::where('task_id', $progress->task_id)->where('id', $progress->id)->first();
         $progressapply->update([
             'status' => '1',
@@ -95,12 +95,12 @@ class ProgressController extends Controller
         ]);
 
         return empty($progress) ? redirect()->back()->with('Fail', "Failed to update status")
-            : redirect()->back()->with('Success', 'Success student: #('.$progress->name.') approved');
+            : redirect()->back()->with('Success', 'Success progress: #('.$progress->name.') approved');
     }
 
     public function decline(Request $request) {
         $progress = Progress::find($request->progress_id);
-        $comment = Progress::find($request->comment_id);
+        $comment = $request['comment'];
         $progressapply = Progress::where('task_id', $progress->task_id)->where('id', $progress->id)->first();
         $progressapply->update([
             'status' => '2',
@@ -108,6 +108,6 @@ class ProgressController extends Controller
         ]);
 
         return empty($progress) ? redirect()->back()->with('Fail', "Failed to update status")
-            : redirect()->back()->with('Success', 'Success student: #('.$progress->name.') approved');
+            : redirect()->back()->with('Success', 'Success progress: #('.$progress->name.') approved');
     }
 }

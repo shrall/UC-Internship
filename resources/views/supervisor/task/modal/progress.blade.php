@@ -37,8 +37,9 @@
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <div>
-                                <label for="comment_id">Comment</label>
-                                <input class="form-control" id="comment_id" type="text" placeholder="Add New Comment" required>
+                                <form action="{{route('supervisor.progresses.approve')}}" method="POST">
+                                    <label for="comment">Comment</label>
+                                    <input class="form-control" id="comment_id" name="comment" type="text" placeholder="Add New Comment" required>
                             </div>
                         </div>
                     </div>
@@ -54,6 +55,11 @@
             @if($progress->status == 0)
                 <div class="modal-footer">
                     <div>
+                            @csrf
+                            <input name="progress_id" type="hidden" value="{{$progress->id}}">
+                            <input name="task_id" type="hidden" value="{{$task->id}}">
+                            <button type="submit" class="btn btn-secondary text-dark"><span class="fas fa-check"></span> Approve</button>
+                        </form>
                         <form action="{{route('supervisor.progresses.decline')}}" method="POST">
                             @csrf
                             <input name="progress_id" type="hidden" value="{{$progress->id}}">
@@ -61,12 +67,7 @@
                             <button type="submit" class="btn btn-danger text-dark"><span class="fas fa-times"></span> Decline</button>
                         </form>
 
-                        <form action="{{route('supervisor.progresses.approve')}}" method="POST">
-                            @csrf
-                            <input name="progress_id" type="hidden" value="{{$progress->id}}">
-                            <input name="task_id" type="hidden" value="{{$task->id}}">
-                            <button type="submit" class="btn btn-secondary text-dark"><span class="fas fa-check"></span> Approve</button>
-                        </form>
+
                     </div>
                 </div>
             @endif
