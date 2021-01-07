@@ -103,6 +103,9 @@ Route::group(['middleware' => ['supervisor'], 'prefix' => 'supervisor', 'as' => 
     Route::resource('staff', SupervisorStaffController::class);
     Route::resource('student', SupervisorStudentController::class);
     Route::resource('user', SupervisorUserController::class);
+    //change project status
+    Route::post('projects/ongoing', [SupervisorProjectController::class, 'ongoing'])->name('projects.ongoing');
+    Route::post('projects/completed', [SupervisorProjectController::class, 'completed'])->name('projects.completed');
     //approve and decline students
     Route::post('students/accept', [SupervisorUserController::class, 'accept'])->name('students.accept');
     Route::post('students/decline', [SupervisorUserController::class, 'decline'])->name('students.decline');

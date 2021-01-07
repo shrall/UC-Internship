@@ -33,11 +33,25 @@
                         <span class="fa fa-thumbs-up"></span>
                         <span class="font-weight-bold">Available</span>
                     </td>
+                    <form action="{{route('supervisor.projects.ongoing')}}" method="POST">
+                        @csrf
+                        <input name="project_id" type="hidden" value="{{$project->id}}">
+                        <input name="supervisor_id" type="hidden" value="{{$project->supervisor->id}}">
+                        <button type="submit" class="btn btn-primary mt-3"><span class="fa fa-clock"></span> Change status to "Ongoing"</button>
+                    </form>
                 @endif
                 @if($project->status == 1)
                     <td class="text-success">
                         <span class="fas fa-clock"></span>
                         <span class="font-weight-bold">Ongoing</span>
+                    </td>
+                    <td class="text-success">
+                        <form action="{{route('supervisor.projects.completed')}}" method="POST">
+                            @csrf
+                            <input name="project_id" type="hidden" value="{{$project->id}}">
+                            <input name="supervisor_id" type="hidden" value="{{$project->supervisor->id}}">
+                            <button type="submit" class="btn btn-primary mt-3"><span class="fa fa-check"></span> Change status to "Completed"</button>
+                        </form>
                     </td>
                 @endif
                 @if($project->status == 2)
