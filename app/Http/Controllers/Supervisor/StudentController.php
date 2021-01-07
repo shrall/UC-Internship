@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
-use App\Models\Project;
 use App\Models\Student;
-use App\Models\ProjectUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 

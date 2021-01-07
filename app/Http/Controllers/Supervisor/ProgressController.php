@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Models\Progress;
-use App\Models\Task;
 use Illuminate\Http\Request;
 
 class ProgressController extends Controller

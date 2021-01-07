@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\Progress;
 use App\Models\ProgressAttachment;
-use App\Models\Task;
 use Illuminate\Http\Request;
 
 class ProgressController extends Controller
@@ -111,8 +110,6 @@ class ProgressController extends Controller
      */
     public function destroy(Progress $progress)
     {
-
-        //klo status project suspend maka lgs mental
         if ($progress->task->projectuser->project->status == '3'){
             return redirect()->back();
         }

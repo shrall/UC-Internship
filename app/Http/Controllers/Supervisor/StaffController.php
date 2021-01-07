@@ -7,7 +7,6 @@ use App\Models\Project;
 use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class StaffController extends Controller
 {

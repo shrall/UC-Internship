@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Supervisor;
 use App\Http\Controllers\Controller;
 use App\Models\Lecturer;
 use App\Models\Project;
-use App\Models\ProjectUser;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class LecturerController extends Controller
 {
@@ -66,8 +64,7 @@ class LecturerController extends Controller
      */
     public function edit(User $lecturer)
     {
-//        $pages = 'lecturer';
-//        return view('supervisor.user.lecturer.edit', compact('pages','lecturer'));
+        //
     }
 
     /**
@@ -79,8 +76,7 @@ class LecturerController extends Controller
      */
     public function update(Request $request, User $lecturer)
     {
-//        $lecturer->update($request->all());
-//        return redirect()->route('supervisor.user.staff.detail');
+        //
     }
 
     /**
