@@ -12,7 +12,7 @@
         <div class="col-12 col-xl-4">
             <div class="row">
                 <div class="col-12 mb-4">
-
+                    @include('supervisor.user.lecturer.card.detail')
                 </div>
             </div>
         </div>

@@ -59,13 +59,12 @@
                                 @include('supervisor.project.modal.decline')
                                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
                                     <div>
-                                        <a class="btn btn-success text-white mr-2 dropdown-toggle" data-toggle="modal" data-target="#modal-accept-{{$project->id}}">
+                                        <a class="btn btn-success text-white mr-2 dropdown-toggle" data-toggle="modal" data-target="#modal-accept-{{$user->id}}">
                                             <span class="fa fa-check"></span>
                                         </a>
-                                        <a class="btn btn-danger text-white mr-2 dropdown-toggle" data-toggle="modal" data-target="#modal-decline-{{$project->id}}">
+                                        <a class="btn btn-danger text-white mr-2 dropdown-toggle" data-toggle="modal" data-target="#modal-decline-{{$user->id}}">
                                             <span class="fa fa-times"></span>
                                         </a>
-
                                     </div>
                                 </div>
                             </td>

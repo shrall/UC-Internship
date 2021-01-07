@@ -1,6 +1,6 @@
 {{-- ini modal buat nge decline anak keproject  --}}
 
-<div class="modal fade" id="modal-decline-{{$project->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-decline-1"
+<div class="modal fade" id="modal-decline-{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-decline-1"
      aria-hidden="true" style="color:#fff">
     <div class="modal-dialog modal-info modal-dialog-centered" role="document">
         <div class="modal-content bg-gradient-danger">

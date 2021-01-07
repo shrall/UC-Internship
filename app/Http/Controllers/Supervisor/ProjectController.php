@@ -103,20 +103,30 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        if (Auth::user()->detailable_type == "App\Models\Staff") {
-            $info = Staff::find(Auth::user()->detailable_id);
-        } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
-            $info = Lecturer::find(Auth::user()->detailable_id);
-        }
-        $pages = 'project';
-        $periods = Period::all();
-        $currentdate = Carbon::now();
-        foreach ($periods as $period) {
-            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
-                $currentperiod = $period;
-            };
-        }
-        return view('supervisor.project.detail', compact('project','pages','info', 'currentperiod'));
+//        if (Auth::user()->detailable_type == "App\Models\Staff") {
+//            $info = Staff::find(Auth::user()->detailable_id);
+//        } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
+//            $info = Lecturer::find(Auth::user()->detailable_id);
+//        }
+//        $pages = 'project';
+
+//        return view('supervisor.project.detail', compact('project','pages','info', 'currentperiod'));
+
+            if($project->supervisor->id == Auth::id()){
+                $pages = "project";
+                $periods = Period::all();
+                $currentdate = Carbon::now();
+                foreach ($periods as $period) {
+                    if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                        $currentperiod = $period;
+                    };
+                }
+                return view('supervisor.project.detail', compact('pages','project', 'currentperiod'));
+            } else {
+                return redirect()->back();
+            }
+
+
     }
 
     /**

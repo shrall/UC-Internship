@@ -23,6 +23,8 @@
                         <th class="border-0">Period</th>
                         <th class="border-0">Status</th>
                         <th class="border-0">Action</th>
+
+
                     </tr>
                     </thead>
                     <tbody>
@@ -30,11 +32,11 @@
                         <!-- Item -->
                         <tr>
                             <td>
-                                <a href="{{ route('admin.project.show', $project->id) }}"
+                                <a href="{{ route('supervisor.project.show', $project->id) }}"
                                    class="text-primary font-weight-bold">{{ $project->id }}</a>
                             </td>
                             <td class="font-weight-bold proj-name">
-                                <a href="{{ route('admin.project.show', $project->id) }}">
+                                <a href="{{ route('supervisor.project.show', $project->id) }}">
                                     {{ $project->name }}</a>
                             </td>
                             @if($project->category == 0)
@@ -49,13 +51,13 @@
                             @if($project->supervisor->detailable_type == "App\Models\Staff")
                                 <td>
                                     <a
-                                        href="{{ route('admin.staff.show', $project->supervisor_id) }}">{{ $project->supervisor->detailable->name }}</a>
+                                        href="{{ route('supervisor.staff.show', $project->supervisor_id) }}">{{ $project->supervisor->detailable->name }}</a>
                                 </td>
                             @endif
                             @if($project->supervisor->detailable_type == "App\Models\Lecturer")
                                 <td>
                                     <a
-                                        href="{{ route('admin.lecturer.show', $project->supervisor_id) }}">{{ $project->supervisor->detailable->name }}</a>
+                                        href="{{ route('supervisor.lecturer.show', $project->supervisor_id) }}">{{ $project->supervisor->detailable->name }}</a>
                                 </td>
                             @endif
                             <td>{{ date('d F Y', strtotime($project->deadline)) }}
@@ -90,28 +92,28 @@
                                     <span class="font-weight-bold">Suspended</span>
                                 </td>
                             @endif
-                            <td>
-                                <div class="btn-group">
-                                    <button
-                                        class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                            @if($project->supervisor->id == Auth::id())
+                                <td>
+                                    <div class="btn-group">
+                                        <button
+                                            class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="icon icon-sm">
                                                 <span class="fas fa-ellipsis-h icon-dark"></span>
                                             </span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item"
-                                           href="{{ route('admin.project.show', $project->id) }}"><span
-                                                class="fas fa-eye mr-2"></span>View
-                                            Details</a>
-                                        <a class="dropdown-item text-danger" data-toggle="modal"
-                                           data-target="#modal-suspend-1">
-                                            <span class="fas fa-ban mr-2"></span>Suspend
-                                        </a>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item"
+                                               href="{{ route('supervisor.project.show', $project->id) }}"><span
+                                                    class="fas fa-eye mr-2"></span>View
+                                                Details</a>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
+                                </td>
+                            @endif
+
                         </tr>
                     @endforeach
                     </tbody>
