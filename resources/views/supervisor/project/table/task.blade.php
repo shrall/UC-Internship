@@ -14,7 +14,6 @@
                         <div class="d-flex justify-content-end flex-wrap flex-md-nowrap align-items-center pb-2">
                             <div>
                                 @include('supervisor.project.modal.task.create')
-                                {{--                    @include('supervisor.project.modal.task.edit')--}}
                                 <a class="btn btn-secondary text-dark mr-2 dropdown-toggle "
                                    data-toggle="modal" data-target="#modal-add-task-{{$project->id}}">
                                     <span class="fas fa-plus mr-2"></span>New
@@ -31,7 +30,9 @@
                         <th class="border-0">Name</th>
                         <th class="border-0">PIC</th>
                         <th class="border-0">Status</th>
-                        <th class="border-0">Action</th>
+                        @if(Auth::id())
+                            <th class="border-0">Action</th>
+                        @endif
                     </tr>
                     </thead>
                     <tbody>
@@ -58,15 +59,18 @@
                                         <span class="font-weight-bold">Completed</span>
                                     </td>
                                 @endif
-                                <td class="align-middle">
-                                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                                        <div>
-                                            <a class="btn btn-secondary text-white mr-2 dropdown-toggle" data-toggle="modal" data-target="#modal-edit-task-{{$project->id}}" href="{{ route('supervisor.task.edit', $task->id) }}">
-                                                <span class="fa fa-cog"></span>
-                                            </a>
+                                @include('supervisor.project.modal.task.edit')
+                                @if(Auth::id())
+                                    <td class="align-middle">
+                                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+                                            <div>
+                                                <a class="btn btn-secondary text-white mr-2 dropdown-toggle" data-toggle="modal" data-target="#modal-edit-task-{{$task->id}}" href="{{ route('supervisor.task.edit', $task->id) }}">
+                                                    <span class="fa fa-cog"></span>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     @endforeach

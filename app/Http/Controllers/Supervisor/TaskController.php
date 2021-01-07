@@ -106,6 +106,10 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        if (($task->status == '0') && ($task->duration == '0')) {
+            $task->delete();
+            return redirect()->back();
+        } else {
+        }
     }
 }
