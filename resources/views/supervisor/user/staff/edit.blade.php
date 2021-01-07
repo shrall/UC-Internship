@@ -15,8 +15,8 @@
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <label for="password"><span class="fab fa-password"></span> Password</label>
-                            <input class="form-control" id="password" name="password" type="text" placeholder="Password"
-                                   value="{{ $staff->password }}" required>
+                            <input class="form-control" id="password" name="password" type="text" placeholder="Leave blank if you do not wish to change your password."
+                                   required>
                         </div>
                     </div>
                     <div class="row">
@@ -71,21 +71,7 @@
         <div class="col-12 col-xl-4">
             <div class="row">
                 <div class="col-12 mb-0">
-                    <div class="card border-light text-center p-0">
-                        <div class="profile-cover rounded-top"
-                             data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
-                        <div class="card-body"><img
-                                src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
-                                class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
-                            <h4 class="h3">
-                                {{ $staff->detailable->name }}
-                            </h4>
-                            <p class="text-gray mb-0">{{ $staff->detailable->nim }}</p>
-                            <p class="text-gray mb-0">{{ $staff->detailable->department->name }}
-                                ({{ $staff->detailable->department->initial }})
-                            <p class="text-gray mb-0">{{ $staff->detailable->email }}</p>
-                        </div>
-                    </div>
+                    @include('supervisor.user.staff.card.detail')
                 </div>
             </div>
         </div>

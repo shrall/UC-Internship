@@ -1,7 +1,7 @@
 {{-- disini ngeliat detail dari progress yang di klik  --}}
-{{-- ada form buat ke supervisor.progress.update,$progress->id buat ngasi comment + ngerubah status  --}}
+{{-- ada form buat ke supervisor.progress.update,$progress->id buat ngasi comment + ngerubah status  beda but done--}}
 
-{{-- disini harus ngasi pilihan buat decline. kenapa? soale lek misal ada arek sg ngisi progress ngawur ga ada attachment gada description, trus cuma bisa di accept tok, de e jadi dapet jam gratisan  --}}
+{{-- disini harus ngasi pilihan buat decline. kenapa? soale lek misal ada arek sg ngisi progress ngawur ga ada attachment gada description, trus cuma bisa di accept tok, de e jadi dapet jam gratisan  done--}}
 {{-- :v panjang ya notenya :v  --}}
 <div class="modal fade" id="modal-progress-{{ $progress->id }}" tabindex="-1" role="dialog"
      aria-labelledby="modal-progress-{{ $progress->id }}" aria-hidden="true">

@@ -11,6 +11,9 @@ use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -117,6 +120,20 @@ class UserController extends Controller
             'line_account' => $data['line_account'],
         ]);
 
+        if ($request->filled('password')) {
+            Validator::make($request->all(), [
+                'password' => 'string|min:8',
+                'phone' => 'required|numeric',
+                'line_account' => 'required',
+                'photo' => 'image',
+            ])->validate();
+        } else {
+            Validator::make($request->all(), [
+                'phone' => 'required|numeric',
+                'line_account' => 'required',
+                'photo' => 'image',
+            ])->validate();
+        }
         if($user->detailable_type == "App\Models\Staff"){
             if ($request->has('photo')) {
                 $file_name = time() . '-' . $data['photo']->getClientOriginalName();
@@ -133,6 +150,19 @@ class UserController extends Controller
                     'photo' => $file_name,
                 ]);
             }
+        }
+
+        if ($request->filled('password')) {
+            $user->update([
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'password' => Hash::make($request->password),
+            ]);
+        } else {
+            $user->update([
+                'name' => $user['name'],
+                'email' => $user['email'],
+            ]);
         }
         return redirect()->route('supervisor.user.show', Auth::id());
     }
