@@ -27,7 +27,7 @@
                 <label for="">Attachment</label>
                 @foreach($progress->attachments as $attachment)
                     <p class="text-info"><span class="fa fa-paperclip"></span>
-                        <a href="#">
+                        <a href="/attachments/progress/{{ $attachment->name }}">
                             {{ $attachment->name }}
                         </a>
                     </p>
