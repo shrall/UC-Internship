@@ -22,14 +22,20 @@
                     </thead>
                     <tbody>
                         @foreach ($progresses as $progress)
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td><a href="{{ route('supervisor.task.show', $progress->task->id) }}">{{$progress->description}}</a></td>
-                            <td><a href="{{ route('supervisor.project.show', $progress->task->projectuser->uci_project_id) }}">{{$progress->task->projectuser->project->name}}</a></td>
-                            <td><a href="{{ route('supervisor.student.show', $progress->task->projectuser->uci_user_id) }}">{{$progress->task->projectuser->user->name}}</a></td>
-                            <td>{{ date("d-m-Y, H:i", strtotime($progress->time_start)) }}</td>
-                            <td>{{ date("d-m-Y, H:i", strtotime($progress->time_end)) }}</td>
-                        </tr>
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td><a
+                                        href="{{ route('supervisor.task.show', $progress->task->id) }}">{{ $progress->description }}</a>
+                                </td>
+                                <td><a
+                                        href="{{ route('supervisor.project.show', $progress->task->projectuser->uci_project_id) }}">{{ $progress->task->projectuser->project->name }}</a>
+                                </td>
+                                <td><a
+                                        href="{{ route('supervisor.student.show', $progress->task->projectuser->uci_user_id) }}">{{ $progress->task->projectuser->user->name }}</a>
+                                </td>
+                                <td>{{ date('d-m-Y, H:i', strtotime($progress->time_start)) }}</td>
+                                <td>{{ date('d-m-Y, H:i', strtotime($progress->time_end)) }}</td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

@@ -1,13 +1,8 @@
-{{-- ini sih ya edit :v  --}}
-
-{{-- tambahin edit password --}}
-{{-- hapus edit title  --}}
 @extends('layouts.app')
 @section('content')
     <div class="row">
         <div class="col-12 col-xl-8">
-            <form action="{{ route('supervisor.user.update', $staff->id) }}" method="POST"
-                  enctype="multipart/form-data">
+            <form action="{{ route('supervisor.user.update', $staff->id) }}" method="POST" enctype="multipart/form-data">
                 <div class="card card-body bg-white border-light shadow-sm mb-4">
                     <h2 class="h5 mb-4">General information</h2>
                     @csrf
@@ -15,21 +10,21 @@
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <label for="password"><span class="fab fa-password"></span> Password</label>
-                            <input class="form-control" id="password" name="password" type="text" placeholder="Leave blank if you do not wish to change your password."
-                                   required>
+                            <input class="form-control" id="password" name="password" type="text"
+                                placeholder="Leave blank if you do not wish to change your password." required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="phone"><span class="fab fa-whatsapp"></span> Phone Number</label>
                             <input class="form-control" id="phone" name="phone" type="number" placeholder="Phone Number"
-                                   value="{{ $staff->detailable->phone }}" required>
+                                value="{{ $staff->detailable->phone }}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="Line"><span class="fab fa-line"></span> Line</label>
                             <input class="form-control" id="line_account" name="line_account" type="text"
-                                   placeholder="Enter your line address" value="{{ $staff->detailable->line_account }}"
-                                   required>
+                                placeholder="Enter your line address" value="{{ $staff->detailable->line_account }}"
+                                required>
                         </div>
                     </div>
                     <div class="row">
@@ -39,18 +34,19 @@
                                 <div class="file-field">
                                     <div class="d-flex justify-content-xl-center ml-xl-3">
                                         <div class="d-flex">
-                                        <span class="icon icon-md">
-                                            <span class="fas fa-paperclip mr-3"></span>
-                                        </span>
+                                            <span class="icon icon-md">
+                                                <span class="fas fa-paperclip mr-3"></span>
+                                            </span>
                                             <input type="file" id="photo" name="photo">
                                             <div class="d-md-block text-left">
-                                                @if($staff->detailable->photo == null)
+                                                @if ($staff->detailable->photo == null)
                                                     <div class="font-weight-normal text-dark mb-1" id="pp-name">Choose
                                                         Image
                                                     </div>
                                                 @else
                                                     <div class="font-weight-normal text-dark mb-1" id="pp-name">
-                                                        {{ $staff->detailable->photo }}</div>
+                                                        {{ $staff->detailable->photo }}
+                                                    </div>
                                                 @endif
                                                 <div class="text-gray small">JPG or PNG.</div>
                                             </div>
@@ -77,6 +73,3 @@
         </div>
     </div>
 @endsection
-
-
-

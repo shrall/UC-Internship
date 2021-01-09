@@ -10,8 +10,7 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a
-                            href="{{ route('supervisor.user.show', $student->id) }}">{{ $student->detailable->name }}</a>
+                        <a href="{{ route('supervisor.user.show', $student->id) }}">{{ $student->detailable->name }}</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <a href="{{ route('supervisor.history.show', $student->id) }}">Time History</a>

@@ -19,17 +19,21 @@
                     </thead>
                     <tbody>
                         @foreach ($pus as $pu)
-                        <tr>
-                            <td><a href="{{route('supervisor.project.show', $pu->uci_project_id)}}">{{$pu->uci_project_id}}</a></td>
-                            <td><a href="{{route('supervisor.project.show', $pu->uci_project_id)}}">{{$pu->project->name}}</a></td>
-                            <td>
-                                <a href="{{route('supervisor.student.show', $pu->uci_user_id)}}">
-                                    @if($pu->status == '0')
-                                        {{$pu->user->detailable->name}}
-                                    @endif
-                                </a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td><a
+                                        href="{{ route('supervisor.project.show', $pu->uci_project_id) }}">{{ $pu->uci_project_id }}</a>
+                                </td>
+                                <td><a
+                                        href="{{ route('supervisor.project.show', $pu->uci_project_id) }}">{{ $pu->project->name }}</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('supervisor.student.show', $pu->uci_user_id) }}">
+                                        @if ($pu->status == '0')
+                                            {{ $pu->user->detailable->name }}
+                                        @endif
+                                    </a>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-12">
             <form action="{{ route('supervisor.project.update', $project->id) }}" method="POST"
-                  enctype="multipart/form-data">
+                enctype="multipart/form-data">
                 <div class="card card-body bg-white border-light shadow-sm mb-4">
                     <h2 class="h5 mb-4">Edit Project</h2>
                     @csrf
@@ -34,16 +34,20 @@
                                 <label for="project_name"><span class="fa fa-clipboard-list"></span> Project
                                     Name</label>
                                 <input class="form-control" id="name" name="name" type="text" placeholder="Project Name"
-                                       value="{{ $project->name }}" required>
+                                    value="{{ $project->name }}" required>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="category"><span class="fa fa-tag"></span> Category</label>
                             <select class="form-select w-100 mb-0" id="category" name="category">
-                                {{-- @if ($artwork->type == 'Ceramics') selected end="@endif" --}}
-                                <option value="0" @if ($project->category == 0) selected @endif>Event</option>
-                                <option value="1" @if ($project->category == 1) selected @endif>Education</option>
-                                <option value="2" @if ($project->category == 2) selected @endif>Other</option>
+                                {{-- @if ($artwork->type == 'Ceramics') selected end="@endif"
+                                --}}
+                                <option value="0" @if ($project->category == 0) selected
+                                    @endif>Event</option>
+                                <option value="1" @if ($project->category == 1) selected
+                                    @endif>Education</option>
+                                <option value="2" @if ($project->category == 2) selected
+                                    @endif>Other</option>
                             </select>
                         </div>
                     </div>
@@ -52,9 +56,8 @@
                             <div>
                                 <label for="description"><span class="fa fa-align-justify"></span> Project
                                     Description</label>
-                                <textarea class="form-control" id="description" name="description"
-                                          placeholder="Description"
-                                          required>{{ $project->description }}</textarea>
+                                <textarea class="form-control" id="description" name="description" placeholder="Description"
+                                    required>{{ $project->description }}</textarea>
                             </div>
                         </div>
 
@@ -63,20 +66,20 @@
                         <div class="col-md-6 mb-3">
                             <label for="deadline"><span class="fa fa-hourglass-end"></span> Deadline</label>
                             <input class="form-control" id="deadline" name="deadline" type="date" placeholder="Deadline"
-                                   min="{{ $currentperiod->start }}" max="{{ $currentperiod->end }}"
-                                   value="{{ $project->deadline }}" required>
+                                min="{{ $currentperiod->start }}" max="{{ $currentperiod->end }}"
+                                value="{{ $project->deadline }}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="duration"><span class="fa fa-clock"></span> Period</label>
                             <input type="hidden" name="period" value="{{ $currentperiod->id }}">
-                            @if($project->period->term == 0)
+                            @if ($project->period->term == 0)
                                 <input class="form-control" type="text"
-                                       value="{{ date("Y", strtotime($currentperiod->start)) }}-{{ date("Y", strtotime($currentperiod->start))+1 }} / Odd"
-                                       placeholder="Period" disabled>
+                                    value="{{ date('Y', strtotime($currentperiod->start)) }}-{{ date('Y', strtotime($currentperiod->start)) + 1 }} / Odd"
+                                    placeholder="Period" disabled>
                             @else
                                 <input class="form-control" type="text"
-                                       value="{{ idate("Y", strtotime($currentperiod->end))-1 }}-{{ date("Y", strtotime($currentperiod->end)) }} / Even"
-                                       placeholder="Period" disabled>
+                                    value="{{ idate('Y', strtotime($currentperiod->end)) - 1 }}-{{ date('Y', strtotime($currentperiod->end)) }} / Even"
+                                    placeholder="Period" disabled>
                             @endif
                         </div>
                     </div>
@@ -85,9 +88,9 @@
                         <div class="file-field">
                             <div class="d-flex justify-content-xl-center ml-xl-3">
                                 <div class="d-flex">
-                                <span class="icon icon-md">
-                                    <span class="fas fa-paperclip mr-3"></span>
-                                </span>
+                                    <span class="icon icon-md">
+                                        <span class="fas fa-paperclip mr-3"></span>
+                                    </span>
                                     <input type="file" name="attachments[]" id="attachments" multiple>
                                     <div class="d-md-block text-left">
                                         <div class="font-weight-normal text-dark mb-1" id="pp-name">Choose File</div>

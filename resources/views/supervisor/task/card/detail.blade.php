@@ -1,5 +1,3 @@
-{{-- disini itu ngasi detail dari sebuah task  --}}
-{{-- bisa ngedit. berarti include modal.edit  --}}
 <div class="col-lg-6">
     <div class="card border-light shadow-sm text-center pt-3 pb-4 mb-4 mb-lg-0">
         <div class="card-body">
@@ -13,12 +11,12 @@
                 <span class="fa fa-hourglass-half mr-2"></span>Deadline :
                 {{ date('d F Y', strtotime($task->deadline)) }}
             </div>
-            @if($task->status == 0)
+            @if ($task->status == 0)
                 <div class="medium font-weight-bold mt-1 text-warning">
                     <span class="fa fa-clock mr-2"></span>Ongoing
                 </div>
             @endif
-            @if($task->status == 1)
+            @if ($task->status == 1)
                 <div class="medium font-weight-bold mt-1 text-success">
                     <span class="fa fa-check mr-2"></span>Completed
                 </div>
@@ -26,4 +24,3 @@
         </div>
     </div>
 </div>
-
