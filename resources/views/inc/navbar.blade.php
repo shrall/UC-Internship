@@ -1,10 +1,11 @@
 <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark pl-0 pr-2 pb-0">
     <div class="container-fluid px-0">
         <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
-
-            <div class="d-flex align-items-center"><button id="sidebar-toggle"
-                    class="sidebar-toggle mr-3 btn btn-icon-only btn-lg btn-circle d-none d-md-inline-block"><span
-                        class="fas fa-bars"></span></button>
+            <div class="d-flex align-items-center">
+                <button id="sidebar-toggle"
+                    class="sidebar-toggle mr-3 btn btn-icon-only btn-lg btn-circle d-none d-md-inline-block">
+                    <span class="fas fa-bars"></span>
+                </button>
             </div>
             <!-- Navbar links -->
             <ul class="navbar-nav align-items-center">
@@ -21,23 +22,23 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dashboard-dropdown dropdown-menu-right mt-2">
-                        @if(Auth::user()->isAdmin())
-                            <a class="dropdown-item font-weight-bold"
-                                href="{{ route('admin.user.show', Auth::id()) }}">
-                        @endif
                         @if(Auth::user()->isSupervisor())
                             <a class="dropdown-item font-weight-bold"
                                 href="{{ route('supervisor.user.show', Auth::id()) }}">
+                                <span class="far fa-user-circle"></span>My Profile
+                            </a>
+                            <div role="separator" class="dropdown-divider"></div>
                         @endif
                         @if(Auth::user()->isStudent())
                             <a class="dropdown-item font-weight-bold"
                                 href="{{ route('student.user.show', Auth::id()) }}">
+                                <span class="far fa-user-circle"></span>My Profile
+                            </a>
+                            <div role="separator" class="dropdown-divider"></div>
                         @endif
-                        <span class="far fa-user-circle"></span>My Profile
-                        </a>
-                        <div role="separator" class="dropdown-divider"></div>
                         <a class="dropdown-item font-weight-bold" href="#" data-toggle="modal"
-                            data-target="#logoutModal"><span class="fas fa-sign-out-alt text-danger"></span>Logout</a>
+                            data-target="#logoutModal"><span class="fas fa-sign-out-alt text-danger"></span>Logout
+                        </a>
                     </div>
                 </li>
             </ul>
