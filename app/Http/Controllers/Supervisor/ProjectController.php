@@ -100,8 +100,6 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-
-        if ($project->supervisor->id == Auth::id()) {
             $pages = "project";
             $periods = Period::all();
             $currentdate = Carbon::now();
@@ -111,9 +109,6 @@ class ProjectController extends Controller
                 };
             }
             return view('supervisor.project.detail', compact('pages', 'project', 'currentperiod'));
-        } else {
-            return redirect()->back();
-        }
     }
 
     /**
