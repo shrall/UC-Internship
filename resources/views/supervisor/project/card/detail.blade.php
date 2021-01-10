@@ -27,13 +27,6 @@
                 <div class="medium font-weight-bold mt-1 text-warning">
                     <span class="fa fa-clock mr-2"></span>Ongoing
                 </div>
-                <form action="{{ route('supervisor.projects.ongoing') }}" method="POST">
-                    @csrf
-                    <input name="project_id" type="hidden" value="{{ $project->id }}">
-                    <input name="supervisor_id" type="hidden" value="{{ $project->supervisor->id }}">
-                    <button type="submit" class="btn btn-primary mt-3"><span class="fa fa-clock"></span> Change
-                        status to "Ongoing"</button>
-                </form>
             @endif
             @if ($project->status == 2)
                 <div class="medium font-weight-bold mt-1 text-success">
@@ -45,8 +38,28 @@
                     <span class="fa fa-ban mr-2"></span>Suspended
                 </div>
             @endif
+            @if ($project->status == 0)
+            <form class="d-inline" action="{{ route('supervisor.projects.ongoing') }}" method="POST">
+                @csrf
+                <input name="project_id" type="hidden" value="{{ $project->id }}">
+                <input name="supervisor_id" type="hidden" value="{{ $project->supervisor->id }}">
+                <button type="submit" class="btn btn-sm btn-success mt-1">
+                    <span class="fa fa-play mr-2"></span>Start Project
+                </button>
+            </form>
+            @endif
+            @if ($project->status == 1)
+            <form class="d-inline" action="{{ route('supervisor.projects.completed') }}" method="POST">
+                @csrf
+                <input name="project_id" type="hidden" value="{{ $project->id }}">
+                <input name="supervisor_id" type="hidden" value="{{ $project->supervisor->id }}">
+                <button type="submit" class="btn btn-sm btn-success mt-1">
+                    <span class="fa fa-check mr-2"></span>Finish Project
+                </button>
+            </form>
+            @endif
             @if ($project->supervisor->id == Auth::id())
-                <a class="btn btn-sm btn-primary mt-1" href="{{ route('supervisor.project.show', $project->id) }}">
+                <a class="btn btn-sm btn-primary mt-1" href="{{ route('supervisor.project.edit', $project->id) }}">
                     <span class="fa fa-cog mr-2"></span>Edit Project
                 </a>
             @endif
