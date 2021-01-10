@@ -1,5 +1,5 @@
-<div class="modal fade text-white" id="modal-accept-{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-accept-1"
-    aria-hidden="true">
+<div class="modal fade text-white" id="modal-accept-{{ $user->id }}" tabindex="-1" role="dialog"
+    aria-labelledby="modal-accept-1" aria-hidden="true">
     <div class="modal-dialog modal-info modal-dialog-centered" role="document">
         <div class="modal-content bg-gradient-success">
             <div class="modal-header">
@@ -11,8 +11,10 @@
                     <span class="modal-icon display-1-lg">
                         <span class="fas fa-check"></span>
                     </span>
-                    <h2 class="h4 modal-title my-3 text-white">Are you sure you want to accept<br>
-                        {{ $user->detailable->name }}'s application?</h2>
+                    <h2 class="h4 modal-title my-3 text-white">
+                        Are you sure you want to accept
+                    </h2>
+                    <p>{{ $user->detailable->name }}'s application?</p>
                 </div>
             </div>
             <div class="modal-footer">

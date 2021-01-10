@@ -11,8 +11,10 @@
                     <span class="modal-icon display-1-lg">
                         <span class="fas fa-times"></span>
                     </span>
-                    <h2 class="h4 modal-title my-3 text-white">Are you sure you want to decline<br>
-                        {{ $user->detailable->name }}'s application?</h2>
+                    <h2 class="h4 modal-title my-3 text-white">
+                        Are you sure you want to Decline
+                    </h2>
+                    <p>{{ $user->detailable->name }}'s application?</p>
                 </div>
             </div>
             <div class="modal-footer">
