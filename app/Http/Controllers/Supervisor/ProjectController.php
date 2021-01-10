@@ -119,11 +119,6 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        if (Auth::user()->detailable_type == "App\Models\Staff") {
-            $info = Staff::find(Auth::user()->detailable_id);
-        } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
-            $info = Lecturer::find(Auth::user()->detailable_id);
-        }
         $pages = 'project';
         $periods = Period::all();
         $currentdate = Carbon::now();
@@ -132,7 +127,7 @@ class ProjectController extends Controller
                 $currentperiod = $period;
             };
         }
-        return view('supervisor.project.edit', compact('project', 'pages', 'info', 'currentperiod'));
+        return view('supervisor.project.edit', compact('project', 'pages', 'currentperiod'));
     }
 
     /**
