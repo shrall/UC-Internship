@@ -16,14 +16,15 @@
                         required></textarea>
                     <label for="deadline" class="mt-4">Deadline</label>
                     <input class="form-control" id="deadline" name="deadline" type="date" placeholder="Deadline"
-                        min="{{ $currentperiod->start }}" max="{{ $currentperiod->end }}" required>
-
+                        min="{{ date('Y-m-d') }}" required>
                     <label for="pic" class="mt-4">PIC</label>
                     <select name="pic" class="form-select w-100 mb-0">
                         @foreach ($project->projectusers as $pu)
-                            <option value="{{ $pu->id }}" required>
-                                {{ $pu->user->detailable->name . ' (' . $pu->user->detailable->email . ')' }}
-                            </option>
+                            @if ($pu->status == '1')
+                                <option value="{{ $pu->id }}" required>
+                                    {{ $pu->user->detailable->name . ' (' . $pu->user->detailable->email . ')' }}
+                                </option>
+                            @endif
                         @endforeach
                     </select>
                     <div class="mt-3">
