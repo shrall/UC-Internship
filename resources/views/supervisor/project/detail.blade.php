@@ -10,7 +10,7 @@
                     <li class="breadcrumb-item active"><a href="{{ route('supervisor.project.index') }}">Project List</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page"><a
-                            href="{{ route('supervisor.project.show', $project->id) }}">201901001</a>
+                            href="{{ route('supervisor.project.show', $project->id) }}">{{$project->id}}</a>
                     </li>
                 </ol>
             </nav>

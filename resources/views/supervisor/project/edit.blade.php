@@ -11,6 +11,9 @@
                         <li class="breadcrumb-item">
                             <a href="{{ route('supervisor.project.index') }}">Project List</a>
                         </li>
+                        <li class="breadcrumb-item"><a
+                                href="{{ route('supervisor.project.show', $project->id) }}">{{$project->id}}</a>
+                        </li>
                         <li class="breadcrumb-item active" aria-current="page">
                             <a href="{{ route('supervisor.project.edit', $project->id) }}">Edit
                                 Project</a>
@@ -40,8 +43,6 @@
                         <div class="col-md-6 mb-3">
                             <label for="category"><span class="fa fa-tag"></span> Category</label>
                             <select class="form-select w-100 mb-0" id="category" name="category">
-                                {{-- @if ($artwork->type == 'Ceramics') selected end="@endif"
-                                --}}
                                 <option value="0" @if ($project->category == 0) selected
                                     @endif>Event</option>
                                 <option value="1" @if ($project->category == 1) selected
