@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\Progress;
 use App\Models\ProgressAttachment;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProgressController extends Controller
 {
@@ -43,6 +45,29 @@ class ProgressController extends Controller
             'time_end' => 'required',
             'task_id' => 'required'
         ]);
+
+        if($data['time_end'] < $data['time_start']){
+            return redirect()->route('student.task.show', $data['task_id'])->with('Error', 'Time Start must be earlier than Time End.');
+        }
+
+
+        $progresses = Progress::whereHas('task', function (Builder $query) {
+            $query->whereHas('projectuser', function (Builder $query) {
+                    $query->where('uci_user_id', Auth::id());
+                });
+        })->get();
+
+        foreach ($progresses as $progresscheck) {
+            if ($data['time_start'] >= $progresscheck->time_start && $data['time_start'] <= $progresscheck->time_end) {
+                return redirect()->route('student.task.show', $data['task_id'])->with('Error', 'You already have a progress from ' . date('jS, F Y, H:i', strtotime($progresscheck->time_start)) . ' to ' . date('jS, F Y, H:i', strtotime($progresscheck->time_end)));
+            }
+            if ($data['time_end'] >= $progresscheck->time_start && $data['time_end'] <= $progresscheck->time_end) {
+                return redirect()->route('student.task.show', $data['task_id'])->with('Error', 'You already have a progress from ' . date('jS, F Y, H:i', strtotime($progresscheck->time_start)) . ' to ' . date('jS, F Y, H:i', strtotime($progresscheck->time_end)));
+            }
+            if ($data['time_start'] <= $progresscheck->time_start && $data['time_end'] >= $progresscheck->time_end) {
+                return redirect()->route('student.task.show', $data['task_id'])->with('Error', 'You already have a progress from ' . date('jS, F Y, H:i', strtotime($progresscheck->time_start)) . ' to ' . date('jS, F Y, H:i', strtotime($progresscheck->time_end)));
+            }
+        }
 
         $progress = Progress::create([
             'description' => $data['description'],
@@ -110,12 +135,12 @@ class ProgressController extends Controller
      */
     public function destroy(Progress $progress)
     {
-        if ($progress->task->projectuser->project->status == '3'){
+        if ($progress->task->projectuser->project->status == '3') {
             return redirect()->back();
         }
 
         if ($progress->status == '0') {
-            foreach ($progress->attachments as $attachment){
+            foreach ($progress->attachments as $attachment) {
                 $attachment->delete();
             }
             $progress->delete();
