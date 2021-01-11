@@ -4,11 +4,8 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\OfferController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\Student\UserController as StudentUserController;
-use App\Http\Controllers\Api\StudentController;
 use App\Http\Controllers\Api\Supervisor\UserController as SupervisorUserController;
-use App\Http\Controllers\Api\SupervisorController;
 use App\Http\Controllers\Api\TaskController;
-use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*

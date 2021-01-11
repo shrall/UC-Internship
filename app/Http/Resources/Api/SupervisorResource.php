@@ -15,6 +15,7 @@ class SupervisorResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'user_id' => $this->user->id,
             'nip' => $this->nip,
             'name' => $this->name,
             'email' => $this->email,
