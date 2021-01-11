@@ -25,7 +25,8 @@ class StudentResource extends JsonResource
             'phone' => $this->phone,
             'line_account' => $this->line_account,
             'department_name' => $this->department->name,
-            'department_initial' => $this->department->initial
+            'department_initial' => $this->department->initial,
+            'info' => InfoResource::make($this->user->info),
         ];
     }
 }
