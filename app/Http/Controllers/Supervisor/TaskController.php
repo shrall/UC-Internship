@@ -71,7 +71,14 @@ class TaskController extends Controller
     public function show(Task $task)
     {
         $pages = 'project';
-        return view('supervisor.task.detail', compact('pages', 'task'));
+        $periods = Period::all();
+        $currentdate = Carbon::now();
+        foreach ($periods as $period) {
+            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                $currentperiod = $period;
+            };
+        }
+        return view('supervisor.task.detail', compact('pages', 'task', 'currentperiod'));
     }
 
     /**
@@ -94,6 +101,9 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
+        if($task->status != '0'){
+            return redirect()->back();
+        }
         $task->update($request->all());
         return redirect()->route('supervisor.project.show', $task->projectuser->uci_project_id);
     }
@@ -115,6 +125,11 @@ class TaskController extends Controller
     }
     public function finish(Task $task)
     {
+        foreach($task->progresses as $progress){
+            if ($progress->status = '0'){
+                return redirect()->back();
+            }
+        }
         $task->update([
             'status' => '1',
         ]);
