@@ -17,7 +17,7 @@
                             <th class="border-0">Department</th>
                             <th class="border-0">Status</th>
                             @if ($project->supervisor->id == Auth::id())
-                                <th class="border-0">Application Status</th>
+                                <th class="border-0" width="50px">Application Status</th>
                             @endif
                         </tr>
                     </thead>

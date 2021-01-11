@@ -11,7 +11,7 @@
                             <th class="border-0">Deadline</th>
                             <th class="border-0">Period</th>
                             <th class="border-0">Status</th>
-                            <th class="border-0">Action</th>
+                            <th class="border-0" width="50px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
