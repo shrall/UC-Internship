@@ -25,6 +25,10 @@
                 </div>
             @endif
             @if ($task->status == 0)
+                <a class="btn btn-sm btn-primary mt-1" data-toggle="modal"
+                    data-target="#modal-edit-task-{{ $task->id }}">
+                    <span class="fa fa-cog mr-2"></span>Edit Task
+                </a>
                 <a href="{{ route('supervisor.task.finish', $task->id) }}" type="submit"
                     class="btn btn-sm btn-success mt-1">
                     <span class="fa fa-check mr-2"></span>Finish Task
