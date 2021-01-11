@@ -34,7 +34,7 @@
                     <tbody>
                         @foreach ($project->projectusers as $pu)
                             @foreach ($pu->tasks as $task)
-                            @include('supervisor.project.modal.task.delete')
+                                @include('supervisor.project.modal.task.delete')
                                 <!-- Item -->
                                 <tr>
                                     <td class="align-middle">
@@ -70,12 +70,16 @@
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="{{ route('supervisor.task.show', $task->id) }}">
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('supervisor.task.show', $task->id) }}">
                                                         <span class="fas fa-eye mr-2"></span>View Details
                                                     </a>
-                                                    <a class="dropdown-item" data-toggle="modal" data-target="#modal-edit-task-{{ $task->id }}"">
-                                                        <span class="fas fa-cog mr-2"></span>Edit Task
-                                                    </a>
+                                                    @if ($task->status == '0')
+                                                        <a class="dropdown-item" data-toggle="modal"
+                                                            data-target="#modal-edit-task-{{ $task->id }}">
+                                                            <span class="fas fa-cog mr-2"></span>Edit Task
+                                                        </a>
+                                                    @endif
                                                     <a class="dropdown-item text-danger" data-toggle="modal"
                                                         data-target="#modal-delete-{{ $task->id }}">
                                                         <span class="fas fa-ban mr-2"></span>Delete

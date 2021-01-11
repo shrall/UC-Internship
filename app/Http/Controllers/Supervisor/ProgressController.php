@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
+use App\Models\History;
 use App\Models\Progress;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProgressController extends Controller
 {
@@ -86,9 +89,25 @@ class ProgressController extends Controller
 
     public function approve(Request $request) {
         $progress = Progress::find($request->progress_id);
+        $d1 = new DateTime($progress->time_end);
+        $d2 = new DateTime($progress->time_start);
+        $diff = $d2->diff($d1);
+        $progress_duration = $diff->h + $diff->i/60;
+
         $progress->update([
             'status' => '1',
             'comment' => $request['comment'],
+        ]);
+
+        $history = History::create([
+            'duration_before' => $progress->task->projectuser->user->info->time_remaining,
+            'duration_after' => $progress->task->projectuser->user->info->time_remaining - $progress_duration,
+            'student_id' => $progress->task->projectuser->uci_user_id,
+            'supervisor_id' => Auth::id(),
+        ]);
+
+        $progress->task->projectuser->user->info->update([
+            'time_remaining' => $history->duration_after,
         ]);
 
         return empty($progress) ? redirect()->back()->with('Fail', "Failed to update status")
