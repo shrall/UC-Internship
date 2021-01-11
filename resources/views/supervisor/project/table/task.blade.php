@@ -58,15 +58,22 @@
                                     @endif
                                     @if ($project->supervisor->id == Auth::id())
                                         @include('supervisor.project.modal.task.edit')
-                                        <td class="align-middle">
-                                            <div
-                                                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                                                <div>
-                                                    <a class="btn btn-secondary text-white mr-2 dropdown-toggle"
-                                                        data-toggle="modal"
-                                                        data-target="#modal-edit-task-{{ $task->id }}"
-                                                        href="{{ route('supervisor.task.edit', $task->id) }}">
-                                                        <span class="fa fa-cog"></span>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button
+                                                    class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <span class="icon icon-sm">
+                                                        <span class="fas fa-ellipsis-h icon-dark"></span>
+                                                    </span>
+                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="{{ route('supervisor.task.show', $task->id) }}">
+                                                        <span class="fas fa-eye mr-2"></span>View Details
+                                                    </a>
+                                                    <a class="dropdown-item" data-toggle="modal" data-target="#modal-edit-task-{{ $task->id }}"">
+                                                        <span class="fas fa-cog mr-2"></span>Edit Task
                                                     </a>
                                                 </div>
                                             </div>
