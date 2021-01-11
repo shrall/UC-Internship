@@ -15,19 +15,19 @@ class StudentResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'user_id' => $this->user->id,
-            'nim' => $this->nim,
-            'name' => $this->name,
-            'email' => $this->email,
-            'batch' => $this->batch,
-            'description' => $this->description,
-            'photo' => $this->photo,
-            'gender' => $this->gender,
-            'phone' => $this->phone,
-            'line_account' => $this->line_account,
-            'department_name' => $this->department->name,
-            'department_initial' => $this->department->initial,
-            'info' => InfoResource::make($this->user->info),
+            'user_id' => $this->id,
+            'nim' => $this->detailable->nim,
+            'name' => $this->detailable->name,
+            'email' => $this->detailable->email,
+            'batch' => $this->detailable->batch,
+            'description' => $this->detailable->description,
+            'photo' => $this->detailable->photo,
+            'gender' => $this->detailable->gender,
+            'phone' => $this->detailable->phone,
+            'line_account' => $this->detailable->line_account,
+            'department_name' => $this->detailable->department->name,
+            'department_initial' => $this->detailable->department->initial,
+            'info' => InfoResource::make($this->detailable->user->info),
         ];
     }
 }

@@ -48,7 +48,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return StudentResource::make($user->detailable);
+        return StudentResource::make($user);
     }
 
     /**

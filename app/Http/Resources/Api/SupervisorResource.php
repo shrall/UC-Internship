@@ -15,18 +15,18 @@ class SupervisorResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'user_id' => $this->user->id,
-            'nip' => $this->nip,
-            'name' => $this->name,
-            'email' => $this->email,
-            'description' => $this->description,
-            'photo' => $this->photo,
-            'gender' => $this->gender,
-            'phone' => $this->phone,
-            'line_account' => $this->line_account,
-            'department_name' => $this->department->name,
-            'department_initial' => $this->department->initial,
-            'title' => $this->title->name,
+            'user_id' => $this->id,
+            'nip' => $this->detailable->nip,
+            'name' => $this->detailable->name,
+            'email' => $this->detailable->email,
+            'description' => $this->detailable->description,
+            'photo' => $this->detailable->photo,
+            'gender' => $this->detailable->gender,
+            'phone' => $this->detailable->phone,
+            'line_account' => $this->detailable->line_account,
+            'department_name' => $this->detailable->department->name,
+            'department_initial' => $this->detailable->department->initial,
+            'title' => $this->detailable->title->name,
         ];
     }
 }
