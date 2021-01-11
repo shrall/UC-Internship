@@ -82,7 +82,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        return view('supervisor.task.detail', compact('pages', 'task'));
+        //
     }
 
     /**
@@ -111,5 +111,12 @@ class TaskController extends Controller
             return redirect()->back();
         } else {
         }
+    }
+    public function finish(Task $task)
+    {
+        $task->update([
+            'status' => '1',
+        ]);
+        return redirect()->back();
     }
 }

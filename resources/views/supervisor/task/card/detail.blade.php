@@ -1,8 +1,11 @@
+@include('supervisor.project.modal.task.edit')
 <div class="col-lg-6">
-    <div class="card border-light shadow-sm text-center pt-3 pb-4 mb-4 mb-lg-0">
+    <div class="card border-light shadow-sm text-center pt-3 pb-3 mb-4 mb-lg-0">
         <div class="card-body">
             <h2 class="display-3 mb-2">{{ $task->name }}</h2>
-            <div class="medium font-weight-bold mt-1">Project Name : {{ $task->projectuser->project->name }}</div>
+            @if ($task->status != 0)
+                <div class="medium font-weight-bold mt-1">Project Name : {{ $task->projectuser->project->name }}</div>
+            @endif
             <div class="medium mt-1">{{ $task->description }}</div>
             <div class="medium font-weight-bold mt-1 text-primary">
                 <span class="fa fa-stopwatch mr-2"></span>Duration : {{ $task->duration }} hours
@@ -20,6 +23,12 @@
                 <div class="medium font-weight-bold mt-1 text-success">
                     <span class="fa fa-check mr-2"></span>Completed
                 </div>
+            @endif
+            @if ($task->status == 0)
+                <a href="{{ route('supervisor.task.finish', $task->id) }}" type="submit"
+                    class="btn btn-sm btn-success mt-1">
+                    <span class="fa fa-check mr-2"></span>Finish Task
+                </a>
             @endif
         </div>
     </div>
