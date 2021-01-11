@@ -159,27 +159,20 @@ class ProjectController extends Controller
     }
     public function ongoing(Request $request)
     {
-
-        $project = Project::find($request->project_id);
-        $projectstatus = Project::where('supervisor_id', Auth::id())->where('id', $project->id)->first();
+        $projectstatus = Project::find($request->project_id);
         $projectstatus->update([
             'status' => '1',
         ]);
 
-        return empty($project) ? redirect()->back()->with('Fail', "Failed to update status")
-            : redirect()->back()->with('Success', 'Success student: #(' . $project->name . ') approved');
+        return redirect()->back();
     }
 
     public function completed(Request $request)
     {
-        $project = Project::find($request->project_id);
-
-        $projectstatus = Project::where('supervisor_id', Auth::id())->where('id', $project->id)->first();
+        $projectstatus = Project::find($request->project_id);
         $projectstatus->update([
             'status' => '2',
         ]);
-
-        return empty($project) ? redirect()->back()->with('Fail', "Failed to update status")
-            : redirect()->back()->with('Success', 'Success student: #(' . $project->name . ') approved');
+        return redirect()->back();
     }
 }
