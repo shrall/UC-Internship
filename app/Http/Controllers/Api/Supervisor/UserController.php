@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Supervisor;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\StudentResource;
 use App\Http\Resources\Api\SupervisorResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -49,12 +48,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-
-        if ($user->detailable_type == "App\Models\Lecturer" || $user->detailable_type == "App\Models\Staff") {
-            return SupervisorResource::make($user->detailable);
-        }else{
-            return StudentResource::make($user->detailable);
-        }
+        return SupervisorResource::make($user->detailable);
     }
 
     /**
