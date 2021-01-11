@@ -36,7 +36,7 @@
                                     <div>
                                         <label for="comment">Comment</label>
                                         <input class="form-control" id="comment_id" name="comment" type="text"
-                                            placeholder="Add New Comment" required>
+                                            placeholder="Add New Comment">
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                     <input name="progress_id" type="hidden" value="{{ $progress->id }}">
                     <input name="task_id" type="hidden" value="{{ $task->id }}">
                     <button type="submit" class="btn btn-success">
-                        <span class="fas fa-check"></span> Approve
+                        <span class="fas fa-check mr-2"></span>Approve
                     </button>
                     </form>
                     <form action="{{ route('supervisor.progresses.decline') }}" method="POST">
@@ -63,7 +63,7 @@
                         <input name="progress_id" type="hidden" value="{{ $progress->id }}">
                         <input name="task_id" type="hidden" value="{{ $task->id }}">
                         <button type="submit" class="btn btn-danger">
-                            <span class="fas fa-times"></span> Decline
+                            <span class="fas fa-times mr-2"></span>Decline
                         </button>
                     </form>
                 </div>
