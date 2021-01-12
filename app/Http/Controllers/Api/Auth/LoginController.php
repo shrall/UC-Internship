@@ -47,7 +47,7 @@ class LoginController extends Controller
 
         if ($check->is_login == '0') {
             if (Auth::attempt($student)) {
-                $this->is_login(Auth::id());
+                // $this->is_login(Auth::id());
                 $response = $http->post('http://uci.test/oauth/token', [
                     'form_params' => [
                         'grant_type' => 'password',
@@ -60,7 +60,8 @@ class LoginController extends Controller
                 ]);
                 $var = json_decode((string) $response->getBody(), true);
                 $var = collect($var);
-                $var->put("user", $check);
+                $var->put("user_id", $check->id);
+                $var->put("role", $check->detailable_type);
                 $var = json_decode((string) $var, true);
                 return $var;
             }else if (Auth::attempt($supervisor)) {
@@ -77,7 +78,8 @@ class LoginController extends Controller
                 ]);
                 $var = json_decode((string) $response->getBody(), true);
                 $var = collect($var);
-                $var->put("user", $check);
+                $var->put("user_id", $check->id);
+                $var->put("role", $check->detailable_type);
                 $var = json_decode((string) $var, true);
                 return $var;
             }else if (Auth::attempt($admin)) {
@@ -94,7 +96,8 @@ class LoginController extends Controller
                 ]);
                 $var = json_decode((string) $response->getBody(), true);
                 $var = collect($var);
-                $var->put("user", $check);
+                $var->put("user_id", $check->id);
+                $var->put("role", $check->detailable_type);
                 $var = json_decode((string) $var, true);
                 return $var;
             } else {
