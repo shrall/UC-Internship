@@ -7,7 +7,6 @@ use App\Models\Project;
 use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class StaffController extends Controller
 {
@@ -66,8 +65,8 @@ class StaffController extends Controller
      */
     public function edit(User $staff)
     {
-        $pages = 'staff';
-        return view('supervisor.user.staff.edit', compact('pages','staff'));
+//        $pages = 'staff';
+//        return view('supervisor.user.staff.edit', compact('pages','staff'));
     }
 
     /**
@@ -79,8 +78,8 @@ class StaffController extends Controller
      */
     public function update(Request $request, User $staff)
     {
-        $staff->update($request->all());
-        return redirect()->route('supervisor.user.staff.detail');
+//        $staff->update($request->all());
+//        return redirect()->route('supervisor.user.staff.detail');
     }
 
     /**

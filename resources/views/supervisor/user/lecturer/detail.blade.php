@@ -1,8 +1,3 @@
-{{-- ini view yang nunjukin detail dari lecturer  --}}
-{{-- student.user.show, user->id --}}
-{{-- disini include card.info, card.detail, table.project --}}
-
-{{-- PLEK sama detail yang di student.student.detail  --}}
 @extends('layouts.app')
 @section('content')
     <div class="row mb-3">
@@ -12,7 +7,7 @@
         <div class="col-12 col-xl-4">
             <div class="row">
                 <div class="col-12 mb-4">
-
+                    @include('supervisor.user.lecturer.card.detail')
                 </div>
             </div>
         </div>

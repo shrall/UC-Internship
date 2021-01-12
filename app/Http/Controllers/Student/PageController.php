@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Period;
 use App\Models\Project;
 use App\Models\ProjectUser;
-use App\Models\Student;
 use App\Models\Task;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -17,8 +16,6 @@ class PageController extends Controller
     public function dashboard()
     {
         $pages = 'dash';
-
-//        $info = Student::find(Auth::user()->detailable_id);
 
         $tasks = Task::whereHas('projectuser', function (Builder $query) {
             $query->where('uci_user_id', Auth::id())

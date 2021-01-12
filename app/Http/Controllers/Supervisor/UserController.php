@@ -11,6 +11,8 @@ use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -42,10 +44,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = User::findOrFail($request->uci_user_id);
-        $applies = $user->applies()->syncWithoutDetaching($request->uci_project_id, ['status' => '1']);
-        return empty($applies) ? redirect()->back()->with('Fail', "Failed to accept student")
-            : redirect()->back()->with('Success', 'Student Accepted');
+
     }
 
     /**
@@ -56,7 +55,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //view my profile
         $projects = Project::where('supervisor_id', Auth::id())->get();
         $ongoingprojects = $projects->count();
         if ($user->detailable_type == "App\Models\Staff") {
@@ -84,9 +82,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $pages = 'supervisor';
+        if ($user->id != Auth::id()) {
+            return redirect()->back();
+        } else if($user->detailable_type == "App\Models\Lecturer"){
+            $lecturer = $user;
+            return view('supervisor.user.lecturer.edit', compact('pages', 'lecturer'));
+        } else if($user->detailable_type == "App\Models\Staff"){
+            $staff = $user;
+            return view('supervisor.user.staff.edit', compact('pages', 'staff'));
+        }
     }
 
     /**
@@ -96,9 +103,66 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $data = $request->validate([
+            'password' => 'required',
+            'phone' => 'required|numeric',
+            'line_account' => 'required',
+            'photo' => 'image',
+        ]);
+
+        $user->detailable->update([
+            'password' => $data['password'],
+            'phone' => $data['phone'],
+            'line_account' => $data['line_account'],
+        ]);
+
+        if ($request->filled('password')) {
+            Validator::make($request->all(), [
+                'password' => 'string|min:8',
+                'phone' => 'required|numeric',
+                'line_account' => 'required',
+                'photo' => 'image',
+            ])->validate();
+        } else {
+            Validator::make($request->all(), [
+                'phone' => 'required|numeric',
+                'line_account' => 'required',
+                'photo' => 'image',
+            ])->validate();
+        }
+        if($user->detailable_type == "App\Models\Staff"){
+            if ($request->has('photo')) {
+                $file_name = time() . '-' . $data['photo']->getClientOriginalName();
+                $request->photo->move(public_path('profile_picture\staff'), $file_name);
+                $user->detailable->update([
+                    'photo' => $file_name,
+                ]);
+            }
+        } else if($user->detailable_type == "App\Models\Lecturer"){
+            if ($request->has('photo')) {
+                $file_name = time() . '-' . $data['photo']->getClientOriginalName();
+                $request->photo->move(public_path('profile_picture\lecturer'), $file_name);
+                $user->detailable->update([
+                    'photo' => $file_name,
+                ]);
+            }
+        }
+
+        if ($request->filled('password')) {
+            $user->update([
+                'name' => $user['name'],
+                'email' => $user['email'],
+                'password' => Hash::make($request->password),
+            ]);
+        } else {
+            $user->update([
+                'name' => $user['name'],
+                'email' => $user['email'],
+            ]);
+        }
+        return redirect()->route('supervisor.user.show', Auth::id());
     }
 
     /**

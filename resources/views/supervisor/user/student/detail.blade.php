@@ -1,8 +1,3 @@
-{{-- ini view yang nunjukin detail dari student  --}}
-{{-- student.user.show, user->id --}}
-{{-- disini include card.info, card.detail, card.cv, table.project, table.task --}}
-
-{{-- PLEK sama detail yang di student.student.detail  --}}
 @extends('layouts.app')
 @section('content')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
@@ -18,8 +13,7 @@
                         <a href="{{ route('supervisor.student.index') }}">Student List</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        <a
-                            href="{{ route('supervisor.student.show', $student->id) }}">{{ $student->detailable->nim }}</a>
+                        <a href="{{ route('supervisor.student.show', $student->id) }}">{{ $student->detailable->nim }}</a>
                     </li>
                 </ol>
             </nav>

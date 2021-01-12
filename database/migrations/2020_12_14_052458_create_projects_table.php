@@ -24,6 +24,7 @@ class CreateProjectsTable extends Migration
             $table->enum('category', ['0','1','2'])
             ->default('0')
             ->comment('0 = Event, 1 = Education, 2 = Other');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

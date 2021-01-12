@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\ProjectResource;
 use App\Models\Lecturer;
 use App\Models\Period;
 use App\Models\Project;
 use App\Models\ProjectAttachment;
 use App\Models\ProjectUser;
 use App\Models\Staff;
-use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 
 class ProjectController extends Controller
 {
@@ -34,7 +31,7 @@ class ProjectController extends Controller
         $pages = 'project';
         $projects = Project::where('supervisor_id', Auth::id())->get();
         $pus = ProjectUser::all();
-        return view('supervisor.project.index', compact('pages', 'info','pus', 'projects'));
+        return view('supervisor.project.index', compact('pages', 'info', 'pus', 'projects'));
     }
 
     /**
@@ -103,20 +100,15 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        if (Auth::user()->detailable_type == "App\Models\Staff") {
-            $info = Staff::find(Auth::user()->detailable_id);
-        } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
-            $info = Lecturer::find(Auth::user()->detailable_id);
-        }
-        $pages = 'project';
-        $periods = Period::all();
-        $currentdate = Carbon::now();
-        foreach ($periods as $period) {
-            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
-                $currentperiod = $period;
-            };
-        }
-        return view('supervisor.project.detail', compact('project','pages','info', 'currentperiod'));
+            $pages = "project";
+            $periods = Period::all();
+            $currentdate = Carbon::now();
+            foreach ($periods as $period) {
+                if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                    $currentperiod = $period;
+                };
+            }
+            return view('supervisor.project.detail', compact('pages', 'project', 'currentperiod'));
     }
 
     /**
@@ -127,11 +119,6 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        if (Auth::user()->detailable_type == "App\Models\Staff") {
-            $info = Staff::find(Auth::user()->detailable_id);
-        } else if (Auth::user()->detailable_type == "App\Models\Lecturer") {
-            $info = Lecturer::find(Auth::user()->detailable_id);
-        }
         $pages = 'project';
         $periods = Period::all();
         $currentdate = Carbon::now();
@@ -140,7 +127,7 @@ class ProjectController extends Controller
                 $currentperiod = $period;
             };
         }
-        return view('supervisor.project.edit', compact('project','pages','info', 'currentperiod'));
+        return view('supervisor.project.edit', compact('project', 'pages', 'currentperiod'));
     }
 
     /**
@@ -169,5 +156,23 @@ class ProjectController extends Controller
             return redirect()->back();
         } else {
         }
+    }
+    public function ongoing(Request $request)
+    {
+        $projectstatus = Project::find($request->project_id);
+        $projectstatus->update([
+            'status' => '1',
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function completed(Request $request)
+    {
+        $projectstatus = Project::find($request->project_id);
+        $projectstatus->update([
+            'status' => '2',
+        ]);
+        return redirect()->back();
     }
 }

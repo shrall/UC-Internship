@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Models\History;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HistoryController extends Controller
@@ -45,9 +46,12 @@ class HistoryController extends Controller
      * @param  \App\Models\History  $history
      * @return \Illuminate\Http\Response
      */
-    public function show(History $history)
+    public function show(User $history)
     {
-        //
+        $pages = 'supervisor';
+        $student = $history;
+        return view('supervisor.history.detail', compact('pages', 'student'));
+
     }
 
     /**

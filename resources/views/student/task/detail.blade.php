@@ -29,5 +29,14 @@
     @include('student.task.card.detail')
     @include('student.task.card.pic')
 </div>
+@if(session('Error'))
+<div class="row">
+    <div class="col-12">
+        <div class="alert alert-danger" role="alert">
+            {{ session('Error') }}
+        </div>
+    </div>
+</div>
+@endif
 @include('student.task.table.progress')
 @endsection

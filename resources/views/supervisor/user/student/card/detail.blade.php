@@ -1,5 +1,3 @@
-{{-- ini yang nunjukin mukanya student with edit profile button --}}
-{{-- tambahin check history(ini belum ada di uastemplate. check bagian admin uastemplate) --}}
 <div class="col-12 col-xl-8">
     <div class="card card-body bg-white border-light shadow-sm mb-4">
         <h2 class="h4 mb-4">General information</h2>
@@ -31,7 +29,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="email"><span class="fab fa-line mr-2"></span>Line ID</label>
-                    <h2 class="h5 mb-4">{{$student->detailable->line_account}}</h2>
+                    <h2 class="h5 mb-4">{{ $student->detailable->line_account }}</h2>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="email"><span class="fa fa-book mr-2"></span>Scholarship</label>
@@ -48,7 +46,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="email"><span class="fa fa-graduation-cap"></span> GPA</label>
                     <h2 class="h5 mb-4">
-                        {{ number_format((float)$student->info->gpa, 2, '.', '') }}
+                        {{ number_format((float) $student->info->gpa, 2, '.', '') }}
                     </h2>
                 </div>
             </div>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
 

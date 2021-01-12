@@ -1,7 +1,3 @@
-{{-- ini view yang ngeluarin detail dari task  --}}
-{{-- routenya supervisor.task.show, task->id  --}}
-
-{{-- disini include card.detail, card.pic, table.progress --}}
 @extends('layouts.app')
 @section('content')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
@@ -22,8 +18,7 @@
                             href="{{ route('supervisor.project.show', $task->projectuser->uci_project_id) }}">{{ $task->projectuser->uci_project_id }}</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        <a
-                            href="{{ route('supervisor.task.show', $task->id) }}">{{ $task->name }}</a>
+                        <a href="{{ route('supervisor.task.show', $task->id) }}">{{ $task->name }}</a>
                     </li>
                 </ol>
             </nav>

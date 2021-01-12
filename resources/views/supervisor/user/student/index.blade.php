@@ -1,6 +1,3 @@
-{{-- disini ngelist semua student  --}}
-{{-- routenya supervisor.student.index  --}}
-{{-- include table.student  --}}
 @extends('layouts.app')
 @section('content')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
