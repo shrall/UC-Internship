@@ -24,7 +24,7 @@ class ProjectResource extends JsonResource
             'applicants' => ProjectUserResource::collection($this->projectusers),
             'attachments' => $this->attachments,
             'period' => $this->period,
-            'supervisor' => SupervisorResource::make($this->supervisor->detailable),
+            'supervisor' => SupervisorResource::make($this->supervisor),
         ];
     }
 }
