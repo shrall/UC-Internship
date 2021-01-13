@@ -46,7 +46,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="email"><span class="fa fa-graduation-cap"></span> GPA</label>
                     <h2 class="h5 mb-4">
-                        {{ number_format((float)$user->info->gpa, 2, '.', '') }}
+                        {{ number_format((float) $user->info->gpa, 2, '.', '') }}
                     </h2>
                 </div>
             </div>

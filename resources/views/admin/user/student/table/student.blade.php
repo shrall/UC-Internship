@@ -14,13 +14,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($students as $student)
+                        @foreach ($students as $student)
                             <!-- Item -->
                             <tr>
                                 <td><span class="font-weight-normal">{{ $student->detailable->nim }}</span></td>
                                 <td><a href="{{ route('admin.student.show', $student->id) }}"
                                         class="d-flex align-items-center">
-                                        @if($student->detailable->photo != null)
+                                        @if ($student->detailable->photo != null)
                                             <img src="/profile_picture/student/{{ $student->detailable->photo }}"
                                                 class="user-avatar rounded-circle mr-3" alt="Avatar">
                                         @else
@@ -46,7 +46,7 @@
                                         ({{ $student->info->scholarship->grade }})</span>
                                 </td>
                                 <td><span
-                                        class="font-weight-normal">{{ number_format((float)$student->info->gpa, 2, '.', '') }}</span>
+                                        class="font-weight-normal">{{ number_format((float) $student->info->gpa, 2, '.', '') }}</span>
                                 </td>
                             </tr>
                         @endforeach
