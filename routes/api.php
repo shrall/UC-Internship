@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\OfferController;
+use App\Http\Controllers\Api\ProgressController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\Student\UserController as StudentUserController;
 use App\Http\Controllers\Api\Supervisor\UserController as SupervisorUserController;
@@ -28,5 +29,6 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('project', ProjectController::class);
     Route::apiResource('offer', OfferController::class);
     Route::apiResource('task', TaskController::class);
+    Route::apiResource('progress', ProgressController::class);
     Route::post('api-logout', [LoginController::class, 'logout']);
 });
