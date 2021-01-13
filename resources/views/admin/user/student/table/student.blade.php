@@ -42,8 +42,8 @@
                                         Hours</span>
                                 </td>
                                 <td>
-                                    <span class="font-weight-normal">{{ $student->info->scholarship->name }}
-                                        ({{ $student->info->scholarship->grade }})</span>
+                                    <span class="font-weight-normal">{{ $student->info->scholarship->name ?? 'None'}}
+                                        ({{ $student->info->scholarship->grade ?? '-'}})</span>
                                 </td>
                                 <td><span
                                         class="font-weight-normal">{{ number_format((float)$student->info->gpa, 2, '.', '') }}</span>

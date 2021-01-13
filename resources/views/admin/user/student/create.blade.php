@@ -103,9 +103,9 @@
                     <div class="col-md-6 mb-3">
                         <label for="scholarship"><span class="fa fa-book"></span> Scholarship</label>
                         <select class="form-select w-100 mb-0" id="scholarship" name="scholarship">
+                            <option value="" selected>None</option>
                             @foreach ($scholarships->sortBy('name') as $scholarship)
-                            <option value="{{$scholarship->id}}" @if ($loop->iteration == 1) selected @endif>{{$scholarship->name}} ({{$scholarship->grade}})
-                            </option>
+                            <option value="{{$scholarship->id}}">{{$scholarship->name}} ({{$scholarship->grade}})</option>
                             @endforeach
                         </select>
                     </div>

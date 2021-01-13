@@ -25,8 +25,8 @@
                     </td>
                     <td><span class="font-weight-normal">{{ $user->detailable->department->name }}</span></td>
                     <td><span class="font-weight-normal">{{ $user->info->time_remaining }}</span></td>
-                    <td><span class="font-weight-normal">{{ $user->info->scholarship->name }}</span></td>
-                    <td><span class="font-weight-normal">{{ $user->info->scholarship->name }}</span></td>
+                    <td><span class="font-weight-normal">{{ $user->info->scholarship->name ?? 'None'}}</span></td>
+                    <td><span class="font-weight-normal">{{ $user->info->gpa }}</span></td>
                 </tr>
             @endforeach
         </tbody>
