@@ -30,6 +30,11 @@
                         href="{{ route('admin.history.show', $student->id) }}">
                         <span class="fa fa-history"></span> Time History
                     </a>
+                    @if($student->info->cv != null)
+                        <a class="btn btn-sm btn-tertiary mt-1" href="/cv/{{ $student->info->cv }}">
+                            <span class="fa fa-file-pdf mr-2"></span>CV / Portfolio
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
