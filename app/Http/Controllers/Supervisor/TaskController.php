@@ -80,13 +80,6 @@ class TaskController extends Controller
                 $currentperiod = $period;
             };
         }
-        $tasks = Task::whereHas('projectuser', function (Builder $query) {
-            $query->where('uci_user_id', Auth::id())
-                ->where('status', '1')
-                ->whereHas('project', function (Builder $query) {
-                    $query->where('status', '1');
-                });
-        })->get();
         $project = $task->projectuser->project;
         return view('supervisor.task.detail', compact('pages', 'task', 'currentperiod', 'project'));
     }
