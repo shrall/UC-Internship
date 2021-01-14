@@ -9,6 +9,9 @@ use App\Models\ProjectUser;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use ZipArchive;
+use File;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -63,7 +66,7 @@ class ProjectController extends Controller
 
                     $attachments = ProjectAttachment::where('project_id', $project->id)->get();
                     $attachmentscount = $attachments->count();
-//                    dd($attachments);
+                    //                    dd($attachments);
 
                     $pages = "project";
                     return view('student.project.detail', compact('pages', 'project', 'attachments', 'attachmentscount'));
@@ -118,5 +121,28 @@ class ProjectController extends Controller
             })->get();
 
         return view('student.project.offer', compact('pages', 'projects'));
+    }
+
+    public function zipFile(Request $request)
+    {
+        $project = Project::find($request->project_id);
+        $projectFiles = ProjectAttachment::where('project_id', $project->id)->get();
+        $zip = new ZipArchive;
+        $fileNameZip =  $project->name . 'Attachments.zip';
+        if (Storage::exists(public_path($fileNameZip))) {
+            unlink(public_path($fileNameZip));
+        }
+        if ($zip->open(public_path($fileNameZip), ZipArchive::CREATE) === TRUE) {
+            $files = File::files(public_path('attachments\project'));
+            foreach ($files as $file) {
+                foreach ($projectFiles as $projectFile) {
+                    if ($projectFile->name == basename($file)) {
+                        $zip->addFile($file, basename($file));
+                    }
+                }
+            }
+            $zip->close();
+        }
+        return response()->download(public_path($fileNameZip));
     }
 }

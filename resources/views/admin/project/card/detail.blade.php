@@ -39,6 +39,15 @@
                     <span class="fa fa-ban mr-2"></span>Suspended
                 </div>
             @endif
+            @if (count($project->attachments) > 0)
+                <form class="d-inline" action="{{ route('admin.project.zipFile') }}" method="POST">
+                    @csrf
+                    <input name="project_id" type="hidden" value="{{ $project->id }}">
+                    <button type="submit" class="btn btn-sm btn-secondary mt-1">
+                        <span class="fa fa-file-pdf mr-2"></span>Attachments
+                    </button>
+                </form>
+            @endif
         </div>
     </div>
 </div>

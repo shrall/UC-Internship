@@ -146,7 +146,7 @@ class ProjectController extends Controller
     {
         if ($request['attachments'] != null) {
             $attachments = ProjectAttachment::where('project_id', $project->id)->get();
-            foreach ($attachments as $lastattachment){
+            foreach ($attachments as $lastattachment) {
                 $lastattachment->delete();
             }
             $i = 0;
@@ -203,12 +203,14 @@ class ProjectController extends Controller
         $projectFiles = ProjectAttachment::where('project_id', $project->id)->get();
         $zip = new ZipArchive;
         $fileNameZip =  $project->name . 'Attachments.zip';
-        unlink(public_path($fileNameZip));
+        if (Storage::exists(public_path($fileNameZip))) {
+            unlink(public_path($fileNameZip));
+        }
         if ($zip->open(public_path($fileNameZip), ZipArchive::CREATE) === TRUE) {
             $files = File::files(public_path('attachments\project'));
-            foreach ($files as $file){
+            foreach ($files as $file) {
                 foreach ($projectFiles as $projectFile) {
-                    if($projectFile->name == basename($file)){
+                    if ($projectFile->name == basename($file)) {
                         $zip->addFile($file, basename($file));
                     }
                 }

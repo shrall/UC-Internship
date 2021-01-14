@@ -66,7 +66,7 @@
                 @endif
             @endif
             @if ($attachmentscount > 0)
-                <form class="d-inline" action="{{ route('supervisor.projects.zipFile') }}" method="POST">
+                <form class="d-inline" action="{{ route('supervisor.project.zipFile') }}" method="POST">
                     @csrf
                     <input name="project_id" type="hidden" value="{{ $project->id }}">
                     <button type="submit" class="btn btn-sm btn-secondary mt-1">

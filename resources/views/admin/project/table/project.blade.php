@@ -96,7 +96,7 @@
                                                     class="fas fa-eye mr-2"></span>View
                                                 Details</a>
                                             <a class="dropdown-item text-danger" data-toggle="modal"
-                                                data-target="#modal-suspend-1">
+                                                data-target="#modal-suspend-{{$project->id}}">
                                                 <span class="fas fa-ban mr-2"></span>Suspend
                                             </a>
                                         </div>
