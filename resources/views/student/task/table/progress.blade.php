@@ -1,9 +1,11 @@
 @include('student.task.modal.progress.create')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-4">
     <div>
+        @if($task->projectuser->project->status == 1)
         <a class="btn btn-secondary" data-toggle="modal" data-target="#modal-progress-create">
             <span class="fas fa-plus mr-2"></span>Add Progress
         </a>
+        @endif
     </div>
 </div>
 
