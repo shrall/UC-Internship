@@ -102,6 +102,14 @@
                                 @foreach ($departments->sortBy('name') as $department)
                                     <option value="{{ $department->id }}" @if ($student->detailable->department_id == $department->id)selected
                                 @endif>{{ $department->name }} ({{ $department->initial }})
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="scholarship"><span class="fa fa-book mr-2"></span>Scholarship</label>
+                        <select class="form-select w-100 mb-0" id="scholarship" name="scholarship">
+                            <option value="" @if ($student->info->scholarship_id == null) selected @endif>None</option>
+                            @foreach ($scholarships->sortBy('name') as $scholarship)
+                                <option value="{{$scholarship->id}}" @if ($student->info->scholarship_id == $scholarship->id) selected @endif>{{$scholarship->name}} ({{$scholarship->grade}})
                                 </option>
                                 @endforeach
                             </select>

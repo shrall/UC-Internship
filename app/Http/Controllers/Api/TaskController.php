@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\ProjectResource;
-use App\Models\Project;
-use App\Models\ProjectUser;
+use App\Models\Task;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\Api\TaskResource;
 
-class ProjectController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,14 +18,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->detailable_type == "App\Models\Lecturer" || Auth::user()->detailable_type == "App\Models\Staff") {
-            $projects = Project::where('supervisor_id', Auth::id())->get();
-        } else {
-            $projects = Project::whereHas('projectusers', function (Builder $query) {
-                $query->where('uci_user_id', Auth::id())->where('status', '1');
-            })->get();
-        }
-        return ProjectResource::collection($projects);
+        $tasks = Task::whereHas('projectuser', function (Builder $query) {
+            $query->where('uci_user_id', Auth::id());
+        })->get();
+        return TaskResource::collection($tasks);
     }
 
     /**
@@ -47,32 +42,27 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $pu = ProjectUser::create([
-            'status' => '0',
-            'uci_user_id' => Auth::id(),
-            'uci_project_id' => $request->project,
-        ]);
-        return $pu;
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show(Task $task)
     {
-        return ProjectResource::make($project);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit(Task $task)
     {
         //
     }
@@ -81,10 +71,10 @@ class ProjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, Task $task)
     {
         //
     }
@@ -92,10 +82,10 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
+     * @param  \App\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(Task $task)
     {
         //
     }

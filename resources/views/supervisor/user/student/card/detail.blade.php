@@ -33,8 +33,8 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="email"><span class="fa fa-book mr-2"></span>Scholarship</label>
-                    <h2 class="h5 mb-4">{{ $student->info->scholarship->name }}
-                        ({{ $student->info->scholarship->grade }})</h2>
+                    <h2 class="h5 mb-4">{{ $student->info->scholarship->name ?? 'None'}}
+                        ({{ $student->info->scholarship->grade ?? '-'}})</h2>
                 </div>
             </div>
             <div class="row mb-4">

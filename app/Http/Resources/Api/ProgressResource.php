@@ -4,7 +4,7 @@ namespace App\Http\Resources\Api;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProjectResource extends JsonResource
+class ProgressResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,16 +15,12 @@ class ProjectResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
             'description' => $this->description,
-            'deadline' => $this->deadline,
+            'time_start' => $this->time_start,
+            'time_end' => $this->time_end,
             'status' => $this->status,
-            'category' => $this->category,
-            'applicants' => ProjectUserResource::collection($this->projectusers),
+            'comment' => $this->comment,
             'attachments' => $this->attachments,
-            'period' => $this->period,
-            'supervisor' => SupervisorResource::make($this->supervisor),
         ];
     }
 }

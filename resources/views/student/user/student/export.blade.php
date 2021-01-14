@@ -56,8 +56,8 @@
         </tr>
         <tr>
             <td width="30%">Scholarship</td>
-            <td width="55%" class="border-bottom">: {{ Auth::user()->info->scholarship->name }}
-                ({{ Auth::user()->info->scholarship->grade }})</td>
+            <td width="55%" class="border-bottom">: {{ Auth::user()->info->scholarship->name ?? 'None'}}
+                ({{ Auth::user()->info->scholarship->grade ?? '-'}})</td>
         </tr>
     </table>
     <strong>Task List</strong>

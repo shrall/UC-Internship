@@ -60,7 +60,6 @@ class StudentController extends Controller
             'gender' => 'required',
             'batch' => 'required|numeric',
             'department' => 'required',
-            'scholarship' => 'required',
             'gpa' => 'required|numeric|between:0.00,4.00',
             'photo' => 'image',
         ]);
@@ -72,7 +71,6 @@ class StudentController extends Controller
             $file_name = null;
         }
 
-        $scholarship = Scholarship::find($data['scholarship']);
 
         $student = Student::create([
             'nim' => $data['nim'],
@@ -86,11 +84,20 @@ class StudentController extends Controller
             'department_id' => $data['department'],
         ]);
 
-        $info = Info::create([
-            'time_remaining' => $scholarship['hps'],
-            'gpa' => $data['gpa'],
-            'scholarship_id' => $data['scholarship']
-        ]);
+        if ($request->filled('scholarship')) {
+            $scholarship = Scholarship::find($data['scholarship']);
+            $info = Info::create([
+                'time_remaining' => $scholarship['hps'],
+                'gpa' => $data['gpa'],
+                'scholarship_id' => $data['scholarship']
+            ]);
+        } else{
+            $info = Info::create([
+                'time_remaining' => 0,
+                'gpa' => $data['gpa'],
+                'scholarship_id' => null
+            ]);
+        }
 
         $user = User::create([
             'name' => $student['name'],
@@ -102,7 +109,7 @@ class StudentController extends Controller
             'info_id' => $info['id']
         ]);
 
-        $history = History::create([
+        History::create([
             'duration_before' => 0,
             'duration_after' => $info['time_remaining'],
             'student_id' => $user['id'],

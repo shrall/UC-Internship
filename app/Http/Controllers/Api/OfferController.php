@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProjectResource;
 use App\Models\Project;
-use App\Models\ProjectUser;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ProjectController extends Controller
+class OfferController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,13 +18,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->detailable_type == "App\Models\Lecturer" || Auth::user()->detailable_type == "App\Models\Staff") {
-            $projects = Project::where('supervisor_id', Auth::id())->get();
-        } else {
-            $projects = Project::whereHas('projectusers', function (Builder $query) {
-                $query->where('uci_user_id', Auth::id())->where('status', '1');
+        $projects = Project::where('status', '0')
+            ->whereDoesntHave('projectusers', function (Builder $query) {
+                $query->where('uci_user_id', Auth::id());
             })->get();
-        }
         return ProjectResource::collection($projects);
     }
 
@@ -47,12 +43,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $pu = ProjectUser::create([
-            'status' => '0',
-            'uci_user_id' => Auth::id(),
-            'uci_project_id' => $request->project,
-        ]);
-        return $pu;
+        //
     }
 
     /**
@@ -63,7 +54,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return ProjectResource::make($project);
+        //
     }
 
     /**
