@@ -89,17 +89,28 @@
                         <div class="file-field">
                             <div class="d-flex justify-content-xl-center ml-xl-3">
                                 <div class="d-flex">
+
                                     <span class="icon icon-md">
                                         <span class="fas fa-paperclip mr-3"></span>
                                     </span>
                                     <input type="file" name="attachments[]" id="attachments" multiple>
                                     <div class="d-md-block text-left">
+
                                         <div class="font-weight-normal text-dark mb-1" id="pp-name">Choose File</div>
-                                        <div class="text-gray small">JPG, GIF or PNG. Max size of 800K</div>
+                                        <div class="text-gray small">Max size of 800K</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="mt-4">
+                    @foreach($project->attachments as $attachment)
+                        <p class="text-info"><span class="fa fa-paperclip"></span>
+                            <a href="/attachments/project/{{ $attachment->name }}">
+                                {{ $attachment->name }}
+                            </a>
+                        </p>
+                    @endforeach
                     </div>
                     <div class="mt-3">
                         <button type="submit" class="btn btn-primary">Edit Project</button>
