@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-6 mb-3">
                 <label for="email"><span class="fa fa-clock"></span> Ongoing Projects</label>
-                <h2 class="h5 mb-4">...</h2>
+                <h2 class="h5 mb-4">{{count($lecturer->projects->where('status', 1))}} Project(s)</h2>
             </div>
         </div>
     </form>
