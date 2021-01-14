@@ -195,9 +195,10 @@ class ProjectController extends Controller
             }
             foreach ($projectFiles as $projectFile){
                 foreach ($fileNames as $fileName){
-                    if($fileName == str_replace(".png", "",$projectFile['name'])){
+                    if($fileName == str_replace(".png", "",$projectFile['name']) || $fileName == str_replace(".jpg", "",$projectFile['name']) || $fileName == str_replace(".jpeg", "",$projectFile['name'])){
+                        dd($fileName);
                         $relativeNameInZipFile = basename($fileName);
-                        $zip->addFile($fileName,$relativeNameInZipFile);
+                        $zip->addFile($fileNameZip,$relativeNameInZipFile);
                     }
                 }
             }
