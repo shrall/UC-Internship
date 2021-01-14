@@ -80,10 +80,12 @@
                                                 data-target="#modal-progress-{{ $progress->id }}"><span
                                                     class="fas fa-eye mr-2"></span>View
                                                 Details</a>
-                                            <a class="dropdown-item text-danger" data-toggle="modal"
-                                                data-target="#modal-delete-{{ $progress->id }}">
-                                                <span class="fas fa-ban mr-2"></span>Delete
-                                            </a>
+                                            @if($progress->status == 0)
+                                                <a class="dropdown-item text-danger" data-toggle="modal"
+                                                    data-target="#modal-delete-{{ $progress->id }}">
+                                                    <span class="fas fa-ban mr-2"></span>Delete
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>
