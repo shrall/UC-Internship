@@ -37,7 +37,7 @@
                             <div>
                                 <label for="full_name">Full Name</label>
                                 <input class="form-control" id="name" name="name" type="text" placeholder="Full Name"
-                                    required>
+                                       required>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
@@ -50,14 +50,14 @@
                             <div>
                                 <label for="email"><span class="fa fa-envelope mr-2"></span>E-Mail</label>
                                 <input class="form-control" id="email" name="email" type="text" placeholder="E-Mail"
-                                    required>
+                                       required>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <div>
                                 <label for="password"><span class="fa fa-key mr-2"></span>Password</label>
                                 <input class="form-control" id="password" name="password" type="password"
-                                    placeholder="Password" required>
+                                       placeholder="Password" required>
                             </div>
                         </div>
                     </div>
@@ -65,12 +65,12 @@
                         <div class="col-md-6 mb-3">
                             <label for="phone"><span class="fab fa-whatsapp mr-2"></span>Phone Number</label>
                             <input class="form-control" id="phone" name="phone" type="number" placeholder="Phone Number"
-                                required>
+                                   required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="line_account"><span class="fab fa-line mr-2"></span>Line ID</label>
                             <input class="form-control" id="line_account" name="line_account" type="text"
-                                placeholder="Line ID" required>
+                                   placeholder="Line ID" required>
                         </div>
                     </div>
                     <div class="row">
@@ -83,8 +83,9 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="batch"><span class="fa fa-portrait mr-2"></span>Batch</label>
-                            <input class="form-control" id="batch" name="batch" type="number" placeholder="Year" min="2008"
-                                max="{{ date('Y') }}" step="1" />
+                            <input class="form-control" id="batch" name="batch" type="number" placeholder="Year"
+                                   min="2008"
+                                   max="{{ date('Y') }}" step="1"/>
                         </div>
                     </div>
                     <div class="row">
@@ -93,15 +94,15 @@
                             <select class="form-select w-100 mb-0" id="department" name="department">
                                 @foreach ($departments->sortBy('name') as $department)
                                     <option value="{{ $department->id }}" @if ($loop->iteration == 1) selected
-                                @endif>{{ $department->name }} ({{ $department->initial }})
-                                </option>
+                                        @endif>{{ $department->name }} ({{ $department->initial }})
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="title"><span class="fa fa-user-edit"></span> Title</label>
                             <input class="form-control" id="title" name="title" type="text" placeholder="Title"
-                                value="Student" disabled required>
+                                   value="Student" disabled required>
                         </div>
                     </div>
                     <div class="row">
@@ -109,16 +110,18 @@
                             <label for="scholarship"><span class="fa fa-book"></span> Scholarship</label>
                             <select class="form-select w-100 mb-0" id="scholarship" name="scholarship">
                                 @foreach ($scholarships->sortBy('name') as $scholarship)
+                                    @if($scholarship->status != 1)
                                     <option value="{{ $scholarship->id }}" @if ($loop->iteration == 1) selected
-                                @endif>{{ $scholarship->name }} ({{ $scholarship->grade }})
-                                </option>
+                                        @endif>{{ $scholarship->name }} ({{ $scholarship->grade }})
+                                    </option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="gpa"><span class="fa fa-graduation-cap mr-2"></span>GPA</label>
                             <input class="form-control" id="gpa" name="gpa" type="number" placeholder="GPA" step="0.01"
-                                required>
+                                   required>
                         </div>
                     </div>
                     <h2 class="h5 mb-4">Select profile photo</h2>

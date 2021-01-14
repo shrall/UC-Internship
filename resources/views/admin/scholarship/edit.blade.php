@@ -74,18 +74,29 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <div>
                                 <label for="minimum_gpa"> Min. GPA</label>
                                 <input class="form-control" id="minimum_gpa" name="minimum_gpa" type="number" step="0.01"
                                     max="4.00" placeholder="Minimum GPA" value="{{ $scholarship->minimum_gpa }}" required>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <div>
                                 <label for="hps">Hour per Semester</label>
                                 <input class="form-control" id="hps" name="hps" type="number" placeholder="Hours"
                                     value="{{ $scholarship->hps }}" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div>
+                                <label for="status">Status</label>
+                                <select class="form-select w-100 mb-0" id="status" name="status">
+                                    <option value="0" @if ($scholarship->status == '0') selected
+                                        @endif>Open</option>
+                                    <option value="1" @if ($scholarship->status == '1') selected
+                                        @endif>Close</option>
+                                </select>
                             </div>
                         </div>
                     </div>

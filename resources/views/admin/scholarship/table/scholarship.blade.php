@@ -11,6 +11,7 @@
                             <th class="border-0">Duration</th>
                             <th class="border-0">Min. GPA</th>
                             <th class="border-0">Hour per Semester</th>
+                            <th class="border-0">Status</th>
                             <th class="border-0">Action</th>
                         </tr>
                     </thead>
@@ -29,6 +30,18 @@
                                 <td class="font-weight-bold">{{ $scholarship->duration }} Year(s)</td>
                                 <td class="font-weight-bold">{{ $scholarship->minimum_gpa }}</td>
                                 <td class="font-weight-bold">{{ $scholarship->hps }} Hours</td>
+                                @if($scholarship->status == 0)
+                                    <td class="text-success">
+                                        <span class="fas fa-check"></span>
+                                        <span class="font-weight-bold">Open</span>
+                                    </td>
+                                @endif
+                                @if($scholarship->status == 1)
+                                    <td class="text-danger">
+                                        <span class="fas fa-ban"></span>
+                                        <span class="font-weight-bold">Close</span>
+                                    </td>
+                                @endif
                                 <td>
                                     <div class="btn-group">
                                         <button

@@ -118,9 +118,11 @@
                             <label for="scholarship"><span class="fa fa-book mr-2"></span>Scholarship</label>
                             <select class="form-select w-100 mb-0" id="scholarship" name="scholarship">
                                 @foreach ($scholarships->sortBy('name') as $scholarship)
-                                    <option value="{{ $scholarship->id }}" @if ($student->info->scholarship_id == $scholarship->id) selected
-                                @endif>{{ $scholarship->name }} ({{ $scholarship->grade }})
-                                </option>
+                                    @if($scholarship->status != 1)
+                                        <option value="{{ $scholarship->id }}" @if ($loop->iteration == 1) selected
+                                            @endif>{{ $scholarship->name }} ({{ $scholarship->grade }})
+                                        </option>
+                                    @endif
                                 @endforeach
                             </select>
                         </div>

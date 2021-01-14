@@ -21,6 +21,9 @@ class CreateScholarshipsTable extends Migration
             $table->float('minimum_gpa');
             $table->float('hps')
             ->comment('Hour Per Semester');
+            $table->enum('status', ['0','1'])
+                ->default('0')
+                ->comment('0 = Open, 1 = Close');
             $table->softDeletes();
             $table->timestamps();
         });

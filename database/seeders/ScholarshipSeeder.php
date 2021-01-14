@@ -20,6 +20,7 @@ class ScholarshipSeeder extends Seeder
         $scholarship->duration = '4';
         $scholarship->minimum_gpa = '3.75';
         $scholarship->hps = '200';
+        $scholarship->status = '0';
         $scholarship->save();
 
         $scholarship = new Scholarship();
@@ -28,6 +29,7 @@ class ScholarshipSeeder extends Seeder
         $scholarship->duration = '4';
         $scholarship->minimum_gpa = '3.5';
         $scholarship->hps = '75';
+        $scholarship->status = '1';
         $scholarship->save();
 
         $scholarship = new Scholarship();
@@ -36,6 +38,7 @@ class ScholarshipSeeder extends Seeder
         $scholarship->duration = '1';
         $scholarship->minimum_gpa = '3.75';
         $scholarship->hps = '200';
+        $scholarship->status = '0';
         $scholarship->save();
 
         $scholarship = new Scholarship();
@@ -44,6 +47,7 @@ class ScholarshipSeeder extends Seeder
         $scholarship->duration = '1';
         $scholarship->minimum_gpa = '3.75';
         $scholarship->hps = '150';
+        $scholarship->status = '0';
         $scholarship->save();
 
         $scholarship = new Scholarship();
@@ -52,6 +56,7 @@ class ScholarshipSeeder extends Seeder
         $scholarship->duration = '1';
         $scholarship->minimum_gpa = '3.5';
         $scholarship->hps = '100';
+        $scholarship->status = '0';
         $scholarship->save();
 
         $scholarship = new Scholarship();
@@ -60,14 +65,16 @@ class ScholarshipSeeder extends Seeder
         $scholarship->duration = '1';
         $scholarship->minimum_gpa = '3.25';
         $scholarship->hps = '75';
+        $scholarship->status = '0';
         $scholarship->save();
 
         $scholarship = new Scholarship();
         $scholarship->name = 'Beasiswa Sosial Ekonomi';
-        $scholarship->grade = 'e';
+        $scholarship->grade = 'E';
         $scholarship->duration = '1';
         $scholarship->minimum_gpa = '3.25';
         $scholarship->hps = '50';
+        $scholarship->status = '1';
         $scholarship->save();
     }
 }

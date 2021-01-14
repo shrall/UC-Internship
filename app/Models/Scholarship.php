@@ -13,7 +13,7 @@ class Scholarship extends Model
     protected $table = 'uci_scholarships';
 
     protected $fillable = [
-        'name', 'grade', 'duration', 'minimum_gpa', 'hps'
+        'name', 'grade', 'duration', 'minimum_gpa', 'hps', 'status'
     ];
 
     public function infos() {
