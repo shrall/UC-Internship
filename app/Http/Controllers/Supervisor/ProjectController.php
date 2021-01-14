@@ -180,20 +180,20 @@ class ProjectController extends Controller
         return redirect()->back();
     }
 
-//    public function zipFile(Project $project){
-//        $zip = new ZipArchive;
-//        $fileName = 'myzip.zip';
-//        $projectFiles = ProjectAttachment::whereHas('project', function (Builder $query) {
-//            $query->where('project_id', $project->id);
-//        })->get();
-//        if($zip->open(public_path('attachments\project' . $fileName), ZipArchive::CREATE)=== TRUE){
-//            $files = File::files(public_path('attachments\project'));
-//            foreach ($projectFiles as $key => $value){
-//                $relativeNameInZipFile = class_basename($value);
-//                $zip->addFile($value, $relativeNameInZipFile);
-//            }
-//            $zip->close();
-//        }
-//        return response()->download(public_path($fileName));
-//    }
+    public function zipFile(Project $project){
+        $zip = new ZipArchive;
+        $fileName = 'myzip.zip';
+        $projectFiles = ProjectAttachment::whereHas('project', function (Builder $query) {
+            $query->where('project_id', $project->id);
+        })->get();
+        if($zip->open(public_path('attachments\project' . $fileName), ZipArchive::CREATE)=== TRUE){
+            $files = File::files(public_path('attachments\project'));
+            foreach ($projectFiles as $key => $value){
+                $relativeNameInZipFile = class_basename($value);
+                $zip->addFile($value, $relativeNameInZipFile);
+            }
+            $zip->close();
+        }
+        return response()->download(public_path($fileName));
+    }
 }
