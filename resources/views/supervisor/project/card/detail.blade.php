@@ -59,14 +59,14 @@
             </form>
             @endif
             @if ($project->supervisor->id == Auth::id())
-                @if ($project->status == 1 || $project->status == 2)
+                @if ($project->status == 0 || $project->status == 1)
                 <a class="btn btn-sm btn-primary mt-1" href="{{ route('supervisor.project.edit', $project->id) }}">
                     <span class="fa fa-cog mr-2"></span>Edit Project
                 </a>
                 @endif
             @endif
             @if ($attachmentscount > 0)
-                <form class="d-inline" action="{{ route('supervisor.projects.zipFile') }}" method="GET">
+                <form class="d-inline" action="{{ route('supervisor.projects.zipFile') }}" method="POST">
                     @csrf
                     <input name="project_id" type="hidden" value="{{ $project->id }}">
                     <button type="submit" class="btn btn-sm btn-secondary mt-1">

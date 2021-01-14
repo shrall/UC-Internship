@@ -116,7 +116,7 @@ Route::group(['middleware' => ['supervisor'], 'prefix' => 'supervisor', 'as' => 
     Route::post('progresses/approve', [SupervisorProgressController::class, 'approve'])->name('progresses.approve');
     Route::post('progresses/decline', [SupervisorProgressController::class, 'decline'])->name('progresses.decline');
     //zip
-    Route::get('projects/zip', [SupervisorProjectController::class, 'zipFile'])->name('projects.zipFile');;
+    Route::post('project/zip', [SupervisorProjectController::class, 'zipFile'])->name('projects.zipFile');;
 });
 
 Route::group(['middleware' => ['student'], 'prefix' => 'student', 'as' => 'student.'], function () {
