@@ -22,16 +22,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($student->histories as $history)
-                        <!-- Item -->
-                        <tr>
-                            <td class="font-weight-bold">{{ $loop->iteration }}</td>
-                            <td class="font-weight-bold">{{ $history->duration_before }} hours</td>
-                            <td class="font-weight-bold">{{ $history->duration_after }} hours</td>
-                            <td class="font-weight-bold">{{ $history->created_at }}</td>
-                            <td class="font-weight-bold">{{ $history->supervisor->detailable->name }}</td>
-                        </tr>
-                    @endforeach
+                        @foreach($student->histories as $history)
+                            <!-- Item -->
+                            <tr>
+                                <td class="font-weight-bold">{{ $loop->iteration }}</td>
+                                <td class="font-weight-bold">{{ $history->duration_before }} hours</td>
+                                <td class="font-weight-bold">{{ $history->duration_after }} hours</td>
+                                <td class="font-weight-bold">{{ $history->created_at }}</td>
+                                <td class="font-weight-bold">{{ $history->supervisor->detailable->name }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
