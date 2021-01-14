@@ -15,8 +15,13 @@
                 <tr>
                     <td><span class="font-weight-normal">{{ $user->detailable->nim }}</span></td>
                     <td><a href="{{ route('supervisor.student.show', $user->id) }}" class="d-flex align-items-center">
-                            <img src="{{ asset('assets/img/team/profile-picture-3.jpg') }}"
-                                class="user-avatar rounded-circle mr-3" alt="Avatar">
+                            @if ($user->detailable->photo != null)
+                                <img src="/profile_picture/student/{{ $user->detailable->photo }}"
+                                     class="user-avatar rounded-circle mr-3" alt="Avatar">
+                            @else
+                                <img src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
+                                     class="user-avatar rounded-circle mr-3" alt="Avatar">
+                            @endif
                             <div class="d-block">
                                 <span class="font-weight-bold">{{ $user->detailable->name }}</span>
                                 <div class="small text-gray">{{ $user->detailable->email }}</div>
