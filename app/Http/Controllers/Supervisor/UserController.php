@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -56,7 +55,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //view my profile
         $projects = Project::where('supervisor_id', Auth::id())->get();
         $ongoingprojects = $projects->count();
         if ($user->detailable_type == "App\Models\Staff") {

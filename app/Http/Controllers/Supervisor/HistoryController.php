@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\History;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {

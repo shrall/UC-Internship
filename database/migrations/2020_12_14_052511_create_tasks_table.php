@@ -22,6 +22,7 @@ class CreateTasksTable extends Migration
             $table->enum('status', ['0','1'])
             ->default('0')
             ->comment('0 = Ongoing, 1 = Completed');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

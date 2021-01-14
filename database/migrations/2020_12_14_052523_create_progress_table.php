@@ -22,6 +22,7 @@ class CreateProgressTable extends Migration
             ->default('0')
             ->comment('0 = Pending, 1 = Accepted, 2 = Declined');
             $table->text('comment')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

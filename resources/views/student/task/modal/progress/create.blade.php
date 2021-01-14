@@ -7,8 +7,7 @@
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('student.progress.store') }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ route('student.progress.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="task_id" value="{{ $task->id }}">
                     <label for="description">Description</label>

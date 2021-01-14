@@ -1,5 +1,3 @@
-{{-- ini table yang ngelist semua progress dari task tsb  --}}
-{{-- disini include modal.progress  --}}
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card border-light shadow-sm">
@@ -13,48 +11,48 @@
             <div class="card card-body border-light shadow-sm table-wrapper table-responsive">
                 <table class="table table-hover">
                     <thead>
-                    <tr>
-                        <th class="border-0">Description</th>
-                        <th class="border-0" width="150px">Time Start</th>
-                        <th class="border-0" width="150px">Time End</th>
-                        <th class="border-0" width="150px">Status</th>
-                    </tr>
+                        <tr>
+                            <th class="border-0">Description</th>
+                            <th class="border-0" width="150px">Time Start</th>
+                            <th class="border-0" width="150px">Time End</th>
+                            <th class="border-0" width="150px">Status</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    @foreach($task->progresses as $progress)
-                        <!-- Item -->
-                        @include('supervisor.task.modal.progress')
-                        <tr>
-                            <td>
-                                <a data-toggle="modal"
-                                   data-target="#modal-progress-{{ $progress->id }}">{{ $progress->description }}</a>
-                            </td>
-                            <td>
-                                {{ date('d-m-Y, H:i', strtotime($progress->time_start)) }}
-                            </td>
-                            <td>
-                                {{ date('d-m-Y, H:i', strtotime($progress->time_end)) }}
-                            </td>
-                            @if($progress->status == 0)
-                                <td class="text-warning">
-                                    <span class="fas fa-clock"></span>
-                                    <span class="font-weight-bold">Pending</span>
+                        @foreach ($task->progresses as $progress)
+                            <!-- Item -->
+                            @include('supervisor.task.modal.progress')
+                            <tr>
+                                <td>
+                                    <a data-toggle="modal"
+                                        data-target="#modal-progress-{{ $progress->id }}">{{ $progress->description }}</a>
                                 </td>
-                            @endif
-                            @if($progress->status == 1)
-                                <td class="text-success">
-                                    <span class="fas fa-check"></span>
-                                    <span class="font-weight-bold">Approved</span>
+                                <td>
+                                    {{ date('d-m-Y, H:i', strtotime($progress->time_start)) }}
                                 </td>
-                            @endif
-                            @if($progress->status == 2)
-                                <td class="text-danger">
-                                    <span class="fas fa-times"></span>
-                                    <span class="font-weight-bold">Declined</span>
+                                <td>
+                                    {{ date('d-m-Y, H:i', strtotime($progress->time_end)) }}
                                 </td>
-                            @endif
-                        </tr>
-                    @endforeach
+                                @if ($progress->status == 0)
+                                    <td class="text-warning">
+                                        <span class="fas fa-clock"></span>
+                                        <span class="font-weight-bold">Pending</span>
+                                    </td>
+                                @endif
+                                @if ($progress->status == 1)
+                                    <td class="text-success">
+                                        <span class="fas fa-check"></span>
+                                        <span class="font-weight-bold">Approved</span>
+                                    </td>
+                                @endif
+                                @if ($progress->status == 2)
+                                    <td class="text-danger">
+                                        <span class="fas fa-times"></span>
+                                        <span class="font-weight-bold">Declined</span>
+                                    </td>
+                                @endif
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
+use App\Models\History;
 use App\Models\Progress;
-use App\Models\Task;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProgressController extends Controller
 {
@@ -87,11 +89,25 @@ class ProgressController extends Controller
 
     public function approve(Request $request) {
         $progress = Progress::find($request->progress_id);
-        $comment = $request['comment'];
-        $progressapply = Progress::where('task_id', $progress->task_id)->where('id', $progress->id)->first();
-        $progressapply->update([
+        $d1 = new DateTime($progress->time_end);
+        $d2 = new DateTime($progress->time_start);
+        $diff = $d2->diff($d1);
+        $progress_duration = $diff->h + $diff->i/60;
+
+        $progress->update([
             'status' => '1',
-            'comment' => $comment,
+            'comment' => $request['comment'],
+        ]);
+
+        $history = History::create([
+            'duration_before' => $progress->task->projectuser->user->info->time_remaining,
+            'duration_after' => $progress->task->projectuser->user->info->time_remaining - $progress_duration,
+            'student_id' => $progress->task->projectuser->uci_user_id,
+            'supervisor_id' => Auth::id(),
+        ]);
+
+        $progress->task->projectuser->user->info->update([
+            'time_remaining' => $history->duration_after,
         ]);
 
         return empty($progress) ? redirect()->back()->with('Fail', "Failed to update status")
@@ -100,13 +116,10 @@ class ProgressController extends Controller
 
     public function decline(Request $request) {
         $progress = Progress::find($request->progress_id);
-        $comment = $request['comment'];
-        $progressapply = Progress::where('task_id', $progress->task_id)->where('id', $progress->id)->first();
-        $progressapply->update([
+        $progress->update([
             'status' => '2',
-            'comment' => $comment,
+            'comment' => $request['comment'],
         ]);
-
         return empty($progress) ? redirect()->back()->with('Fail', "Failed to update status")
             : redirect()->back()->with('Success', 'Success progress: #('.$progress->name.') approved');
     }
