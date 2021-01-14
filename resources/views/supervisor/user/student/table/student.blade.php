@@ -5,7 +5,7 @@
                 <th class="border-bottom">NIM</th>
                 <th class="border-bottom">Name</th>
                 <th class="border-bottom">Department</th>
-                <th class="border-bottom">Time Reimaining</th>
+                <th class="border-bottom">Time Remaining</th>
                 <th class="border-bottom">Scholarship</th>
                 <th class="border-bottom">GPA</th>
             </tr>
@@ -30,8 +30,8 @@
                     </td>
                     <td><span class="font-weight-normal">{{ $user->detailable->department->name }}</span></td>
                     <td><span class="font-weight-normal">{{ $user->info->time_remaining }}</span></td>
-                    <td><span class="font-weight-normal">{{ $user->info->scholarship->name ?? 'None'}}</span></td>
-                    <td><span class="font-weight-normal">{{ $user->info->gpa }}</span></td>
+                    <td><span class="font-weight-normal">{{ $user->info->scholarship->name ?? 'None'}} ({{ $user->info->scholarship->grade ?? '-'}})</span></td>
+                    <td><span class="font-weight-normal">{{ number_format((float) $user->info->gpa, 2, '.', '') }}</span></td>
                 </tr>
             @endforeach
         </tbody>
