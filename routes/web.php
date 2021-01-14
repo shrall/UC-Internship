@@ -32,6 +32,7 @@ use App\Http\Controllers\Supervisor\StudentController as SupervisorStudentContro
 use App\Http\Controllers\Supervisor\TaskController as SupervisorTaskController;
 use App\Http\Controllers\Supervisor\TitleController as SupervisorTitleController;
 use App\Http\Controllers\Supervisor\UserController as SupervisorUserController;
+use App\Http\Controllers\Supervisor\ZipController as SupervisorZipController;
 
 //Student
 use App\Http\Controllers\Student\DepartmentController as StudentDepartmentController;
@@ -114,6 +115,8 @@ Route::group(['middleware' => ['supervisor'], 'prefix' => 'supervisor', 'as' => 
     //approve and decline progress
     Route::post('progresses/approve', [SupervisorProgressController::class, 'approve'])->name('progresses.approve');
     Route::post('progresses/decline', [SupervisorProgressController::class, 'decline'])->name('progresses.decline');
+    //zip
+    Route::get('projects/zip', [SupervisorProjectController::class, 'zipFile'])->name('projects.zipFile');;
 });
 
 Route::group(['middleware' => ['student'], 'prefix' => 'student', 'as' => 'student.'], function () {

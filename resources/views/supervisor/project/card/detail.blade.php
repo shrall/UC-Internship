@@ -63,8 +63,9 @@
                     <span class="fa fa-cog mr-2"></span>Edit Project
                 </a>
             @endif
-            @if ($project->attachments != null)
-                <a class="btn btn-sm btn-secondary mt-1" href="#">
+            @if ($attachmentscount > 0)
+                <a class="btn btn-sm btn-secondary mt-1" href="">
+{{--                    {{ route('supervisor.projects.zipFile', $project->id) }}--}}
                     <span class="fa fa-file-pdf mr-2"></span>Attachments
                 </a>
             @endif

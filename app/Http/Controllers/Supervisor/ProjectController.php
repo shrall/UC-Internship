@@ -12,6 +12,8 @@ use App\Models\Staff;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use ZipArchive;
+use File;
 
 class ProjectController extends Controller
 {
@@ -108,7 +110,9 @@ class ProjectController extends Controller
                     $currentperiod = $period;
                 };
             }
-            return view('supervisor.project.detail', compact('pages', 'project', 'currentperiod'));
+            $attachments = ProjectAttachment::where('project_id', $project->id)->get();
+            $attachmentscount = $attachments->count();
+            return view('supervisor.project.detail', compact('pages', 'project', 'currentperiod','attachmentscount'));
     }
 
     /**
@@ -175,4 +179,21 @@ class ProjectController extends Controller
         ]);
         return redirect()->back();
     }
+
+//    public function zipFile(Project $project){
+//        $zip = new ZipArchive;
+//        $fileName = 'myzip.zip';
+//        $projectFiles = ProjectAttachment::whereHas('project', function (Builder $query) {
+//            $query->where('project_id', $project->id);
+//        })->get();
+//        if($zip->open(public_path('attachments\project' . $fileName), ZipArchive::CREATE)=== TRUE){
+//            $files = File::files(public_path('attachments\project'));
+//            foreach ($projectFiles as $key => $value){
+//                $relativeNameInZipFile = class_basename($value);
+//                $zip->addFile($value, $relativeNameInZipFile);
+//            }
+//            $zip->close();
+//        }
+//        return response()->download(public_path($fileName));
+//    }
 }
