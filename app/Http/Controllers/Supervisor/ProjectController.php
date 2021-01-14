@@ -181,9 +181,9 @@ class ProjectController extends Controller
     }
 
     public function zipFile(Request $request){
-        $zip = new ZipArchive;
+        $zip = new \ZipArchive;
         $project = Project::find($request->project_id);
-        $fileNameZip =  stripslashes('\\'. $project->name . 'attachments.zip');
+        $fileNameZip =  stripslashes('\\'. $project->name . 'Attachments.zip');
         $projectFiles = ProjectAttachment::where('project_id', $project->id)->get();
         if($zip->open(public_path('attachments\project' . $fileNameZip), ZipArchive::CREATE)=== TRUE){
             $projectFiles = $projectFiles->toArray();
@@ -193,16 +193,10 @@ class ProjectController extends Controller
             foreach($files as $file) {
                 array_push($fileNames, pathinfo($file)['filename']);
             }
-
-            //udah ambil semua nama file di folder
-            //udah ambil file apa dari project tersebut
-
-            foreach ($fileNames as $fileName){
-                foreach ($projectFiles as $projectFile){
-                    if($fileName == $projectFile['name']){
-                        //kok ga masuk
+            foreach ($projectFiles as $projectFile){
+                foreach ($fileNames as $fileName){
+                    if($fileName == str_replace(".png", "",$projectFile['name'])){
                         $relativeNameInZipFile = basename($fileName);
-                        dd($relativeNameInZipFile);
                         $zip->addFile($fileName,$relativeNameInZipFile);
                     }
                 }
