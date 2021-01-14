@@ -64,9 +64,16 @@
                 </a>
             @endif
             @if ($attachmentscount > 0)
-                <a class="btn btn-sm btn-secondary mt-1" href="{{ route('supervisor.projects.zipFile', $project->id) }}">
-                    <span class="fa fa-file-pdf mr-2"></span>Attachments
-                </a>
+{{--                <a class="btn btn-sm btn-secondary mt-1" href="{{ route('supervisor.projects.zipFile', $project->id) }}">--}}
+{{--                    <span class="fa fa-file-pdf mr-2"></span>Attachments--}}
+{{--                </a>--}}
+                <form class="d-inline" action="{{ route('supervisor.projects.zipFile') }}" method="GET">
+                    @csrf
+                    <input name="project_id" type="hidden" value="{{ $project->id }}">
+                    <button type="submit" class="btn btn-sm btn-secondary mt-1">
+                        <span class="fa fa-file-pdf mr-2"></span>Attachments
+                    </button>
+                </form>
             @endif
         </div>
     </div>

@@ -180,20 +180,35 @@ class ProjectController extends Controller
         return redirect()->back();
     }
 
-    public function zipFile(Project $project){
+    public function zipFile(Request $request){
         $zip = new ZipArchive;
-        $fileName = 'myzip.zip';
-        $projectFiles = ProjectAttachment::whereHas('project', function (Builder $query) {
-            $query->where('project_id', $project->id);
-        })->get();
-        if($zip->open(public_path('attachments\project' . $fileName), ZipArchive::CREATE)=== TRUE){
-            $files = File::files(public_path('attachments\project'));
-            foreach ($projectFiles as $key => $value){
-                $relativeNameInZipFile = class_basename($value);
-                $zip->addFile($value, $relativeNameInZipFile);
+        $project = Project::find($request->project_id);
+        $fileNameZip =  stripslashes('\\'. $project->name . 'attachments.zip');
+        $projectFiles = ProjectAttachment::where('project_id', $project->id)->get();
+        if($zip->open(public_path('attachments\project' . $fileNameZip), ZipArchive::CREATE)=== TRUE){
+            $projectFiles = $projectFiles->toArray();
+            $fileNames = [];
+            $path = public_path('attachments\project');
+            $files = \File::allFiles($path);
+            foreach($files as $file) {
+                array_push($fileNames, pathinfo($file)['filename']);
+            }
+
+            //udah ambil semua nama file di folder
+            //udah ambil file apa dari project tersebut
+
+            foreach ($fileNames as $fileName){
+                foreach ($projectFiles as $projectFile){
+                    if($fileName == $projectFile['name']){
+                        //kok ga masuk
+                        $relativeNameInZipFile = basename($fileName);
+                        dd($relativeNameInZipFile);
+                        $zip->addFile($fileName,$relativeNameInZipFile);
+                    }
+                }
             }
             $zip->close();
         }
-        return response()->download(public_path($fileName));
+        return response()->download(public_path('attachments\project' .'\\'. $fileNameZip));
     }
 }
