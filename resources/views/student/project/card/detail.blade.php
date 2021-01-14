@@ -40,6 +40,12 @@
                     <span class="fa fa-ban mr-2"></span>Suspended
                 </div>
             @endif
+            @if ($attachmentscount > 0)
+                <a class="btn btn-sm btn-secondary mt-1" href="#">
+                    <span class="fa fa-file-pdf mr-2"></span>Attachments
+                </a>
+            @endif
         </div>
+
     </div>
 </div>
