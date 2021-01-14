@@ -67,9 +67,9 @@
                                     </td>
                                 @endif
                                 @if ($project->status == 3)
-                                    <td class="text-success">
-                                        <span class="fas fa-check"></span>
-                                        <span class="font-weight-bold">Completed</span>
+                                    <td class="text-danger">
+                                        <span class="fas fa-ban"></span>
+                                        <span class="font-weight-bold">Suspended</span>
                                     </td>
                                 @endif
                                 <td>
@@ -87,14 +87,16 @@
                                                 href="{{ route('supervisor.project.show', $project->id) }}"><span
                                                     class="fas fa-eye mr-2"></span>View
                                                 Details</a>
-                                            <a class="dropdown-item"
-                                                href="{{ route('supervisor.project.edit', $project->id) }}"><span
-                                                    class="fas fa-cog mr-2"></span>Edit
-                                                Project</a>
-                                            <a class="dropdown-item text-danger" data-toggle="modal"
-                                                data-target="#modal-delete-{{ $project->id }}">
-                                                <span class="fas fa-ban mr-2"></span>Delete
-                                            </a>
+                                            @if($project->status == 1)
+                                                <a class="dropdown-item"
+                                                   href="{{ route('supervisor.project.edit', $project->id) }}"><span
+                                                        class="fas fa-cog mr-2"></span>Edit
+                                                    Project</a>
+                                                    <a class="dropdown-item text-danger" data-toggle="modal"
+                                                       data-target="#modal-delete-{{ $project->id }}">
+                                                        <span class="fas fa-ban mr-2"></span>Delete
+                                                    </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>

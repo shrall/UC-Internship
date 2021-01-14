@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Supervisor;
 use App\Http\Controllers\Controller;
 use App\Models\Period;
 use App\Models\Project;
+use App\Models\ProjectUser;
 use App\Models\Task;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -78,7 +80,15 @@ class TaskController extends Controller
                 $currentperiod = $period;
             };
         }
-        return view('supervisor.task.detail', compact('pages', 'task', 'currentperiod'));
+        $tasks = Task::whereHas('projectuser', function (Builder $query) {
+            $query->where('uci_user_id', Auth::id())
+                ->where('status', '1')
+                ->whereHas('project', function (Builder $query) {
+                    $query->where('status', '1');
+                });
+        })->get();
+        $project = $task->projectuser->project;
+        return view('supervisor.task.detail', compact('pages', 'task', 'currentperiod', 'project'));
     }
 
     /**
