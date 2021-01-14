@@ -99,6 +99,10 @@ class ProgressController extends Controller
             'comment' => $request['comment'],
         ]);
 
+        $progress->task->update([
+            'duration' => $progress->task->duration + $progress_duration
+        ]);
+
         $history = History::create([
             'duration_before' => $progress->task->projectuser->user->info->time_remaining,
             'duration_after' => $progress->task->projectuser->user->info->time_remaining - $progress_duration,
