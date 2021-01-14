@@ -87,15 +87,15 @@
                                                 href="{{ route('supervisor.project.show', $project->id) }}"><span
                                                     class="fas fa-eye mr-2"></span>View
                                                 Details</a>
-                                            @if($project->status == 1)
+                                            @if ($project->status == 1)
                                                 <a class="dropdown-item"
-                                                   href="{{ route('supervisor.project.edit', $project->id) }}"><span
+                                                    href="{{ route('supervisor.project.edit', $project->id) }}"><span
                                                         class="fas fa-cog mr-2"></span>Edit
                                                     Project</a>
-                                                    <a class="dropdown-item text-danger" data-toggle="modal"
-                                                       data-target="#modal-delete-{{ $project->id }}">
-                                                        <span class="fas fa-ban mr-2"></span>Delete
-                                                    </a>
+                                                <a class="dropdown-item text-danger" data-toggle="modal"
+                                                    data-target="#modal-delete-{{ $project->id }}">
+                                                    <span class="fas fa-ban mr-2"></span>Delete
+                                                </a>
                                             @endif
                                         </div>
                                     </div>

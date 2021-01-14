@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Period;
 use App\Models\Project;
 use App\Models\ProjectAttachment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use ZipArchive;
 use File;
@@ -65,7 +67,15 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $pages = 'project';
+        $periods = Period::all();
+        $currentdate = Carbon::now();
+        foreach ($periods as $period) {
+            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                $currentperiod = $period;
+            };
+        }
+        return view('admin.project.edit', compact('project', 'pages', 'currentperiod'));
     }
 
     /**
@@ -77,7 +87,24 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        if ($request['attachments'] != null) {
+            $attachments = ProjectAttachment::where('project_id', $project->id)->get();
+            foreach ($attachments as $lastattachment) {
+                $lastattachment->delete();
+            }
+            $i = 0;
+            foreach ($request->file('attachments') as $file) {
+                $attachment = new ProjectAttachment;
+                $file_name = time() . $i . '-' . $file->getClientOriginalName();
+                $file->move(public_path('attachments\project'), $file_name);
+                $attachment->name = $file_name;
+                $attachment->project_id = $project['id'];
+                $attachment->save();
+                $i++;
+            }
+        }
+        $project->update($request->all());
+        return redirect()->route('admin.project.show', $project->id);
     }
 
     /**
