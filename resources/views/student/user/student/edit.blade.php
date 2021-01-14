@@ -86,9 +86,14 @@
                 <div class="card border-light text-center p-0">
                     <div class="profile-cover rounded-top"
                         data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
-                    <div class="card-body"><img
-                            src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
-                            class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
+                    <div class="card-body">
+                        @if ($user->detailable->photo != null)
+                            <img src="/profile_picture/student/{{ $user->detailable->photo }}"
+                                 class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Profile Picture">
+                        @else
+                            <img src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
+                                 class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Profile Picture">
+                        @endif
                         <h4 class="h3">
                             {{ $user->detailable->name }}
                         </h4>
