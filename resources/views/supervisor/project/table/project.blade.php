@@ -92,6 +92,8 @@
                                                     href="{{ route('supervisor.project.edit', $project->id) }}"><span
                                                         class="fas fa-cog mr-2"></span>Edit
                                                     Project</a>
+                                            @endif
+                                            @if ($project->status == 0)
                                                 <a class="dropdown-item text-danger" data-toggle="modal"
                                                     data-target="#modal-delete-{{ $project->id }}">
                                                     <span class="fas fa-ban mr-2"></span>Delete
