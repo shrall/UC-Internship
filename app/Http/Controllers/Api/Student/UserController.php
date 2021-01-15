@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\StudentResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -71,7 +72,21 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->detailable->update([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'line_account' => $request->line_account,
+        ]);
+
+        if ($request->has('photo')) {
+            $file_name = time() . '-' . $request->photo->getClientOriginalName();
+            $request->photo->move(public_path('profile_picture\student'), $file_name);
+            $user->detailable->update([
+                'photo' => $file_name,
+            ]);
+        }
+
+        return StudentResource::make($user);
     }
 
     /**
