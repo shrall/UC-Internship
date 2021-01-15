@@ -85,11 +85,11 @@ class StudentController extends Controller
         ]);
 
         if ($request->filled('scholarship')) {
-            $scholarship = Scholarship::find($data['scholarship']);
+            $scholarship = Scholarship::find($request->scholarship);
             $info = Info::create([
                 'time_remaining' => $scholarship['hps'],
                 'gpa' => $data['gpa'],
-                'scholarship_id' => $data['scholarship']
+                'scholarship_id' => $request->scholarship
             ]);
         } else {
             $info = Info::create([
