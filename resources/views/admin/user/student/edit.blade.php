@@ -102,37 +102,29 @@
                                 @foreach ($departments->sortBy('name') as $department)
                                     <option value="{{ $department->id }}" @if ($student->detailable->department_id == $department->id)selected
                                 @endif>{{ $department->name }} ({{ $department->initial }})
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="scholarship"><span class="fa fa-book mr-2"></span>Scholarship</label>
-                        <select class="form-select w-100 mb-0" id="scholarship" name="scholarship">
-                            <option value="" @if ($student->info->scholarship_id == null) selected @endif>None</option>
-                            @foreach ($scholarships->sortBy('name') as $scholarship)
-                                <option value="{{$scholarship->id}}" @if ($student->info->scholarship_id == $scholarship->id) selected @endif>{{$scholarship->name}} ({{$scholarship->grade}})
                                 </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="time_remaining"><span class="fa fa-clock mr-2"></span>Time Remaining</label>
-                            <input class="form-control" id="time_remaining" name="time_remaining" type="number"
-                                placeholder="Time remaining" step="0.01" value="{{ $student->info->time_remaining }}"
-                                required>
+                            <label for="scholarship"><span class="fa fa-book mr-2"></span>Scholarship</label>
+                            <select class="form-select w-100 mb-0" id="scholarship" name="scholarship">
+                                <option value="" @if ($student->info->scholarship_id == null) selected @endif>
+                                    None</option>
+                                @foreach ($scholarships->sortBy('name') as $scholarship)
+                                    <option value="{{ $scholarship->id }}" @if ($student->info->scholarship_id == $scholarship->id) selected
+                                @endif>{{ $scholarship->name }} ({{ $scholarship->grade }})
+                                </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="scholarship"><span class="fa fa-book mr-2"></span>Scholarship</label>
-                            <select class="form-select w-100 mb-0" id="scholarship" name="scholarship">
-                                @foreach ($scholarships->sortBy('name') as $scholarship)
-                                    @if($scholarship->status != 1)
-                                        <option value="{{ $scholarship->id }}" @if ($loop->iteration == 1) selected
-                                            @endif>{{ $scholarship->name }} ({{ $scholarship->grade }})
-                                        </option>
-                                    @endif
-                                @endforeach
-                            </select>
+                            <label for="time_remaining"><span class="fa fa-clock mr-2"></span>Time Remaining</label>
+                            <input class="form-control" id="time_remaining" name="time_remaining" type="number"
+                                placeholder="Time remaining" step="0.01" value="{{ $student->info->time_remaining }}"
+                                required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="gpa"><span class="fa fa-graduation-cap mr-2"></span>GPA</label>
@@ -151,10 +143,12 @@
                                     <input type="file" id="photo" name="photo">
                                     <div class="d-md-block text-left">
                                         @if ($student->detailable->photo == null)
-                                            <div class="font-weight-normal text-dark mb-1" id="pp-name">Choose Image</div>
+                                            <div class="font-weight-normal text-dark mb-1" id="pp-name">Choose Image
+                                            </div>
                                         @else
                                             <div class="font-weight-normal text-dark mb-1" id="pp-name">
-                                                {{ $student->detailable->photo }}</div>
+                                                {{ $student->detailable->photo }}
+                                            </div>
                                         @endif
                                         <div class="text-gray small">JPG or PNG.</div>
                                     </div>

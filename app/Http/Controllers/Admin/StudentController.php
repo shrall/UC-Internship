@@ -91,7 +91,7 @@ class StudentController extends Controller
                 'gpa' => $data['gpa'],
                 'scholarship_id' => $data['scholarship']
             ]);
-        } else{
+        } else {
             $info = Info::create([
                 'time_remaining' => 0,
                 'gpa' => $data['gpa'],
@@ -180,7 +180,6 @@ class StudentController extends Controller
                 'batch' => 'required|numeric',
                 'department' => 'required',
                 'time_remaining' => 'required|numeric',
-                'scholarship' => 'required',
                 'gpa' => 'required|numeric|between:0.00,4.00',
                 'photo' => 'image',
             ])->validate();
@@ -201,7 +200,6 @@ class StudentController extends Controller
                 'batch' => 'required|numeric',
                 'department' => 'required',
                 'time_remaining' => 'required|numeric',
-                'scholarship' => 'required',
                 'gpa' => 'required|numeric|between:0.00,4.00',
                 'photo' => 'image',
             ])->validate();
@@ -238,20 +236,32 @@ class StudentController extends Controller
                 'email' => $student['email'],
             ]);
         }
-
-        if ($student->info->time_remaining != $request->time_remaining) {
-
-            History::create([
-                'duration_before' => $student->info->time_remaining,
-                'duration_after' => $request->time_remaining,
-                'student_id' => $student->id,
-                'supervisor_id' => Auth::id(),
-            ]);
-
+        if ($request->filled('scholarship')) {
+            $scholarship = Scholarship::find($request->scholarship);
+            if ($student->info->time_remaining != $request->time_remaining) {
+                History::create([
+                    'duration_before' => $student->info->time_remaining,
+                    'duration_after' => $request->time_remaining,
+                    'student_id' => $student->id,
+                    'supervisor_id' => Auth::id(),
+                ]);
+            }
             $student->info->update([
                 'time_remaining' => $request->time_remaining,
                 'gpa' => $request->gpa,
                 'scholarship_id' => $request->scholarship
+            ]);
+        } else {
+            History::create([
+                'duration_before' => $student->info->time_remaining,
+                'duration_after' => 0,
+                'student_id' => $student->id,
+                'supervisor_id' => Auth::id(),
+            ]);
+            $student->info->update([
+                'time_remaining' => 0,
+                'gpa' => $request->gpa,
+                'scholarship_id' => null
             ]);
         }
 
