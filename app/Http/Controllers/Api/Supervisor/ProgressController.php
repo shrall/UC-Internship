@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProgressResource;
 use App\Models\Progress;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProgressController extends Controller
 {
@@ -20,9 +20,13 @@ class ProgressController extends Controller
     {
         $progresses = Progress::whereHas('task', function (Builder $query) {
             $query->whereHas('projectuser', function (Builder $query) {
-                $query->where('uci_user_id', Auth::id());
+                $query->whereHas('project', function (Builder $query) {
+                    $query->where('supervisor_id', Auth::id());
+                });
             });
-        })->get();
+        })->where('status', '0')->get();
+
+
         return ProgressResource::collection($progresses);
     }
 
@@ -55,7 +59,7 @@ class ProgressController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
