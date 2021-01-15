@@ -87,7 +87,7 @@
                                                 href="{{ route('supervisor.project.show', $project->id) }}"><span
                                                     class="fas fa-eye mr-2"></span>View
                                                 Details</a>
-                                            @if ($project->status == 1)
+                                            @if ($project->status == 1 || $project->status == 0)
                                                 <a class="dropdown-item"
                                                     href="{{ route('supervisor.project.edit', $project->id) }}"><span
                                                         class="fas fa-cog mr-2"></span>Edit
