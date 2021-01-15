@@ -42,7 +42,7 @@ class ScholarshipController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'grade' => 'required|string|max:1',
-            'duration' => 'required|numeric|max:1',
+            'duration' => 'required|string|max:1',
             'minimum_gpa' => 'required|numeric|between:0.00,4.00',
             'hps' => 'required|numeric',
         ]);
@@ -52,7 +52,7 @@ class ScholarshipController extends Controller
             'grade' => $data['grade'],
             'duration' => $data['duration'],
             'minimum_gpa' => $data['minimum_gpa'],
-            'hps' => $data['hps']
+            'hps' => $data['hps'],
         ]);
 
         return redirect()->route('admin.scholarship.index');
@@ -94,9 +94,10 @@ class ScholarshipController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'grade' => 'required|string|max:1',
-            'duration' => 'required|numeric|max:1',
+            'duration' => 'required|string|max:1',
             'minimum_gpa' => 'required|numeric|between:0.00,4.00',
             'hps' => 'required|numeric',
+            'status' => 'required',
         ]);
 
         $scholarship->update([
@@ -104,7 +105,8 @@ class ScholarshipController extends Controller
             'grade' => $data['grade'],
             'duration' => $data['duration'],
             'minimum_gpa' => $data['minimum_gpa'],
-            'hps' => $data['hps']
+            'hps' => $data['hps'],
+            'status' => $data['status'],
         ]);
 
         return redirect()->route('admin.scholarship.show', $scholarship->id);

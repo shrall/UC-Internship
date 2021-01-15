@@ -29,17 +29,23 @@
                 @endforeach
                 @if ($progress->task->projectuser->project->supervisor->id == Auth::id())
                     @if ($progress->status == '0')
+
                         <form action="{{ route('supervisor.progresses.approve') }}" method="POST">
                             <div class="row"></div>
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div>
                                         <label for="comment">Comment</label>
-                                        <input class="form-control" id="comment_id" name="comment" type="text"
-                                            placeholder="Add New Comment">
+                                        @if ($project->status == 1)
+                                            <input class="form-control" id="comment_id" name="comment" type="text"
+                                                placeholder="Add New Comment">
+                                        @else
+                                            <p>No comment.</p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
+
                     @endif
                     @if ($progress->status == '1' || $progress->status == '2')
                         <label for="">Comment</label>
@@ -49,25 +55,26 @@
                         <p>{{ $progress->comment }}</p>
                     @endif
             </div>
-            @if ($progress->status == 0)
-                <div class="modal-footer">
-                    @csrf
-                    <input name="progress_id" type="hidden" value="{{ $progress->id }}">
-                    <input name="task_id" type="hidden" value="{{ $task->id }}">
-                    <button type="submit" class="btn btn-success">
-                        <span class="fas fa-check mr-2"></span>Approve
-                    </button>
-                    </form>
-                    <form action="{{ route('supervisor.progresses.decline') }}" method="POST">
+            @if ($project->status == 1)
+                @if ($progress->status == 0)
+                    <div class="modal-footer">
                         @csrf
                         <input name="progress_id" type="hidden" value="{{ $progress->id }}">
                         <input name="task_id" type="hidden" value="{{ $task->id }}">
-                        <button type="submit" class="btn btn-danger">
-                            <span class="fas fa-times mr-2"></span>Decline
+                        <button type="submit" class="btn btn-success">
+                            <span class="fas fa-check mr-2"></span>Approve
                         </button>
-                    </form>
-                </div>
-            @endif
+                        </form>
+                        <form action="{{ route('supervisor.progresses.decline') }}" method="POST">
+                            @csrf
+                            <input name="progress_id" type="hidden" value="{{ $progress->id }}">
+                            <input name="task_id" type="hidden" value="{{ $task->id }}">
+                            <button type="submit" class="btn btn-danger">
+                                <span class="fas fa-times mr-2"></span>Decline
+                            </button>
+                        </form>
+                    </div>
+                @endif
             @endif
             @if ($progress->status == 1)
                 <div class="modal-footer">
@@ -83,6 +90,8 @@
                     </div>
                 </div>
             @endif
+            @endif
+
         </div>
     </div>
 </div>

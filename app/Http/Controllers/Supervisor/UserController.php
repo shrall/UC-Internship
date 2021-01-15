@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -105,19 +106,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $data = $request->validate([
-            'password' => 'required',
-            'phone' => 'required|numeric',
-            'line_account' => 'required',
-            'photo' => 'image',
-        ]);
-
-        $user->detailable->update([
-            'password' => $data['password'],
-            'phone' => $data['phone'],
-            'line_account' => $data['line_account'],
-        ]);
-
         if ($request->filled('password')) {
             Validator::make($request->all(), [
                 'password' => 'string|min:8',
@@ -132,9 +120,10 @@ class UserController extends Controller
                 'photo' => 'image',
             ])->validate();
         }
+
         if($user->detailable_type == "App\Models\Staff"){
             if ($request->has('photo')) {
-                $file_name = time() . '-' . $data['photo']->getClientOriginalName();
+                $file_name = time() . '-' . $request->photo->getClientOriginalName();
                 $request->photo->move(public_path('profile_picture\staff'), $file_name);
                 $user->detailable->update([
                     'photo' => $file_name,
@@ -142,13 +131,18 @@ class UserController extends Controller
             }
         } else if($user->detailable_type == "App\Models\Lecturer"){
             if ($request->has('photo')) {
-                $file_name = time() . '-' . $data['photo']->getClientOriginalName();
+                $file_name = time() . '-' . $request->photo->getClientOriginalName();
                 $request->photo->move(public_path('profile_picture\lecturer'), $file_name);
                 $user->detailable->update([
                     'photo' => $file_name,
                 ]);
             }
         }
+
+        $user->detailable->update([
+            'phone' => $request->phone,
+            'line_account' => $request->line_account,
+        ]);
 
         if ($request->filled('password')) {
             $user->update([

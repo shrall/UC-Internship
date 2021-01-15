@@ -48,13 +48,26 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="email">Min. GPA</label>
                         <h2 class="h5 mb-4">{{ $scholarship->minimum_gpa }}</h2>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="email">Hour per Semester</label>
                         <h2 class="h5 mb-4">{{ $scholarship->hps }} Hours</h2>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="email">Status</label>
+                        <h2 class="h5 mb-4">
+                        @if($scholarship->status == 0)
+                                <span class="fas fa-check text-success"></span>
+                                <span class="font-weight-bold text-success">Open</span>
+                        @endif
+                        @if($scholarship->status == 1)
+                                <span class="fas fa-ban text-danger"></span>
+                                <span class="font-weight-bold text-danger">Close</span>
+                        @endif
+                        </h2>
                     </div>
                 </div>
                 <div class="row">

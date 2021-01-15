@@ -99,4 +99,24 @@ class ProjectController extends Controller
     {
         //
     }
+
+    public function pending(){
+
+        $projects = Project::whereHas('projectusers', function (Builder $query) {
+            $query->where('uci_user_id', Auth::id())->where('status', '0');
+        })->get();
+        $projectscount = $projects->count();
+
+        return ProjectResource::collection($projectscount);
+    }
+
+    public function accepted(){
+
+        $projects = Project::whereHas('projectusers', function (Builder $query) {
+            $query->where('uci_user_id', Auth::id())->where('status', '1');
+        })->get();
+        $projectscount = $projects->count();
+
+        return ProjectResource::collection($projectscount);
+    }
 }

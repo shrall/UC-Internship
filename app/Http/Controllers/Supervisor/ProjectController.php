@@ -12,6 +12,9 @@ use App\Models\Staff;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use ZipArchive;
+use File;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -100,15 +103,17 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-            $pages = "project";
-            $periods = Period::all();
-            $currentdate = Carbon::now();
-            foreach ($periods as $period) {
-                if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
-                    $currentperiod = $period;
-                };
-            }
-            return view('supervisor.project.detail', compact('pages', 'project', 'currentperiod'));
+        $pages = "project";
+        $periods = Period::all();
+        $currentdate = Carbon::now();
+        foreach ($periods as $period) {
+            if ($period['start'] < $currentdate && $period['end'] > $currentdate) {
+                $currentperiod = $period;
+            };
+        }
+        $attachments = ProjectAttachment::where('project_id', $project->id)->get();
+        $attachmentscount = $attachments->count();
+        return view('supervisor.project.detail', compact('pages', 'project', 'currentperiod', 'attachmentscount'));
     }
 
     /**
@@ -139,8 +144,24 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        if ($request['attachments'] != null) {
+            $attachments = ProjectAttachment::where('project_id', $project->id)->get();
+            foreach ($attachments as $lastattachment) {
+                $lastattachment->delete();
+            }
+            $i = 0;
+            foreach ($request->file('attachments') as $file) {
+                $attachment = new ProjectAttachment;
+                $file_name = time() . $i . '-' . $file->getClientOriginalName();
+                $file->move(public_path('attachments\project'), $file_name);
+                $attachment->name = $file_name;
+                $attachment->project_id = $project['id'];
+                $attachment->save();
+                $i++;
+            }
+        }
         $project->update($request->all());
-        return redirect()->route('supervisor.project.index');
+        return redirect()->route('supervisor.project.show', $project->id);
     }
 
     /**
@@ -174,5 +195,28 @@ class ProjectController extends Controller
             'status' => '2',
         ]);
         return redirect()->back();
+    }
+
+    public function zipFile(Request $request)
+    {
+        $project = Project::find($request->project_id);
+        $projectFiles = ProjectAttachment::where('project_id', $project->id)->get();
+        $zip = new ZipArchive;
+        $fileNameZip =  $project->name . 'Attachments.zip';
+        if (Storage::exists(public_path($fileNameZip))) {
+            unlink(public_path($fileNameZip));
+        }
+        if ($zip->open(public_path($fileNameZip), ZipArchive::CREATE) === TRUE) {
+            $files = File::files(public_path('attachments\project'));
+            foreach ($files as $file) {
+                foreach ($projectFiles as $projectFile) {
+                    if ($projectFile->name == basename($file)) {
+                        $zip->addFile($file, basename($file));
+                    }
+                }
+            }
+            $zip->close();
+        }
+        return response()->download(public_path($fileNameZip));
     }
 }

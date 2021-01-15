@@ -39,6 +39,7 @@ class ProgressController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->validate([
             'description' => 'required|string',
             'time_start' => 'required',

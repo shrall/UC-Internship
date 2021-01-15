@@ -2,7 +2,11 @@
 
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\OfferController;
-use App\Http\Controllers\Api\ProgressController;
+use App\Http\Controllers\Api\Student\AcceptedProjectController;
+use App\Http\Controllers\Api\Student\DeclinedProjectController;
+use App\Http\Controllers\Api\Student\PendingProjectController;
+use App\Http\Controllers\Api\Student\ProgressController as StudentProgressController;
+use App\Http\Controllers\Api\Supervisor\ProgressController as SupervisorProgressController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\Student\UserController as StudentUserController;
 use App\Http\Controllers\Api\Supervisor\UserController as SupervisorUserController;
@@ -30,9 +34,12 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('supervisor/user', SupervisorUserController::class);
     Route::apiResource('project', ProjectController::class);
     Route::apiResource('offer', OfferController::class);
+    Route::apiResource('accept', AcceptedProjectController::class);
+    Route::apiResource('pending', PendingProjectController::class);
     Route::apiResource('task', TaskController::class);
-    Route::apiResource('progress', ProgressController::class);
     Route::apiResource('applied-students', SupervisorAppliedStudentController::class);
     Route::apiResource('accepted-students', SupervisorAcceptedStudentController::class);
+    Route::apiResource('student/progress', StudentProgressController::class);
+    Route::apiResource('supervisor/progress', SupervisorProgressController::class);
     Route::post('api-logout', [LoginController::class, 'logout']);
 });

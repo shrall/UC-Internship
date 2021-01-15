@@ -1,4 +1,3 @@
-{{-- ini card yang buat nunjukin detail dari project di detail.blade.php  --}}
 <div class="col-12 col-lg-6">
     <div class="card border-light shadow-sm text-center pt-3 mb-lg-0">
         <div class="card-body">
@@ -40,6 +39,16 @@
                     <span class="fa fa-ban mr-2"></span>Suspended
                 </div>
             @endif
+            @if ($attachmentscount > 0)
+                <form class="d-inline" action="{{ route('student.project.zipFile') }}" method="POST">
+                    @csrf
+                    <input name="project_id" type="hidden" value="{{ $project->id }}">
+                    <button type="submit" class="btn btn-sm btn-secondary mt-1">
+                        <span class="fa fa-file-pdf mr-2"></span>Attachments
+                    </button>
+                </form>
+            @endif
         </div>
+
     </div>
 </div>

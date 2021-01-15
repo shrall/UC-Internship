@@ -1,13 +1,15 @@
-<div class="col-lg-6">
+<div class="col-12 col-lg-6">
     <div class="card card-body bg-white border-light shadow-sm mb-4">
         <h2 class="h4 mb-4">PIC</h2>
         <div class="d-xl-flex align-items-center">
             <div class="user-avatar large-avatar mb-3 mr-3">
-                <img class="rounded" src="{{ asset('assets/img/team/profile-picture-1.jpg') }}" alt="change avatar">
+                <img class="rounded" src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
+                     alt="change avatar">
             </div>
-            <div class="row align-items-center pb-4 mb-4">
+            <div class="pb-4 mb-4 mx-0">
                 <div class="col-auto">
-                    <a href="{{ route('supervisor.student.show', $task->projectuser->uci_user_id) }}">
+                    <a
+                        href="{{ route('supervisor.student.show', $task->projectuser->uci_user_id) }}">
                         <h3 class="h5">{{ $task->projectuser->user->detailable->name }}</h3>
                     </a>
                     <span class="text-700">{{ $task->projectuser->user->detailable->department->name }}

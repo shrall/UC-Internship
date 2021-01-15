@@ -13,16 +13,16 @@
             <div class="card card-body border-light shadow-sm table-wrapper table-responsive">
                 <table class="table table-hover">
                     <thead>
-                        <tr>
-                            <th class="border-0" width="25px">#</th>
-                            <th class="border-0">Duration Before</th>
-                            <th class="border-0">Duration After</th>
-                            <th class="border-0">Timestamp</th>
-                            <th class="border-0">Staff Name</th>
-                        </tr>
+                    <tr>
+                        <th class="border-0" width="25px">#</th>
+                        <th class="border-0">Duration Before</th>
+                        <th class="border-0">Duration After</th>
+                        <th class="border-0">Timestamp</th>
+                        <th class="border-0">Staff Name</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        @foreach ($student->histories as $history)
+                        @foreach($student->histories as $history)
                             <!-- Item -->
                             <tr>
                                 <td class="font-weight-bold">{{ $loop->iteration }}</td>

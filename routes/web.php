@@ -32,6 +32,7 @@ use App\Http\Controllers\Supervisor\StudentController as SupervisorStudentContro
 use App\Http\Controllers\Supervisor\TaskController as SupervisorTaskController;
 use App\Http\Controllers\Supervisor\TitleController as SupervisorTitleController;
 use App\Http\Controllers\Supervisor\UserController as SupervisorUserController;
+use App\Http\Controllers\Supervisor\ZipController as SupervisorZipController;
 
 //Student
 use App\Http\Controllers\Student\DepartmentController as StudentDepartmentController;
@@ -85,6 +86,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => 'admin', 'as' => 'admin.'],
     Route::resource('staff', AdminStaffController::class);
     Route::resource('student', AdminStudentController::class);
     Route::resource('user', AdminUserController::class);
+    //zip
+    Route::post('project/zip', [AdminProjectController::class, 'zipFile'])->name('project.zipFile');;
 });
 
 Route::group(['middleware' => ['supervisor'], 'prefix' => 'supervisor', 'as' => 'supervisor.'], function () {
@@ -114,6 +117,8 @@ Route::group(['middleware' => ['supervisor'], 'prefix' => 'supervisor', 'as' => 
     //approve and decline progress
     Route::post('progresses/approve', [SupervisorProgressController::class, 'approve'])->name('progresses.approve');
     Route::post('progresses/decline', [SupervisorProgressController::class, 'decline'])->name('progresses.decline');
+    //zip
+    Route::post('project/zip', [SupervisorProjectController::class, 'zipFile'])->name('project.zipFile');;
 });
 
 Route::group(['middleware' => ['student'], 'prefix' => 'student', 'as' => 'student.'], function () {
@@ -135,6 +140,8 @@ Route::group(['middleware' => ['student'], 'prefix' => 'student', 'as' => 'stude
     Route::get('/offer', [StudentProjectController::class, 'offer'])->name('project.offer');
     Route::get('/exportc', [StudentUserController::class, 'check'])->name('export.check');
     Route::get('/export', [StudentUserController::class, 'export'])->name('export');
+    //zip
+    Route::post('project/zip', [StudentProjectController::class, 'zipFile'])->name('project.zipFile');;
 });
 
 Auth::routes();

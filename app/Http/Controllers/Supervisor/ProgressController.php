@@ -93,10 +93,15 @@ class ProgressController extends Controller
         $d2 = new DateTime($progress->time_start);
         $diff = $d2->diff($d1);
         $progress_duration = $diff->h + $diff->i/60;
-
+        $interval = $d1->diff($d2);
+        $days = $interval->format('%a');
         $progress->update([
             'status' => '1',
             'comment' => $request['comment'],
+        ]);
+
+        $progress->task->update([
+            'duration' => $progress->task->duration + $progress_duration + ($days * 24)
         ]);
 
         $history = History::create([

@@ -5,7 +5,7 @@
                 <th class="border-bottom">NIM</th>
                 <th class="border-bottom">Name</th>
                 <th class="border-bottom">Department</th>
-                <th class="border-bottom">Time Reimaining</th>
+                <th class="border-bottom">Time Remaining</th>
                 <th class="border-bottom">Scholarship</th>
                 <th class="border-bottom">GPA</th>
             </tr>
@@ -15,8 +15,13 @@
                 <tr>
                     <td><span class="font-weight-normal">{{ $user->detailable->nim }}</span></td>
                     <td><a href="{{ route('supervisor.student.show', $user->id) }}" class="d-flex align-items-center">
-                            <img src="{{ asset('assets/img/team/profile-picture-3.jpg') }}"
-                                class="user-avatar rounded-circle mr-3" alt="Avatar">
+                            @if ($user->detailable->photo != null)
+                                <img src="/profile_picture/student/{{ $user->detailable->photo }}"
+                                     class="user-avatar rounded-circle mr-3" alt="Avatar">
+                            @else
+                                <img src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
+                                     class="user-avatar rounded-circle mr-3" alt="Avatar">
+                            @endif
                             <div class="d-block">
                                 <span class="font-weight-bold">{{ $user->detailable->name }}</span>
                                 <div class="small text-gray">{{ $user->detailable->email }}</div>
@@ -25,8 +30,8 @@
                     </td>
                     <td><span class="font-weight-normal">{{ $user->detailable->department->name }}</span></td>
                     <td><span class="font-weight-normal">{{ $user->info->time_remaining }}</span></td>
-                    <td><span class="font-weight-normal">{{ $user->info->scholarship->name ?? 'None'}}</span></td>
-                    <td><span class="font-weight-normal">{{ $user->info->gpa }}</span></td>
+                    <td><span class="font-weight-normal">{{ $user->info->scholarship->name ?? 'None'}} ({{ $user->info->scholarship->grade ?? '-'}})</span></td>
+                    <td><span class="font-weight-normal">{{ number_format((float) $user->info->gpa, 2, '.', '') }}</span></td>
                 </tr>
             @endforeach
         </tbody>
