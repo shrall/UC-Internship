@@ -6,6 +6,8 @@ use App\Http\Controllers\Api\ProgressController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\Student\UserController as StudentUserController;
 use App\Http\Controllers\Api\Supervisor\UserController as SupervisorUserController;
+use App\Http\Controllers\Api\Supervisor\StudentController as SupervisorAcceptedStudentController;
+use App\Http\Controllers\Api\Supervisor\ApplicantController as SupervisorAppliedStudentController;
 use App\Http\Controllers\Api\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +32,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('offer', OfferController::class);
     Route::apiResource('task', TaskController::class);
     Route::apiResource('progress', ProgressController::class);
+    Route::apiResource('applied-students', SupervisorAppliedStudentController::class);
+    Route::apiResource('accepted-students', SupervisorAcceptedStudentController::class);
     Route::post('api-logout', [LoginController::class, 'logout']);
 });
