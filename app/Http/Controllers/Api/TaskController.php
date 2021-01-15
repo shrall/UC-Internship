@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -18,9 +19,19 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::whereHas('projectuser', function (Builder $query) {
-            $query->where('uci_user_id', Auth::id());
-        })->get();
+
+        if (Auth::user()->detailable_type == "App\Models\Lecturer" || Auth::user()->detailable_type == "App\Models\Staff") {
+            $tasks = Task::whereHas('projectuser', function (Builder $query) {
+                $query->whereHas('project', function (Builder $query) {
+                    $query->where('supervisor_id', Auth::id());
+                });
+            })->get();
+        } else {
+            $tasks = Task::whereHas('projectuser', function (Builder $query) {
+                $query->where('uci_user_id', Auth::id());
+            })->get();
+
+        }
         return TaskResource::collection($tasks);
     }
 

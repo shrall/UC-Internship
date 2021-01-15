@@ -24,9 +24,7 @@ class ProgressController extends Controller
                     $query->where('supervisor_id', Auth::id());
                 });
             });
-        })->where('status', '0')->get();
-
-
+        })->get();
         return ProgressResource::collection($progresses);
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Student;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProgressResource;
 use App\Models\Progress;
+use App\Models\Task;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -18,11 +19,13 @@ class ProgressController extends Controller
      */
     public function index()
     {
-        $progresses = Progress::whereHas('task', function (Builder $query) {
-            $query->whereHas('projectuser', function (Builder $query) {
-                $query->where('uci_user_id', Auth::id());
-            });
-        })->get();
+
+            $progresses = Progress::whereHas('task', function (Builder $query) {
+                $query->whereHas('projectuser', function (Builder $query) {
+                    $query->where('uci_user_id', Auth::id());
+                });
+            })->get();
+
         return ProgressResource::collection($progresses);
     }
 
