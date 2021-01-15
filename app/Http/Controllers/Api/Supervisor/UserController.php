@@ -71,7 +71,21 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->detailable->update([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'line_account' => $request->line_account,
+        ]);
+
+        if ($request->has('photo')) {
+            $file_name = time() . '-' . $request->photo->getClientOriginalName();
+            $request->photo->move(public_path('profile_picture\supervisor'), $file_name);
+            $user->detailable->update([
+                'photo' => $file_name,
+            ]);
+        }
+
+        return SupervisorResource::make($user);
     }
 
     /**
