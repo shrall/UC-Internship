@@ -21,7 +21,6 @@ class PendingProjectController extends Controller
         $projects = Project::whereHas('projectusers', function (Builder $query) {
             $query->where('uci_user_id', Auth::id())->where('status', '0');
         })->get();
-        $projectscount = $projects->count();
 
         return ProjectResource::collection($projects);
     }
