@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Api\Supervisor;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\ProjectUserResource;
 use App\Http\Resources\Api\SupervisorResource;
+use App\Models\Project;
+use App\Models\ProjectUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -97,5 +100,29 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function accept(Request $request)
+    {
+        $user = User::find($request->user_id);
+        $project = Project::find($request->project_id);
+        $pu = ProjectUser::where('uci_project_id', $project->id)->where('uci_user_id', $user->id)->first();
+        $pu->update([
+            'status' => '1',
+        ]);
+
+        return ProjectUserResource::make($pu);
+    }
+
+    public function decline(Request $request)
+    {
+        $user = User::find($request->user_id);
+        $project = Project::find($request->project_id);
+        $pu = ProjectUser::where('uci_project_id', $project->id)->where('uci_user_id', $user->id)->first();
+        $pu->update([
+            'status' => '2',
+        ]);
+
+        return ProjectUserResource::make($pu);
     }
 }

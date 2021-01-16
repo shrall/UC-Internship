@@ -47,5 +47,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('accepted-students', SupervisorAcceptedStudentController::class);
     Route::apiResource('student/progress', StudentProgressController::class);
     Route::apiResource('supervisor/progress', SupervisorProgressController::class);
+    Route::post('supervisor/applicant/accept', [SupervisorUserController::class, 'accept'])->name('students.accept');
+    Route::post('supervisor/applicant/decline', [SupervisorUserController::class, 'decline'])->name('students.decline');
     Route::post('api-logout', [LoginController::class, 'logout']);
 });
