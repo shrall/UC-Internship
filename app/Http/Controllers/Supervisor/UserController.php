@@ -45,7 +45,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
     }
 
     /**
@@ -67,14 +66,13 @@ class UserController extends Controller
             $pages = 'lecturer';
             $lecturer = $user;
             $info = Lecturer::find($user->detailable_id);
-            return view('supervisor.user.lecturer.detail', compact('pages', 'info', 'lecturer','ongoingprojects', 'projects'));
+            return view('supervisor.user.lecturer.detail', compact('pages', 'info', 'lecturer', 'ongoingprojects', 'projects'));
         } else if ($user->detailable_type == "App\Models\Student") {
             $pages = 'student';
             $student = $user;
             $info = Student::find($user->detailable_id);
-            return view('supervisor.user.student.detail', compact('pages', 'info', 'student','ongoingprojects', 'projects'));
+            return view('supervisor.user.student.detail', compact('pages', 'info', 'student', 'ongoingprojects', 'projects'));
         }
-
     }
 
     /**
@@ -88,10 +86,10 @@ class UserController extends Controller
         $pages = 'supervisor';
         if ($user->id != Auth::id()) {
             return redirect()->back();
-        } else if($user->detailable_type == "App\Models\Lecturer"){
+        } else if ($user->detailable_type == "App\Models\Lecturer") {
             $lecturer = $user;
             return view('supervisor.user.lecturer.edit', compact('pages', 'lecturer'));
-        } else if($user->detailable_type == "App\Models\Staff"){
+        } else if ($user->detailable_type == "App\Models\Staff") {
             $staff = $user;
             return view('supervisor.user.staff.edit', compact('pages', 'staff'));
         }
@@ -121,23 +119,14 @@ class UserController extends Controller
             ])->validate();
         }
 
-        if($user->detailable_type == "App\Models\Staff"){
-            if ($request->has('photo')) {
-                $file_name = time() . '-' . $request->photo->getClientOriginalName();
-                $request->photo->move(public_path('profile_picture\staff'), $file_name);
-                $user->detailable->update([
-                    'photo' => $file_name,
-                ]);
-            }
-        } else if($user->detailable_type == "App\Models\Lecturer"){
-            if ($request->has('photo')) {
-                $file_name = time() . '-' . $request->photo->getClientOriginalName();
-                $request->photo->move(public_path('profile_picture\lecturer'), $file_name);
-                $user->detailable->update([
-                    'photo' => $file_name,
-                ]);
-            }
+        if ($request->has('photo')) {
+            $file_name = time() . '-' . $request->photo->getClientOriginalName();
+            $request->photo->move(public_path('profile_picture\supervisor'), $file_name);
+            $user->detailable->update([
+                'photo' => $file_name,
+            ]);
         }
+
 
         $user->detailable->update([
             'phone' => $request->phone,
@@ -170,7 +159,8 @@ class UserController extends Controller
         //
     }
 
-    public function accept(Request $request) {
+    public function accept(Request $request)
+    {
         $user = User::find($request->user_id);
         $project = Project::find($request->project_id);
         $pu = ProjectUser::where('uci_project_id', $project->id)->where('uci_user_id', $user->id)->first();
@@ -179,10 +169,11 @@ class UserController extends Controller
         ]);
 
         return empty($project) ? redirect()->back()->with('Fail', "Failed to update status")
-            : redirect()->back()->with('Success', 'Success student: #('.$user->name.') approved');
+            : redirect()->back()->with('Success', 'Success student: #(' . $user->name . ') approved');
     }
 
-    public function decline(Request $request) {
+    public function decline(Request $request)
+    {
         $user = User::find($request->user_id);
         $project = Project::find($request->project_id);
         $pu = ProjectUser::where('uci_project_id', $project->id)->where('uci_user_id', $user->id)->first();
@@ -191,6 +182,6 @@ class UserController extends Controller
         ]);
 
         return empty($project) ? redirect()->back()->with('Fail', "Failed to update status")
-            : redirect()->back()->with('Success', 'Success student: #('.$user->name.') approved');
+            : redirect()->back()->with('Success', 'Success student: #(' . $user->name . ') approved');
     }
 }

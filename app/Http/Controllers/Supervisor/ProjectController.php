@@ -202,8 +202,8 @@ class ProjectController extends Controller
         $project = Project::find($request->project_id);
         $projectFiles = ProjectAttachment::where('project_id', $project->id)->get();
         $zip = new ZipArchive;
-        $fileNameZip =  $project->name . 'Attachments.zip';
-        if (Storage::exists(public_path($fileNameZip))) {
+        $fileNameZip =  'attachments\zip\project_' . $project->name . '_attachments.zip';
+        if (file_exists(public_path($fileNameZip))) {
             unlink(public_path($fileNameZip));
         }
         if ($zip->open(public_path($fileNameZip), ZipArchive::CREATE) === TRUE) {

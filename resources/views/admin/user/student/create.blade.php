@@ -109,7 +109,7 @@
                             <label for="scholarship"><span class="fa fa-book"></span> Scholarship</label>
                             <select class="form-select w-100 mb-0" id="scholarship" name="scholarship">
                                 <option value="" selected>None</option>
-                                @foreach ($scholarships->sortBy('name') as $scholarship)
+                                @foreach ($scholarships->sortBy('name')->where('status', '0') as $scholarship)
                                     <option value="{{ $scholarship->id }}">{{ $scholarship->name }}
                                         ({{ $scholarship->grade }})</option>
                                 @endforeach

@@ -18,8 +18,7 @@
                         required>{{ $task->description }}</textarea>
                     <label for="deadline" class="mt-4">Deadline</label>
                     <input value="{{ $task->deadline }}" class="form-control" id="deadline" name="deadline" type="date"
-                        placeholder="Deadline" min="{{ $currentperiod->start }}" max="{{ $currentperiod->end }}"
-                        required>
+                        placeholder="Deadline" min="{{ date('Y-m-d') }}" required>
 
                     <label for="pic" class="mt-4">PIC</label>
                     <select name="pic" class="form-select w-100 mb-0">
