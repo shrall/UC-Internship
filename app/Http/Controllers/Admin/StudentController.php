@@ -60,6 +60,7 @@ class StudentController extends Controller
             'gender' => 'required',
             'batch' => 'required|numeric',
             'department' => 'required',
+            'scholarship' => 'exclude_unless:has_scholarship, required',
             'gpa' => 'required|numeric|between:0.00,4.00',
             'photo' => 'image',
         ]);
@@ -237,32 +238,59 @@ class StudentController extends Controller
             ]);
         }
         if ($request->filled('scholarship')) {
-            $scholarship = Scholarship::find($request->scholarship);
-            if ($student->info->time_remaining != $request->time_remaining) {
+            if ($student->info->scholarship_id == null) {
+                $scholarship = Scholarship::find($request->scholarship);
                 History::create([
                     'duration_before' => $student->info->time_remaining,
-                    'duration_after' => $request->time_remaining,
+                    'duration_after' => $scholarship->hps,
                     'student_id' => $student->id,
                     'supervisor_id' => Auth::id(),
                 ]);
+                $student->info->update([
+                    'time_remaining' => $scholarship->hps,
+                    'gpa' => $request->gpa,
+                    'scholarship_id' => $request->scholarship
+                ]);
+            } else {
+                if ($student->info->time_remaining != $request->time_remaining) {
+                    History::create([
+                        'duration_before' => $student->info->time_remaining,
+                        'duration_after' => $request->time_remaining,
+                        'student_id' => $student->id,
+                        'supervisor_id' => Auth::id(),
+                    ]);
+                    $student->info->update([
+                        'time_remaining' => $request->time_remaining,
+                        'gpa' => $request->gpa,
+                        'scholarship_id' => $request->scholarship
+                    ]);
+                } else{
+                    $student->info->update([
+                        'gpa' => $request->gpa,
+                        'scholarship_id' => $request->scholarship
+                    ]);
+                }
             }
-            $student->info->update([
-                'time_remaining' => $request->time_remaining,
-                'gpa' => $request->gpa,
-                'scholarship_id' => $request->scholarship
-            ]);
         } else {
-            History::create([
-                'duration_before' => $student->info->time_remaining,
-                'duration_after' => 0,
-                'student_id' => $student->id,
-                'supervisor_id' => Auth::id(),
-            ]);
-            $student->info->update([
-                'time_remaining' => 0,
-                'gpa' => $request->gpa,
-                'scholarship_id' => null
-            ]);
+            if ($student->info->time_remaining != 0) {
+                History::create([
+                    'duration_before' => $student->info->time_remaining,
+                    'duration_after' => 0,
+                    'student_id' => $student->id,
+                    'supervisor_id' => Auth::id(),
+                ]);
+                $student->info->update([
+                    'time_remaining' => 0,
+                    'gpa' => $request->gpa,
+                    'scholarship_id' => null
+                ]);
+            } else {
+                $student->info->update([
+                    'time_remaining' => 0,
+                    'gpa' => $request->gpa,
+                    'scholarship_id' => null
+                ]);
+            }
         }
 
         return redirect()->route('admin.student.show', $student->id)->with('Success', 'Edit Success!');
