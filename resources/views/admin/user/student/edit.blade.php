@@ -111,7 +111,7 @@
                             <select class="form-select w-100 mb-0" id="scholarship" name="scholarship">
                                 <option value="" @if ($student->info->scholarship_id == null) selected @endif>
                                     None</option>
-                                @foreach ($scholarships->sortBy('name') as $scholarship)
+                                @foreach ($scholarships->sortBy('name')->where('status', 0) as $scholarship)
                                     <option value="{{ $scholarship->id }}" @if ($student->info->scholarship_id == $scholarship->id) selected
                                 @endif>{{ $scholarship->name }} ({{ $scholarship->grade }})
                                 </option>
