@@ -62,7 +62,7 @@ class StaffController extends Controller
 
         if ($request->has('photo')) {
             $file_name = time() . '-' . $data['photo']->getClientOriginalName();
-            $request->photo->move(public_path('profile_picture\supervisor'), $file_name);
+            $request->photo->move(public_path('profile_picture\staff'), $file_name);
         } else {
             $file_name = null;
         }
@@ -176,7 +176,7 @@ class StaffController extends Controller
 
         if ($request->has('photo')) {
             $file_name = time() . '-' . $request->photo->getClientOriginalName();
-            $request->photo->move(public_path('profile_picture\supervisor'), $file_name);
+            $request->photo->move(public_path('profile_picture\staff'), $file_name);
             $staff->detailable->update([
                 'photo' => $file_name,
             ]);
