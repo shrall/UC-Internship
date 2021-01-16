@@ -22,6 +22,8 @@ class ProjectResource extends JsonResource
             'status' => $this->status,
             'category' => $this->category,
             'applicants' => ProjectUserResource::collection($this->projectusers),
+            'pending' => ProjectUserResource::collection($this->projectusers->where('status','0')),
+            'accepted' => ProjectUserResource::collection($this->projectusers->where('status','1')),
             'attachments' => $this->attachments,
             'period' => $this->period,
             'supervisor' => SupervisorResource::make($this->supervisor),
