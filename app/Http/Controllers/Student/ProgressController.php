@@ -53,15 +53,18 @@ class ProgressController extends Controller
             $query->whereHas('projectuser', function (Builder $query) {
                     $query->where('uci_user_id', Auth::id());
                 });
-        })->get();
+        })->whereBetween('status', ['0', '1'])->get();
         foreach ($progresses as $progresscheck) {
-            if ($data['time_start'] >= $progresscheck->time_start && $data['time_start'] <= $progresscheck->time_end) {
+            if (date("Y-m-d H:i:s", strtotime($data['time_start'])) >= $progresscheck->time_start && date("Y-m-d H:i:s", strtotime($data['time_start'])) <= $progresscheck->time_end) {
                 return redirect()->route('student.task.show', $data['task_id'])->with('Error', 'You already have a progress from ' . date('jS, F Y, H:i', strtotime($progresscheck->time_start)) . ' to ' . date('jS, F Y, H:i', strtotime($progresscheck->time_end)));
             }
-            if ($data['time_end'] >= $progresscheck->time_start && $data['time_end'] <= $progresscheck->time_end) {
+            if (date("Y-m-d H:i:s", strtotime($data['time_start'])) >= $progresscheck->time_start && date("Y-m-d H:i:s", strtotime($data['time_end'])) <= $progresscheck->time_end) {
                 return redirect()->route('student.task.show', $data['task_id'])->with('Error', 'You already have a progress from ' . date('jS, F Y, H:i', strtotime($progresscheck->time_start)) . ' to ' . date('jS, F Y, H:i', strtotime($progresscheck->time_end)));
             }
-            if ($data['time_start'] <= $progresscheck->time_start && $data['time_end'] >= $progresscheck->time_end) {
+            if (date("Y-m-d H:i:s", strtotime($data['time_end'])) >= $progresscheck->time_start && date("Y-m-d H:i:s", strtotime($data['time_end'])) <= $progresscheck->time_end) {
+                return redirect()->route('student.task.show', $data['task_id'])->with('Error', 'You already have a progress from ' . date('jS, F Y, H:i', strtotime($progresscheck->time_start)) . ' to ' . date('jS, F Y, H:i', strtotime($progresscheck->time_end)));
+            }
+            if (date("Y-m-d H:i:s", strtotime($data['time_start'])) <= $progresscheck->time_start && date("Y-m-d H:i:s", strtotime($data['time_end'])) >= $progresscheck->time_end) {
                 return redirect()->route('student.task.show', $data['task_id'])->with('Error', 'You already have a progress from ' . date('jS, F Y, H:i', strtotime($progresscheck->time_start)) . ' to ' . date('jS, F Y, H:i', strtotime($progresscheck->time_end)));
             }
         }
