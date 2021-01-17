@@ -103,9 +103,7 @@ class UserController extends Controller
 
     public function accept(Request $request)
     {
-        $user = User::find($request->user_id);
-        $project = Project::find($request->project_id);
-        $pu = ProjectUser::where('uci_project_id', $project->id)->where('uci_user_id', $user->id)->first();
+        $pu = ProjectUser::where('uci_project_id', $request->project_id)->where('uci_user_id', $request->user_id)->first();
         $pu->update([
             'status' => '1',
         ]);
@@ -115,9 +113,7 @@ class UserController extends Controller
 
     public function decline(Request $request)
     {
-        $user = User::find($request->user_id);
-        $project = Project::find($request->project_id);
-        $pu = ProjectUser::where('uci_project_id', $project->id)->where('uci_user_id', $user->id)->first();
+        $pu = ProjectUser::where('uci_project_id', $request->project_id)->where('uci_user_id', $request->user_id)->first();
         $pu->update([
             'status' => '2',
         ]);
