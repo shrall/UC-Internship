@@ -73,7 +73,6 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->detailable->update([
-            'name' => $request->name,
             'phone' => $request->phone,
             'line_account' => $request->line_account,
         ]);
