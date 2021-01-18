@@ -15,6 +15,7 @@ class ProgressResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'description' => $this->description,
             'time_start' => $this->time_start,
             'time_end' => $this->time_end,

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api\Supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProgressResource;
+use App\Models\History;
 use App\Models\Progress;
+use DateTime;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -92,5 +94,44 @@ class ProgressController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function approve(Request $request) {
+        $progress = Progress::find($request->progress_id);
+        $d1 = new DateTime($progress->time_end);
+        $d2 = new DateTime($progress->time_start);
+        $diff = $d2->diff($d1);
+        $progress_duration = $diff->h + $diff->i/60;
+        $interval = $d1->diff($d2);
+        $days = $interval->format('%a');
+        $progress->update([
+            'status' => '1',
+            'comment' => $request['comment'],
+        ]);
+
+        $progress->task->update([
+            'duration' => $progress->task->duration + $progress_duration + ($days * 24)
+        ]);
+
+        $history = History::create([
+            'duration_before' => $progress->task->projectuser->user->info->time_remaining,
+            'duration_after' => $progress->task->projectuser->user->info->time_remaining - $progress_duration,
+            'student_id' => $progress->task->projectuser->uci_user_id,
+            'supervisor_id' => Auth::id(),
+        ]);
+
+        $progress->task->projectuser->user->info->update([
+            'time_remaining' => $history->duration_after,
+        ]);
+        return ProgressResource::make($progress);
+    }
+
+    public function decline(Request $request) {
+        $progress = Progress::find($request->progress_id);
+        $progress->update([
+            'status' => '2',
+            'comment' => $request['comment'],
+        ]);
+        return ProgressResource::make($progress);
     }
 }

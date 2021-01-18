@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProjectResource;
+use App\Http\Resources\Api\TaskResource;
 use App\Models\Project;
 use App\Models\ProjectUser;
+use App\Models\Task;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -118,5 +120,13 @@ class ProjectController extends Controller
         $projectscount = $projects->count();
 
         return ProjectResource::collection($projectscount);
+    }
+    public function tasks(Request $request)
+    {
+        $tasks = Task::whereHas('projectuser', function (Builder $query) use ($request){
+            $query->where('uci_project_id', $request->project_id);
+        })->get();
+
+        return TaskResource::collection($tasks);
     }
 }
