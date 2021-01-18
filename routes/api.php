@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\EducationOfferController;
+use App\Http\Controllers\Api\EventOfferController;
 use App\Http\Controllers\Api\OfferController;
+use App\Http\Controllers\Api\OtherOfferController;
 use App\Http\Controllers\Api\Student\AcceptedProjectController;
 use App\Http\Controllers\Api\Student\DeclinedProjectController;
 use App\Http\Controllers\Api\Student\PendingProjectController;
 use App\Http\Controllers\Api\Student\ProgressController as StudentProgressController;
+use App\Http\Controllers\Api\Student\TimeCompletedController;
 use App\Http\Controllers\Api\Supervisor\ProgressController as SupervisorProgressController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\EventProjectController;
@@ -40,6 +44,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('projects/education', EducationProjectController::class);
     Route::apiResource('projects/other', OtherProjectController::class);
     Route::apiResource('offer', OfferController::class);
+    Route::apiResource('offers/event', EventOfferController::class);
+    Route::apiResource('offers/education', EducationOfferController::class);
+    Route::apiResource('offers/other', OtherOfferController::class);
     Route::apiResource('accept', AcceptedProjectController::class);
     Route::apiResource('pending', PendingProjectController::class);
     Route::apiResource('task', TaskController::class);
