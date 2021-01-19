@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\ProgressResource;
 use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\Api\TaskResource;
+use App\Models\Progress;
 
 class TaskController extends Controller
 {
@@ -30,7 +32,6 @@ class TaskController extends Controller
             $tasks = Task::whereHas('projectuser', function (Builder $query) {
                 $query->where('uci_user_id', Auth::id());
             })->get();
-
         }
         return TaskResource::collection($tasks);
     }
@@ -99,5 +100,12 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         //
+    }
+    public function progresses(Request $request)
+    {
+        $progresses = Progress::whereHas('task', function (Builder $query) use ($request) {
+            $query->where('task_id', $request->task_id);
+        })->get();
+        return ProgressResource::collection($progresses);
     }
 }

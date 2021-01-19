@@ -51,7 +51,6 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-
     }
 
     /**
@@ -99,7 +98,8 @@ class ProjectController extends Controller
         //
     }
 
-    public function pending(){
+    public function pending()
+    {
 
         $projects = Project::whereHas('projectusers', function (Builder $query) {
             $query->where('uci_user_id', Auth::id())->where('status', '0');
@@ -109,7 +109,8 @@ class ProjectController extends Controller
         return ProjectResource::collection($projectscount);
     }
 
-    public function accepted(){
+    public function accepted()
+    {
 
         $projects = Project::whereHas('projectusers', function (Builder $query) {
             $query->where('uci_user_id', Auth::id())->where('status', '1');
@@ -120,17 +121,18 @@ class ProjectController extends Controller
     }
     public function tasks(Request $request)
     {
-        $tasks = Task::whereHas('projectuser', function (Builder $query) use ($request){
+        $tasks = Task::whereHas('projectuser', function (Builder $query) use ($request) {
             $query->where('uci_project_id', $request->project_id);
         })->get();
 
         return TaskResource::collection($tasks);
     }
-    public function apply(Request $request){
-        if(Auth::user()->detailable_type == "App\Models\Student"){
+    public function apply(Request $request)
+    {
+        if (Auth::user()->detailable_type == "App\Models\Student") {
             $pu = ProjectUser::create([
                 'status' => '0',
-                'uci_user_id' =>Auth::id(),
+                'uci_user_id' => Auth::id(),
                 'uci_project_id' => $request->project_id,
             ]);
         }
