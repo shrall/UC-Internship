@@ -50,6 +50,12 @@
                                         <td>{{ idate("Y", strtotime($project->period->end))-1 }}-{{ date("Y", strtotime($project->period->end)) }}
                                             / Even </td>
                                     @endif
+                                    @if($project->status == 0)
+                                        <td class="text-info">
+                                            <span class="fas fa-thumbs-up"></span>
+                                            <span class="font-weight-bold">Available</span>
+                                        </td>
+                                    @endif
                                     @if($project->status == 1)
                                         <td class="text-warning">
                                             <span class="fas fa-clock"></span>
