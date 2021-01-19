@@ -14,4 +14,9 @@ class PageController extends Controller
         $projects = Project::all();
         return view('admin.dashboard', compact('pages', 'projects'));
     }
+    public function faq()
+    {
+        $pages = 'faq';
+        return view('admin.faq', compact('pages'));
+    }
 }

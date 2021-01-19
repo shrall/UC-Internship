@@ -36,4 +36,9 @@ class PageController extends Controller
 
         return view('supervisor.dashboard', compact('pages', 'info', 'pus', 'progresses'));
     }
+    public function faq()
+    {
+        $pages = 'faq';
+        return view('supervisor.faq', compact('pages'));
+    }
 }

@@ -43,4 +43,9 @@ class PageController extends Controller
 
         return view('student.dashboard', compact('pages', 'tasks', 'projects', 'pus', 'currentperiod'));
     }
+    public function faq()
+    {
+        $pages = 'faq';
+        return view('student.faq', compact('pages'));
+    }
 }
