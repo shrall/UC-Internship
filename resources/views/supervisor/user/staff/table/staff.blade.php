@@ -14,7 +14,7 @@
                     <td><span class="font-weight-normal">{{ $user->detailable->nip }}</span></td>
                     <td><a href="{{ route('supervisor.staff.show', $user->id) }}" class="d-flex align-items-center">
                             @if ($user->detailable->photo != null)
-                                <img src="/profile_picture/staff/{{ $user->detailable->photo }}"
+                                <img src="/profile_picture/supervisor/{{ $user->detailable->photo }}"
                                      class="user-avatar rounded-circle mr-3" alt="Avatar">
                             @else
                                 <img src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
