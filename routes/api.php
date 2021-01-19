@@ -60,5 +60,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     //approve and decline progress
     Route::post('progress/approve', [SupervisorProgressController::class, 'approve'])->name('progress.approve');
     Route::post('progress/decline', [SupervisorProgressController::class, 'decline'])->name('progress.decline');
+    //apply to a project
+    Route::post('project/apply', [ProjectController::class, 'apply'])->name('project.apply');
     Route::post('api-logout', [LoginController::class, 'logout']);
 });
