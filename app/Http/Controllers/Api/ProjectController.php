@@ -28,7 +28,7 @@ class ProjectController extends Controller
         } else {
             $projects = Project::whereHas('projectusers', function (Builder $query) {
                 $query->where('uci_user_id', Auth::id())->where('status', '1');
-            })->get();
+            })->where('status', '1')->get();
         }
         return ProjectResource::collection($projects);
     }
