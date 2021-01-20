@@ -157,7 +157,7 @@
                 </div>
                 <div class="row">
                     <div class="btn-group">
-                        <a class="btn mb-2 mr-2 btn-secondary" href="">
+                        <a class="btn mb-2 mr-2 btn-secondary" href="{{asset("guidebook/guidebook_admin.pdf")}}">
                             <i class="fa fa-book-reader mr-2"></i>Download Guidebook
                         </a>
                     </div>
