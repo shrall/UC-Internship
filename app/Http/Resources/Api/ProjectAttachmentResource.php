@@ -4,7 +4,7 @@ namespace App\Http\Resources\Api;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProgressResource extends JsonResource
+class ProjectAttachmentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,7 @@ class ProgressResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'description' => $this->description,
-            'time_start' => $this->time_start,
-            'time_end' => $this->time_end,
-            'status' => $this->status,
-            'comment' => $this->comment,
-            'attachments' => $this->attachments,
+            'name' => $this->name,
         ];
     }
 }

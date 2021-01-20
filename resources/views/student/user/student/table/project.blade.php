@@ -55,6 +55,11 @@
                                             / Even </td>
                                     @endif
                                     <td>
+                                        @if($project->status == "0")
+                                            <span class="fas fa-stop text-info"></span>
+                                            <span class="font-weight-bold text-info">
+                                                Available</span>
+                                        @endif
                                         @if($project->status == "1")
                                             <span class="fas fa-clock text-warning"></span>
                                             <span class="font-weight-bold text-warning">

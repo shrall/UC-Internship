@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ProjectResource;
+use App\Http\Resources\Api\ProjectUserResource;
+use App\Http\Resources\Api\TaskResource;
 use App\Models\Project;
 use App\Models\ProjectUser;
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +28,7 @@ class ProjectController extends Controller
         } else {
             $projects = Project::whereHas('projectusers', function (Builder $query) {
                 $query->where('uci_user_id', Auth::id())->where('status', '1');
-            })->get();
+            })->where('status', '1')->get();
         }
         return ProjectResource::collection($projects);
     }
@@ -47,12 +51,6 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $pu = ProjectUser::create([
-            'status' => '0',
-            'uci_user_id' => Auth::id(),
-            'uci_project_id' => $request->project,
-        ]);
-        return $pu;
     }
 
     /**
@@ -100,7 +98,8 @@ class ProjectController extends Controller
         //
     }
 
-    public function pending(){
+    public function pending()
+    {
 
         $projects = Project::whereHas('projectusers', function (Builder $query) {
             $query->where('uci_user_id', Auth::id())->where('status', '0');
@@ -110,7 +109,8 @@ class ProjectController extends Controller
         return ProjectResource::collection($projectscount);
     }
 
-    public function accepted(){
+    public function accepted()
+    {
 
         $projects = Project::whereHas('projectusers', function (Builder $query) {
             $query->where('uci_user_id', Auth::id())->where('status', '1');
@@ -118,5 +118,24 @@ class ProjectController extends Controller
         $projectscount = $projects->count();
 
         return ProjectResource::collection($projectscount);
+    }
+    public function tasks(Request $request)
+    {
+        $tasks = Task::whereHas('projectuser', function (Builder $query) use ($request) {
+            $query->where('uci_project_id', $request->project_id);
+        })->get();
+
+        return TaskResource::collection($tasks);
+    }
+    public function apply(Request $request)
+    {
+        if (Auth::user()->detailable_type == "App\Models\Student") {
+            $pu = ProjectUser::create([
+                'status' => '0',
+                'uci_user_id' => Auth::id(),
+                'uci_project_id' => $request->project_id,
+            ]);
+        }
+        return ProjectUserResource::make($pu);
     }
 }

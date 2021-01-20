@@ -3,16 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\ProgressResource;
+use App\Http\Resources\Api\ProjectResource;
 use App\Models\Project;
-use App\Models\Task;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\Api\TaskResource;
-use App\Models\Progress;
 
-class TaskController extends Controller
+class EducationOfferController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,19 +18,12 @@ class TaskController extends Controller
      */
     public function index()
     {
-
         if (Auth::user()->detailable_type == "App\Models\Lecturer" || Auth::user()->detailable_type == "App\Models\Staff") {
-            $tasks = Task::whereHas('projectuser', function (Builder $query) {
-                $query->whereHas('project', function (Builder $query) {
-                    $query->where('supervisor_id', Auth::id());
-                });
-            })->get();
+            $projects = Project::where('supervisor_id', Auth::id())->where('category', '1')->get();
         } else {
-            $tasks = Task::whereHas('projectuser', function (Builder $query) {
-                $query->where('uci_user_id', Auth::id());
-            })->get();
+            $projects = Project::where('status', '0')->where('category', '1')->get();
         }
-        return TaskResource::collection($tasks);
+        return ProjectResource::collection($projects);
     }
 
     /**
@@ -60,10 +50,10 @@ class TaskController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Task  $task
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show($id)
     {
         //
     }
@@ -71,10 +61,10 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Task  $task
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $task)
+    public function edit($id)
     {
         //
     }
@@ -83,10 +73,10 @@ class TaskController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Task  $task
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -94,18 +84,11 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Task  $task
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy($id)
     {
         //
-    }
-    public function progresses(Request $request)
-    {
-        $progresses = Progress::whereHas('task', function (Builder $query) use ($request) {
-            $query->where('task_id', $request->task_id);
-        })->get();
-        return ProgressResource::collection($progresses);
     }
 }

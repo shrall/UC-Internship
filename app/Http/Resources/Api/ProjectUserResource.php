@@ -17,6 +17,8 @@ class ProjectUserResource extends JsonResource
         return [
             'id' => $this->id,
             'user' => StudentResource::make($this->user),
+            'user_id' => $this->uci_user_id,
+            'project_id' => $this->uci_project_id,
             'status' => $this->status,
             'tasks' => TaskResource::collection($this->tasks),
         ];

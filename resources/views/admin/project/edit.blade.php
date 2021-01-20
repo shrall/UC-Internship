@@ -41,12 +41,9 @@
                         <div class="col-md-6 mb-3">
                             <label for="category"><span class="fa fa-tag"></span> Category</label>
                             <select class="form-select w-100 mb-0" id="category" name="category">
-                                <option value="0" @if ($project->category == 0) selected
-                                    @endif>Event</option>
-                                <option value="1" @if ($project->category == 1) selected
-                                    @endif>Education</option>
-                                <option value="2" @if ($project->category == 2) selected
-                                    @endif>Other</option>
+                                <option value="0" @if ($project->category == 0) selected @endif>Event</option>
+                                <option value="1" @if ($project->category == 1) selected @endif>Education</option>
+                                <option value="2" @if ($project->category == 2) selected @endif>Other</option>
                             </select>
                         </div>
                     </div>
@@ -71,14 +68,10 @@
                         <div class="col-md-6 mb-3">
                             <label for="status"><span class="fa fa-clipboard-list mr-2"></span>Status</label>
                             <select class="form-select w-100 mb-0" id="status" name="status">
-                                <option value="0" @if ($project->status == 0) selected
-                                    @endif>Available</option>
-                                <option value="1" @if ($project->status == 1) selected
-                                    @endif>Ongoing</option>
-                                <option value="2" @if ($project->status == 2) selected
-                                    @endif>Completed</option>
-                                <option value="3" @if ($project->status == 3) selected
-                                    @endif>Suspended</option>
+                                <option value="0" @if ($project->status == 0) selected @endif>Available</option>
+                                <option value="1" @if ($project->status == 1) selected @endif>Ongoing</option>
+                                <option value="2" @if ($project->status == 2) selected @endif>Completed</option>
+                                <option value="3" @if ($project->status == 3) selected @endif>Suspended</option>
                             </select>
                         </div>
                     </div>
