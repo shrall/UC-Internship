@@ -21,8 +21,7 @@
                                 <td><a href="{{ route('admin.student.show', $student->id) }}"
                                         class="d-flex align-items-center">
                                         @if ($student->detailable->photo != null)
-
-                                            <img src="/profile_picture/student/{{ $student->detailable->photo }}"
+                                            <img src="{{ asset('profile_picture/student/' . $student->detailable->photo) }}"
                                                 class="user-avatar rounded-circle mr-3" alt="Avatar">
                                         @else
                                             <img src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
@@ -43,8 +42,8 @@
                                         Hours</span>
                                 </td>
                                 <td>
-                                    <span class="font-weight-normal">{{ $student->info->scholarship->name ?? 'None'}}
-                                        ({{ $student->info->scholarship->grade ?? '-'}})</span>
+                                    <span class="font-weight-normal">{{ $student->info->scholarship->name ?? 'None' }}
+                                        ({{ $student->info->scholarship->grade ?? '-' }})</span>
                                 </td>
                                 <td><span
                                         class="font-weight-normal">{{ number_format((float) $student->info->gpa, 2, '.', '') }}</span>

@@ -12,14 +12,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($lecturers as $lecturer)
+                        @foreach ($lecturers as $lecturer)
                             <!-- Item -->
                             <tr>
                                 <td><span class="font-weight-normal">{{ $lecturer->detailable->nip }}</span></td>
                                 <td><a href="{{ route('admin.lecturer.show', $lecturer->id) }}"
                                         class="d-flex align-items-center">
-                                        @if($lecturer->detailable->photo != null)
-                                            <img src="/profile_picture/lecturer/{{ $lecturer->detailable->photo }}"
+                                        @if ($lecturer->detailable->photo != null)
+                                            <img src="{{ asset('profile_picture/supervisor/' . $lecturer->detailable->photo) }}"
                                                 class="user-avatar rounded-circle mr-3" alt="Avatar">
                                         @else
                                             <img src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
@@ -35,8 +35,7 @@
                                     <span class="font-weight-normal">{{ $lecturer->detailable->department->name }}
                                         ({{ $lecturer->detailable->department->initial }})</span>
                                 </td>
-                                <td><span
-                                        class="font-weight-normal">{{ $lecturer->detailable->title->name }}</span>
+                                <td><span class="font-weight-normal">{{ $lecturer->detailable->title->name }}</span>
                                 </td>
                             </tr>
                         @endforeach

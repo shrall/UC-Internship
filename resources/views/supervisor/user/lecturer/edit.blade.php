@@ -68,14 +68,17 @@
             <div class="row">
                 <div class="col-12 mb-0">
                     <div class="card border-light text-center p-0">
-                        <div class="profile-cover rounded-top" data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
+                        <div class="profile-cover rounded-top"
+                            data-background="{{ asset('assets/img/profile-cover.jpg') }}"></div>
                         <div class="card-body pb-5">
                             @if ($lecturer->detailable->photo != null)
-                                <img src="/profile_picture/lecturer/{{ $lecturer->detailable->photo }}"
-                                     class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Profile Picture">
+                                <img src="{{ asset('profile_picture/supervisor/' . $lecturer->detailable->photo) }}"
+                                    class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4"
+                                    alt="Profile Picture">
                             @else
                                 <img src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
-                                     class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Profile Picture">
+                                    class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4"
+                                    alt="Profile Picture">
                             @endif
                             <h4 class="h3">{{ $lecturer->detailable->name }}</h4>
                             <h4 class="h3">{{ $lecturer->detailable->title->name }}</h4>

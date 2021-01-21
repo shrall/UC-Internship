@@ -66,7 +66,6 @@ class ProjectController extends Controller
 
                     $attachments = ProjectAttachment::where('project_id', $project->id)->get();
                     $attachmentscount = $attachments->count();
-                    //                    dd($attachments);
 
                     $pages = "project";
                     return view('student.project.detail', compact('pages', 'project', 'attachments', 'attachmentscount'));
@@ -128,12 +127,12 @@ class ProjectController extends Controller
         $project = Project::find($request->project_id);
         $projectFiles = ProjectAttachment::where('project_id', $project->id)->get();
         $zip = new ZipArchive;
-        $fileNameZip =  'attachments\zip\project_' . $project->name . '_attachments.zip';
+        $fileNameZip =  'attachments/zip/project_' . $project->name . '_attachments.zip';
         if (file_exists(public_path($fileNameZip))) {
             unlink(public_path($fileNameZip));
         }
         if ($zip->open(public_path($fileNameZip), ZipArchive::CREATE) === TRUE) {
-            $files = File::files(public_path('attachments\project'));
+            $files = File::files(public_path('attachments/project'));
             foreach ($files as $file) {
                 foreach ($projectFiles as $projectFile) {
                     if ($projectFile->name == basename($file)) {

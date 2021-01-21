@@ -121,7 +121,7 @@ class UserController extends Controller
 
         if ($request->has('photo')) {
             $file_name = time() . '-' . $request->photo->getClientOriginalName();
-            $request->photo->move(public_path('profile_picture\supervisor'), $file_name);
+            $request->photo->move(public_path('profile_picture/supervisor'), $file_name);
             $user->detailable->update([
                 'photo' => $file_name,
             ]);

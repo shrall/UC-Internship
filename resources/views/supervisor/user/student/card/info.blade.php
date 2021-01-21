@@ -6,7 +6,7 @@
                 </div>
                 <div class="card-body pb-5">
                     @if ($student->detailable->photo != null)
-                        <img src="/profile_picture/student/{{ $student->detailable->photo }}"
+                        <img src="{{ asset('profile_picture/student/' . $student->detailable->photo) }}"
                             class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4" alt="Profile Picture">
                     @else
                         <img src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
@@ -25,8 +25,8 @@
                     <a class="btn btn-sm btn-secondary" href="{{ route('supervisor.history.show', $student->id) }}">
                         <span class="fa fa-history"></span> Time History
                     </a>
-                    @if($student->info->cv != null)
-                        <a class="btn btn-sm btn-tertiary mt-1" href="/cv/{{ $student->info->cv }}">
+                    @if ($student->info->cv != null)
+                        <a class="btn btn-sm btn-tertiary mt-1" href="{{ asset('cv/' . $student->info->cv) }}">
                             <span class="fa fa-file-pdf mr-2"></span>CV / Portfolio
                         </a>
                     @endif

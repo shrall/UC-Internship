@@ -20,15 +20,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($scholarship->infos as $info)
+                        @foreach ($scholarship->infos as $info)
                             <!-- Item -->
                             <tr>
                                 <td><span class="font-weight-normal">{{ $info->user->detailable->nim }}</span></td>
                                 <td><a href="{{ route('admin.student.show', $info->user->id) }}"
                                         class="d-flex align-items-center">
-                                        @if($info->user->detailable->photo != null)
-                                            <img src="/profile_picture/info/{{ $info->user->detailable->photo }}"
-                                                class="user-avatar rounded-circle mr-3" alt="Avatar">
+                                        @if ($info->user->detailable->photo != null)
+                                            <img src="{{ asset('profile_picture/student/' . $info->user->detailable->photo) }}"
+                                                class=" user-avatar rounded-circle mr-3" alt="Avatar">
                                         @else
                                             <img src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
                                                 class="user-avatar rounded-circle mr-3" alt="Avatar">
@@ -48,7 +48,7 @@
                                         Hours</span>
                                 </td>
                                 <td><span
-                                        class="font-weight-normal">{{ number_format((float)$info->user->info->gpa, 2, '.', '') }}</span>
+                                        class="font-weight-normal">{{ number_format((float) $info->user->info->gpa, 2, '.', '') }}</span>
                                 </td>
                             </tr>
                         @endforeach
