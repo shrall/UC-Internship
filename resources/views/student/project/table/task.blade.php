@@ -19,24 +19,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($project->projectusers as $pu)
-                            @foreach($pu->tasks as $task)
+                        @foreach ($project->projectusers as $pu)
+                            @foreach ($pu->tasks as $task)
                                 <!-- Item -->
                                 <tr>
                                     <td>
-                                        <a href="{{ route('student.task.show', $task->id) }}">{{ $task->name }}</a>
+                                        <a style="font-weight: 700; text-decoration: underline;" class="text-info"
+                                            href="{{ route('student.task.show', $task->id) }}">{{ $task->name }}</a>
                                     </td>
                                     <td class="font-weight-bold proj-name">
                                         {{ $task->projectuser->user->detailable->name }}
                                     </td>
                                     <td>{{ $task->duration }} Hours</td>
-                                    @if($task->status == 0)
+                                    @if ($task->status == 0)
                                         <td class="text-warning">
                                             <span class="fas fa-clock"></span>
                                             <span class="font-weight-bold">Ongoing</span>
                                         </td>
                                     @endif
-                                    @if($task->status == 1)
+                                    @if ($task->status == 1)
                                         <td class="text-success">
                                             <span class="fas fa-check"></span>
                                             <span class="font-weight-bold">Completed</span>

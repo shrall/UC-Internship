@@ -28,7 +28,7 @@
                                     <td><a href="{{ route('student.project.show', $project->id) }}"
                                             class="text-primary font-weight-bold">{{ $project->id }}</a></td>
                                     <td class="font-weight-bold proj-name">
-                                        <a
+                                        <a style="font-weight: 700; text-decoration: underline;" class="text-info"
                                             href="{{ route('student.project.show', $project->id) }}">{{ $project->name }}</a>
                                     </td>
                                     @if($project->category == 0)

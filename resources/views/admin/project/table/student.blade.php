@@ -19,7 +19,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($project->works as $user)
+                        @foreach ($project->works as $user)
                             <!-- Item -->
                             <tr>
                                 <td>
@@ -27,24 +27,25 @@
                                         class="text-primary font-weight-bold">{{ $user->detailable->nim }}</a>
                                 </td>
                                 <td class="font-weight-bold proj-name">
-                                    <a href="{{ route('admin.student.show', $user->id) }}">
+                                    <a style="font-weight: 700; text-decoration: underline;"
+                                        class="text-info" href="{{ route('admin.student.show', $user->id) }}">
                                         {{ $user->detailable->name }}</a>
                                 </td>
                                 <td>{{ $user->detailable->department->name }} -
                                     ({{ $user->detailable->department->initial }})</td>
-                                @if($user->pivot->status == 0)
+                                @if ($user->pivot->status == 0)
                                     <td class="text-warning">
                                         <span class="fas fa-clock"></span>
                                         <span class="font-weight-bold">Pending</span>
                                     </td>
                                 @endif
-                                @if($user->pivot->status == 1)
+                                @if ($user->pivot->status == 1)
                                     <td class="text-success">
                                         <span class="fas fa-check"></span>
                                         <span class="font-weight-bold">Accepted</span>
                                     </td>
                                 @endif
-                                @if($user->pivot->status == 2)
+                                @if ($user->pivot->status == 2)
                                     <td class="text-danger">
                                         <span class="fas fa-times"></span>
                                         <span class="font-weight-bold">Declined</span>

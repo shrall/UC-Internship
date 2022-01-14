@@ -12,7 +12,9 @@
             @foreach ($users as $user)
                 <tr>
                     <td><span class="font-weight-normal">{{ $user->detailable->nip }}</span></td>
-                    <td><a href="{{ route('supervisor.staff.show', $user->id) }}" class="d-flex align-items-center">
+                    <td>
+                        <a style="font-weight: 700; text-decoration: underline;"
+                            href="{{ route('supervisor.staff.show', $user->id) }}" class="d-flex align-items-center text-info">
                             @if ($user->detailable->photo != null)
                                 <img src="{{ asset('profile_picture/supervisor/' . $user->detailable->photo) }}"
                                     class="user-avatar rounded-circle mr-3" alt="Avatar">

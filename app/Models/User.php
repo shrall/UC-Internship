@@ -78,21 +78,21 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        if ($this->role->name == 'Admin' && $this->is_login == 1) {
+        if ($this->role->name == 'Admin') {
             return true;
         }
         return false;
     }
     public function isSupervisor()
     {
-        if ($this->role->name == 'Supervisor' && $this->is_login == 1) {
+        if ($this->role->name == 'Supervisor') {
             return true;
         }
         return false;
     }
     public function isStudent()
     {
-        if ($this->role->name == 'Student' && $this->is_login == 1) {
+        if ($this->role->name == 'Student') {
             return true;
         }
         return false;

@@ -9,7 +9,7 @@
                     <div class="col-6">
                         <div class="d-flex justify-content-end flex-wrap flex-md-nowrap align-items-center pb-2">
                             <div>
-                                @if($project->status == 1)
+                                @if ($project->status == 1)
                                     @include('supervisor.project.modal.task.create')
                                     <a class="btn btn-secondary text-dark mr-2 dropdown-toggle " data-toggle="modal"
                                         data-target="#modal-add-task-{{ $project->id }}">
@@ -40,7 +40,8 @@
                                 <!-- Item -->
                                 <tr>
                                     <td class="align-middle">
-                                        <a href="{{ route('supervisor.task.show', $task->id) }}">{{ $task->name }}</a>
+                                        <a style="font-weight: 700; text-decoration: underline; font-size: 1rem;" class="text-info"
+                                            href="{{ route('supervisor.task.show', $task->id) }}">{{ $task->name }}</a>
                                     </td>
                                     <td class="font-weight-bold proj-name align-middle">
                                         <a
@@ -72,7 +73,7 @@
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item"
+                                                    <a style="font-weight: 700;" class="dropdown-item"
                                                         href="{{ route('supervisor.task.show', $task->id) }}">
                                                         <span class="fas fa-eye mr-2"></span>View Details
                                                     </a>
@@ -84,10 +85,10 @@
                                                             </a>
                                                         @endif
                                                         @if ($task->duration == 0)
-                                                        <a class="dropdown-item text-danger" data-toggle="modal"
-                                                            data-target="#modal-delete-{{ $task->id }}">
-                                                            <span class="fas fa-ban mr-2"></span>Delete
-                                                        </a>
+                                                            <a class="dropdown-item text-danger" data-toggle="modal"
+                                                                data-target="#modal-delete-{{ $task->id }}">
+                                                                <span class="fas fa-ban mr-2"></span>Delete
+                                                            </a>
                                                         @endif
                                                     @endif
                                                 </div>

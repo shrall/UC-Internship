@@ -23,11 +23,14 @@
                                 <td><a
                                         href="{{ route('supervisor.project.show', $pu->uci_project_id) }}">{{ $pu->uci_project_id }}</a>
                                 </td>
-                                <td><a
+                                <td>
+                                    <a style="font-weight: 700; text-decoration: underline; font-size: 1rem;"
+                                        class="text-info"
                                         href="{{ route('supervisor.project.show', $pu->uci_project_id) }}">{{ $pu->project->name }}</a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('supervisor.student.show', $pu->uci_user_id) }}">
+                                    <a style="font-weight: 700; text-decoration: underline;" class="text-info"
+                                        href="{{ route('supervisor.student.show', $pu->uci_user_id) }}">
                                         @if ($pu->status == '0')
                                             {{ $pu->user->detailable->name }}
                                         @endif

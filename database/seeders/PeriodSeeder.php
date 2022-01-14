@@ -16,14 +16,14 @@ class PeriodSeeder extends Seeder
     {
         $period = new Period();
         $period->term = '0';
-        $period->start = '2020-09-14';
-        $period->end = '2021-02-14';
+        $period->start = '2021-09-14';
+        $period->end = '2022-02-14';
         $period->save();
 
         $period = new Period();
         $period->term = '1';
-        $period->start = '2021-02-15';
-        $period->end = '2021-07-04';
+        $period->start = '2022-02-15';
+        $period->end = '2022-07-04';
         $period->save();
     }
 }

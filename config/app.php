@@ -230,5 +230,8 @@ return [
         'PDF' => \Barryvdh\DomPDF\Facade::class,
 
     ],
+    'timezone' => 'Asia/Jakarta',
+    'locale' => 'id',
+    'faker_locale' => 'id_ID',
 
 ];

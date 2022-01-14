@@ -18,7 +18,7 @@
                         href="{{ route('student.project.show', $task->projectuser->uci_project_id) }}">{{ $task->projectuser->uci_project_id }}</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    <a
+                    <a style="font-weight: 700;"
                         href="{{ route('student.task.show', $task->id) }}">{{ $task->name }}</a>
                 </li>
             </ol>

@@ -24,7 +24,8 @@
                                         class="text-primary font-weight-bold">{{ $project->id }}</a>
                                 </td>
                                 <td class="font-weight-bold proj-name">
-                                    <a
+                                    <a style="font-weight: 700; text-decoration: underline; font-size: 1rem;"
+                                        class="text-info"
                                         href="{{ route('supervisor.project.show', $project->id) }}">{{ $project->name }}</a>
                                 </td>
                                 @if ($project->category == 0)

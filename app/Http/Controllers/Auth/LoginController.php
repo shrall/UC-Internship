@@ -59,38 +59,27 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password,
             'role_id' => 1,
-            'is_login' => '0',
         ];
         $supervisor = [
             'email' => $request->email,
             'password' => $request->password,
             'role_id' => 2,
-            'is_login' => '0',
         ];
         $student = [
             'email' => $request->email,
             'password' => $request->password,
             'role_id' => 3,
-            'is_login' => '0',
         ];
 
-        $check = DB::table('uci_users')->where('email', $request->email)->first();
 
-        if ($check->is_login == '0') {
-            if (Auth::attempt($admin, $request->remember)) {
-                $this->isLogin(Auth::id());
-                return redirect()->route('admin.dashboard');
-            } else if (Auth::attempt($supervisor, $request->remember)) {
-                $this->isLogin(Auth::id());
-                return redirect()->route('supervisor.dashboard');
-            } else if (Auth::attempt($student, $request->remember)) {
-                $this->isLogin(Auth::id());
-                return redirect()->route('student.dashboard');
-            } else{
-                return redirect()->route('login')->with('Error', 'Invalid E-Mail and Password combination.');
-            }
+        if (Auth::attempt($admin, $request->remember)) {
+            return redirect()->route('admin.dashboard');
+        } else if (Auth::attempt($supervisor, $request->remember)) {
+            return redirect()->route('supervisor.dashboard');
+        } else if (Auth::attempt($student, $request->remember)) {
+            return redirect()->route('student.dashboard');
         } else {
-            return redirect()->route('login')->with('Error', 'User is already logged in.');
+            return redirect()->route('login')->with('Error', 'Invalid E-Mail and Password combination.');
         };
     }
 
@@ -98,19 +87,10 @@ class LoginController extends Controller
     {
         $user = User::findOrFail(Auth::id());
         $user->update([
-            'is_login' => '0',
             'remember_token' => null
         ]);
 
         $request->session()->invalidate();
         return $this->loggedOut($request) ?: redirect('login');
-    }
-
-    private function isLogin(int $id)
-    {
-        $user = User::findOrFail($id);
-        return $user->update([
-            'is_login' => '1',
-        ]);
     }
 }

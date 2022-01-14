@@ -18,25 +18,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach(Auth::user()->projectusers as $pu)
-                            @foreach($pu->tasks as $task)
+                        @foreach (Auth::user()->projectusers as $pu)
+                            @foreach ($pu->tasks as $task)
                                 <!-- Item -->
                                 <tr>
                                     <td>
-                                        <a href="{{ route('student.task.show', $task->id) }}">{{ $task->name }}</a>
+                                        <a style="font-weight: 700; text-decoration: underline; font-size: 1rem;"
+                                            class="text-info"
+                                            href="{{ route('student.task.show', $task->id) }}">{{ $task->name }}</a>
                                     </td>
                                     <td>{{ $task->duration }} Hours</td>
                                     @if ($task->status == 0)
-                                    <td class="text-warning">
-                                        <span class="fas fa-clock"></span>
-                                        <span class="font-weight-bold">Ongoing</span>
-                                    </td>
+                                        <td class="text-warning">
+                                            <span class="fas fa-clock"></span>
+                                            <span class="font-weight-bold">Ongoing</span>
+                                        </td>
                                     @endif
                                     @if ($task->status == 1)
-                                    <td class="text-success">
-                                        <span class="fas fa-check"></span>
-                                        <span class="font-weight-bold">Completed</span>
-                                    </td>
+                                        <td class="text-success">
+                                            <span class="fas fa-check"></span>
+                                            <span class="font-weight-bold">Completed</span>
+                                        </td>
                                     @endif
                                 </tr>
                             @endforeach

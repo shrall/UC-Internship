@@ -16,27 +16,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($scholarships as $scholarship)
+                        @foreach ($scholarships as $scholarship)
                             <!-- Item -->
                             @include('admin.scholarship.modal.delete')
                             @include('admin.scholarship.modal.warning')
                             <tr>
                                 <td class="text-primary font-weight-bold">{{ $loop->iteration }}</td>
                                 <td>
-                                    <a
+                                    <a style="font-weight: 700; text-decoration: underline; font-size: 1rem;"
+                                        class="text-info"
                                         href="{{ route('admin.scholarship.show', $scholarship->id) }}">{{ $scholarship->name }}</a>
                                 </td>
                                 <td class="font-weight-bold">{{ $scholarship->grade }}</td>
                                 <td class="font-weight-bold">{{ $scholarship->duration }} Year(s)</td>
                                 <td class="font-weight-bold">{{ $scholarship->minimum_gpa }}</td>
                                 <td class="font-weight-bold">{{ $scholarship->hps }} Hours</td>
-                                @if($scholarship->status == 0)
+                                @if ($scholarship->status == 0)
                                     <td class="text-success">
                                         <span class="fas fa-check"></span>
                                         <span class="font-weight-bold">Open</span>
                                     </td>
                                 @endif
-                                @if($scholarship->status == 1)
+                                @if ($scholarship->status == 1)
                                     <td class="text-danger">
                                         <span class="fas fa-ban"></span>
                                         <span class="font-weight-bold">Close</span>
@@ -61,7 +62,7 @@
                                                 href="{{ route('admin.scholarship.edit', $scholarship->id) }}">
                                                 <span class="fas fa-edit mr-2"></span>Edit
                                             </a>
-                                            @if(count($scholarship->infos) == 0)
+                                            @if (count($scholarship->infos) == 0)
                                                 <a class="dropdown-item text-danger" data-toggle="modal"
                                                     data-target="#modal-delete-{{ $scholarship->id }}">
                                                     <span class="fas fa-ban mr-2"></span>Delete

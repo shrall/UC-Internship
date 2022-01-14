@@ -30,7 +30,8 @@
                                         class="text-primary font-weight-bold">{{ $pu->project->id }}</a>
                                 </td>
                                 <td class="font-weight-bold proj-name">
-                                    <a
+                                    <a style="font-weight: 700; text-decoration: underline; font-size: 1rem;"
+                                        class="text-info"
                                         href="{{ route('student.project.show', $pu->project->id) }}">{{ $pu->project->name }}</a>
                                 </td>
                                 @if($pu->project->category == 0)

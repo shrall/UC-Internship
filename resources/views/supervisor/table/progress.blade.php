@@ -13,7 +13,8 @@
                     <thead>
                         <tr>
                             <th class="border-0" width="25px">#</th>
-                            <th class="border-0"><span class="fas fa-spinner mr-2"></span>Progress Description</th>
+                            <th class="border-0"><span class="fas fa-spinner mr-2"></span>Progress Description
+                            </th>
                             <th class="border-0"><span class="fas fa-clipboard-list mr-2"></span>Project Name</th>
                             <th class="border-0"><span class="fas fa-user mr-2"></span>Student</th>
                             <th class="border-0"><span class="fa fa-hourglass-start mr-2"></span>Time Start</th>
@@ -24,13 +25,16 @@
                         @foreach ($progresses as $progress)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td><a
+                                <td>
+                                    <a style="font-weight: 700; text-decoration: underline;" class="text-info"
                                         href="{{ route('supervisor.task.show', $progress->task->id) }}">{{ $progress->description }}</a>
                                 </td>
-                                <td><a
+                                <td>
+                                    <a style="font-weight: 700; text-decoration: underline;" class="text-info"
                                         href="{{ route('supervisor.project.show', $progress->task->projectuser->uci_project_id) }}">{{ $progress->task->projectuser->project->name }}</a>
                                 </td>
-                                <td><a
+                                <td>
+                                    <a style="font-weight: 700; text-decoration: underline;" class="text-info"
                                         href="{{ route('supervisor.student.show', $progress->task->projectuser->uci_user_id) }}">{{ $progress->task->projectuser->user->name }}</a>
                                 </td>
                                 <td>{{ date('d-m-Y, H:i', strtotime($progress->time_start)) }}</td>

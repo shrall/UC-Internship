@@ -18,7 +18,7 @@ class TaskSeeder extends Seeder
         $task = new Task();
         $task->name = 'NPLC Design Assets';
         $task->description = 'Membuatkan desain poster, instagram post, dan starter kit.';
-        $task->deadline = Carbon::parse('2020-08-23');
+        $task->deadline = Carbon::parse('2022-08-23');
         $task->duration = 23;
         $task->status = '1';
         $task->pu_id = 1;
@@ -27,7 +27,7 @@ class TaskSeeder extends Seeder
         $task = new Task();
         $task->name = 'Red Carpet Night Concepting';
         $task->description = 'Memikirkan konsep acara dan rundown.';
-        $task->deadline = Carbon::parse('2021-03-20');
+        $task->deadline = Carbon::parse('2022-03-20');
         $task->duration = 10;
         $task->status = '0';
         $task->pu_id = 3;
@@ -36,7 +36,7 @@ class TaskSeeder extends Seeder
         $task = new Task();
         $task->name = 'Rektor Cup Design Assets';
         $task->description = 'Membuatkan desain poster, instagram post, twibbon, dan story templates.';
-        $task->deadline = Carbon::parse('2020-11-19');
+        $task->deadline = Carbon::parse('2022-11-19');
         $task->duration = 30;
         $task->status = '0';
         $task->pu_id = 4;

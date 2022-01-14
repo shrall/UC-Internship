@@ -24,8 +24,10 @@
                             <!-- Item -->
                             <tr>
                                 <td><span class="font-weight-normal">{{ $info->user->detailable->nim }}</span></td>
-                                <td><a href="{{ route('admin.student.show', $info->user->id) }}"
-                                        class="d-flex align-items-center">
+                                <td>
+                                    <a style="font-weight: 700; text-decoration: underline;"
+                                        href="{{ route('admin.student.show', $info->user->id) }}"
+                                        class="d-flex align-items-center text-info">
                                         @if ($info->user->detailable->photo != null)
                                             <img src="{{ asset('profile_picture/student/' . $info->user->detailable->photo) }}"
                                                 class=" user-avatar rounded-circle mr-3" alt="Avatar">

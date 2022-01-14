@@ -11,7 +11,8 @@
                     <div
                         class="row align-items-center @if (count($tasks)>1) @if ($task == $tasks[0])border-bottom border-light pb-4 mb-3 @endif @endif">
                         <div class="col-auto">
-                            <a href="{{ route('student.task.show', $task->id) }}">
+                            <a style="font-weight: 700; text-decoration: underline; font-size: 1rem;"
+                                class="text-info" href="{{ route('student.task.show', $task->id) }}">
                                 <div class="calendar d-flex">
                                     <span
                                         class="calendar-month">{{ date("M", strtotime($task->deadline)) }}</span>
@@ -21,7 +22,7 @@
                             </a>
                         </div>
                         <div class="col">
-                            <a href="{{ route('student.task.show', $task->id) }}">
+                            <a style="font-weight: 700; text-decoration: underline;" class="text-info" href="{{ route('student.task.show', $task->id) }}">
                                 <h3 class="h5">{{ $task->name }}</h3>
                             </a>
                             <span>Supervised by <h6 class="text-700 d-inline">

@@ -37,7 +37,7 @@
                             @include('student.task.modal.progress.delete')
                             <tr>
                                 <td>
-                                    <a data-toggle="modal"
+                                    <a style="font-weight: 700; text-decoration: underline;" class="text-info" data-toggle="modal"
                                         data-target="#modal-progress-{{ $progress->id }}">{{ $progress->description }}</a>
                                 </td>
                                 <td>

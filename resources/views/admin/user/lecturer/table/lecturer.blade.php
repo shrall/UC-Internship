@@ -16,8 +16,10 @@
                             <!-- Item -->
                             <tr>
                                 <td><span class="font-weight-normal">{{ $lecturer->detailable->nip }}</span></td>
-                                <td><a href="{{ route('admin.lecturer.show', $lecturer->id) }}"
-                                        class="d-flex align-items-center">
+                                <td>
+                                    <a style="font-weight: 700; text-decoration: underline;"
+                                        href="{{ route('admin.lecturer.show', $lecturer->id) }}"
+                                        class="d-flex align-items-center text-info">
                                         @if ($lecturer->detailable->photo != null)
                                             <img src="{{ asset('profile_picture/supervisor/' . $lecturer->detailable->photo) }}"
                                                 class="user-avatar rounded-circle mr-3" alt="Avatar">
