@@ -31,5 +31,143 @@ class InfoSeeder extends Seeder
         $info->gpa = 4.00;
         $info->scholarship_id = 3;
         $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
+
+        $info = new Info();
+        $info->time_remaining = 200.00;
+        $info->gpa = 4.00;
+        $info->scholarship_id = 3;
+        $info->save();
     }
 }
