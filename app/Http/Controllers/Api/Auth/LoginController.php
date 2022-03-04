@@ -28,87 +28,78 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password,
             'role_id' => 1,
-            'is_login' => '0',
         ];
         $supervisor = [
             'email' => $request->email,
             'password' => $request->password,
             'role_id' => 2,
-            'is_login' => '0',
         ];
         $student = [
             'email' => $request->email,
             'password' => $request->password,
             'role_id' => 3,
-            'is_login' => '0',
         ];
 
         $check = DB::table('uci_users')->where('email', $request->email)->first();
 
-        if ($check->is_login == '0') {
-            if (Auth::attempt($student)) {
-                 $this->is_login(Auth::id());
-                $response = $http->post('http://uci.test/oauth/token', [
-                    'form_params' => [
-                        'grant_type' => 'password',
-                        'client_id' => $this->client->id,
-                        'client_secret' => $this->client->secret,
-                        'username' => $request->email,
-                        'password' => $request->password,
-                        'scope' => '*',
-                    ]
-                ]);
-                $var = json_decode((string) $response->getBody(), true);
-                $var = collect($var);
-                $var->put("user_id", $check->id);
-                $var->put("role", $check->detailable_type);
-                $var = json_decode((string) $var, true);
-                return $var;
-            }else if (Auth::attempt($supervisor)) {
-                $this->is_login(Auth::id());
-                $response = $http->post('http://uci.test/oauth/token', [
-                    'form_params' => [
-                        'grant_type' => 'password',
-                        'client_id' => $this->client->id,
-                        'client_secret' => $this->client->secret,
-                        'username' => $request->email,
-                        'password' => $request->password,
-                        'scope' => '*',
-                    ]
-                ]);
-                $var = json_decode((string) $response->getBody(), true);
-                $var = collect($var);
-                $var->put("user_id", $check->id);
-                $var->put("role", $check->detailable_type);
-                $var = json_decode((string) $var, true);
-                return $var;
-            }else if (Auth::attempt($admin)) {
-                $this->is_login(Auth::id());
-                $response = $http->post('http://uci.test/oauth/token', [
-                    'form_params' => [
-                        'grant_type' => 'password',
-                        'client_id' => $this->client->id,
-                        'client_secret' => $this->client->secret,
-                        'username' => $request->email,
-                        'password' => $request->password,
-                        'scope' => '*',
-                    ]
-                ]);
-                $var = json_decode((string) $response->getBody(), true);
-                $var = collect($var);
-                $var->put("user_id", $check->id);
-                $var->put("role", $check->detailable_type);
-                $var = json_decode((string) $var, true);
-                return $var;
-            } else {
-                return response([
-                    'message' => 'Login Failed'
-                ], 401);
-            }
+        if (Auth::attempt($student)) {
+            // $this->is_login(Auth::id());
+            $response = $http->post('http://jurnalmagang.com/oauth/token', [
+                'form_params' => [
+                    'grant_type' => 'password',
+                    'client_id' => $this->client->id,
+                    'client_secret' => $this->client->secret,
+                    'username' => $request->email,
+                    'password' => $request->password,
+                    'scope' => '*',
+                ]
+            ]);
+            $var = json_decode((string) $response->getBody(), true);
+            $var = collect($var);
+            $var->put("user_id", $check->id);
+            $var->put("role", $check->detailable_type);
+            $var = json_decode((string) $var, true);
+            return $var;
+        } else if (Auth::attempt($supervisor)) {
+            // $this->is_login(Auth::id());
+            $response = $http->post('http://jurnalmagang.com/oauth/token', [
+                'form_params' => [
+                    'grant_type' => 'password',
+                    'client_id' => $this->client->id,
+                    'client_secret' => $this->client->secret,
+                    'username' => $request->email,
+                    'password' => $request->password,
+                    'scope' => '*',
+                ]
+            ]);
+            $var = json_decode((string) $response->getBody(), true);
+            $var = collect($var);
+            $var->put("user_id", $check->id);
+            $var->put("role", $check->detailable_type);
+            $var = json_decode((string) $var, true);
+            return $var;
+        } else if (Auth::attempt($admin)) {
+            // $this->is_login(Auth::id());
+            $response = $http->post('http://jurnalmagang.com/oauth/token', [
+                'form_params' => [
+                    'grant_type' => 'password',
+                    'client_id' => $this->client->id,
+                    'client_secret' => $this->client->secret,
+                    'username' => $request->email,
+                    'password' => $request->password,
+                    'scope' => '*',
+                ]
+            ]);
+            $var = json_decode((string) $response->getBody(), true);
+            $var = collect($var);
+            $var->put("user_id", $check->id);
+            $var->put("role", $check->detailable_type);
+            $var = json_decode((string) $var, true);
+            return $var;
         } else {
             return response([
-                'message' => 'Account is already logged in.'
-            ], 403);
+                'message' => 'Login Failed'
+            ], 401);
         }
     }
 
