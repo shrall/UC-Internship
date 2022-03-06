@@ -20,10 +20,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-    <title>UC Internship</title>
+    <title>Jurnal Magang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="title" content="UC Internship">
-    <meta name="author" content="UC Internship">
+    <meta name="title" content="Jurnal Magang">
+    <meta name="author" content="Jurnal Magang">
     <meta name="description" content="Universitas Ciputra">
 
     <!-- Favicon -->

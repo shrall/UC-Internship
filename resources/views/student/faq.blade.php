@@ -5,7 +5,7 @@
             <div class="col-12 col-lg-10 col-xl-6">
                 <div class="card-header border-0 text-center">
                     <h2 class="h3 mb-4">Frequently asked questions</h2>
-                    <p class="text-gray">Here’s what you need to know about UC Internship, based on the questions we get
+                    <p class="text-gray">Here’s what you need to know about Jurnal Magang, based on the questions we get
                         asked the most.</p>
                 </div>
                 <div class="card-body">
@@ -13,12 +13,12 @@
                         <div class="card card-sm card-body border border-light rounded mb-2">
                             <div data-target="#panel-1" class="accordion-panel-header d-flex justify-content-between"
                                 data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-1">
-                                <span class="h6 mb-0">About UC Internship</span>
+                                <span class="h6 mb-0">About Jurnal Magang</span>
                                 <span class="icon"><i class="fas fa-angle-down"></i></span>
                             </div>
                             <div class="collapse" id="panel-1">
                                 <div class="pt-3">
-                                    <p class="mb-0">UC Internship adalah sebuah sistem dimana mahasiswa magang dapat mencari
+                                    <p class="mb-0">Jurnal Magang adalah sebuah sistem dimana mahasiswa magang dapat mencari
                                         projek magang serta mengelola projek tersebut.dengan supervisor pembimbingnya.</p>
                                 </div>
                             </div>
@@ -231,7 +231,7 @@
                             <div class="collapse" id="panel-10">
                                 <div class="pt-3">
                                     <p class="mb-0">Kalian dapat mengontak kontak berikut ini untuk bertanya mengenai apapun
-                                        yang terkait dengan UC Internship.<br>
+                                        yang terkait dengan Jurnal Magang.<br>
                                         <span class="fab fa-whatsapp mr-2"></span>Contact Person : 08123456789 (Admin UCI)<br>
                                         <span class="fas fa-envelope mr-2"></span>Email : adminuci@ciputra.ac.id
                                     </p>

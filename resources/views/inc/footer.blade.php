@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col-12 col-lg-6 mb-4 mb-lg-0">
             @if(Auth::user()->isAdmin())
-            <p class="mb-0 text-center text-xl-left h6">Admin | UC Internship</p>
+            <p class="mb-0 text-center text-xl-left h6">Admin | Jurnal Magang</p>
             @endif
             @if(Auth::user()->isSupervisor())
-            <p class="mb-0 text-center text-xl-left h6">Supervisor | UC Internship</p>
+            <p class="mb-0 text-center text-xl-left h6">Supervisor | Jurnal Magang</p>
             @endif
             @if(Auth::user()->isStudent())
-            <p class="mb-0 text-center text-xl-left h6">Student | UC Internship</p>
+            <p class="mb-0 text-center text-xl-left h6">Student | Jurnal Magang</p>
             @endif
         </div>
         <div class="col-12 col-lg-6">

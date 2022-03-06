@@ -53,7 +53,7 @@
                             <span class="sidebar-icon">
                                 <img src="{{ asset('/image/logo.png') }}" style="width: 30px">
                             </span>
-                            <span class="font-weight-bold sidebar-text " style="text-size: 20px">UC Internship</span>
+                            <span class="font-weight-bold sidebar-text " style="text-size: 20px">Jurnal Magang</span>
                         </span>
                     </a>
                 </li>
@@ -166,7 +166,7 @@
                             <span class="sidebar-icon">
                                 <img src="{{ asset('/image/logo.png') }}" style="width: 30px">
                             </span>
-                            <span class="font-weight-bold sidebar-text " style="text-size: 20px">UC Internship</span>
+                            <span class="font-weight-bold sidebar-text " style="text-size: 20px">Jurnal Magang</span>
                         </span>
                     </a>
                 </li>
@@ -257,7 +257,7 @@
                             <span class="sidebar-icon">
                                 <img src="{{ asset('/image/logo.png') }}" style="width: 30px">
                             </span>
-                            <span class="font-weight-bold sidebar-text " style="text-size: 20px">UC Internship</span>
+                            <span class="font-weight-bold sidebar-text " style="text-size: 20px">Jurnal Magang</span>
                         </span>
                     </a>
                 </li>
