@@ -132,7 +132,7 @@ class ProjectController extends Controller
             unlink(public_path($fileNameZip));
         }
         if ($zip->open(public_path($fileNameZip), ZipArchive::CREATE) === TRUE) {
-            $files = File::files(public_path('attachments/project'));
+            $files = File::files(public_path('../attachments/project'));
             foreach ($files as $file) {
                 foreach ($projectFiles as $projectFile) {
                     if ($projectFile->name == basename($file)) {

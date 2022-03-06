@@ -41,13 +41,13 @@ class StudentSeeder extends Seeder
 
         $student = new Student();
         $student->nim = '0706011910003';
-        $student->name = 'Michelle Alexandra Dinata';
-        $student->email = 'michelle@student.com';
+        $student->name = 'Student';
+        $student->email = 'student@jurnalmagang.com';
         $student->batch = '2019';
-        $student->description = 'Anaknya siapa ini?';
+        $student->description = '-';
         $student->gender = 'F';
         $student->phone = '08123456789';
-        $student->line_account = 'michellealexandra';
+        $student->line_account = '-';
         $student->department_id = 33;
         $student->save();
 

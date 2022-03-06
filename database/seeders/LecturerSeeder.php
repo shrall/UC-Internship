@@ -45,12 +45,12 @@ class LecturerSeeder extends Seeder
         $lecturer = new Lecturer();
         $lecturer->nip = '0706011910003';
         $lecturer->nidn = '0706011910003';
-        $lecturer->name = 'Michelle Alexandra Dinata';
-        $lecturer->email = 'michelle@lecturer.com';
-        $lecturer->description = 'Anaknya siapa ini?';
+        $lecturer->name = 'Lecturer';
+        $lecturer->email = 'lecturer@jurnalmagang.com';
+        $lecturer->description = '-';
         $lecturer->gender = 'F';
         $lecturer->phone = '08123456789';
-        $lecturer->line_account = 'michellealexandra';
+        $lecturer->line_account = '-';
         $lecturer->department_id = 33;
         $lecturer->title_id = 12;
         $lecturer->jaka_id = 3;

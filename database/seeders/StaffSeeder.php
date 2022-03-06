@@ -40,12 +40,12 @@ class StaffSeeder extends Seeder
 
         $staff = new Staff();
         $staff->nip = '0706011910003';
-        $staff->name = 'Michelle Alexandra Dinata';
-        $staff->email = 'michelle@staff.com';
-        $staff->description = 'Anaknya siapa ini?';
+        $staff->name = 'Staff';
+        $staff->email = 'staff@jurnalmagang.com';
+        $staff->description = '-';
         $staff->gender = 'F';
         $staff->phone = '08123456789';
-        $staff->line_account = 'michellealexandra';
+        $staff->line_account = '-';
         $staff->department_id = 33;
         $staff->title_id = 99;
         $staff->save();

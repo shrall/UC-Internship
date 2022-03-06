@@ -84,7 +84,7 @@ class ProjectController extends Controller
             foreach ($request->file('attachments') as $file) {
                 $attachment = new ProjectAttachment;
                 $file_name = time() . $i . '-' . $file->getClientOriginalName();
-                $file->move(public_path('attachments/project'), $file_name);
+                $file->move(public_path('../attachments/project'), $file_name);
                 $attachment->name = $file_name;
                 $attachment->project_id = $project['id'];
                 $attachment->save();
@@ -153,7 +153,7 @@ class ProjectController extends Controller
             foreach ($request->file('attachments') as $file) {
                 $attachment = new ProjectAttachment;
                 $file_name = time() . $i . '-' . $file->getClientOriginalName();
-                $file->move(public_path('attachments/project'), $file_name);
+                $file->move(public_path('../attachments/project'), $file_name);
                 $attachment->name = $file_name;
                 $attachment->project_id = $project['id'];
                 $attachment->save();
@@ -207,7 +207,7 @@ class ProjectController extends Controller
             unlink(public_path($fileNameZip));
         }
         if ($zip->open(public_path($fileNameZip), ZipArchive::CREATE) === TRUE) {
-            $files = File::files(public_path('attachments/project'));
+            $files = File::files(public_path('../attachments/project'));
             foreach ($files as $file) {
                 foreach ($projectFiles as $projectFile) {
                     if ($projectFile->name == basename($file)) {

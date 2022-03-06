@@ -80,7 +80,7 @@ class ProgressController extends Controller
             foreach ($request->file('attachments') as $file) {
                 $attachment = new ProgressAttachment;
                 $file_name = time() . $i . '-' . $file->getClientOriginalName();
-                $file->move(public_path('attachments/progress'), $file_name);
+                $file->move(public_path('../attachments/progress'), $file_name);
                 $attachment->name = $file_name;
                 $attachment->progress_id = $progress['id'];
                 $attachment->save();
