@@ -3,17 +3,22 @@
         <h2 class="h4 mb-4">Supervisor</h2>
         <div class="d-xl-flex align-items-center">
             <div class="user-avatar large-avatar mb-3 mr-3">
-                <img class="rounded" src="{{ asset('assets/img/team/profile-picture-3.jpg') }}"
-                    alt="change avatar">
+                @if ($project->supervisor->detailable->photo != null)
+                    <img class="user-avatar md-avatar rounded-circle" alt="Image placeholder"
+                        src="{{ asset('profile_picture/supervisor/' . $project->supervisor->detailable->photo) }}">
+                @else
+                    <img class="user-avatar md-avatar rounded-circle" alt="Image placeholder"
+                        src="{{ asset('assets/img/team/profile-picture-3.jpg') }}">
+                @endif
             </div>
             <div class="pb-4 mb-4 mx-0">
                 <div class="col-auto">
-                    @if ($project->supervisor->detailable_type == "App\Models\Staff")
+                    @if ($project->supervisor->detailable_type == 'App\Models\Staff')
                         <a href="{{ route('admin.staff.show', $project->supervisor_id) }}">
                             <h3 class="h5">{{ $project->supervisor->detailable->name }}</h3>
                         </a>
                     @endif
-                    @if ($project->supervisor->detailable_type == "App\Models\Lecturer")
+                    @if ($project->supervisor->detailable_type == 'App\Models\Lecturer')
                         <a href="{{ route('admin.lecturer.show', $project->supervisor_id) }}">
                             <h3 class="h5">{{ $project->supervisor->detailable->name }}</h3>
                         </a>

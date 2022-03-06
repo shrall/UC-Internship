@@ -15,8 +15,21 @@
         <div
             class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
-                <div class="user-avatar lg-avatar mr-4"><img src="../assets/img/team/profile-picture-3.jpg"
-                        class="card-img-top rounded-circle border-white" alt="Bonnie Green"></div>
+                <div class="user-avatar lg-avatar mr-4">
+                    @if (Auth::user()->detailable->photo != null)
+                        @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                            <img src="{{ asset('profile_picture/supervisor/' . Auth::user()->detailable->photo) }}"
+                                class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                        @endif
+                        @if (Auth::user()->role_id == 3)
+                            <img src="{{ asset('profile_picture/student/' . Auth::user()->detailable->photo) }}"
+                                class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                        @endif
+                    @else
+                        <img src="../assets/img/team/profile-picture-3.jpg"
+                            class="card-img-top rounded-circle border-white" alt="Bonnie Green">
+                    @endif
+                </div>
                 <div class="d-block">
                     <h2 class="h6">Hi, {{ Auth::user()->detailable->name }}</h2>
                     <a href="{{ route('logout') }}" class="btn btn-secondary text-dark btn-xs"
@@ -44,7 +57,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item @if ($pages=='dash' ) active @endif">
+                <li class="nav-item @if ($pages == 'dash') active @endif">
                     <a href="{{ route('admin.dashboard') }}"
                         class="nav-link d-flex align-items-center justify-content-between">
                         <span>
@@ -55,7 +68,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item @if ($pages=='project' ) active @endif">
+                <li class="nav-item @if ($pages == 'project') active @endif">
                     <a href="{{ route('admin.project.index') }}"
                         class="nav-link d-flex align-items-center justify-content-between">
                         <span>
@@ -81,7 +94,7 @@
                     </span>
                     <div class="multi-level collapse" role="list" id="submenu-dashboard" aria-expanded="false">
                         <ul class="flex-column nav">
-                            <li class="nav-item @if ($pages=='student' ) active @endif">
+                            <li class="nav-item @if ($pages == 'student') active @endif">
                                 <a href="{{ route('admin.student.index') }}"
                                     class="nav-link d-flex align-items-center justify-content-between">
                                     <span>
@@ -90,7 +103,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="nav-item @if ($pages=='staff' ) active @endif">
+                            <li class="nav-item @if ($pages == 'staff') active @endif">
                                 <a href="{{ route('admin.staff.index') }}"
                                     class="nav-link d-flex align-items-center justify-content-between">
                                     <span>
@@ -99,7 +112,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="nav-item @if ($pages=='lecturer' ) active @endif">
+                            <li class="nav-item @if ($pages == 'lecturer') active @endif">
                                 <a href="{{ route('admin.lecturer.index') }}"
                                     class="nav-link d-flex align-items-center justify-content-between">
                                     <span>
@@ -111,7 +124,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item @if ($pages=='scholarship' ) active @endif">
+                <li class="nav-item @if ($pages == 'scholarship') active @endif">
                     <a href="{{ route('admin.scholarship.index') }}"
                         class="nav-link d-flex align-items-center justify-content-between">
                         <span>
@@ -122,7 +135,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item @if ($pages=='period' ) active @endif">
+                <li class="nav-item @if ($pages == 'period') active @endif">
                     <a href="{{ route('admin.period.index') }}"
                         class="nav-link d-flex align-items-center justify-content-between">
                         <span>
@@ -133,7 +146,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item @if ($pages=='faq' ) active @endif">
+                <li class="nav-item @if ($pages == 'faq') active @endif">
                     <a href="{{ route('admin.faq') }}"
                         class="nav-link d-flex align-items-center justify-content-between">
                         <span>
@@ -157,7 +170,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item @if ($pages=='dash' ) active @endif">
+                <li class="nav-item @if ($pages == 'dash') active @endif">
                     <a href="{{ route('supervisor.dashboard') }}"
                         class="nav-link d-flex align-items-center justify-content-between">
                         <span>
@@ -168,7 +181,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item @if ($pages=='project' ) active @endif">
+                <li class="nav-item @if ($pages == 'project') active @endif">
                     <a href="{{ route('supervisor.project.index') }}"
                         class="nav-link d-flex align-items-center justify-content-between">
                         <span>
@@ -194,7 +207,7 @@
                     </span>
                     <div class="multi-level collapse" role="list" id="submenu-dashboard" aria-expanded="false">
                         <ul class="flex-column nav">
-                            <li class="nav-item @if ($pages=='student' ) active @endif">
+                            <li class="nav-item @if ($pages == 'student') active @endif">
                                 <a href="{{ route('supervisor.student.index') }}"
                                     class="nav-link d-flex align-items-center justify-content-between">
                                     <span>
@@ -203,7 +216,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="nav-item @if ($pages=='staff' ) active @endif">
+                            <li class="nav-item @if ($pages == 'staff') active @endif">
                                 <a href="{{ route('supervisor.staff.index') }}"
                                     class="nav-link d-flex align-items-center justify-content-between">
                                     <span>
@@ -212,7 +225,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="nav-item @if ($pages=='lecturer' ) active @endif">
+                            <li class="nav-item @if ($pages == 'lecturer') active @endif">
                                 <a href="{{ route('supervisor.lecturer.index') }}"
                                     class="nav-link d-flex align-items-center justify-content-between">
                                     <span>
@@ -224,7 +237,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item @if ($pages=='faq' ) active @endif">
+                <li class="nav-item @if ($pages == 'faq') active @endif">
                     <a href="{{ route('supervisor.faq') }}"
                         class="nav-link d-flex align-items-center justify-content-between">
                         <span>
@@ -248,7 +261,7 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item @if ($pages=='dash' ) active @endif">
+                <li class="nav-item @if ($pages == 'dash') active @endif">
                     <a href="{{ route('student.dashboard') }}"
                         class="nav-link d-flex align-items-center justify-content-between">
                         <span>
@@ -274,7 +287,7 @@
                     </span>
                     <div class="multi-level collapse" role="list" id="submenu-dashboard" aria-expanded="false">
                         <ul class="flex-column nav">
-                            <li class="nav-item @if ($pages=='project' ) active @endif">
+                            <li class="nav-item @if ($pages == 'project') active @endif">
                                 <a href="{{ route('student.project.index') }}"
                                     class="nav-link d-flex align-items-center justify-content-between">
                                     <span>
@@ -282,7 +295,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="nav-item @if ($pages=='offer' ) active @endif">
+                            <li class="nav-item @if ($pages == 'offer') active @endif">
                                 <a href="{{ route('student.project.offer') }}"
                                     class="nav-link d-flex align-items-center justify-content-between">
                                     <span>
@@ -293,7 +306,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item @if ($pages=='faq' ) active @endif">
+                <li class="nav-item @if ($pages == 'faq') active @endif">
                     <a href="{{ route('student.faq') }}"
                         class="nav-link d-flex align-items-center justify-content-between">
                         <span>

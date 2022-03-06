@@ -3,8 +3,14 @@
         <h2 class="h4 mb-4">PIC</h2>
         <div class="d-xl-flex align-items-center">
             <div class="user-avatar large-avatar mb-3 mr-3">
-                <img class="rounded" src="{{ asset('assets/img/team/profile-picture-1.jpg') }}"
-                     alt="change avatar">
+                @if ($task->projectuser->user->detailable->photo != null)
+                    <img class="rounded"
+                        src="{{ asset('profile_picture/supervisor/' . $task->projectuser->user->detailable->photo) }}"
+                        alt="change avatar">
+                @else
+                    <img class="rounded" src="{{ asset('assets/img/team/profile-picture-3.jpg') }}"
+                        alt="change avatar">
+                @endif
             </div>
             <div class="pb-4 mb-4 mx-0">
                 <div class="col-auto">
